@@ -8,6 +8,7 @@ Usage:
     python3 email_drafter.py --create-drafts   # Create drafts from sheet
     python3 email_drafter.py --sync-sent       # Update sheet with sent emails
     python3 email_drafter.py --set-subject "Subject line here"
+    python3 email_drafter.py --setup-sheet     # Add required columns to sheet
 """
 
 import argparse
@@ -97,12 +98,33 @@ def build_email_body(config, contact):
     return body
 
 
+def setup_sheet_columns(worksheet):
+    """Add required columns if they don't exist."""
+    headers = worksheet.row_values(1)
+    required_columns = ["Email Status", "Subject Line", "Draft Created", "Sent Date", "Personalized Insert"]
+
+    new_columns = []
+    for col in required_columns:
+        if col not in headers:
+            new_columns.append(col)
+
+    if new_columns:
+        # Add new columns at the end
+        start_col = len(headers) + 1
+        for i, col in enumerate(new_columns):
+            worksheet.update_cell(1, start_col + i, col)
+            print(f"  Added column: {col}")
+        return True
+    return False
+
+
 def main():
     parser = argparse.ArgumentParser(description="Outlook Email Drafter")
     parser.add_argument("--login", action="store_true", help="Login to Outlook and save session")
     parser.add_argument("--create-drafts", action="store_true", help="Create draft emails from sheet")
     parser.add_argument("--sync-sent", action="store_true", help="Sync sent emails to sheet")
     parser.add_argument("--set-subject", type=str, help="Set the email subject line")
+    parser.add_argument("--setup-sheet", action="store_true", help="Add required columns to sheet")
 
     args = parser.parse_args()
     config = load_config()
@@ -111,6 +133,14 @@ def main():
         config["subject_line"] = args.set_subject
         save_config(config)
         print(f"Subject line set to: {args.set_subject}")
+        return
+
+    if args.setup_sheet:
+        worksheet = get_google_sheet(config)
+        if setup_sheet_columns(worksheet):
+            print("Sheet columns updated!")
+        else:
+            print("All required columns already exist.")
         return
 
     if args.login:
