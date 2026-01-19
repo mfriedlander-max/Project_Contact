@@ -1,0 +1,14 @@
+# Playwright session (contains auth cookies)
+.playwright_session/
+
+# Config with potentially sensitive data
+outlook_config.json
+
+# Google API credentials (already in credentials/.gitignore but belt-and-suspenders)
+credentials/*.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
