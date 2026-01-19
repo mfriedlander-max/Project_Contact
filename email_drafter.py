@@ -81,6 +81,22 @@ def update_draft_status(worksheet, row, status="drafted"):
         worksheet.update_cell(row, draft_col, datetime.now().strftime("%Y-%m-%d %H:%M"))
 
 
+def build_email_body(config, contact):
+    """Build the email body from template and contact data."""
+    template = config["template"]
+
+    # Get first name
+    first_name = contact["name"].split()[0] if contact["name"] else "there"
+
+    # Get personalized insert or use generic
+    insert = contact.get("insert", "")
+    if not insert:
+        insert = "I'd love to learn from your experience."
+
+    body = template.format(name=first_name, insert=insert)
+    return body
+
+
 def main():
     parser = argparse.ArgumentParser(description="Outlook Email Drafter")
     parser.add_argument("--login", action="store_true", help="Login to Outlook and save session")
@@ -146,8 +162,87 @@ def outlook_login(config):
 
 
 def create_drafts(config):
-    """Create draft emails from Google Sheet data."""
-    print("Create drafts not yet implemented")
+    """Create draft emails in Outlook from Google Sheet contacts."""
+    session_dir = Path(config["session_dir"])
+
+    if not session_dir.exists():
+        print("Error: No saved session. Run --login first.")
+        return
+
+    if config["subject_line"] == "TBD":
+        print("Error: Subject line not set. Run --set-subject first.")
+        return
+
+    # Get contacts from sheet
+    print("Connecting to Google Sheet...")
+    worksheet = get_google_sheet(config)
+    contacts = get_contacts_to_draft(worksheet)
+
+    if not contacts:
+        print("No contacts need drafts.")
+        return
+
+    print(f"Found {len(contacts)} contacts to draft.")
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch_persistent_context(
+            user_data_dir=str(session_dir),
+            headless=True,
+            viewport={"width": 1280, "height": 800}
+        )
+        page = browser.pages[0] if browser.pages else browser.new_page()
+
+        # Go to Outlook
+        page.goto("https://outlook.office.com/mail/")
+        page.wait_for_load_state("networkidle")
+
+        # Check if logged in
+        if "login" in page.url.lower() or "signin" in page.url.lower():
+            print("Error: Session expired. Run --login again.")
+            browser.close()
+            return
+
+        print("Connected to Outlook.")
+
+        for i, contact in enumerate(contacts, 1):
+            print(f"\n[{i}/{len(contacts)}] Creating draft for {contact['name']}...")
+
+            try:
+                # Click New Mail button
+                page.click('button[aria-label="New mail"]')
+                page.wait_for_timeout(1000)
+
+                # Fill To field
+                to_field = page.locator('input[aria-label="To"]')
+                to_field.fill(contact["email"])
+                page.wait_for_timeout(500)
+
+                # Fill Subject
+                subject_field = page.locator('input[aria-label="Add a subject"]')
+                subject_field.fill(config["subject_line"])
+                page.wait_for_timeout(500)
+
+                # Fill Body
+                body = build_email_body(config, contact)
+                body_field = page.locator('div[aria-label="Message body"]')
+                body_field.fill(body)
+                page.wait_for_timeout(500)
+
+                # Close to save as draft (click X or press Escape)
+                page.keyboard.press("Escape")
+                page.wait_for_timeout(1000)
+
+                # Update sheet
+                update_draft_status(worksheet, contact["row"], "drafted")
+                print(f"  Draft created for {contact['email']}")
+
+            except Exception as e:
+                print(f"  Error: {e}")
+                continue
+
+        browser.close()
+
+    print(f"\nDone! Created {len(contacts)} drafts.")
 
 
 def sync_sent_emails(config):
