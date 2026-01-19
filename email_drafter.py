@@ -246,8 +246,91 @@ def create_drafts(config):
 
 
 def sync_sent_emails(config):
-    """Scan Sent folder and update sheet."""
-    print("Sync sent not yet implemented")
+    """Scan Outlook Sent folder and update sheet for matching emails."""
+    session_dir = Path(config["session_dir"])
+
+    if not session_dir.exists():
+        print("Error: No saved session. Run --login first.")
+        return
+
+    # Get contacts from sheet that are in "drafted" status
+    print("Connecting to Google Sheet...")
+    worksheet = get_google_sheet(config)
+    records = worksheet.get_all_records()
+
+    drafted_emails = {}
+    for i, row in enumerate(records, start=2):
+        if row.get("Email Status") == "drafted" and row.get("Email"):
+            drafted_emails[row["Email"].lower()] = i
+
+    if not drafted_emails:
+        print("No drafted emails to check.")
+        return
+
+    print(f"Checking {len(drafted_emails)} drafted contacts...")
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch_persistent_context(
+            user_data_dir=str(session_dir),
+            headless=True,
+            viewport={"width": 1280, "height": 800}
+        )
+        page = browser.pages[0] if browser.pages else browser.new_page()
+
+        # Go to Sent folder
+        page.goto("https://outlook.office.com/mail/sentitems")
+        page.wait_for_load_state("networkidle")
+        page.wait_for_timeout(2000)
+
+        # Check if logged in
+        if "login" in page.url.lower() or "signin" in page.url.lower():
+            print("Error: Session expired. Run --login again.")
+            browser.close()
+            return
+
+        print("Connected to Outlook Sent folder.")
+
+        # Get sent email recipients from the list
+        sent_count = 0
+
+        # Find all email items in sent folder
+        email_items = page.locator('[data-convid]').all()[:50]  # Check last 50
+
+        for item in email_items:
+            try:
+                # Click to open email
+                item.click()
+                page.wait_for_timeout(500)
+
+                # Look for recipient in the To field
+                to_element = page.locator('span[aria-label^="To:"]').first
+                if to_element.count() > 0:
+                    to_text = to_element.text_content().lower()
+
+                    # Check against our drafted emails
+                    for email, row in list(drafted_emails.items()):
+                        if email in to_text:
+                            # Found a match - update sheet
+                            headers = worksheet.row_values(1)
+                            status_col = headers.index("Email Status") + 1
+                            sent_col = headers.index("Sent Date") + 1 if "Sent Date" in headers else None
+
+                            worksheet.update_cell(row, status_col, "sent")
+                            if sent_col:
+                                from datetime import datetime
+                                worksheet.update_cell(row, sent_col, datetime.now().strftime("%Y-%m-%d"))
+
+                            print(f"  Marked as sent: {email}")
+                            del drafted_emails[email]
+                            sent_count += 1
+                            break
+
+            except Exception as e:
+                continue
+
+        browser.close()
+
+    print(f"\nDone! Found {sent_count} sent emails.")
 
 
 if __name__ == "__main__":
