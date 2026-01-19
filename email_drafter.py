@@ -17,6 +17,7 @@ from pathlib import Path
 
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+from playwright.sync_api import sync_playwright
 
 CONFIG_FILE = "outlook_config.json"
 CREDENTIALS_FILE = "credentials/google_sheets_key.json"
@@ -107,8 +108,41 @@ def main():
 
 
 def outlook_login(config):
-    """Login to Outlook and save session."""
-    print("Login not yet implemented")
+    """Login to Outlook and save session for reuse."""
+    session_dir = Path(config["session_dir"])
+    session_dir.mkdir(exist_ok=True)
+
+    print("Opening Outlook login page...")
+    print("Please log in manually. The session will be saved for future use.")
+
+    with sync_playwright() as p:
+        # Launch visible browser for login
+        browser = p.chromium.launch_persistent_context(
+            user_data_dir=str(session_dir),
+            headless=False,
+            viewport={"width": 1280, "height": 800}
+        )
+        page = browser.pages[0] if browser.pages else browser.new_page()
+
+        # Navigate to Outlook
+        page.goto("https://outlook.office.com/mail/")
+
+        print("\n" + "="*50)
+        print("Log in to your Middlebury Outlook account.")
+        print("Once you see your inbox, press Enter here to save the session.")
+        print("="*50 + "\n")
+
+        input("Press Enter when logged in...")
+
+        # Verify we're logged in by checking for inbox
+        if "mail" in page.url.lower():
+            print("Session saved successfully!")
+        else:
+            print("Warning: May not be fully logged in. URL:", page.url)
+
+        browser.close()
+
+    print(f"Session stored in: {session_dir}")
 
 
 def create_drafts(config):
