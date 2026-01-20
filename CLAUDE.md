@@ -4,85 +4,85 @@
 
 This project automates cold email outreach to Middlebury alumni. **Read this file completely before doing anything.**
 
-### The Workflow
+### The Complete Workflow
 
-1. **User gives contacts** (name, company, role, email)
-2. **You write personalized inserts** (15-25 words each, following rules below)
-3. **You add contacts to Google Sheet** with their inserts
-4. **You run `python3 email_drafter.py --create-drafts`** to create drafts in Outlook
-5. **User reviews & sends** from Outlook Drafts folder
-6. **User tells you which they sent** and you update the sheet manually
-
----
-
-## Current Settings
-
-**Subject line:** `Middlebury Freshman - Hungry to Learn`
-**Sheet ID:** `1wX-FLA28wLFegn7pwBJvD3VKZkABMhC9VDGKbLzQXuE`
+1. **User uploads contacts** (CSV with name, company, role - emails optional)
+2. **Claude confirms and finds emails** using `email_finder.py`
+3. **Claude shows results** with confidence levels (HIGH/MEDIUM/LOW)
+4. **User approves contacts** to proceed with
+5. **Claude writes personalized inserts** (15-25 words each)
+6. **Claude adds contacts to Google Sheet** with inserts
+7. **Claude creates drafts** via `email_drafter.py --create-drafts`
+8. **User reviews & sends** from Outlook Drafts folder
+9. **User tells Claude which were sent** → Claude updates sheet
 
 ---
 
-## Commands
+## Phase 1: Finding Emails
+
+### Input Format
+
+User provides a CSV or list with:
+- Name (required)
+- Company (required)
+- Title/Role (optional but helpful)
+- LinkedIn URL (optional but helpful)
+- Email (optional - if missing, we'll find it)
+
+### Running the Email Finder
 
 ```bash
-# Create drafts from Google Sheet (main command)
-python3 email_drafter.py --create-drafts
+# Set your Hunter.io API key (free tier: 25 searches/month)
+export HUNTER_API_KEY='your_key_here'
 
-# Change subject line
-python3 email_drafter.py --set-subject "New Subject Here"
+# Run email finder
+python3 email_finder.py -i contacts.csv -o results.csv
 
-# If session expires, USER must run this in their terminal (not Claude):
-python3 email_drafter.py --login
+# Test with first 10 contacts
+python3 email_finder.py -i contacts.csv -o results.csv --limit 10
+
+# With SMTP verification (slower but more accurate)
+python3 email_finder.py -i contacts.csv -o results.csv --verify
 ```
+
+### API Keys (Optional - More Sources)
+
+| API | Free Tier | Env Variable |
+|-----|-----------|--------------|
+| Hunter.io | 25/month | `HUNTER_API_KEY` |
+| Apollo.io | 50/month | `APOLLO_API_KEY` |
+| RocketReach | 5/month | `ROCKETREACH_API_KEY` |
+| Clearbit | Limited | `CLEARBIT_API_KEY` |
+
+### Understanding Results
+
+The finder returns confidence levels:
+
+| Confidence | Source | What It Means |
+|------------|--------|---------------|
+| **HIGH** | Hunter verified, Apollo, RocketReach | Safe to use - verified email |
+| **MEDIUM** | Google scrape, GitHub, partial match | Likely correct - test with one email first |
+| **LOW** | Pattern guess | Generated from common formats - verify before bulk use |
+
+### Email Pattern Generation
+
+When APIs don't find emails, the script generates 8 pattern guesses:
+1. `first.last@company.com`
+2. `firstlast@company.com`
+3. `flast@company.com`
+4. `first_last@company.com`
+5. `first@company.com`
+6. `last.first@company.com`
+7. `f.last@company.com`
+8. `firstl@company.com`
+
+**Recommendation:** Use HIGH confidence emails first. Test MEDIUM with one email. Use LOW/patterns only for high-value contacts worth the risk of bounce.
 
 ---
 
-## Adding Contacts to Google Sheet
+## Phase 2: Personalized Inserts
 
-Use Python to add contacts:
-
-```python
-from email_drafter import load_config, get_google_sheet
-
-config = load_config()
-ws = get_google_sheet(config)
-
-# Find next empty row
-records = ws.get_all_records()
-next_row = len(records) + 2
-
-# Add contact (columns: Name=1, Email=2, Company=3)
-ws.update_cell(next_row, 1, "John Smith")
-ws.update_cell(next_row, 2, "john@acme.com")
-ws.update_cell(next_row, 3, "Acme Corp")
-
-# Find Personalized Insert column and add insert
-headers = ws.row_values(1)
-insert_col = headers.index("Personalized Insert") + 1
-ws.update_cell(next_row, insert_col, "Your personalized insert here")
-```
-
----
-
-## The Email Template
-
-```
-Hello {first_name},
-
-My name is Max Friedlander, I am 20 years old, and a current Freshman at
-Middlebury. I am interested in entrepreneurship, ambitious, and curious
-about the world. {personalized_insert}
-
-I understand that you're very busy, but if you had 15 minutes to chat
-with me, I would love to introduce myself, and learn from you.
-
-Best,
-Max
-```
-
----
-
-## Writing Personalized Inserts
+### Writing Rules
 
 **Hard rules:**
 - 15-25 words exactly
@@ -118,33 +118,87 @@ For full rules see `email_personalization_prompt.md`
 
 ---
 
-## Google Sheet Structure
+## Phase 3: Creating Drafts
+
+### Current Settings
+
+**Subject line:** `Middlebury Freshman - Hungry to Learn`
+**Sheet ID:** `1wX-FLA28wLFegn7pwBJvD3VKZkABMhC9VDGKbLzQXuE`
+
+### Commands
+
+```bash
+# Create drafts from Google Sheet
+python3 email_drafter.py --create-drafts
+
+# Change subject line
+python3 email_drafter.py --set-subject "New Subject Here"
+
+# If session expires, USER runs this in their terminal:
+python3 email_drafter.py --login
+```
+
+### The Email Template
+
+```
+Hello {first_name},
+
+My name is Max Friedlander, I am 20 years old, and a current Freshman at
+Middlebury. I am interested in entrepreneurship, ambitious, and curious
+about the world. {personalized_insert}
+
+I understand that you're very busy, but if you had 15 minutes to chat
+with me, I would love to introduce myself, and learn from you.
+
+Best,
+Max
+```
+
+---
+
+## Phase 4: Tracking Status
+
+### Google Sheet Structure
 
 | Column | Purpose |
 |--------|---------|
 | Name | Full name |
 | Email | Email address |
 | Company | Their company |
-| Personalized Insert | The custom sentence (you write this) |
-| Email Status | blank = needs draft, "drafted" = in Outlook, "sent" = user sent it |
+| Email Confidence | HIGH/MEDIUM/LOW |
+| Personalized Insert | The custom sentence |
+| Email Status | blank → "drafted" → "sent" |
 | Draft Created | Auto-filled timestamp |
 | Sent Date | Fill when user confirms sent |
 
-**Important:** The script only drafts contacts where Email Status is blank.
+### Adding Contacts to Sheet
 
----
+```python
+from email_drafter import load_config, get_google_sheet
 
-## Updating Sent Status
+config = load_config()
+ws = get_google_sheet(config)
 
-**What user says:**
-- "I sent the email to Marc Baghadjian"
-- "I sent all of them"
-- "Mark John Smith as sent"
+# Find next empty row
+records = ws.get_all_records()
+next_row = len(records) + 2
 
-**What you do:**
-1. Look up the contact's row number in the sheet
-2. Update their Email Status to "sent" and add today's date
+# Add contact
+ws.update_cell(next_row, 1, "John Smith")
+ws.update_cell(next_row, 2, "john@acme.com")
+ws.update_cell(next_row, 3, "Acme Corp")
 
+# Add personalized insert
+headers = ws.row_values(1)
+insert_col = headers.index("Personalized Insert") + 1
+ws.update_cell(next_row, insert_col, "Your personalized insert here")
+```
+
+### Updating Sent Status
+
+**User says:** "I sent the email to Marc Baghadjian" / "I sent all of them"
+
+**Claude does:**
 ```python
 from email_drafter import load_config, get_google_sheet
 from datetime import datetime
@@ -152,10 +206,9 @@ from datetime import datetime
 config = load_config()
 ws = get_google_sheet(config)
 
-# First, find the contact by name
 records = ws.get_all_records()
 for i, row in enumerate(records, start=2):
-    if "Marc Baghadjian" in row.get("Name", ""):  # Change name as needed
+    if "Marc Baghadjian" in row.get("Name", ""):
         headers = ws.row_values(1)
         status_col = headers.index("Email Status") + 1
         sent_col = headers.index("Sent Date") + 1
@@ -167,54 +220,75 @@ for i, row in enumerate(records, start=2):
 
 ---
 
+## Example Full Session
+
+**User:** Here are my contacts:
+```csv
+Name,Company,Title
+Marc Baghadjian,HyperCard,CEO
+Sumanyu Sharma,Hamming,CEO
+```
+
+**Claude:**
+1. "I'll search for emails. Running email finder..."
+2. Runs: `python3 email_finder.py -i contacts.csv -o results.csv`
+3. Reports results:
+   ```
+   Marc Baghadjian - marc@hypercard.com (HIGH confidence)
+   Sumanyu Sharma - sumanyu@hamming.ai (HIGH confidence)
+   ```
+4. "Both have verified emails. Want me to write personalized inserts and create drafts?"
+
+**User:** "Yes"
+
+**Claude:**
+1. Writes personalized inserts for each
+2. Adds them to Google Sheet
+3. Runs `python3 email_drafter.py --create-drafts`
+4. Reports: "Created 2 drafts in Outlook. Review them in your Drafts folder."
+
+**User:** (reviews and sends from Outlook)
+
+**User:** "I sent both"
+
+**Claude:** Updates sheet status to "sent" for both contacts.
+
+---
+
 ## Troubleshooting
 
 **"Session expired" error:**
-User needs to run in their terminal (not through Claude):
+User runs in their terminal (not Claude):
 ```bash
 python3 email_drafter.py --login
 ```
 Then log into Middlebury Outlook and press Enter.
 
-**Contact already drafted but needs changes:**
-1. Clear their Email Status in the sheet (make it blank)
+**No emails found / all LOW confidence:**
+- Check company domain is correct
+- Try adding LinkedIn URL to CSV
+- Consider using pattern guesses for high-value contacts
+
+**Contact needs changes after drafted:**
+1. Clear their Email Status (make it blank)
 2. Update their Personalized Insert
-3. Delete the old draft from Outlook manually
+3. Delete old draft from Outlook manually
 4. Run `--create-drafts` again
 
 ---
 
-## Files
+## Files Reference
 
 | File | Purpose |
 |------|---------|
-| `email_drafter.py` | Main automation script |
-| `outlook_config.json` | Email template and settings |
+| `email_finder.py` | Find emails from name/company |
+| `email_drafter.py` | Create Outlook drafts |
 | `email_personalization_prompt.md` | Full rules for writing inserts |
+| `outlook_config.json` | Email template and settings |
 | `credentials/google_sheets_key.json` | Google API credentials |
 | `.playwright_session/` | Saved Outlook login |
-
----
-
-## Example Session
-
-**User:** Here are my contacts:
-```
-Marc Baghadjian | HyperCard | CEO | marc@hypercard.com
-Sumanyu Sharma | Hamming | CEO | sumanyu@hamming.ai
-```
-
-**Claude:**
-1. Writes personalized inserts for each
-2. Adds them to Google Sheet with inserts
-3. Runs `python3 email_drafter.py --create-drafts`
-4. Reports: "Created 2 drafts. Check your Outlook Drafts folder."
-
-**User:** (reviews drafts in Outlook, sends them)
-
-**User:** "I sent both"
-
-**Claude:** Updates sheet status to "sent" for both contacts.
+| `results.csv` | Email finder output |
+| `middlebury_contacts.csv` | Input contact list |
 
 ---
 
