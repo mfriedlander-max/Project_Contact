@@ -1,253 +1,227 @@
 # Middlebury Alumni Outreach System
 
-This project helps find contact information for Middlebury alumni and generate personalized cold outreach emails.
+## Quick Start (Read This First)
+
+This project automates cold email outreach to Middlebury alumni. **Read this file completely before doing anything.**
+
+### The Workflow
+
+1. **User gives contacts** (name, company, role, email)
+2. **You write personalized inserts** (15-25 words each, following rules below)
+3. **You add contacts to Google Sheet** with their inserts
+4. **You run `python3 email_drafter.py --create-drafts`** to create drafts in Outlook
+5. **User reviews & sends** from Outlook Drafts folder
+6. **User tells you which they sent** and you update the sheet manually
 
 ---
 
-## Branch Workflow (IMPORTANT - DO THIS FIRST)
+## Current Settings
 
-**Each new outreach round gets its own branch.** This keeps contact lists and results organized.
+**Subject line:** `Middlebury Freshman - Hungry to Learn`
+**Sheet ID:** `1wX-FLA28wLFegn7pwBJvD3VKZkABMhC9VDGKbLzQXuE`
 
-### Existing Branches
-- `main` - Base system files (scripts, prompts, templates)
-- `round-1-middlebury-alumni` - First batch of 50 Middlebury alumni contacts
+---
 
-### Starting a New Round
-
-When the user wants to work on a new set of contacts:
+## Commands
 
 ```bash
-# 1. Create a new branch from main
-git checkout main
-git checkout -b round-X-descriptive-name
+# Create drafts from Google Sheet (main command)
+python3 email_drafter.py --create-drafts
 
-# 2. Add/update the contact CSV
-# 3. Run email finder
-# 4. Generate personalized emails
-# 5. Commit results to this branch
-git add -A
-git commit -m "Round X: [description of contacts]"
-```
+# Change subject line
+python3 email_drafter.py --set-subject "New Subject Here"
 
-### Branch Naming Convention
-- `round-1-middlebury-alumni` - First round
-- `round-2-tech-founders` - Second round (example)
-- `round-3-vc-partners` - Third round (example)
-
-### Switching Between Rounds
-```bash
-# View all rounds
-git branch -a
-
-# Switch to a specific round
-git checkout round-1-middlebury-alumni
-
-# Return to main for new round
-git checkout main
+# If session expires, USER must run this in their terminal (not Claude):
+python3 email_drafter.py --login
 ```
 
 ---
 
-## Conversation Starter
+## Adding Contacts to Google Sheet
 
-When starting a new session, ask the user:
+Use Python to add contacts:
 
-```
-I can help you with the Middlebury Alumni Outreach System. What would you like to do?
+```python
+from email_drafter import load_config, get_google_sheet
 
-1. **Start a new round** - Create a new branch and find emails for new contacts
-2. **Continue existing round** - Work on contacts from a previous round
-3. **Write personalized emails** - Generate custom email inserts for outreach
-4. **Review results** - Look at previously found contacts and emails
+config = load_config()
+ws = get_google_sheet(config)
 
-Before we start, I'll need a few things from you:
-- Your contact list (CSV file location or paste the contacts)
-- Hunter.io API key (for email finding)
-- A name for this round (e.g., "tech-founders", "finance-execs")
+# Find next empty row
+records = ws.get_all_records()
+next_row = len(records) + 2
+
+# Add contact (columns: Name=1, Email=2, Company=3)
+ws.update_cell(next_row, 1, "John Smith")
+ws.update_cell(next_row, 2, "john@acme.com")
+ws.update_cell(next_row, 3, "Acme Corp")
+
+# Find Personalized Insert column and add insert
+headers = ws.row_values(1)
+insert_col = headers.index("Personalized Insert") + 1
+ws.update_cell(next_row, insert_col, "Your personalized insert here")
 ```
 
 ---
 
-## PHASE 1: Contact Discovery
+## The Email Template
 
-### Required Inputs
-
-1. **Contact CSV file** with columns:
-   - Name, Company, Title / Role, Industry, LinkedIn URL
-   - File location: `middlebury_contacts.csv`
-
-2. **Hunter.io API Key**
-   - Get free key at: https://hunter.io/users/sign_up
-   - Free tier: 25 searches/month
-   - Set as environment variable: `HUNTER_API_KEY`
-
-3. **Optional API Keys** (for better results):
-   - Apollo.io: `APOLLO_API_KEY` (50 free/month)
-   - RocketReach: `ROCKETREACH_API_KEY` (5 free/month)
-   - Clearbit: `CLEARBIT_API_KEY`
-
-### Step-by-Step Process
-
-#### Step 1: Prepare the Contact List
-```bash
-# Ensure CSV has proper header row (no empty first row)
-# Required columns: Name, Company, Title / Role, Industry, LinkedIn URL
 ```
+Hello {first_name},
 
-#### Step 2: Install Dependencies
-```bash
-cd /Users/maxfriedlander/code/Project_Contact
-python3 -m pip install -r requirements.txt
-```
+My name is Max Friedlander, I am 20 years old, and a current Freshman at
+Middlebury. I am interested in entrepreneurship, ambitious, and curious
+about the world. {personalized_insert}
 
-Dependencies:
-- requests>=2.28.0
-- beautifulsoup4>=4.11.0
-- dnspython>=2.3.0
-
-#### Step 3: Run Email Finder
-```bash
-# Set API key and run
-HUNTER_API_KEY='your_key_here' python3 email_finder.py -i contacts.csv -o results.csv
-
-# Test with first 10 contacts
-HUNTER_API_KEY='your_key_here' python3 email_finder.py -i contacts.csv -o results.csv --limit 10
-
-# With SMTP verification (slower but more accurate)
-HUNTER_API_KEY='your_key_here' python3 email_finder.py -i contacts.csv -o results.csv --verify
-```
-
-#### Step 4: Review Results
-
-Output file `results.csv` contains:
-- Name, Company, Title, Industry, LinkedIn URL
-- Email 1, Email 1 Source, Email 1 Confidence
-- Email 2, Email 2 Source, Email 2 Confidence
-- Email 3, Email 3 Source, Email 3 Confidence
-- All Emails (semicolon-separated)
-
-**Confidence Levels:**
-| Level | Source | Action |
-|-------|--------|--------|
-| HIGH | Hunter.io verified | Safe to use |
-| MEDIUM | Partial match | Verify before important outreach |
-| LOW | Pattern guess | Test with low-stakes email first |
-
-### Email Pattern Generation
-
-For contacts without verified emails, the script generates 8 pattern guesses:
-1. `first.last@domain.com`
-2. `firstlast@domain.com`
-3. `flast@domain.com` (first initial + last)
-4. `first_last@domain.com`
-5. `first@domain.com`
-6. `last.first@domain.com`
-7. `f.last@domain.com`
-8. `firstl@domain.com` (first + last initial)
-
----
-
-## PHASE 2: Email Personalization
-
-### Required Input
-- Contact list with: Name, Company, Title/Role
-- System prompt file: `email_personalization_prompt.md`
-
-### The Email Template
-```
-Hello [Name],
-
-My name is Max Friedlander, I am 20 years old, and a current Freshman at Middlebury. I am interested in entrepreneurship, ambitious, and curious about the world. [YOUR INSERT HERE]
-
-I understand that you're very busy, but if you had 15 minutes to chat with me, I would love to introduce myself, and learn from you.
+I understand that you're very busy, but if you had 15 minutes to chat
+with me, I would love to introduce myself, and learn from you.
 
 Best,
 Max
 ```
 
-### Process
-1. Read `email_personalization_prompt.md` for the full system prompt
-2. For each contact, generate ONE personalized sentence (15-25 words)
-3. Follow all tone guidelines and avoid banned AI patterns
+---
 
-### Output Format
+## Writing Personalized Inserts
+
+**Hard rules:**
+- 15-25 words exactly
+- Must flow naturally after "...curious about the world."
+- Sound like a real 20-year-old, not AI
+
+**Good starters:**
+- "Lately I've been..."
+- "I've been trying to learn more about..."
+- "As someone trying to build something myself..."
+- "I've been thinking a lot about..."
+
+**Banned (never use):**
+- "I came across..." / "I noticed..."
+- "Your remarkable/impressive/incredible..."
+- "I would be honored..."
+- "resonates with me" / "aligns with my interests"
+- Em dashes (use "and" instead)
+- Anything that sounds like LinkedIn
+
+**Examples:**
 ```
-**[Name]** - [Company], [Title]
-Insert: "[personalized sentence]"
-Word count: [X]
+Chris Hench - Amazon/Alexa, ML Scientist
+Insert: "Lately I've been building voice agents and I'd love to pick your brain on what problems in conversational AI are actually worth solving."
+Word count: 22
+
+Dan Schulman - PayPal, CEO
+Insert: "I've been thinking a lot about fintech and PayPal's push on financial inclusion stands out. I'm curious what made you bet on that."
+Word count: 23
+```
+
+For full rules see `email_personalization_prompt.md`
+
+---
+
+## Google Sheet Structure
+
+| Column | Purpose |
+|--------|---------|
+| Name | Full name |
+| Email | Email address |
+| Company | Their company |
+| Personalized Insert | The custom sentence (you write this) |
+| Email Status | blank = needs draft, "drafted" = in Outlook, "sent" = user sent it |
+| Draft Created | Auto-filled timestamp |
+| Sent Date | Fill when user confirms sent |
+
+**Important:** The script only drafts contacts where Email Status is blank.
+
+---
+
+## Updating Sent Status
+
+**What user says:**
+- "I sent the email to Marc Baghadjian"
+- "I sent all of them"
+- "Mark John Smith as sent"
+
+**What you do:**
+1. Look up the contact's row number in the sheet
+2. Update their Email Status to "sent" and add today's date
+
+```python
+from email_drafter import load_config, get_google_sheet
+from datetime import datetime
+
+config = load_config()
+ws = get_google_sheet(config)
+
+# First, find the contact by name
+records = ws.get_all_records()
+for i, row in enumerate(records, start=2):
+    if "Marc Baghadjian" in row.get("Name", ""):  # Change name as needed
+        headers = ws.row_values(1)
+        status_col = headers.index("Email Status") + 1
+        sent_col = headers.index("Sent Date") + 1
+        ws.update_cell(i, status_col, "sent")
+        ws.update_cell(i, sent_col, datetime.now().strftime("%Y-%m-%d"))
+        print(f"Marked {row['Name']} as sent")
+        break
 ```
 
 ---
 
-## PHASE 3: Email Sending (Future)
+## Troubleshooting
 
-### Gmail Integration Options
-1. **Gmail API** - Most robust, requires OAuth setup
-2. **SMTP** - Simpler, requires app password
-3. **Manual** - Copy/paste generated emails
-
----
-
-## Quick Reference Commands
-
+**"Session expired" error:**
+User needs to run in their terminal (not through Claude):
 ```bash
-# Full run
-HUNTER_API_KEY='your_key' python3 email_finder.py -i contacts.csv -o results.csv
-
-# Test run (first 10)
-HUNTER_API_KEY='your_key' python3 email_finder.py -i contacts.csv -o results.csv --limit 10
-
-# With verification
-HUNTER_API_KEY='your_key' python3 email_finder.py -i contacts.csv -o results.csv --verify
-
-# View branches
-git branch -a
-
-# Switch to round
-git checkout round-X-name
-
-# Create new round
-git checkout main && git checkout -b round-X-name
+python3 email_drafter.py --login
 ```
+Then log into Middlebury Outlook and press Enter.
+
+**Contact already drafted but needs changes:**
+1. Clear their Email Status in the sheet (make it blank)
+2. Update their Personalized Insert
+3. Delete the old draft from Outlook manually
+4. Run `--create-drafts` again
 
 ---
 
-## Files in This Project
+## Files
 
 | File | Purpose |
 |------|---------|
-| `CLAUDE.md` | This file - instructions for Claude |
-| `email_finder.py` | Main email discovery script |
-| `email_personalization_prompt.md` | System prompt for writing email inserts |
-| `linkedin_scraper.py` | Optional LinkedIn automation |
-| `quick_start.py` | Interactive guided setup |
-| `middlebury_contacts.csv` | Input contact list |
-| `results.csv` | Email search results |
-| `contact_results_summary.md` | Organized results with all pattern guesses |
-| `requirements.txt` | Python dependencies |
+| `email_drafter.py` | Main automation script |
+| `outlook_config.json` | Email template and settings |
+| `email_personalization_prompt.md` | Full rules for writing inserts |
+| `credentials/google_sheets_key.json` | Google API credentials |
+| `.playwright_session/` | Saved Outlook login |
 
 ---
 
-## Important Notes
+## Example Session
 
-- **Always create a new branch for each round** before adding contacts
-- Always use the system prompt in `email_personalization_prompt.md` when generating emails
-- Email inserts must be 15-25 words, no exceptions
-- Avoid all banned AI patterns listed in the system prompt
-- Start with HIGH confidence emails before trying pattern guesses
-- The Middlebury connection is the hook - always lead with that
-- Commit results to the round branch when done
+**User:** Here are my contacts:
+```
+Marc Baghadjian | HyperCard | CEO | marc@hypercard.com
+Sumanyu Sharma | Hamming | CEO | sumanyu@hamming.ai
+```
+
+**Claude:**
+1. Writes personalized inserts for each
+2. Adds them to Google Sheet with inserts
+3. Runs `python3 email_drafter.py --create-drafts`
+4. Reports: "Created 2 drafts. Check your Outlook Drafts folder."
+
+**User:** (reviews drafts in Outlook, sends them)
+
+**User:** "I sent both"
+
+**Claude:** Updates sheet status to "sent" for both contacts.
 
 ---
 
-## Round 1 Results Summary
+## About Max (For Writing Inserts)
 
-Branch: `round-1-middlebury-alumni`
-
-- **Total contacts:** 50
-- **HIGH confidence emails:** 20
-- **MEDIUM confidence:** 2
-- **Pattern guesses only:** 28
-- **Success rate:** 44%
-
-See `contact_results_summary.md` for full details and all pattern guesses.
+- 20 years old, Middlebury freshman
+- Runs a voice agent company
+- Into AI, startups, finance, investing
+- Wants to learn how people made big decisions
+- The Middlebury connection is the hook

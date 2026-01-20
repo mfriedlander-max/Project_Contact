@@ -218,61 +218,93 @@ def create_drafts(config):
         browser = p.chromium.launch_persistent_context(
             user_data_dir=str(session_dir),
             headless=True,
-            viewport={"width": 1280, "height": 800}
+            viewport={"width": 1280, "height": 800},
+            slow_mo=100,  # Slow down actions for stability
         )
         page = browser.pages[0] if browser.pages else browser.new_page()
+        page.set_default_timeout(30000)  # 30 second timeout
 
         # Go to Outlook
+        print("Loading Outlook...")
         page.goto("https://outlook.office.com/mail/")
-        page.wait_for_load_state("networkidle")
 
-        # Check if logged in
-        if "login" in page.url.lower() or "signin" in page.url.lower():
-            print("Error: Session expired. Run --login again.")
-            browser.close()
-            return
+        # Wait for the page to be fully loaded - look for the New mail button
+        try:
+            page.wait_for_selector('button:has-text("New mail")', timeout=30000)
+        except Exception:
+            # Check if we need to login
+            if "login" in page.url.lower() or "signin" in page.url.lower():
+                print("Error: Session expired. Run --login again.")
+                browser.close()
+                return
+            else:
+                print(f"Error: Could not load Outlook. Current URL: {page.url}")
+                browser.close()
+                return
 
         print("Connected to Outlook.")
+        created_count = 0
 
         for i, contact in enumerate(contacts, 1):
             print(f"\n[{i}/{len(contacts)}] Creating draft for {contact['name']}...")
 
             try:
                 # Click New Mail button
-                page.click('button[aria-label="New mail"]')
-                page.wait_for_timeout(1000)
+                new_mail_btn = page.locator('button:has-text("New mail")').first
+                new_mail_btn.click()
 
-                # Fill To field
-                to_field = page.locator('input[aria-label="To"]')
-                to_field.fill(contact["email"])
+                # Wait for compose window to appear - look for the To field
+                page.wait_for_selector('div[aria-label="To"]', timeout=10000)
                 page.wait_for_timeout(500)
 
-                # Fill Subject
-                subject_field = page.locator('input[aria-label="Add a subject"]')
+                # Fill To field - click and type
+                to_field = page.locator('div[aria-label="To"]')
+                to_field.click()
+                page.keyboard.type(contact["email"])
+                page.wait_for_timeout(300)
+
+                # Fill Subject - find by placeholder or aria-label
+                subject_field = page.locator('input[placeholder="Add a subject"]')
+                if subject_field.count() == 0:
+                    subject_field = page.locator('input[aria-label="Add a subject"]')
                 subject_field.fill(config["subject_line"])
-                page.wait_for_timeout(500)
+                page.wait_for_timeout(300)
 
                 # Fill Body
                 body = build_email_body(config, contact)
                 body_field = page.locator('div[aria-label="Message body"]')
-                body_field.fill(body)
+                body_field.click()
+                page.keyboard.type(body)
                 page.wait_for_timeout(500)
 
-                # Close to save as draft (click X or press Escape)
-                page.keyboard.press("Escape")
-                page.wait_for_timeout(1000)
+                # Explicitly save the draft with Ctrl+S
+                page.keyboard.press("Control+s")
+                page.wait_for_timeout(3000)
+
+                # Navigate to drafts folder to confirm save, then back to inbox
+                page.goto("https://outlook.office.com/mail/drafts")
+                page.wait_for_timeout(2000)
+                page.goto("https://outlook.office.com/mail/")
+                page.wait_for_selector('button:has-text("New mail")', timeout=15000)
 
                 # Update sheet
                 update_draft_status(worksheet, contact["row"], "drafted")
                 print(f"  Draft created for {contact['email']}")
+                created_count += 1
 
             except Exception as e:
                 print(f"  Error: {e}")
+                # Try to recover by navigating back to inbox
+                try:
+                    page.goto("https://outlook.office.com/mail/")
+                    page.wait_for_selector('button:has-text("New mail")', timeout=15000)
+                except Exception:
+                    pass
                 continue
 
         browser.close()
 
-    print(f"\nDone! Created {len(contacts)} drafts.")
+    print(f"\nDone! Created {created_count}/{len(contacts)} drafts.")
 
 
 def sync_sent_emails(config):
@@ -303,40 +335,78 @@ def sync_sent_emails(config):
         browser = p.chromium.launch_persistent_context(
             user_data_dir=str(session_dir),
             headless=True,
-            viewport={"width": 1280, "height": 800}
+            viewport={"width": 1280, "height": 800},
+            slow_mo=100,
         )
         page = browser.pages[0] if browser.pages else browser.new_page()
+        page.set_default_timeout(30000)
 
         # Go to Sent folder
+        print("Loading Outlook Sent folder...")
         page.goto("https://outlook.office.com/mail/sentitems")
-        page.wait_for_load_state("networkidle")
+
+        # Wait for page to load by looking for New mail button
+        try:
+            page.wait_for_selector('button:has-text("New mail")', timeout=30000)
+        except Exception:
+            if "login" in page.url.lower() or "signin" in page.url.lower():
+                print("Error: Session expired. Run --login again.")
+                browser.close()
+                return
+            else:
+                print(f"Error: Could not load Outlook. Current URL: {page.url}")
+                browser.close()
+                return
+
         page.wait_for_timeout(2000)
-
-        # Check if logged in
-        if "login" in page.url.lower() or "signin" in page.url.lower():
-            print("Error: Session expired. Run --login again.")
-            browser.close()
-            return
-
         print("Connected to Outlook Sent folder.")
 
         # Get sent email recipients from the list
         sent_count = 0
 
-        # Find all email items in sent folder
-        email_items = page.locator('[data-convid]').all()[:50]  # Check last 50
+        # Find all email items in sent folder using listbox options
+        email_items = page.locator('div[role="listbox"] div[role="option"]').all()[:50]
+
+        print(f"  Found {len(email_items)} emails in Sent folder to check...")
 
         for item in email_items:
             try:
                 # Click to open email
                 item.click()
-                page.wait_for_timeout(500)
+                page.wait_for_timeout(1000)
 
-                # Look for recipient in the To field
-                to_element = page.locator('span[aria-label^="To:"]').first
-                if to_element.count() > 0:
-                    to_text = to_element.text_content().lower()
+                # Look for recipient in the reading pane - try multiple selectors
+                to_text = ""
 
+                # Try to find To: field in the email header
+                to_selectors = [
+                    'span[aria-label^="To:"]',
+                    'div[aria-label^="To:"]',
+                    'button[aria-label*="To"]',
+                    'span:has-text("To:")',
+                ]
+
+                for selector in to_selectors:
+                    try:
+                        to_element = page.locator(selector).first
+                        if to_element.is_visible(timeout=500):
+                            to_text = to_element.text_content().lower()
+                            break
+                    except Exception:
+                        continue
+
+                if not to_text:
+                    # Try to get email from the page content
+                    try:
+                        page_content = page.content().lower()
+                        for email in list(drafted_emails.keys()):
+                            if email in page_content:
+                                to_text = email
+                                break
+                    except Exception:
+                        pass
+
+                if to_text:
                     # Check against our drafted emails
                     for email, row in list(drafted_emails.items()):
                         if email in to_text:
