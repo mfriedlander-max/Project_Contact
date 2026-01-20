@@ -1,6 +1,6 @@
 {
-  "subject_line": "Middlebury Freshman - Hungry to Learn",
+  "subject_line": "TBD",
   "template": "Hello {name},\n\nMy name is Max Friedlander, I am 20 years old, and a current Freshman at Middlebury. I am interested in entrepreneurship, ambitious, and curious about the world. {insert}\n\nI understand that you're very busy, but if you had 15 minutes to chat with me, I would love to introduce myself, and learn from you.\n\nBest,\nMax",
-  "google_sheet_id": "1wX-FLA28wLFegn7pwBJvD3VKZkABMhC9VDGKbLzQXuE",
+  "google_sheet_id": "YOUR_SHEET_ID_HERE",
   "session_dir": ".playwright_session"
 }
