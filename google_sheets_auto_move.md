@@ -6,14 +6,16 @@
 - Main sheet (source) - where contacts start
 - "Message Sent" - for Connection Level = "Message Sent"
 - "Connected" - for Connection Level = "Connected"
-- "In touch" - for Connection Level = "In touch"
-- "Friend" - for Connection Level = "Friend"
+- "In Touch" - for Connection Level = "In Touch"
+- "Friends" - for Connection Level = "Friends"
+- "Didn't Connect" - for Connection Level = "Didn't Connect"
 
 **Behavior:**
 - Change Connection Level → row moves to matching sheet
 - Row is deleted from source sheet (no empty rows)
 - Can move back by changing Connection Level again
 - Formatting preserved
+- After move, target sheet auto-sorts (rows WITH Connection Level above rows WITHOUT)
 
 ---
 
@@ -38,7 +40,7 @@
 
 // Configuration - sheet names must match Connection Level values exactly
 const CONNECTION_LEVEL_COLUMN = "Connection Level";
-const TARGET_SHEETS = ["Message Sent", "Connected", "In touch", "Friend"];
+const TARGET_SHEETS = ["Message Sent", "Connected", "In Touch", "Friends", "Didn't Connect"];
 
 function onEdit(e) {
   const sheet = e.source.getActiveSheet();
@@ -71,8 +73,8 @@ function onEdit(e) {
     return;
   }
 
-  // Get the entire row data
-  const rowData = sheet.getRange(row, 1, 1, sheet.getLastColumn()).getValues()[0];
+  // Get the entire row data (use headers.length to capture all columns, even empty ones)
+  const rowData = sheet.getRange(row, 1, 1, headers.length).getValues()[0];
 
   // Ensure target sheet has headers (copy from source if empty)
   if (targetSheet.getLastRow() === 0) {
@@ -87,6 +89,45 @@ function onEdit(e) {
 
   // Delete row from source sheet
   sheet.deleteRow(row);
+
+  // Sort target sheet: rows with Connection Level above rows without
+  sortSheetByConnectionLevel(targetSheet);
+}
+
+/**
+ * Sort sheet so rows with Connection Level appear above rows without.
+ * Preserves relative order within each group (stable sort).
+ */
+function sortSheetByConnectionLevel(sheet) {
+  const lastRow = sheet.getLastRow();
+  if (lastRow <= 1) return; // Only header or empty
+
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  const connectionLevelCol = headers.indexOf(CONNECTION_LEVEL_COLUMN);
+  if (connectionLevelCol === -1) return;
+
+  // Get all data rows (excluding header)
+  const dataRange = sheet.getRange(2, 1, lastRow - 1, headers.length);
+  const data = dataRange.getValues();
+
+  // Separate into two groups, preserving order within each
+  const withLevel = [];
+  const withoutLevel = [];
+
+  data.forEach(row => {
+    const connectionLevel = row[connectionLevelCol];
+    if (connectionLevel && connectionLevel.toString().trim() !== '') {
+      withLevel.push(row);
+    } else {
+      withoutLevel.push(row);
+    }
+  });
+
+  // Combine: with Connection Level first, then without
+  const sorted = [...withLevel, ...withoutLevel];
+
+  // Write back
+  dataRange.setValues(sorted);
 }
 
 /**
@@ -114,6 +155,29 @@ function initializeSheets() {
 
   SpreadsheetApp.getUi().alert('All sheets initialized with headers!');
 }
+
+/**
+ * Manually sort the current sheet.
+ * Run from Apps Script dropdown to sort contacts with Connection Level above those without.
+ */
+function sortCurrentSheet() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  sortSheetByConnectionLevel(sheet);
+}
+
+/**
+ * Debug function to check configuration.
+ * Run to verify headers and sheet names match expected values.
+ */
+function testSetup() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getActiveSheet();
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  Logger.log("Current sheet: " + sheet.getName());
+  Logger.log("Headers: " + JSON.stringify(headers));
+  Logger.log("Connection Level col: " + headers.indexOf(CONNECTION_LEVEL_COLUMN));
+  Logger.log("All sheets: " + ss.getSheets().map(s => s.getName()));
+}
 ```
 
 ---
@@ -137,6 +201,7 @@ After pasting the script:
 | Change it back to "Message Sent" | Row moves back to "Message Sent" sheet |
 | Change to value not in list | Nothing happens (row stays) |
 | Edit any other column | Nothing happens |
+| Run `sortCurrentSheet` | Manually sort current sheet (Connection Level above empty) |
 
 ---
 
@@ -155,7 +220,7 @@ After pasting the script:
 To add more connection levels, edit this line in the script:
 
 ```javascript
-const TARGET_SHEETS = ["Message Sent", "Connected", "In touch", "Friend"];
+const TARGET_SHEETS = ["Message Sent", "Connected", "In Touch", "Friends", "Didn't Connect"];
 ```
 
 Add or remove values as needed. Sheet names must match exactly (case-sensitive).

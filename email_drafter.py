@@ -82,7 +82,7 @@ def update_draft_status(worksheet, row, status="drafted"):
         worksheet.update_cell(row, draft_col, datetime.now().strftime("%Y-%m-%d %H:%M"))
 
 
-def build_email_body(config, contact):
+def build_email_body(config, contact, windows=None):
     """Build the email body from template and contact data."""
     template = config["template"]
 
@@ -95,7 +95,17 @@ def build_email_body(config, contact):
     if not insert:
         insert = "I'd love to learn from your experience."
 
-    body = template.format(name=first_name, insert=insert)
+    # Default windows if not provided
+    if windows is None:
+        windows = ["[Time slot 1]", "[Time slot 2]", "[Time slot 3]"]
+
+    body = template.format(
+        name=first_name,
+        insert=insert,
+        window1=windows[0],
+        window2=windows[1],
+        window3=windows[2]
+    )
     return body
 
 
@@ -126,6 +136,10 @@ def main():
     parser.add_argument("--sync-sent", action="store_true", help="Sync sent emails to sheet")
     parser.add_argument("--set-subject", type=str, help="Set the email subject line")
     parser.add_argument("--setup-sheet", action="store_true", help="Add required columns to sheet")
+    parser.add_argument("--window1", type=str, help='First availability window (e.g., "Tuesday 10am-1pm EST")')
+    parser.add_argument("--window2", type=str, help="Second availability window")
+    parser.add_argument("--window3", type=str, help="Third availability window")
+    parser.add_argument("--set-availability", action="store_true", help="Save window args to config for reuse")
 
     args = parser.parse_args()
     config = load_config()
@@ -134,6 +148,22 @@ def main():
         config["subject_line"] = args.set_subject
         save_config(config)
         print(f"Subject line set to: {args.set_subject}")
+        return
+
+    if args.set_availability:
+        if not (args.window1 and args.window2 and args.window3):
+            print("Error: --set-availability requires all three windows (--window1, --window2, --window3)")
+            return
+        config["availability"] = {
+            "window1": args.window1,
+            "window2": args.window2,
+            "window3": args.window3,
+        }
+        save_config(config)
+        print(f"Availability saved:")
+        print(f"  - {args.window1}")
+        print(f"  - {args.window2}")
+        print(f"  - {args.window3}")
         return
 
     if args.setup_sheet:
@@ -147,7 +177,14 @@ def main():
     if args.login:
         outlook_login(config)
     elif args.create_drafts:
-        create_drafts(config)
+        # Use CLI args if provided, otherwise fall back to config, then placeholders
+        avail = config.get("availability", {})
+        windows = [
+            args.window1 or avail.get("window1", "[Time slot 1]"),
+            args.window2 or avail.get("window2", "[Time slot 2]"),
+            args.window3 or avail.get("window3", "[Time slot 3]"),
+        ]
+        create_drafts(config, windows)
     elif args.sync_sent:
         sync_sent_emails(config)
     else:
@@ -192,7 +229,7 @@ def outlook_login(config):
     print(f"Session stored in: {session_dir}")
 
 
-def create_drafts(config):
+def create_drafts(config, windows=None):
     """Create draft emails in Outlook from Google Sheet contacts."""
     session_dir = Path(config["session_dir"])
 
@@ -272,7 +309,7 @@ def create_drafts(config):
                 page.wait_for_timeout(300)
 
                 # Fill Body
-                body = build_email_body(config, contact)
+                body = build_email_body(config, contact, windows)
                 body_field = page.locator('div[aria-label="Message body"]')
                 body_field.click()
                 page.keyboard.type(body)
@@ -324,7 +361,7 @@ def sync_sent_emails(config):
     drafted_emails = {}
     for i, row in enumerate(records, start=2):
         if row.get("Email Status") == "drafted" and row.get("Email"):
-            drafted_emails[row["Email"].lower()] = i
+            drafted_emails[row["Email"].lower()] = {"row": i, "name": row.get("Name", "")}
 
     if not drafted_emails:
         print("No drafted emails to check.")
@@ -362,72 +399,45 @@ def sync_sent_emails(config):
         page.wait_for_timeout(2000)
         print("Connected to Outlook Sent folder.")
 
-        # Get sent email recipients from the list
         sent_count = 0
+        headers = worksheet.row_values(1)
+        status_col = headers.index("Email Status") + 1
+        sent_col = headers.index("Sent Date") + 1 if "Sent Date" in headers else None
 
-        # Find all email items in sent folder using listbox options
-        email_items = page.locator('div[role="listbox"] div[role="option"]').all()[:50]
+        # Approach 1: Scan full page content for all drafted emails at once
+        # This catches emails visible in the list or reading pane
+        page_content = page.content().lower()
 
-        print(f"  Found {len(email_items)} emails in Sent folder to check...")
+        for email, info in list(drafted_emails.items()):
+            if email in page_content:
+                # Found in page - mark as sent
+                worksheet.update_cell(info["row"], status_col, "sent")
+                if sent_col:
+                    from datetime import datetime
+                    worksheet.update_cell(info["row"], sent_col, datetime.now().strftime("%Y-%m-%d"))
+                print(f"  Marked as sent: {email}")
+                del drafted_emails[email]
+                sent_count += 1
 
-        for item in email_items:
-            try:
-                # Click to open email
-                item.click()
+        # Approach 2: If not all found, scroll and check more
+        if drafted_emails:
+            # Scroll down to load more emails
+            for _ in range(3):
+                page.keyboard.press("End")
                 page.wait_for_timeout(1000)
 
-                # Look for recipient in the reading pane - try multiple selectors
-                to_text = ""
+            # Check page content again after scrolling
+            page_content = page.content().lower()
 
-                # Try to find To: field in the email header
-                to_selectors = [
-                    'span[aria-label^="To:"]',
-                    'div[aria-label^="To:"]',
-                    'button[aria-label*="To"]',
-                    'span:has-text("To:")',
-                ]
-
-                for selector in to_selectors:
-                    try:
-                        to_element = page.locator(selector).first
-                        if to_element.is_visible(timeout=500):
-                            to_text = to_element.text_content().lower()
-                            break
-                    except Exception:
-                        continue
-
-                if not to_text:
-                    # Try to get email from the page content
-                    try:
-                        page_content = page.content().lower()
-                        for email in list(drafted_emails.keys()):
-                            if email in page_content:
-                                to_text = email
-                                break
-                    except Exception:
-                        pass
-
-                if to_text:
-                    # Check against our drafted emails
-                    for email, row in list(drafted_emails.items()):
-                        if email in to_text:
-                            # Found a match - update sheet
-                            headers = worksheet.row_values(1)
-                            status_col = headers.index("Email Status") + 1
-                            sent_col = headers.index("Sent Date") + 1 if "Sent Date" in headers else None
-
-                            worksheet.update_cell(row, status_col, "sent")
-                            if sent_col:
-                                from datetime import datetime
-                                worksheet.update_cell(row, sent_col, datetime.now().strftime("%Y-%m-%d"))
-
-                            print(f"  Marked as sent: {email}")
-                            del drafted_emails[email]
-                            sent_count += 1
-                            break
-
-            except Exception as e:
-                continue
+            for email, info in list(drafted_emails.items()):
+                if email in page_content:
+                    worksheet.update_cell(info["row"], status_col, "sent")
+                    if sent_col:
+                        from datetime import datetime
+                        worksheet.update_cell(info["row"], sent_col, datetime.now().strftime("%Y-%m-%d"))
+                    print(f"  Marked as sent: {email}")
+                    del drafted_emails[email]
+                    sent_count += 1
 
         browser.close()
 
