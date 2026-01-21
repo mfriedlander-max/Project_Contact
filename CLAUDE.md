@@ -282,6 +282,64 @@ Max
 | Draft Created | Auto-filled timestamp |
 | Sent Date | Fill when user confirms sent |
 
+### Check Campaign Status
+
+**User says:** "What's the status?" / "Show me progress" / "How many drafted?"
+
+**Claude runs:**
+```python
+from email_drafter import load_config, get_google_sheet
+
+config = load_config()
+ws = get_google_sheet(config)
+records = ws.get_all_records()
+
+# Count by status
+blank = [r for r in records if not r.get("Email Status") and r.get("Email")]
+drafted = [r for r in records if r.get("Email Status") == "drafted"]
+sent = [r for r in records if r.get("Email Status") == "sent"]
+
+print(f"📊 Campaign Status:")
+print(f"   - Ready to draft: {len(blank)}")
+print(f"   - Drafted (in Outlook): {len(drafted)}")
+print(f"   - Sent: {len(sent)}")
+print(f"   - Total: {len(records)}")
+
+if drafted:
+    print(f"\n📝 Drafted (waiting to send):")
+    for r in drafted:
+        print(f"   - {r.get('Name')} ({r.get('Email')})")
+```
+
+### Mark as Sent
+
+**User says any of:**
+- "I sent the email to Marc Baghadjian"
+- "I sent Marc's email"
+- "Sent: Marc Baghadjian, Sarah Johnson"
+- "I sent all the drafted emails"
+- "Mark Marc as sent"
+
+**Claude updates the sheet:**
+```python
+from email_drafter import load_config, get_google_sheet
+from datetime import datetime
+
+config = load_config()
+ws = get_google_sheet(config)
+
+records = ws.get_all_records()
+for i, row in enumerate(records, start=2):
+    if "Marc Baghadjian" in row.get("Name", ""):
+        headers = ws.row_values(1)
+        status_col = headers.index("Email Status") + 1
+        sent_col = headers.index("Sent Date") + 1
+        ws.update_cell(i, status_col, "sent")
+        ws.update_cell(i, sent_col, datetime.now().strftime("%Y-%m-%d"))
+        print(f"✓ Marked {row['Name']} as sent")
+        break
+```
+
 ### Adding Contacts to Sheet
 
 ```python
@@ -303,30 +361,6 @@ ws.update_cell(next_row, 3, "Acme Corp")
 headers = ws.row_values(1)
 insert_col = headers.index("Personalized Insert") + 1
 ws.update_cell(next_row, insert_col, "Your personalized insert here")
-```
-
-### Updating Sent Status
-
-**User says:** "I sent the email to Marc Baghadjian" / "I sent all of them"
-
-**Claude does:**
-```python
-from email_drafter import load_config, get_google_sheet
-from datetime import datetime
-
-config = load_config()
-ws = get_google_sheet(config)
-
-records = ws.get_all_records()
-for i, row in enumerate(records, start=2):
-    if "Marc Baghadjian" in row.get("Name", ""):
-        headers = ws.row_values(1)
-        status_col = headers.index("Email Status") + 1
-        sent_col = headers.index("Sent Date") + 1
-        ws.update_cell(i, status_col, "sent")
-        ws.update_cell(i, sent_col, datetime.now().strftime("%Y-%m-%d"))
-        print(f"Marked {row['Name']} as sent")
-        break
 ```
 
 ---
