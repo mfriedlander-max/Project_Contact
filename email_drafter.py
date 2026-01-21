@@ -136,9 +136,10 @@ def main():
     parser.add_argument("--sync-sent", action="store_true", help="Sync sent emails to sheet")
     parser.add_argument("--set-subject", type=str, help="Set the email subject line")
     parser.add_argument("--setup-sheet", action="store_true", help="Add required columns to sheet")
-    parser.add_argument("--window1", type=str, help='First availability window (e.g., "Tuesday 2-4pm EST")')
+    parser.add_argument("--window1", type=str, help='First availability window (e.g., "Tuesday 10am-1pm EST")')
     parser.add_argument("--window2", type=str, help="Second availability window")
     parser.add_argument("--window3", type=str, help="Third availability window")
+    parser.add_argument("--set-availability", action="store_true", help="Save window args to config for reuse")
 
     args = parser.parse_args()
     config = load_config()
@@ -147,6 +148,22 @@ def main():
         config["subject_line"] = args.set_subject
         save_config(config)
         print(f"Subject line set to: {args.set_subject}")
+        return
+
+    if args.set_availability:
+        if not (args.window1 and args.window2 and args.window3):
+            print("Error: --set-availability requires all three windows (--window1, --window2, --window3)")
+            return
+        config["availability"] = {
+            "window1": args.window1,
+            "window2": args.window2,
+            "window3": args.window3,
+        }
+        save_config(config)
+        print(f"Availability saved:")
+        print(f"  - {args.window1}")
+        print(f"  - {args.window2}")
+        print(f"  - {args.window3}")
         return
 
     if args.setup_sheet:
@@ -160,10 +177,12 @@ def main():
     if args.login:
         outlook_login(config)
     elif args.create_drafts:
+        # Use CLI args if provided, otherwise fall back to config, then placeholders
+        avail = config.get("availability", {})
         windows = [
-            args.window1 or "[Time slot 1]",
-            args.window2 or "[Time slot 2]",
-            args.window3 or "[Time slot 3]"
+            args.window1 or avail.get("window1", "[Time slot 1]"),
+            args.window2 or avail.get("window2", "[Time slot 2]"),
+            args.window3 or avail.get("window3", "[Time slot 3]"),
         ]
         create_drafts(config, windows)
     elif args.sync_sent:

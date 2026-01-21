@@ -18,13 +18,68 @@ This project automates cold email outreach to Middlebury alumni. **Read this fil
 
 ---
 
+## Branch-Based Workflow
+
+**Main = source of truth** for docs, code, and template. Feature branches have their own campaign-specific settings.
+
+### Branch Structure
+
+```
+main                              ← Source of truth (docs, code, template)
+├── round-1-middlebury-alumni     ← Own config: subject, availability, contacts
+├── round-2-middlebury-alumni     ← Own config: subject, availability, contacts
+└── round-2-tech-entrepreneur-contacts ← Own config: subject, availability, contacts
+```
+
+### Starting a New Campaign
+
+When starting a new outreach round, user provides **3 required inputs**:
+
+| Input | Example | Stored In |
+|-------|---------|-----------|
+| **Subject line** | "Middlebury Freshman - Hungry to Learn" | `outlook_config.json` |
+| **Availability** | Tuesday 10am-1pm, Wed 1:30-4pm, Fri 9am-3pm | `outlook_config.json` |
+| **Contacts** | CSV or list | Google Sheet |
+
+```bash
+# Create new branch from main
+git checkout main && git pull
+git checkout -b round-3-new-contacts
+
+# Set campaign-specific config
+python3 email_drafter.py --set-subject "Your Subject Line"
+python3 email_drafter.py --set-availability \
+  --window1 "Tuesday 10am-1pm EST" \
+  --window2 "Wednesday 1:30-4pm EST" \
+  --window3 "Friday 9am-3pm EST"
+```
+
+### Key Principle: No Branch Merging
+
+- **Main stays clean** - only docs, code, template updates
+- **Feature branches stay separate** - each has its own config
+- **Reference main for workflow** - when in doubt, check main's CLAUDE.md
+- **Don't merge branches** - they have different configs that will conflict
+
+### Switching Campaigns
+
+```bash
+# Switch to existing campaign
+git checkout round-1-middlebury-alumni
+
+# Config already has that campaign's subject + availability
+python3 email_drafter.py --create-drafts
+```
+
+---
+
 ## Phase 1: Finding Emails
 
 ### Input Format
 
 User provides:
 - **Contacts**: CSV or list with Name, Company, Title/Role
-- **Availability Windows**: 3 time slots for the week (e.g., "Tuesday 2-4pm EST")
+- **Availability Windows**: 3 time slots for the week (e.g., "Tuesday 10am-1pm EST")
 
 Contact CSV fields:
 - Name (required)
@@ -132,11 +187,20 @@ For full rules see `email_personalization_prompt.md`
 ### Commands
 
 ```bash
-# Create drafts from Google Sheet (with availability windows)
-python3 email_drafter.py --create-drafts --window1 "Tuesday 2-4pm EST" --window2 "Thursday 10am-12pm EST" --window3 "Friday 3-5pm EST"
-
-# Change subject line
+# Set subject line (persists to config)
 python3 email_drafter.py --set-subject "New Subject Here"
+
+# Set availability windows (persists to config)
+python3 email_drafter.py --set-availability \
+  --window1 "Tuesday 10am-1pm EST" \
+  --window2 "Wednesday 1:30-4pm EST" \
+  --window3 "Friday 9am-3pm EST"
+
+# Create drafts (uses saved subject + availability from config)
+python3 email_drafter.py --create-drafts
+
+# Override availability for one run (doesn't change config)
+python3 email_drafter.py --create-drafts --window1 "Monday 9am" --window2 "Tuesday 10am" --window3 "Wednesday 11am"
 
 # If session expires, USER runs this in their terminal:
 python3 email_drafter.py --login
@@ -154,7 +218,7 @@ about the world. {personalized_insert}
 I understand that you're very busy, but if you had 15 minutes to chat
 with me, I would love to introduce myself, and learn from you.
 
-I have a few windows open this week if any work for you:
+I have a few windows open this week and the weeks ahead:
 - {window1}
 - {window2}
 - {window3}
@@ -243,9 +307,9 @@ Sumanyu Sharma,Hamming,CEO
 ```
 
 Availability:
-- Tuesday 2-4pm EST
-- Thursday 10am-12pm EST
-- Friday 3-5pm EST
+- Tuesday 10am-1pm EST
+- Wednesday 1:30-4pm EST
+- Friday 9am-3pm EST
 
 **Claude:**
 1. "I'll search for emails. Running email finder..."
@@ -260,10 +324,11 @@ Availability:
 **User:** "Yes"
 
 **Claude:**
-1. Writes personalized inserts for each
-2. Adds them to Google Sheet
-3. Runs `python3 email_drafter.py --create-drafts --window1 "Tuesday 2-4pm EST" --window2 "Thursday 10am-12pm EST" --window3 "Friday 3-5pm EST"`
-4. Reports: "Created 2 drafts in Outlook with your availability windows. Review them in your Drafts folder."
+1. Saves availability: `python3 email_drafter.py --set-availability --window1 "Tuesday 10am-1pm EST" --window2 "Wednesday 1:30-4pm EST" --window3 "Friday 9am-3pm EST"`
+2. Writes personalized inserts for each
+3. Adds them to Google Sheet
+4. Runs `python3 email_drafter.py --create-drafts`
+5. Reports: "Created 2 drafts in Outlook with your availability windows. Review them in your Drafts folder."
 
 **User:** (reviews and sends from Outlook)
 

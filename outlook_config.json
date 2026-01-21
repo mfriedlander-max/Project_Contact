@@ -1,6 +1,11 @@
 {
   "subject_line": "TBD",
-  "template": "Hello {name},\n\nMy name is Max Friedlander, I am 20 years old, and a current Freshman at Middlebury. I am interested in entrepreneurship, ambitious, and curious about the world. {insert}\n\nI understand that you're very busy, but if you had 15 minutes to chat with me, I would love to introduce myself, and learn from you.\n\nI have a few windows open this week if any work for you:\n- {window1}\n- {window2}\n- {window3}\n\nFeel free to let me know what works best.\n\nBest,\nMax",
-  "google_sheet_id": "YOUR_SHEET_ID_HERE",
+  "availability": {
+    "window1": "Tuesday 10am-1pm EST",
+    "window2": "Wednesday 1:30-4pm EST",
+    "window3": "Friday 9am-3pm EST"
+  },
+  "template": "Hello {name},\n\nMy name is Max Friedlander, I am 20 years old, and a current Freshman at Middlebury. I am interested in entrepreneurship, ambitious, and curious about the world. {insert}\n\nI understand that you're very busy, but if you had 15 minutes to chat with me, I would love to introduce myself, and learn from you.\n\nI have a few windows open this week and the weeks ahead:\n- {window1}\n- {window2}\n- {window3}\n\nFeel free to let me know what works best.\n\nBest,\nMax",
+  "google_sheet_id": "1wX-FLA28wLFegn7pwBJvD3VKZkABMhC9VDGKbLzQXuE",
   "session_dir": ".playwright_session"
 }
