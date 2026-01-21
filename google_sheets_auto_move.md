@@ -15,6 +15,7 @@
 - Row is deleted from source sheet (no empty rows)
 - Can move back by changing Connection Level again
 - Formatting preserved
+- After move, target sheet auto-sorts (rows WITH Connection Level above rows WITHOUT)
 
 ---
 
@@ -88,6 +89,45 @@ function onEdit(e) {
 
   // Delete row from source sheet
   sheet.deleteRow(row);
+
+  // Sort target sheet: rows with Connection Level above rows without
+  sortSheetByConnectionLevel(targetSheet);
+}
+
+/**
+ * Sort sheet so rows with Connection Level appear above rows without.
+ * Preserves relative order within each group (stable sort).
+ */
+function sortSheetByConnectionLevel(sheet) {
+  const lastRow = sheet.getLastRow();
+  if (lastRow <= 1) return; // Only header or empty
+
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  const connectionLevelCol = headers.indexOf(CONNECTION_LEVEL_COLUMN);
+  if (connectionLevelCol === -1) return;
+
+  // Get all data rows (excluding header)
+  const dataRange = sheet.getRange(2, 1, lastRow - 1, headers.length);
+  const data = dataRange.getValues();
+
+  // Separate into two groups, preserving order within each
+  const withLevel = [];
+  const withoutLevel = [];
+
+  data.forEach(row => {
+    const connectionLevel = row[connectionLevelCol];
+    if (connectionLevel && connectionLevel.toString().trim() !== '') {
+      withLevel.push(row);
+    } else {
+      withoutLevel.push(row);
+    }
+  });
+
+  // Combine: with Connection Level first, then without
+  const sorted = [...withLevel, ...withoutLevel];
+
+  // Write back
+  dataRange.setValues(sorted);
 }
 
 /**
@@ -115,6 +155,29 @@ function initializeSheets() {
 
   SpreadsheetApp.getUi().alert('All sheets initialized with headers!');
 }
+
+/**
+ * Manually sort the current sheet.
+ * Run from Apps Script dropdown to sort contacts with Connection Level above those without.
+ */
+function sortCurrentSheet() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  sortSheetByConnectionLevel(sheet);
+}
+
+/**
+ * Debug function to check configuration.
+ * Run to verify headers and sheet names match expected values.
+ */
+function testSetup() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getActiveSheet();
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  Logger.log("Current sheet: " + sheet.getName());
+  Logger.log("Headers: " + JSON.stringify(headers));
+  Logger.log("Connection Level col: " + headers.indexOf(CONNECTION_LEVEL_COLUMN));
+  Logger.log("All sheets: " + ss.getSheets().map(s => s.getName()));
+}
 ```
 
 ---
@@ -138,6 +201,7 @@ After pasting the script:
 | Change it back to "Message Sent" | Row moves back to "Message Sent" sheet |
 | Change to value not in list | Nothing happens (row stays) |
 | Edit any other column | Nothing happens |
+| Run `sortCurrentSheet` | Manually sort current sheet (Connection Level above empty) |
 
 ---
 
