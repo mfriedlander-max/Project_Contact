@@ -72,8 +72,8 @@ function onEdit(e) {
     return;
   }
 
-  // Get the entire row data
-  const rowData = sheet.getRange(row, 1, 1, sheet.getLastColumn()).getValues()[0];
+  // Get the entire row data (use headers.length to capture all columns, even empty ones)
+  const rowData = sheet.getRange(row, 1, 1, headers.length).getValues()[0];
 
   // Ensure target sheet has headers (copy from source if empty)
   if (targetSheet.getLastRow() === 0) {
