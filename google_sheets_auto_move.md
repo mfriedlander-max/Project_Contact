@@ -6,8 +6,8 @@
 - Main sheet (source) - where contacts start
 - "Message Sent" - for Connection Level = "Message Sent"
 - "Connected" - for Connection Level = "Connected"
-- "In touch" - for Connection Level = "In touch"
-- "Friend" - for Connection Level = "Friend"
+- "In Touch" - for Connection Level = "In Touch"
+- "Friends" - for Connection Level = "Friends"
 - "Didn't Connect" - for Connection Level = "Didn't Connect"
 
 **Behavior:**
@@ -39,7 +39,7 @@
 
 // Configuration - sheet names must match Connection Level values exactly
 const CONNECTION_LEVEL_COLUMN = "Connection Level";
-const TARGET_SHEETS = ["Message Sent", "Connected", "In touch", "Friend", "Didn't Connect"];
+const TARGET_SHEETS = ["Message Sent", "Connected", "In Touch", "Friends", "Didn't Connect"];
 
 function onEdit(e) {
   const sheet = e.source.getActiveSheet();
@@ -156,7 +156,7 @@ After pasting the script:
 To add more connection levels, edit this line in the script:
 
 ```javascript
-const TARGET_SHEETS = ["Message Sent", "Connected", "In touch", "Friend", "Didn't Connect"];
+const TARGET_SHEETS = ["Message Sent", "Connected", "In Touch", "Friends", "Didn't Connect"];
 ```
 
 Add or remove values as needed. Sheet names must match exactly (case-sensitive).
