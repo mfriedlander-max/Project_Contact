@@ -18,11 +18,106 @@ This project automates cold email outreach to Middlebury alumni. **Read this fil
 
 ---
 
+## Branch-Based Workflow
+
+**Main = source of truth** for docs, code, and template. Feature branches have their own campaign-specific settings.
+
+### Branch Structure
+
+```
+main                              ← Source of truth (docs, code, template)
+├── round-1-middlebury-alumni     ← Own config: subject, availability, contacts
+├── round-2-middlebury-alumni     ← Own config: subject, availability, contacts
+└── round-2-tech-entrepreneur-contacts ← Own config: subject, availability, contacts
+```
+
+### Starting a New Campaign
+
+When starting a new outreach round, user provides **3 required inputs**:
+
+| Input | Example | Stored In |
+|-------|---------|-----------|
+| **Subject line** | "Middlebury Freshman - Hungry to Learn" | `outlook_config.json` |
+| **Availability** | Tuesday 10am-1pm, Wed 1:30-4pm, Fri 9am-3pm | `outlook_config.json` |
+| **Contacts** | CSV or list | Google Sheet |
+
+```bash
+# Create new branch from main
+git checkout main && git pull
+git checkout -b round-3-new-contacts
+
+# Set campaign-specific config
+python3 email_drafter.py --set-subject "Your Subject Line"
+python3 email_drafter.py --set-availability \
+  --window1 "Tuesday 10am-1pm EST" \
+  --window2 "Wednesday 1:30-4pm EST" \
+  --window3 "Friday 9am-3pm EST"
+```
+
+### Key Principle: No Branch Merging
+
+- **Main stays clean** - only docs, code, template updates
+- **Feature branches stay separate** - each has its own config
+- **Reference main for workflow** - when in doubt, check main's CLAUDE.md
+- **Don't merge branches** - they have different configs that will conflict
+
+### Progress Tracking (Resume Without Repeating Work)
+
+Each branch tracks progress in its CSV and Google Sheet. When resuming a campaign:
+
+**CSV columns to track:**
+| Column | Values | Purpose |
+|--------|--------|---------|
+| `Email` | address or blank | Skip email finding if already found |
+| `Email Status` | blank → `drafted` → `sent` | Skip drafting if already drafted |
+| `Email Confidence` | HIGH/MEDIUM/LOW | Know which emails are verified |
+
+**Resuming a campaign:**
+```bash
+git checkout round-1-middlebury-alumni
+
+# Check current progress
+# - Contacts with Email Status = blank → need drafts
+# - Contacts with Email Status = drafted → ready to send
+# - Contacts with Email Status = sent → done
+
+# Only creates drafts for contacts where Email Status is blank
+python3 email_drafter.py --create-drafts
+```
+
+**What gets skipped automatically:**
+- `email_finder.py` → skips rows that already have an Email
+- `email_drafter.py --create-drafts` → skips rows with Email Status = "drafted" or "sent"
+- Google Sheet stays in sync with CSV via the drafting process
+
+**Commit progress to branch:**
+```bash
+git add contacts.csv
+git commit -m "Updated 5 contacts to drafted status"
+```
+
+### Switching Campaigns
+
+```bash
+# Switch to existing campaign
+git checkout round-1-middlebury-alumni
+
+# Config already has that campaign's subject + availability
+# CSV already has progress (who's drafted, who's sent)
+python3 email_drafter.py --create-drafts  # only processes remaining contacts
+```
+
+---
+
 ## Phase 1: Finding Emails
 
 ### Input Format
 
-User provides a CSV or list with:
+User provides:
+- **Contacts**: CSV or list with Name, Company, Title/Role
+- **Availability Windows**: 3 time slots for the week (e.g., "Tuesday 10am-1pm EST")
+
+Contact CSV fields:
 - Name (required)
 - Company (required)
 - Title/Role (optional but helpful)
@@ -128,11 +223,20 @@ For full rules see `email_personalization_prompt.md`
 ### Commands
 
 ```bash
-# Create drafts from Google Sheet
+# Set subject line (persists to config)
+python3 email_drafter.py --set-subject "New Subject Here"
+
+# Set availability windows (persists to config)
+python3 email_drafter.py --set-availability \
+  --window1 "Tuesday 10am-1pm EST" \
+  --window2 "Wednesday 1:30-4pm EST" \
+  --window3 "Friday 9am-3pm EST"
+
+# Create drafts (uses saved subject + availability from config)
 python3 email_drafter.py --create-drafts
 
-# Change subject line
-python3 email_drafter.py --set-subject "New Subject Here"
+# Override availability for one run (doesn't change config)
+python3 email_drafter.py --create-drafts --window1 "Monday 9am" --window2 "Tuesday 10am" --window3 "Wednesday 11am"
 
 # If session expires, USER runs this in their terminal:
 python3 email_drafter.py --login
@@ -149,6 +253,13 @@ about the world. {personalized_insert}
 
 I understand that you're very busy, but if you had 15 minutes to chat
 with me, I would love to introduce myself, and learn from you.
+
+I have a few windows open this week and the weeks ahead:
+- {window1}
+- {window2}
+- {window3}
+
+Feel free to let me know what works best.
 
 Best,
 Max
@@ -170,6 +281,64 @@ Max
 | Email Status | blank → "drafted" → "sent" |
 | Draft Created | Auto-filled timestamp |
 | Sent Date | Fill when user confirms sent |
+
+### Check Campaign Status
+
+**User says:** "What's the status?" / "Show me progress" / "How many drafted?"
+
+**Claude runs:**
+```python
+from email_drafter import load_config, get_google_sheet
+
+config = load_config()
+ws = get_google_sheet(config)
+records = ws.get_all_records()
+
+# Count by status
+blank = [r for r in records if not r.get("Email Status") and r.get("Email")]
+drafted = [r for r in records if r.get("Email Status") == "drafted"]
+sent = [r for r in records if r.get("Email Status") == "sent"]
+
+print(f"📊 Campaign Status:")
+print(f"   - Ready to draft: {len(blank)}")
+print(f"   - Drafted (in Outlook): {len(drafted)}")
+print(f"   - Sent: {len(sent)}")
+print(f"   - Total: {len(records)}")
+
+if drafted:
+    print(f"\n📝 Drafted (waiting to send):")
+    for r in drafted:
+        print(f"   - {r.get('Name')} ({r.get('Email')})")
+```
+
+### Mark as Sent
+
+**User says any of:**
+- "I sent the email to Marc Baghadjian"
+- "I sent Marc's email"
+- "Sent: Marc Baghadjian, Sarah Johnson"
+- "I sent all the drafted emails"
+- "Mark Marc as sent"
+
+**Claude updates the sheet:**
+```python
+from email_drafter import load_config, get_google_sheet
+from datetime import datetime
+
+config = load_config()
+ws = get_google_sheet(config)
+
+records = ws.get_all_records()
+for i, row in enumerate(records, start=2):
+    if "Marc Baghadjian" in row.get("Name", ""):
+        headers = ws.row_values(1)
+        status_col = headers.index("Email Status") + 1
+        sent_col = headers.index("Sent Date") + 1
+        ws.update_cell(i, status_col, "sent")
+        ws.update_cell(i, sent_col, datetime.now().strftime("%Y-%m-%d"))
+        print(f"✓ Marked {row['Name']} as sent")
+        break
+```
 
 ### Adding Contacts to Sheet
 
@@ -194,40 +363,23 @@ insert_col = headers.index("Personalized Insert") + 1
 ws.update_cell(next_row, insert_col, "Your personalized insert here")
 ```
 
-### Updating Sent Status
-
-**User says:** "I sent the email to Marc Baghadjian" / "I sent all of them"
-
-**Claude does:**
-```python
-from email_drafter import load_config, get_google_sheet
-from datetime import datetime
-
-config = load_config()
-ws = get_google_sheet(config)
-
-records = ws.get_all_records()
-for i, row in enumerate(records, start=2):
-    if "Marc Baghadjian" in row.get("Name", ""):
-        headers = ws.row_values(1)
-        status_col = headers.index("Email Status") + 1
-        sent_col = headers.index("Sent Date") + 1
-        ws.update_cell(i, status_col, "sent")
-        ws.update_cell(i, sent_col, datetime.now().strftime("%Y-%m-%d"))
-        print(f"Marked {row['Name']} as sent")
-        break
-```
-
 ---
 
 ## Example Full Session
 
-**User:** Here are my contacts:
+**User:** Here are my contacts and availability:
+
+Contacts:
 ```csv
 Name,Company,Title
 Marc Baghadjian,HyperCard,CEO
 Sumanyu Sharma,Hamming,CEO
 ```
+
+Availability:
+- Tuesday 10am-1pm EST
+- Wednesday 1:30-4pm EST
+- Friday 9am-3pm EST
 
 **Claude:**
 1. "I'll search for emails. Running email finder..."
@@ -237,15 +389,16 @@ Sumanyu Sharma,Hamming,CEO
    Marc Baghadjian - marc@hypercard.com (HIGH confidence)
    Sumanyu Sharma - sumanyu@hamming.ai (HIGH confidence)
    ```
-4. "Both have verified emails. Want me to write personalized inserts and create drafts?"
+4. "Both have verified emails. Want me to write personalized inserts and create drafts with your availability?"
 
 **User:** "Yes"
 
 **Claude:**
-1. Writes personalized inserts for each
-2. Adds them to Google Sheet
-3. Runs `python3 email_drafter.py --create-drafts`
-4. Reports: "Created 2 drafts in Outlook. Review them in your Drafts folder."
+1. Saves availability: `python3 email_drafter.py --set-availability --window1 "Tuesday 10am-1pm EST" --window2 "Wednesday 1:30-4pm EST" --window3 "Friday 9am-3pm EST"`
+2. Writes personalized inserts for each
+3. Adds them to Google Sheet
+4. Runs `python3 email_drafter.py --create-drafts`
+5. Reports: "Created 2 drafts in Outlook with your availability windows. Review them in your Drafts folder."
 
 **User:** (reviews and sends from Outlook)
 
