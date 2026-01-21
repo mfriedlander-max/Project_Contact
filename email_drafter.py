@@ -361,7 +361,7 @@ def sync_sent_emails(config):
     drafted_emails = {}
     for i, row in enumerate(records, start=2):
         if row.get("Email Status") == "drafted" and row.get("Email"):
-            drafted_emails[row["Email"].lower()] = i
+            drafted_emails[row["Email"].lower()] = {"row": i, "name": row.get("Name", "")}
 
     if not drafted_emails:
         print("No drafted emails to check.")
@@ -399,72 +399,45 @@ def sync_sent_emails(config):
         page.wait_for_timeout(2000)
         print("Connected to Outlook Sent folder.")
 
-        # Get sent email recipients from the list
         sent_count = 0
+        headers = worksheet.row_values(1)
+        status_col = headers.index("Email Status") + 1
+        sent_col = headers.index("Sent Date") + 1 if "Sent Date" in headers else None
 
-        # Find all email items in sent folder using listbox options
-        email_items = page.locator('div[role="listbox"] div[role="option"]').all()[:50]
+        # Approach 1: Scan full page content for all drafted emails at once
+        # This catches emails visible in the list or reading pane
+        page_content = page.content().lower()
 
-        print(f"  Found {len(email_items)} emails in Sent folder to check...")
+        for email, info in list(drafted_emails.items()):
+            if email in page_content:
+                # Found in page - mark as sent
+                worksheet.update_cell(info["row"], status_col, "sent")
+                if sent_col:
+                    from datetime import datetime
+                    worksheet.update_cell(info["row"], sent_col, datetime.now().strftime("%Y-%m-%d"))
+                print(f"  Marked as sent: {email}")
+                del drafted_emails[email]
+                sent_count += 1
 
-        for item in email_items:
-            try:
-                # Click to open email
-                item.click()
+        # Approach 2: If not all found, scroll and check more
+        if drafted_emails:
+            # Scroll down to load more emails
+            for _ in range(3):
+                page.keyboard.press("End")
                 page.wait_for_timeout(1000)
 
-                # Look for recipient in the reading pane - try multiple selectors
-                to_text = ""
+            # Check page content again after scrolling
+            page_content = page.content().lower()
 
-                # Try to find To: field in the email header
-                to_selectors = [
-                    'span[aria-label^="To:"]',
-                    'div[aria-label^="To:"]',
-                    'button[aria-label*="To"]',
-                    'span:has-text("To:")',
-                ]
-
-                for selector in to_selectors:
-                    try:
-                        to_element = page.locator(selector).first
-                        if to_element.is_visible(timeout=500):
-                            to_text = to_element.text_content().lower()
-                            break
-                    except Exception:
-                        continue
-
-                if not to_text:
-                    # Try to get email from the page content
-                    try:
-                        page_content = page.content().lower()
-                        for email in list(drafted_emails.keys()):
-                            if email in page_content:
-                                to_text = email
-                                break
-                    except Exception:
-                        pass
-
-                if to_text:
-                    # Check against our drafted emails
-                    for email, row in list(drafted_emails.items()):
-                        if email in to_text:
-                            # Found a match - update sheet
-                            headers = worksheet.row_values(1)
-                            status_col = headers.index("Email Status") + 1
-                            sent_col = headers.index("Sent Date") + 1 if "Sent Date" in headers else None
-
-                            worksheet.update_cell(row, status_col, "sent")
-                            if sent_col:
-                                from datetime import datetime
-                                worksheet.update_cell(row, sent_col, datetime.now().strftime("%Y-%m-%d"))
-
-                            print(f"  Marked as sent: {email}")
-                            del drafted_emails[email]
-                            sent_count += 1
-                            break
-
-            except Exception as e:
-                continue
+            for email, info in list(drafted_emails.items()):
+                if email in page_content:
+                    worksheet.update_cell(info["row"], status_col, "sent")
+                    if sent_col:
+                        from datetime import datetime
+                        worksheet.update_cell(info["row"], sent_col, datetime.now().strftime("%Y-%m-%d"))
+                    print(f"  Marked as sent: {email}")
+                    del drafted_emails[email]
+                    sent_count += 1
 
         browser.close()
 
