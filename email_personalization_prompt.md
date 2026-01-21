@@ -11,6 +11,13 @@ My name is Max Friedlander, I am 20 years old, and a current Freshman at Middleb
 
 I understand that you're very busy, but if you had 15 minutes to chat with me, I would love to introduce myself, and learn from you.
 
+I have a few windows open this week and the weeks ahead:
+- Tuesday 10am-1pm EST
+- Wednesday 1:30-4pm EST
+- Friday 9am-3pm EST
+
+Feel free to let me know what works best.
+
 Best,
 Max
 ```
