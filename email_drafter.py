@@ -87,7 +87,8 @@ def build_email_body(config, contact, windows=None):
     template = config["template"]
 
     # Get first name
-    first_name = contact["name"].split()[0] if contact["name"] else "there"
+    name = contact.get("name", "")
+    first_name = name.split()[0] if name else "there"
 
     # Get personalized insert or use generic
     insert = contact.get("insert", "")
