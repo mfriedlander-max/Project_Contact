@@ -1,134 +1,186 @@
-# Middlebury Contacts Email Finder
+# Middlebury Alumni Outreach System
 
-A multi-source email finder that searches Hunter.io, Apollo.io, RocketReach, Clearbit, Google, and GitHub to find professional email addresses.
+Automated cold email outreach to Middlebury alumni. Find emails, write personalized messages, create Outlook drafts, and track who you've contacted.
+
+## How It Works
+
+```
+1. You provide contacts (name, company, title)
+2. System finds their email addresses
+3. Claude writes personalized one-liners for each
+4. System creates drafts in your Outlook
+5. You review and send
+6. System tracks who's been contacted
+```
 
 ## Quick Start
 
+### First Time Setup
+
 ```bash
-# 1. Install dependencies
+# Install dependencies
 pip install -r requirements.txt
+playwright install chromium
 
-# 2. Set your API keys (get free keys at the URLs below)
-export HUNTER_API_KEY='your_key'      # https://hunter.io/api-keys (25 free/month)
-export APOLLO_API_KEY='your_key'      # https://app.apollo.io (50 free/month)
+# Set up API keys for email finding (optional but recommended)
+export HUNTER_API_KEY='your_key'  # https://hunter.io - 25 free/month
 
-# 3. Run the finder
-python email_finder.py -i middlebury_contacts.csv -o results.csv
+# Login to Outlook (saves your session)
+python3 email_drafter.py --login
 ```
 
-## Files Included
+### Running a Campaign
+
+```bash
+# 1. Switch to your campaign branch (or create new one)
+git checkout round-2-middlebury-alumni
+
+# 2. Check current progress
+# (Claude will show you who's drafted, sent, remaining)
+
+# 3. Create drafts for remaining contacts
+python3 email_drafter.py --create-drafts
+
+# 4. Review drafts in Outlook, send the ones you like
+
+# 5. Tell Claude who you sent to - it updates the tracker
+```
+
+## Campaign Branches
+
+Each outreach campaign lives in its own branch with its own settings:
+
+| Branch | Contacts | Template |
+|--------|----------|----------|
+| `round-1-middlebury-alumni` | 50 Middlebury alumni | Middlebury freshman |
+| `round-2-middlebury-alumni` | 102 Middlebury alumni | Middlebury freshman |
+| `round-2-tech-entrepreneur-contacts` | 104 tech founders | College freshman (no Middlebury mention) |
+
+### Starting a New Campaign
+
+```bash
+# Branch from main
+git checkout main && git pull
+git checkout -b round-3-new-contacts
+
+# Set your subject line
+python3 email_drafter.py --set-subject "Your Subject Line Here"
+
+# Set your availability windows
+python3 email_drafter.py --set-availability \
+  --window1 "Tuesday 10am-1pm EST" \
+  --window2 "Wednesday 1:30-4pm EST" \
+  --window3 "Friday 9am-3pm EST"
+```
+
+## The Email Template
+
+```
+Hello {first_name},
+
+My name is Max Friedlander, I am 20 years old, and a current Freshman at
+Middlebury. I am interested in entrepreneurship, ambitious, and curious
+about the world. {personalized_insert}
+
+I understand that you're very busy, but if you had 15 minutes to chat
+with me, I would love to introduce myself, and learn from you.
+
+I have a few windows open this week and the weeks ahead:
+- {window1}
+- {window2}
+- {window3}
+
+Feel free to let me know what works best.
+
+Best,
+Max
+```
+
+The `{personalized_insert}` is a custom 15-25 word sentence written for each contact.
+
+## Commands Reference
+
+| Command | What it does |
+|---------|-------------|
+| `python3 email_drafter.py --login` | Save your Outlook login (run once) |
+| `python3 email_drafter.py --create-drafts` | Create drafts for all pending contacts |
+| `python3 email_drafter.py --set-subject "..."` | Change the email subject line |
+| `python3 email_drafter.py --set-availability --window1 "..." --window2 "..." --window3 "..."` | Set your availability windows |
+| `python3 email_finder.py -i contacts.csv -o results.csv` | Find emails for a list of contacts |
+
+## Status Tracking
+
+The Google Sheet tracks each contact's status:
+
+| Status | Meaning |
+|--------|---------|
+| (blank) | Ready to draft |
+| `drafted` | Draft created in Outlook |
+| `sent` | You've sent the email |
+
+When you tell Claude "I sent the email to John Smith", it updates the sheet automatically.
+
+## Files
 
 | File | Purpose |
 |------|---------|
-| `email_finder.py` | Main script - searches multiple sources for emails |
-| `linkedin_scraper.py` | Browser automation for LinkedIn (requires Playwright) |
-| `quick_start.py` | Interactive guided setup |
-| `middlebury_contacts.csv` | Your contact list |
-| `requirements.txt` | Python dependencies |
-| `setup.sh` | Setup helper script |
+| `email_drafter.py` | Creates Outlook drafts, tracks status |
+| `email_finder.py` | Finds email addresses |
+| `outlook_config.json` | Campaign settings (subject, availability, template) |
+| `CLAUDE.md` | Instructions for Claude (the AI) |
+| `email_personalization_prompt.md` | Rules for writing personalized inserts |
 
-## Data Sources
+## Tips
 
-### API Sources (Best Results)
-1. **Hunter.io** - Best for professional emails, pattern detection
-2. **Apollo.io** - Massive B2B database, often has direct emails
-3. **RocketReach** - Good for executives
-4. **Clearbit** - Company/person enrichment
+1. **Review drafts before sending** - The system creates drafts, not sent emails
+2. **Update availability weekly** - Run `--set-availability` when your schedule changes
+3. **One campaign at a time** - Switch branches to work on different contact lists
+4. **Session expires** - If drafts fail, run `--login` again
 
-### Free Sources
-5. **Google Search** - Scrapes publicly available emails
-6. **GitHub** - Developer email addresses (for tech folks)
-7. **Pattern Generation** - Guesses likely email formats
-
-### Browser-Based (Advanced)
-8. **LinkedIn Scraper** - Requires login, higher risk of account restrictions
-
-## Getting API Keys
-
-| Service | Free Tier | Sign Up |
-|---------|-----------|---------|
-| Hunter.io | 25 searches/mo | https://hunter.io/users/sign_up |
-| Apollo.io | 50 credits/mo | https://app.apollo.io/#/signup |
-| RocketReach | 5 lookups/mo | https://rocketreach.co/signup |
-| Clearbit | Limited | https://dashboard.clearbit.com/signup |
-
-## Usage Examples
+## Finding Emails
 
 ```bash
 # Basic usage
-python email_finder.py -i middlebury_contacts.csv -o results.csv
+python3 email_finder.py -i contacts.csv -o results.csv
 
-# With SMTP verification (slower, more accurate)
-python email_finder.py -i middlebury_contacts.csv -o results.csv --verify
+# With SMTP verification (slower but more accurate)
+python3 email_finder.py -i contacts.csv -o results.csv --verify
 
-# Process only first 10 contacts (for testing)
-python email_finder.py -i middlebury_contacts.csv -o results.csv --limit 10
-
-# Interactive mode
-python quick_start.py
+# Test with first 10 contacts
+python3 email_finder.py -i contacts.csv -o results.csv --limit 10
 ```
 
-## Output Format
-
-The results CSV includes:
-- Original contact info
-- Up to 3 emails found (sorted by confidence)
-- Source of each email
-- Confidence level (high/medium/low)
-- All emails found (semicolon-separated)
-
-## Confidence Levels
+### Email Confidence Levels
 
 | Level | Meaning | Action |
 |-------|---------|--------|
-| High | Verified by API or found in public records | Safe to use |
-| Medium | Found via search or partial match | Verify before important outreach |
-| Low | Pattern guess based on company format | Test with low-stakes email first |
+| HIGH | Verified by API | Safe to use |
+| MEDIUM | Found via search | Probably good, test one first |
+| LOW | Pattern guess | May bounce, use carefully |
 
-## LinkedIn Scraper (Advanced)
+### API Keys (Optional)
 
-For LinkedIn scraping, you'll need:
+| Service | Free Tier | Sign Up |
+|---------|-----------|---------|
+| Hunter.io | 25/month | https://hunter.io/users/sign_up |
+| Apollo.io | 50/month | https://app.apollo.io/#/signup |
 
+## Troubleshooting
+
+**"Session expired" error**
 ```bash
-# Install Playwright
-pip install playwright
-playwright install chromium
-
-# Run with manual login
-python linkedin_scraper.py -i middlebury_contacts.csv -o linkedin_results.csv
+python3 email_drafter.py --login
+# Log into Middlebury Outlook, press Enter when done
 ```
 
-⚠️ **Warning**: LinkedIn actively blocks scraping. Use sparingly to avoid account restrictions.
+**Drafts not appearing**
+- Check you're logged into the right Outlook account
+- Run `--login` again if needed
 
-## Priority Contacts for Max
-
-Based on your voice agent work and Hamming AI internship, prioritize:
-
-### Tier 1 - Directly Relevant
-- Chris Hench (Amazon/Alexa ML/NLP)
-- Nicole Fazio (Amazon Alexa PM)
-- Jonathan Reiber (OpenAI Strategy)
-- Rachel Kang / Jeremy Schreiner (OpenAI)
-
-### Tier 2 - Tech/Startup
-- Bill Maris (GV founder)
-- George Arison (Shift founder)
-- Bryan Goldberg (Bleacher Report founder)
-
-### Tier 3 - High Profile
-- Dan Schulman (PayPal)
-- Ted Pick (Morgan Stanley)
-
-## Tips for Outreach
-
-1. **Lead with Middlebury connection** - Instant credibility
-2. **Keep ask specific** - "15-minute call" or "one question about X"
-3. **Reference their work** - Show you've done homework
-4. **Offer value** - What can you give back?
-
-## Legal Note
-
-This tool is for professional networking and should be used responsibly. Always comply with:
-- Company ToS for each data source
-- CAN-SPAM and GDPR if sending marketing emails
-- LinkedIn's terms of service
+**Wrong availability in emails**
+```bash
+python3 email_drafter.py --set-availability \
+  --window1 "Your new window 1" \
+  --window2 "Your new window 2" \
+  --window3 "Your new window 3"
+```
