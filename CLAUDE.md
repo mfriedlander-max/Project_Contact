@@ -61,6 +61,41 @@ python3 email_drafter.py --set-availability \
 - **Reference main for workflow** - when in doubt, check main's CLAUDE.md
 - **Don't merge branches** - they have different configs that will conflict
 
+### Progress Tracking (Resume Without Repeating Work)
+
+Each branch tracks progress in its CSV and Google Sheet. When resuming a campaign:
+
+**CSV columns to track:**
+| Column | Values | Purpose |
+|--------|--------|---------|
+| `Email` | address or blank | Skip email finding if already found |
+| `Email Status` | blank → `drafted` → `sent` | Skip drafting if already drafted |
+| `Email Confidence` | HIGH/MEDIUM/LOW | Know which emails are verified |
+
+**Resuming a campaign:**
+```bash
+git checkout round-1-middlebury-alumni
+
+# Check current progress
+# - Contacts with Email Status = blank → need drafts
+# - Contacts with Email Status = drafted → ready to send
+# - Contacts with Email Status = sent → done
+
+# Only creates drafts for contacts where Email Status is blank
+python3 email_drafter.py --create-drafts
+```
+
+**What gets skipped automatically:**
+- `email_finder.py` → skips rows that already have an Email
+- `email_drafter.py --create-drafts` → skips rows with Email Status = "drafted" or "sent"
+- Google Sheet stays in sync with CSV via the drafting process
+
+**Commit progress to branch:**
+```bash
+git add contacts.csv
+git commit -m "Updated 5 contacts to drafted status"
+```
+
 ### Switching Campaigns
 
 ```bash
@@ -68,7 +103,8 @@ python3 email_drafter.py --set-availability \
 git checkout round-1-middlebury-alumni
 
 # Config already has that campaign's subject + availability
-python3 email_drafter.py --create-drafts
+# CSV already has progress (who's drafted, who's sent)
+python3 email_drafter.py --create-drafts  # only processes remaining contacts
 ```
 
 ---
