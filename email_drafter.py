@@ -82,7 +82,7 @@ def update_draft_status(worksheet, row, status="drafted"):
         worksheet.update_cell(row, draft_col, datetime.now().strftime("%Y-%m-%d %H:%M"))
 
 
-def build_email_body(config, contact):
+def build_email_body(config, contact, windows=None):
     """Build the email body from template and contact data."""
     template = config["template"]
 
@@ -94,7 +94,17 @@ def build_email_body(config, contact):
     if not insert:
         insert = "I'd love to learn from your experience."
 
-    body = template.format(name=first_name, insert=insert)
+    # Default windows if not provided
+    if windows is None:
+        windows = ["[Time slot 1]", "[Time slot 2]", "[Time slot 3]"]
+
+    body = template.format(
+        name=first_name,
+        insert=insert,
+        window1=windows[0],
+        window2=windows[1],
+        window3=windows[2]
+    )
     return body
 
 
@@ -125,6 +135,9 @@ def main():
     parser.add_argument("--sync-sent", action="store_true", help="Sync sent emails to sheet")
     parser.add_argument("--set-subject", type=str, help="Set the email subject line")
     parser.add_argument("--setup-sheet", action="store_true", help="Add required columns to sheet")
+    parser.add_argument("--window1", type=str, help='First availability window (e.g., "Tuesday 2-4pm EST")')
+    parser.add_argument("--window2", type=str, help="Second availability window")
+    parser.add_argument("--window3", type=str, help="Third availability window")
 
     args = parser.parse_args()
     config = load_config()
@@ -146,7 +159,12 @@ def main():
     if args.login:
         outlook_login(config)
     elif args.create_drafts:
-        create_drafts(config)
+        windows = [
+            args.window1 or "[Time slot 1]",
+            args.window2 or "[Time slot 2]",
+            args.window3 or "[Time slot 3]"
+        ]
+        create_drafts(config, windows)
     elif args.sync_sent:
         sync_sent_emails(config)
     else:
@@ -191,7 +209,7 @@ def outlook_login(config):
     print(f"Session stored in: {session_dir}")
 
 
-def create_drafts(config):
+def create_drafts(config, windows=None):
     """Create draft emails in Outlook from Google Sheet contacts."""
     session_dir = Path(config["session_dir"])
 
@@ -271,7 +289,7 @@ def create_drafts(config):
                 page.wait_for_timeout(300)
 
                 # Fill Body
-                body = build_email_body(config, contact)
+                body = build_email_body(config, contact, windows)
                 body_field = page.locator('div[aria-label="Message body"]')
                 body_field.click()
                 page.keyboard.type(body)

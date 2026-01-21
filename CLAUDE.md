@@ -22,7 +22,11 @@ This project automates cold email outreach to Middlebury alumni. **Read this fil
 
 ### Input Format
 
-User provides a CSV or list with:
+User provides:
+- **Contacts**: CSV or list with Name, Company, Title/Role
+- **Availability Windows**: 3 time slots for the week (e.g., "Tuesday 2-4pm EST")
+
+Contact CSV fields:
 - Name (required)
 - Company (required)
 - Title/Role (optional but helpful)
@@ -128,8 +132,8 @@ For full rules see `email_personalization_prompt.md`
 ### Commands
 
 ```bash
-# Create drafts from Google Sheet
-python3 email_drafter.py --create-drafts
+# Create drafts from Google Sheet (with availability windows)
+python3 email_drafter.py --create-drafts --window1 "Tuesday 2-4pm EST" --window2 "Thursday 10am-12pm EST" --window3 "Friday 3-5pm EST"
 
 # Change subject line
 python3 email_drafter.py --set-subject "New Subject Here"
@@ -149,6 +153,13 @@ about the world. {personalized_insert}
 
 I understand that you're very busy, but if you had 15 minutes to chat
 with me, I would love to introduce myself, and learn from you.
+
+I have a few windows open this week if any work for you:
+- {window1}
+- {window2}
+- {window3}
+
+Feel free to let me know what works best.
 
 Best,
 Max
@@ -222,12 +233,19 @@ for i, row in enumerate(records, start=2):
 
 ## Example Full Session
 
-**User:** Here are my contacts:
+**User:** Here are my contacts and availability:
+
+Contacts:
 ```csv
 Name,Company,Title
 Marc Baghadjian,HyperCard,CEO
 Sumanyu Sharma,Hamming,CEO
 ```
+
+Availability:
+- Tuesday 2-4pm EST
+- Thursday 10am-12pm EST
+- Friday 3-5pm EST
 
 **Claude:**
 1. "I'll search for emails. Running email finder..."
@@ -237,15 +255,15 @@ Sumanyu Sharma,Hamming,CEO
    Marc Baghadjian - marc@hypercard.com (HIGH confidence)
    Sumanyu Sharma - sumanyu@hamming.ai (HIGH confidence)
    ```
-4. "Both have verified emails. Want me to write personalized inserts and create drafts?"
+4. "Both have verified emails. Want me to write personalized inserts and create drafts with your availability?"
 
 **User:** "Yes"
 
 **Claude:**
 1. Writes personalized inserts for each
 2. Adds them to Google Sheet
-3. Runs `python3 email_drafter.py --create-drafts`
-4. Reports: "Created 2 drafts in Outlook. Review them in your Drafts folder."
+3. Runs `python3 email_drafter.py --create-drafts --window1 "Tuesday 2-4pm EST" --window2 "Thursday 10am-12pm EST" --window3 "Friday 3-5pm EST"`
+4. Reports: "Created 2 drafts in Outlook with your availability windows. Review them in your Drafts folder."
 
 **User:** (reviews and sends from Outlook)
 
