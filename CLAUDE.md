@@ -2,7 +2,11 @@
 
 ## Quick Start (Read This First)
 
-This project automates cold email outreach to Middlebury alumni. **Read this file completely before doing anything.**
+**READ THIS ENTIRE FILE BEFORE DOING ANYTHING.**
+
+Failure to follow the instructions in this file is considered a **SYSTEM FAILURE** and will break the campaign. Every step matters. When in doubt, re-read the relevant section.
+
+This project automates cold email outreach to Middlebury alumni.
 
 ### When to Ask the User
 
