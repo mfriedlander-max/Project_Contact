@@ -4,21 +4,38 @@
 
 This project automates cold email outreach to Middlebury alumni. **Read this file completely before doing anything.**
 
+### When to Ask the User
+
+**Always ask for these if not provided:**
+| Missing | Ask |
+|---------|-----|
+| Contacts | "Please provide your contacts (CSV or list with name, company, title)" |
+| Subject line | "What subject line should I use for these emails?" |
+| Availability | "What are your 3 availability windows for this week?" |
+
+**If unsure what user wants:**
+- "Would you like me to: (1) start a new campaign, (2) resume an existing one, or (3) check status?"
+
+**If something fails:**
+- Check Troubleshooting section first
+- If not covered, ask user for guidance
+
 ### The Complete Workflow
 
-**User provides:**
-- Contacts (CSV with name, company, title - email optional)
-- Subject line
-- Availability windows (3 time slots)
+**User provides 3 things:**
+1. **Contacts** - CSV or list with name, company, title (email optional)
+2. **Subject line** - e.g., "Middlebury Freshman - Hungry to Learn"
+3. **Availability** - 3 time windows, e.g., "Tue 10am-1pm, Wed 2-5pm, Fri 9am-12pm"
 
 **Steps:**
-1. **Set subject + availability** via `email_drafter.py --set-subject` and `--set-availability`
-2. **Run `email_finder.py`** to find emails (if not provided)
-3. **Run `insert_generator.py`** to research + generate inserts (AUTOMATED)
-4. **Run `email_drafter.py --create-drafts`** to create Outlook drafts
-5. **User reviews drafts** (check LOW confidence inserts marked with "LOW - ")
-6. **User sends from Outlook**
-7. **Run `email_drafter.py --sync-sent`** to update tracking
+1. **Save contacts** to `contacts.csv` in the branch
+2. **Set subject + availability** via `email_drafter.py --set-subject` and `--set-availability`
+3. **Run `email_finder.py`** to find emails (if not provided in CSV)
+4. **Run `insert_generator.py`** to research + generate inserts (AUTOMATED)
+5. **Run `email_drafter.py --create-drafts`** to create Outlook drafts
+6. **User reviews drafts** (check LOW confidence inserts marked with "LOW - ")
+7. **User sends from Outlook**
+8. **Run `email_drafter.py --sync-sent`** to update tracking
 
 ---
 
@@ -196,15 +213,6 @@ python3 email_finder.py -i contacts.csv -o results.csv --limit 10
 python3 email_finder.py -i contacts.csv -o results.csv --verify
 ```
 
-### API Keys (Optional - More Sources)
-
-| API | Free Tier | Env Variable |
-|-----|-----------|--------------|
-| Hunter.io | 25/month | `HUNTER_API_KEY` |
-| Apollo.io | 50/month | `APOLLO_API_KEY` |
-| RocketReach | 5/month | `ROCKETREACH_API_KEY` |
-| Clearbit | Limited | `CLEARBIT_API_KEY` |
-
 ### Understanding Results
 
 The finder returns confidence levels:
@@ -354,14 +362,20 @@ Max
 
 | Column | Purpose |
 |--------|---------|
+| Campaign | Git branch name (filters contacts) |
 | Name | Full name |
 | Email | Email address |
+| Email Confidence | HIGH/MEDIUM/LOW for email |
 | Company | Their company |
-| Email Confidence | HIGH/MEDIUM/LOW |
+| Title | Role/title |
 | Personalized Insert | The custom sentence |
+| Word Count | Insert word count |
+| Insert Confidence | HIGH/MEDIUM/LOW for insert |
+| Sources | Where facts came from |
 | Email Status | blank → "drafted" → "sent" |
 | Draft Created | Auto-filled timestamp |
-| Sent Date | Fill when user confirms sent |
+| Sent Date | Auto-filled when synced |
+| Connection Level | For manual tracking (Message Sent, Connected, etc.) |
 
 ### Check Campaign Status
 
@@ -370,21 +384,26 @@ Max
 **Claude runs:**
 ```python
 from email_drafter import load_config, get_google_sheet
+from insert_generator import get_current_branch
 
 config = load_config()
 ws = get_google_sheet(config)
 records = ws.get_all_records()
+campaign = get_current_branch()
+
+# Filter by current campaign
+campaign_records = [r for r in records if r.get("Campaign") == campaign]
 
 # Count by status
-blank = [r for r in records if not r.get("Email Status") and r.get("Email")]
-drafted = [r for r in records if r.get("Email Status") == "drafted"]
-sent = [r for r in records if r.get("Email Status") == "sent"]
+blank = [r for r in campaign_records if not r.get("Email Status") and r.get("Email")]
+drafted = [r for r in campaign_records if r.get("Email Status") == "drafted"]
+sent = [r for r in campaign_records if r.get("Email Status") == "sent"]
 
-print(f"📊 Campaign Status:")
+print(f"📊 Campaign: {campaign}")
 print(f"   - Ready to draft: {len(blank)}")
 print(f"   - Drafted (in Outlook): {len(drafted)}")
 print(f"   - Sent: {len(sent)}")
-print(f"   - Total: {len(records)}")
+print(f"   - Total: {len(campaign_records)}")
 
 if drafted:
     print(f"\n📝 Drafted (waiting to send):")
@@ -413,15 +432,20 @@ This scans your Outlook Sent folder and marks matching contacts as "sent" with t
 **Claude updates the sheet:**
 ```python
 from email_drafter import load_config, get_google_sheet
+from insert_generator import get_current_branch
 from datetime import datetime
 
 config = load_config()
 ws = get_google_sheet(config)
+campaign = get_current_branch()
+headers = ws.row_values(1)
 
 records = ws.get_all_records()
 for i, row in enumerate(records, start=2):
+    # Only update contacts in current campaign
+    if row.get("Campaign") != campaign:
+        continue
     if "Marc Baghadjian" in row.get("Name", ""):
-        headers = ws.row_values(1)
         status_col = headers.index("Email Status") + 1
         sent_col = headers.index("Sent Date") + 1
         ws.update_cell(i, status_col, "sent")
@@ -430,46 +454,58 @@ for i, row in enumerate(records, start=2):
         break
 ```
 
-### Adding Contacts to Sheet
+### Adding Contacts to Sheet (Manual)
 
 ```python
 from email_drafter import load_config, get_google_sheet
+from insert_generator import get_current_branch
 
 config = load_config()
 ws = get_google_sheet(config)
+headers = ws.row_values(1)
 
 # Find next empty row
 records = ws.get_all_records()
 next_row = len(records) + 2
 
-# Add contact
-ws.update_cell(next_row, 1, "John Smith")
-ws.update_cell(next_row, 2, "john@acme.com")
-ws.update_cell(next_row, 3, "Acme Corp")
+# Helper to write by column name
+def set_cell(col_name, value):
+    col = headers.index(col_name) + 1
+    ws.update_cell(next_row, col, value)
 
-# Add personalized insert
-headers = ws.row_values(1)
-insert_col = headers.index("Personalized Insert") + 1
-ws.update_cell(next_row, insert_col, "Your personalized insert here")
+# Add contact (always include Campaign)
+set_cell("Campaign", get_current_branch())
+set_cell("Name", "John Smith")
+set_cell("Email", "john@acme.com")
+set_cell("Company", "Acme Corp")
+set_cell("Title", "CEO")
+set_cell("Personalized Insert", "Your personalized insert here")
 ```
+
+**Note:** Prefer using `insert_generator.py` to add contacts automatically. Manual addition is for edge cases only.
 
 ---
 
 ## Example Full Session
 
-**User:** Here are my contacts: [uploads contacts.csv]
-```csv
-Name,Company,Title
-Marc Baghadjian,HyperCard,CEO
-Sumanyu Sharma,Hamming,CEO
+**User:** Here are my contacts:
 ```
-
+Marc Baghadjian, HyperCard, CEO
+Sumanyu Sharma, Hamming, CEO
+```
 Subject: "Middlebury Freshman - Hungry to Learn"
 Availability: Tue 10am-1pm, Wed 1:30-4pm, Fri 9am-3pm
 
-**Steps:**
+**Claude:**
 
 ```bash
+# 0. Save contacts to CSV
+cat > contacts.csv << 'EOF'
+Name,Company,Title
+Marc Baghadjian,HyperCard,CEO
+Sumanyu Sharma,Hamming,CEO
+EOF
+
 # 1. Set subject + availability
 python3 email_drafter.py --set-subject "Middlebury Freshman - Hungry to Learn"
 python3 email_drafter.py --set-availability \
@@ -487,12 +523,19 @@ python3 insert_generator.py -i with_emails.csv -o with_inserts.csv
 python3 email_drafter.py --create-drafts
 ```
 
+**Claude:** "Done! Created 2 drafts in Outlook. Please review them (especially any marked LOW), then send."
+
 **User:** (reviews drafts in Outlook, edits any LOW confidence ones, sends)
 
+**User:** "I sent both emails"
+
+**Claude:**
 ```bash
 # 5. Sync sent status
 python3 email_drafter.py --sync-sent
 ```
+
+**Claude:** "Updated! Both contacts marked as sent."
 
 ---
 
@@ -502,6 +545,7 @@ python3 email_drafter.py --sync-sent
 ```bash
 export ANTHROPIC_API_KEY='your_key_here'
 ```
+→ If user doesn't have key, tell them: "You need an Anthropic API key. Get one at console.anthropic.com"
 
 **insert_generator.py rate limited:**
 ```bash
@@ -519,17 +563,22 @@ User runs in their terminal (not Claude):
 python3 email_drafter.py --login
 ```
 Then log into Middlebury Outlook and press Enter.
+→ Tell user: "Please run `python3 email_drafter.py --login` in your terminal and log into Outlook"
 
 **No emails found / all LOW confidence:**
 - Check company domain is correct
 - Try adding LinkedIn URL to CSV
 - Consider using pattern guesses for high-value contacts
+→ Ask user: "Should I use the LOW confidence emails anyway, or skip those contacts?"
 
 **Contact needs changes after drafted:**
 1. Clear their Email Status (make it blank)
 2. Update their Personalized Insert
 3. Delete old draft from Outlook manually
 4. Run `--create-drafts` again
+
+**Something not covered here:**
+→ Ask user: "I'm not sure how to handle [issue]. What would you like me to do?"
 
 ---
 
