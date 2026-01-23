@@ -22,6 +22,49 @@ This project automates cold email outreach to Middlebury alumni. **Read this fil
 
 ---
 
+## API Keys Setup
+
+API keys are stored as **environment variables** (not in files). Set them before running scripts.
+
+### Required Keys
+
+| Script | Key | Get It From |
+|--------|-----|-------------|
+| `insert_generator.py` | `ANTHROPIC_API_KEY` | [console.anthropic.com](https://console.anthropic.com/) |
+| `email_finder.py` | `HUNTER_API_KEY` | [hunter.io/api](https://hunter.io/api) (25 free/month) |
+
+### Setting Keys (One-Time Setup)
+
+Add to your shell profile (`~/.zshrc` or `~/.bashrc`) so they persist:
+
+```bash
+# Add these lines to ~/.zshrc (or ~/.bashrc)
+export ANTHROPIC_API_KEY='sk-ant-...'
+export HUNTER_API_KEY='...'
+
+# Then reload your shell
+source ~/.zshrc
+```
+
+Or set temporarily for current session:
+
+```bash
+export ANTHROPIC_API_KEY='sk-ant-...'
+export HUNTER_API_KEY='...'
+```
+
+### Optional Keys (More Email Sources)
+
+| Service | Free Tier | Env Variable |
+|---------|-----------|--------------|
+| Apollo.io | 50/month | `APOLLO_API_KEY` |
+| RocketReach | 5/month | `ROCKETREACH_API_KEY` |
+| Clearbit | Limited | `CLEARBIT_API_KEY` |
+
+**Never commit API keys to git.** They're excluded via `.gitignore`.
+
+---
+
 ## Branch-Based Workflow
 
 **Main = source of truth** for docs, code, and template. Feature branches have their own campaign-specific settings.
@@ -246,6 +289,8 @@ For full rules see `email_personalization_prompt.md`
 ---
 
 ## Phase 3: Creating Drafts
+
+**Sheet ID:** `1wX-FLA28wLFegn7pwBJvD3VKZkABMhC9VDGKbLzQXuE`
 
 ### Commands
 
