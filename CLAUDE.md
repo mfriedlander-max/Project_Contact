@@ -345,6 +345,12 @@ For full rules see `email_personalization_prompt.md`
 
 **Sheet ID:** `1wX-FLA28wLFegn7pwBJvD3VKZkABMhC9VDGKbLzQXuE`
 
+**Where drafts come from:** `email_drafter.py --create-drafts` reads from the **Google Sheet** (not CSV files). It:
+1. Filters to rows where `Campaign` = current branch
+2. Filters to rows where `Email Status` = blank
+3. Creates Outlook draft using: Name, Email, Personalized Insert from Sheet
+4. Updates Sheet: sets `Email Status` = "drafted", `Draft Created` = timestamp
+
 ### Commands
 
 ```bash
