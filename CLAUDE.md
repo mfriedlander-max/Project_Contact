@@ -103,6 +103,41 @@ main                              ← Source of truth (docs, code, template)
 └── round-2-tech-entrepreneur-contacts ← Own config: subject, availability, contacts
 ```
 
+### Data Architecture (IMPORTANT)
+
+**Two places store data:**
+
+| Location | Scope | What's Stored | When It Changes |
+|----------|-------|---------------|-----------------|
+| **CSV files** (in git branch) | Per-branch | Raw contacts, emails found, inserts generated | When you switch branches |
+| **Google Sheet** | Shared (all campaigns) | All contacts from all campaigns, filtered by Campaign column | Never changes when switching branches |
+
+**Key rules:**
+1. **CSV files are branch-specific** - switching branches changes which CSV files you see
+2. **Google Sheet is shared** - all campaigns live in one Sheet, differentiated by `Campaign` column
+3. **Scripts auto-filter by branch** - they only touch rows where `Campaign` = current branch name
+4. **Don't manually edit Sheet rows from other campaigns** - you might break another campaign
+
+**Data flow per campaign:**
+```
+contacts.csv (you create)
+    ↓ email_finder.py
+with_emails.csv (adds Email, Email Confidence)
+    ↓ insert_generator.py
+with_inserts.csv (adds Insert, Confidence, Sources)
+    ↓ insert_generator.py also writes to...
+Google Sheet (new rows with Campaign = branch name)
+    ↓ email_drafter.py reads from Sheet
+Outlook Drafts (created from Sheet data)
+```
+
+**When switching branches:**
+- CSV files change (each branch has its own)
+- Google Sheet stays the same (but scripts filter to current branch)
+- Config (`outlook_config.json`) changes (each branch has its own subject/availability)
+
+---
+
 ### Starting a New Campaign
 
 When starting a new outreach round, user provides **3 required inputs**:
