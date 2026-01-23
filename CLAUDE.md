@@ -130,10 +130,6 @@ python3 email_drafter.py --create-drafts  # only processes remaining contacts
 
 ### Input Format
 
-User provides:
-- **Contacts**: CSV or list with Name, Company, Title/Role
-- **Availability Windows**: 3 time slots for the week (e.g., "Tuesday 10am-1pm EST")
-
 Contact CSV fields:
 - Name (required)
 - Company (required)
@@ -250,11 +246,6 @@ For full rules see `email_personalization_prompt.md`
 ---
 
 ## Phase 3: Creating Drafts
-
-### Current Settings
-
-**Subject line:** `Middlebury Freshman - Hungry to Learn`
-**Sheet ID:** `1wX-FLA28wLFegn7pwBJvD3VKZkABMhC9VDGKbLzQXuE`
 
 ### Commands
 
@@ -423,45 +414,39 @@ ws.update_cell(next_row, insert_col, "Your personalized insert here")
 
 **User:** Here are my contacts: [uploads contacts.csv]
 ```csv
-Name,Company,Title,Email
-Marc Baghadjian,HyperCard,CEO,marc@hypercard.com
-Sumanyu Sharma,Hamming,CEO,sumanyu@hamming.ai
+Name,Company,Title
+Marc Baghadjian,HyperCard,CEO
+Sumanyu Sharma,Hamming,CEO
 ```
 
+Subject: "Middlebury Freshman - Hungry to Learn"
 Availability: Tue 10am-1pm, Wed 1:30-4pm, Fri 9am-3pm
 
 **Steps:**
 
 ```bash
-# 1. Set availability
+# 1. Set subject + availability
+python3 email_drafter.py --set-subject "Middlebury Freshman - Hungry to Learn"
 python3 email_drafter.py --set-availability \
   --window1 "Tuesday 10am-1pm EST" \
   --window2 "Wednesday 1:30-4pm EST" \
   --window3 "Friday 9am-3pm EST"
 
-# 2. Generate inserts (researches contacts + writes inserts)
-python3 insert_generator.py -i contacts.csv -o with_inserts.csv
+# 2. Find emails
+python3 email_finder.py -i contacts.csv -o with_emails.csv
 
-# 3. Create drafts in Outlook
+# 3. Generate inserts (researches contacts + writes inserts)
+python3 insert_generator.py -i with_emails.csv -o with_inserts.csv
+
+# 4. Create drafts in Outlook
 python3 email_drafter.py --create-drafts
 ```
 
 **User:** (reviews drafts in Outlook, edits any LOW confidence ones, sends)
 
 ```bash
-# 4. Sync sent status
+# 5. Sync sent status
 python3 email_drafter.py --sync-sent
-```
-
-**Output:**
-```
-Campaign: main
-Connecting to Google Sheet...
-Checking 2 drafted contacts...
-Connected to Outlook Sent folder.
-  Marked as sent: marc@hypercard.com
-  Marked as sent: sumanyu@hamming.ai
-Done! Found 2 sent emails.
 ```
 
 ---
