@@ -6,8 +6,14 @@ This project automates cold email outreach to Middlebury alumni. **Read this fil
 
 ### The Complete Workflow
 
-1. **User uploads contacts** (CSV with name, company, title, email)
-2. **Run `email_finder.py`** to find any missing emails
+**User provides:**
+- Contacts (CSV with name, company, title - email optional)
+- Subject line
+- Availability windows (3 time slots)
+
+**Steps:**
+1. **Set subject + availability** via `email_drafter.py --set-subject` and `--set-availability`
+2. **Run `email_finder.py`** to find emails (if not provided)
 3. **Run `insert_generator.py`** to research + generate inserts (AUTOMATED)
 4. **Run `email_drafter.py --create-drafts`** to create Outlook drafts
 5. **User reviews drafts** (check LOW confidence inserts marked with "LOW - ")
