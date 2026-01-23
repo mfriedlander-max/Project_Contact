@@ -20,6 +20,10 @@ This project automates cold email outreach to Middlebury alumni.
 **If unsure what user wants:**
 - "Would you like me to: (1) start a new campaign, (2) resume an existing one, or (3) check status?"
 
+**If on main branch:**
+- Ask user: "You're on the main branch. Should I create a new campaign branch (e.g., round-3-contacts)?"
+- Never run campaign scripts on main - always switch to a feature branch first
+
 **If something fails:**
 - Check Troubleshooting section first
 - If not covered, ask user for guidance
@@ -173,8 +177,9 @@ python3 email_drafter.py --create-drafts
 
 **Commit progress to branch:**
 ```bash
-git add contacts.csv
-git commit -m "Updated 5 contacts to drafted status"
+# Commit the CSV files (Google Sheet is auto-updated, no commit needed)
+git add contacts.csv with_emails.csv with_inserts.csv outlook_config.json
+git commit -m "Campaign progress: X contacts processed"
 ```
 
 ### Switching Campaigns
@@ -197,7 +202,7 @@ python3 email_drafter.py --create-drafts  # only processes remaining contacts
 Contact CSV fields:
 - Name (required)
 - Company (required)
-- Title/Role (optional but helpful)
+- Title (required) - needed for insert generation
 - LinkedIn URL (optional but helpful)
 - Email (optional - if missing, we'll find it)
 
@@ -207,14 +212,14 @@ Contact CSV fields:
 # Set your Hunter.io API key (free tier: 25 searches/month)
 export HUNTER_API_KEY='your_key_here'
 
-# Run email finder
-python3 email_finder.py -i contacts.csv -o results.csv
+# Run email finder (output: with_emails.csv)
+python3 email_finder.py -i contacts.csv -o with_emails.csv
 
 # Test with first 10 contacts
-python3 email_finder.py -i contacts.csv -o results.csv --limit 10
+python3 email_finder.py -i contacts.csv -o with_emails.csv --limit 10
 
 # With SMTP verification (slower but more accurate)
-python3 email_finder.py -i contacts.csv -o results.csv --verify
+python3 email_finder.py -i contacts.csv -o with_emails.csv --verify
 ```
 
 ### Understanding Results
@@ -267,8 +272,9 @@ python3 insert_generator.py -i with_emails.csv -o with_inserts.csv --delay 2.0
 1. Researches each contact using Claude API with web search
 2. Generates a 15-25 word personalized insert following rules in `email_personalization_prompt.md`
 3. Assigns confidence: HIGH (verified facts) / MEDIUM (single source) / LOW (generic fallback)
-4. Outputs to CSV file + Google Sheet
-5. Logs all actions to `insert_generator.log`
+4. Auto-calculates Word Count for each insert
+5. Outputs to CSV file + Google Sheet (adds row with Campaign = current branch)
+6. Logs all actions to `insert_generator.log`
 
 ### Confidence Levels
 
@@ -323,7 +329,7 @@ python3 email_drafter.py --create-drafts
 # Override availability for one run (doesn't change config)
 python3 email_drafter.py --create-drafts --window1 "Monday 9am" --window2 "Tuesday 10am" --window3 "Wednesday 11am"
 
-# If session expires, USER runs this in their terminal:
+# If session expires, the human user must run this manually in their own terminal:
 python3 email_drafter.py --login
 ```
 
@@ -562,12 +568,8 @@ python3 insert_generator.py -i input.csv -o output.csv --delay 2.0
 2. Re-run insert_generator.py (it will regenerate just that contact)
 
 **"Session expired" error:**
-User runs in their terminal (not Claude):
-```bash
-python3 email_drafter.py --login
-```
-Then log into Middlebury Outlook and press Enter.
-→ Tell user: "Please run `python3 email_drafter.py --login` in your terminal and log into Outlook"
+Claude cannot fix this - requires human interaction with browser.
+→ Tell user: "Please run `python3 email_drafter.py --login` in your terminal, log into Middlebury Outlook, then press Enter. Let me know when done."
 
 **No emails found / all LOW confidence:**
 - Check company domain is correct
@@ -588,18 +590,28 @@ Then log into Middlebury Outlook and press Enter.
 
 ## Files Reference
 
+**Scripts (don't modify):**
 | File | Purpose |
 |------|---------|
 | `email_finder.py` | Find emails from name/company |
 | `insert_generator.py` | Research + generate personalized inserts |
 | `email_drafter.py` | Create Outlook drafts, sync sent status |
 | `email_personalization_prompt.md` | Full rules for writing inserts |
-| `outlook_config.json` | Email template and settings |
-| `credentials/google_sheets_key.json` | Google API credentials |
-| `.playwright_session/` | Saved Outlook login |
-| `insert_generator.log` | Log of insert generation actions |
-| `results.csv` | Email finder output |
-| `with_inserts.csv` | Insert generator output |
+
+**Config (per-branch):**
+| File | Purpose |
+|------|---------|
+| `outlook_config.json` | Subject line, availability, Sheet ID |
+| `credentials/google_sheets_key.json` | Google API credentials (don't commit) |
+| `.playwright_session/` | Saved Outlook login (don't commit) |
+
+**Data files (per-campaign):**
+| File | Created By | Purpose |
+|------|------------|---------|
+| `contacts.csv` | You (input) | Raw contacts: name, company, title |
+| `with_emails.csv` | email_finder.py | Contacts + found emails |
+| `with_inserts.csv` | insert_generator.py | Contacts + emails + inserts |
+| `insert_generator.log` | insert_generator.py | Log of all research/generation |
 
 ---
 
