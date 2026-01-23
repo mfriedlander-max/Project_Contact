@@ -6,15 +6,13 @@ This project automates cold email outreach to Middlebury alumni. **Read this fil
 
 ### The Complete Workflow
 
-1. **User uploads contacts** (CSV with name, company, role - emails optional)
-2. **Claude confirms and finds emails** using `email_finder.py`
-3. **Claude shows results** with confidence levels (HIGH/MEDIUM/LOW)
-4. **User approves contacts** to proceed with
-5. **Claude writes personalized inserts** (15-25 words each)
-6. **Claude adds contacts to Google Sheet** with inserts
-7. **Claude creates drafts** via `email_drafter.py --create-drafts`
-8. **User reviews & sends** from Outlook Drafts folder
-9. **User tells Claude which were sent** → Claude updates sheet
+1. **User uploads contacts** (CSV with name, company, title, email)
+2. **Run `email_finder.py`** to find any missing emails
+3. **Run `insert_generator.py`** to research + generate inserts (AUTOMATED)
+4. **Run `email_drafter.py --create-drafts`** to create Outlook drafts
+5. **User reviews drafts** (check LOW confidence inserts marked with "LOW - ")
+6. **User sends from Outlook**
+7. **Run `email_drafter.py --sync-sent`** to update tracking
 
 ---
 
@@ -65,12 +63,24 @@ python3 email_drafter.py --set-availability \
 
 Each branch tracks progress in its CSV and Google Sheet. When resuming a campaign:
 
-**CSV columns to track:**
-| Column | Values | Purpose |
+**One Google Sheet, Multiple Campaigns:**
+All campaigns share one Google Sheet. They're differentiated by the **Campaign** column, which is automatically set to the git branch name. Scripts filter by the current branch.
+
+**CSV/Sheet columns:**
+| Column | Set By | Purpose |
 |--------|--------|---------|
-| `Email` | address or blank | Skip email finding if already found |
-| `Email Status` | blank → `drafted` → `sent` | Skip drafting if already drafted |
-| `Email Confidence` | HIGH/MEDIUM/LOW | Know which emails are verified |
+| `Campaign` | insert_generator.py | Filter contacts by campaign (= branch name) |
+| `Name` | Input CSV | Contact name |
+| `Email` | email_finder.py | Found email address |
+| `Email Confidence` | email_finder.py | HIGH/MEDIUM/LOW for email |
+| `Company` | Input CSV | Company name |
+| `Title` | Input CSV | Role/title |
+| `Personalized Insert` | insert_generator.py | The 15-25 word insert |
+| `Insert Confidence` | insert_generator.py | HIGH/MEDIUM/LOW for insert |
+| `Sources` | insert_generator.py | Where facts came from |
+| `Email Status` | email_drafter.py | blank → "drafted" → "sent" |
+| `Draft Created` | email_drafter.py | Timestamp |
+| `Sent Date` | --sync-sent | Date sent |
 
 **Resuming a campaign:**
 ```bash
@@ -81,14 +91,15 @@ git checkout round-1-middlebury-alumni
 # - Contacts with Email Status = drafted → ready to send
 # - Contacts with Email Status = sent → done
 
-# Only creates drafts for contacts where Email Status is blank
+# Only creates drafts for contacts where Email Status is blank AND Campaign matches current branch
 python3 email_drafter.py --create-drafts
 ```
 
 **What gets skipped automatically:**
 - `email_finder.py` → skips rows that already have an Email
-- `email_drafter.py --create-drafts` → skips rows with Email Status = "drafted" or "sent"
-- Google Sheet stays in sync with CSV via the drafting process
+- `insert_generator.py` → skips rows that already have Personalized Insert (by email match)
+- `email_drafter.py --create-drafts` → skips rows where Email Status ≠ blank, AND filters by Campaign = current branch
+- `email_drafter.py --sync-sent` → only checks contacts where Campaign = current branch AND Email Status = "drafted"
 
 **Commit progress to branch:**
 ```bash
@@ -175,20 +186,51 @@ When APIs don't find emails, the script generates 8 pattern guesses:
 
 ---
 
-## Phase 2: Personalized Inserts
+## Phase 2: Generating Inserts (Automated)
 
-### Writing Rules
+### Running the Insert Generator
+
+```bash
+# Set your Anthropic API key
+export ANTHROPIC_API_KEY='your_key_here'
+
+# Run insert generator (outputs to CSV + Google Sheet)
+python3 insert_generator.py -i with_emails.csv -o with_inserts.csv
+
+# Use different model
+python3 insert_generator.py -i with_emails.csv -o with_inserts.csv --model haiku  # faster, cheaper
+python3 insert_generator.py -i with_emails.csv -o with_inserts.csv --model opus   # best quality
+
+# Slower rate limiting if hitting API limits
+python3 insert_generator.py -i with_emails.csv -o with_inserts.csv --delay 2.0
+```
+
+### What It Does
+
+1. Researches each contact using Claude API with web search
+2. Generates a 15-25 word personalized insert following rules in `email_personalization_prompt.md`
+3. Assigns confidence: HIGH (verified facts) / MEDIUM (single source) / LOW (generic fallback)
+4. Outputs to CSV file + Google Sheet
+5. Logs all actions to `insert_generator.log`
+
+### Confidence Levels
+
+| Level | Meaning | Action |
+|-------|---------|--------|
+| **HIGH** | Facts from 2+ sources | Use as-is |
+| **MEDIUM** | Facts from 1 source | Quick review |
+| **LOW** | Minimal info found | Must edit - marked with "LOW - " in draft |
+
+### Checkpointing
+
+If the script fails mid-run, re-run the same command. It automatically skips already-processed contacts (matches by email).
+
+### Writing Rules Reference
 
 **Hard rules:**
 - 15-25 words exactly
 - Must flow naturally after "...curious about the world."
 - Sound like a real 20-year-old, not AI
-
-**Good starters:**
-- "Lately I've been..."
-- "I've been trying to learn more about..."
-- "As someone trying to build something myself..."
-- "I've been thinking a lot about..."
 
 **Banned (never use):**
 - "I came across..." / "I noticed..."
@@ -196,18 +238,6 @@ When APIs don't find emails, the script generates 8 pattern guesses:
 - "I would be honored..."
 - "resonates with me" / "aligns with my interests"
 - Em dashes (use "and" instead)
-- Anything that sounds like LinkedIn
-
-**Examples:**
-```
-Chris Hench - Amazon/Alexa, ML Scientist
-Insert: "Lately I've been building voice agents and I'd love to pick your brain on what problems in conversational AI are actually worth solving."
-Word count: 22
-
-Dan Schulman - PayPal, CEO
-Insert: "I've been thinking a lot about fintech and PayPal's push on financial inclusion stands out. I'm curious what made you bet on that."
-Word count: 23
-```
 
 For full rules see `email_personalization_prompt.md`
 
@@ -233,6 +263,7 @@ python3 email_drafter.py --set-availability \
   --window3 "Friday 9am-3pm EST"
 
 # Create drafts (uses saved subject + availability from config)
+# Only processes contacts where Campaign = current branch
 python3 email_drafter.py --create-drafts
 
 # Override availability for one run (doesn't change config)
@@ -241,6 +272,14 @@ python3 email_drafter.py --create-drafts --window1 "Monday 9am" --window2 "Tuesd
 # If session expires, USER runs this in their terminal:
 python3 email_drafter.py --login
 ```
+
+### LOW Confidence Inserts
+
+When creating drafts, contacts with LOW confidence inserts will have "LOW - " prepended to their insert in the draft body:
+
+> My name is Max Friedlander... curious about the world. LOW - I've been thinking a lot about fintech and would love to learn from your experience building Stripe.
+
+**Edit these drafts before sending** to improve the personalization or remove the "LOW - " prefix.
 
 ### The Email Template
 
@@ -311,13 +350,22 @@ if drafted:
         print(f"   - {r.get('Name')} ({r.get('Email')})")
 ```
 
-### Mark as Sent
+### Mark as Sent (Automated)
+
+After sending emails from Outlook, run this to automatically update the Google Sheet:
+
+```bash
+python3 email_drafter.py --sync-sent
+```
+
+This scans your Outlook Sent folder and marks matching contacts as "sent" with today's date. Only checks contacts in the current campaign (branch).
+
+### Mark as Sent (Manual)
 
 **User says any of:**
 - "I sent the email to Marc Baghadjian"
 - "I sent Marc's email"
 - "Sent: Marc Baghadjian, Sarah Johnson"
-- "I sent all the drafted emails"
 - "Mark Marc as sent"
 
 **Claude updates the sheet:**
@@ -367,48 +415,67 @@ ws.update_cell(next_row, insert_col, "Your personalized insert here")
 
 ## Example Full Session
 
-**User:** Here are my contacts and availability:
-
-Contacts:
+**User:** Here are my contacts: [uploads contacts.csv]
 ```csv
-Name,Company,Title
-Marc Baghadjian,HyperCard,CEO
-Sumanyu Sharma,Hamming,CEO
+Name,Company,Title,Email
+Marc Baghadjian,HyperCard,CEO,marc@hypercard.com
+Sumanyu Sharma,Hamming,CEO,sumanyu@hamming.ai
 ```
 
-Availability:
-- Tuesday 10am-1pm EST
-- Wednesday 1:30-4pm EST
-- Friday 9am-3pm EST
+Availability: Tue 10am-1pm, Wed 1:30-4pm, Fri 9am-3pm
 
-**Claude:**
-1. "I'll search for emails. Running email finder..."
-2. Runs: `python3 email_finder.py -i contacts.csv -o results.csv`
-3. Reports results:
-   ```
-   Marc Baghadjian - marc@hypercard.com (HIGH confidence)
-   Sumanyu Sharma - sumanyu@hamming.ai (HIGH confidence)
-   ```
-4. "Both have verified emails. Want me to write personalized inserts and create drafts with your availability?"
+**Steps:**
 
-**User:** "Yes"
+```bash
+# 1. Set availability
+python3 email_drafter.py --set-availability \
+  --window1 "Tuesday 10am-1pm EST" \
+  --window2 "Wednesday 1:30-4pm EST" \
+  --window3 "Friday 9am-3pm EST"
 
-**Claude:**
-1. Saves availability: `python3 email_drafter.py --set-availability --window1 "Tuesday 10am-1pm EST" --window2 "Wednesday 1:30-4pm EST" --window3 "Friday 9am-3pm EST"`
-2. Writes personalized inserts for each
-3. Adds them to Google Sheet
-4. Runs `python3 email_drafter.py --create-drafts`
-5. Reports: "Created 2 drafts in Outlook with your availability windows. Review them in your Drafts folder."
+# 2. Generate inserts (researches contacts + writes inserts)
+python3 insert_generator.py -i contacts.csv -o with_inserts.csv
 
-**User:** (reviews and sends from Outlook)
+# 3. Create drafts in Outlook
+python3 email_drafter.py --create-drafts
+```
 
-**User:** "I sent both"
+**User:** (reviews drafts in Outlook, edits any LOW confidence ones, sends)
 
-**Claude:** Updates sheet status to "sent" for both contacts.
+```bash
+# 4. Sync sent status
+python3 email_drafter.py --sync-sent
+```
+
+**Output:**
+```
+Campaign: main
+Connecting to Google Sheet...
+Checking 2 drafted contacts...
+Connected to Outlook Sent folder.
+  Marked as sent: marc@hypercard.com
+  Marked as sent: sumanyu@hamming.ai
+Done! Found 2 sent emails.
+```
 
 ---
 
 ## Troubleshooting
+
+**"ANTHROPIC_API_KEY not set" error:**
+```bash
+export ANTHROPIC_API_KEY='your_key_here'
+```
+
+**insert_generator.py rate limited:**
+```bash
+# Use slower rate limiting
+python3 insert_generator.py -i input.csv -o output.csv --delay 2.0
+```
+
+**Want to regenerate an insert:**
+1. Delete that row from output CSV
+2. Re-run insert_generator.py (it will regenerate just that contact)
 
 **"Session expired" error:**
 User runs in their terminal (not Claude):
@@ -435,13 +502,15 @@ Then log into Middlebury Outlook and press Enter.
 | File | Purpose |
 |------|---------|
 | `email_finder.py` | Find emails from name/company |
-| `email_drafter.py` | Create Outlook drafts |
+| `insert_generator.py` | Research + generate personalized inserts |
+| `email_drafter.py` | Create Outlook drafts, sync sent status |
 | `email_personalization_prompt.md` | Full rules for writing inserts |
 | `outlook_config.json` | Email template and settings |
 | `credentials/google_sheets_key.json` | Google API credentials |
 | `.playwright_session/` | Saved Outlook login |
+| `insert_generator.log` | Log of insert generation actions |
 | `results.csv` | Email finder output |
-| `middlebury_contacts.csv` | Input contact list |
+| `with_inserts.csv` | Insert generator output |
 
 ---
 

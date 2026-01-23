@@ -10,11 +10,29 @@
 - "Friends" - for Connection Level = "Friends"
 - "Didn't Connect" - for Connection Level = "Didn't Connect"
 
+**Columns (all sheets have identical headers):**
+| Column | Purpose |
+|--------|---------|
+| Campaign | Git branch name (campaign identifier) |
+| Name | Contact name |
+| Email | Email address |
+| Email Confidence | HIGH/MEDIUM/LOW for email |
+| Company | Company name |
+| Title | Role/title |
+| Personalized Insert | The 15-25 word insert |
+| Word Count | Insert word count |
+| Insert Confidence | HIGH/MEDIUM/LOW for insert |
+| Sources | Where facts came from |
+| Email Status | blank → "drafted" → "sent" |
+| Draft Created | Timestamp when draft was created |
+| Sent Date | Date email was sent |
+| Connection Level | Determines which sheet the row belongs to |
+
 **Behavior:**
 - Change Connection Level → row moves to matching sheet
 - Row is deleted from source sheet (no empty rows)
 - Can move back by changing Connection Level again
-- Formatting preserved
+- All columns preserved (script reads headers dynamically)
 - After move, target sheet auto-sorts (rows WITH Connection Level above rows WITHOUT)
 
 ---
@@ -33,87 +51,55 @@
 ## The Script
 
 ```javascript
-/**
- * Auto-move rows between sheets based on Connection Level column.
- * Triggers on any edit to the Connection Level column.
- */
-
-// Configuration - sheet names must match Connection Level values exactly
 const CONNECTION_LEVEL_COLUMN = "Connection Level";
 const TARGET_SHEETS = ["Message Sent", "Connected", "In Touch", "Friends", "Didn't Connect"];
+
+function testSetup() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getActiveSheet();
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  Logger.log("Headers: " + JSON.stringify(headers));
+  Logger.log("Connection Level col: " + headers.indexOf(CONNECTION_LEVEL_COLUMN));
+  Logger.log("Sheets: " + ss.getSheets().map(s => s.getName()));
+}
 
 function onEdit(e) {
   const sheet = e.source.getActiveSheet();
   const range = e.range;
   const row = range.getRow();
   const col = range.getColumn();
-
-  // Skip header row
   if (row === 1) return;
-
-  // Get headers to find Connection Level column
   const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
   const connectionLevelCol = headers.indexOf(CONNECTION_LEVEL_COLUMN) + 1;
-
-  // Only trigger if Connection Level column was edited
   if (col !== connectionLevelCol) return;
-
   const newValue = e.value;
-
-  // Check if new value matches a target sheet
   if (!TARGET_SHEETS.includes(newValue)) return;
-
-  // Don't move if already on the target sheet
   if (sheet.getName() === newValue) return;
-
-  // Get the target sheet
   const targetSheet = e.source.getSheetByName(newValue);
   if (!targetSheet) {
     SpreadsheetApp.getUi().alert(`Sheet "${newValue}" not found!`);
     return;
   }
-
-  // Get the entire row data (use headers.length to capture all columns, even empty ones)
   const rowData = sheet.getRange(row, 1, 1, headers.length).getValues()[0];
-
-  // Ensure target sheet has headers (copy from source if empty)
   if (targetSheet.getLastRow() === 0) {
     targetSheet.getRange(1, 1, 1, headers.length).setValues([headers]);
   }
-
-  // Find next empty row in target sheet
   const targetRow = targetSheet.getLastRow() + 1;
-
-  // Copy row to target sheet
   targetSheet.getRange(targetRow, 1, 1, rowData.length).setValues([rowData]);
-
-  // Delete row from source sheet
   sheet.deleteRow(row);
-
-  // Sort target sheet: rows with Connection Level above rows without
   sortSheetByConnectionLevel(targetSheet);
 }
 
-/**
- * Sort sheet so rows with Connection Level appear above rows without.
- * Preserves relative order within each group (stable sort).
- */
 function sortSheetByConnectionLevel(sheet) {
   const lastRow = sheet.getLastRow();
-  if (lastRow <= 1) return; // Only header or empty
-
+  if (lastRow <= 1) return;
   const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
   const connectionLevelCol = headers.indexOf(CONNECTION_LEVEL_COLUMN);
   if (connectionLevelCol === -1) return;
-
-  // Get all data rows (excluding header)
   const dataRange = sheet.getRange(2, 1, lastRow - 1, headers.length);
   const data = dataRange.getValues();
-
-  // Separate into two groups, preserving order within each
   const withLevel = [];
   const withoutLevel = [];
-
   data.forEach(row => {
     const connectionLevel = row[connectionLevelCol];
     if (connectionLevel && connectionLevel.toString().trim() !== '') {
@@ -122,61 +108,13 @@ function sortSheetByConnectionLevel(sheet) {
       withoutLevel.push(row);
     }
   });
-
-  // Combine: with Connection Level first, then without
   const sorted = [...withLevel, ...withoutLevel];
-
-  // Write back
   dataRange.setValues(sorted);
 }
 
-/**
- * Initialize all sheets with headers from the main sheet.
- * Run this once manually if target sheets are empty.
- */
-function initializeSheets() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const mainSheet = ss.getSheets()[0]; // First sheet is main
-  const headers = mainSheet.getRange(1, 1, 1, mainSheet.getLastColumn()).getValues();
-
-  TARGET_SHEETS.forEach(sheetName => {
-    let sheet = ss.getSheetByName(sheetName);
-
-    // Create sheet if it doesn't exist
-    if (!sheet) {
-      sheet = ss.insertSheet(sheetName);
-    }
-
-    // Add headers if sheet is empty
-    if (sheet.getLastRow() === 0) {
-      sheet.getRange(1, 1, 1, headers[0].length).setValues(headers);
-    }
-  });
-
-  SpreadsheetApp.getUi().alert('All sheets initialized with headers!');
-}
-
-/**
- * Manually sort the current sheet.
- * Run from Apps Script dropdown to sort contacts with Connection Level above those without.
- */
 function sortCurrentSheet() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   sortSheetByConnectionLevel(sheet);
-}
-
-/**
- * Debug function to check configuration.
- * Run to verify headers and sheet names match expected values.
- */
-function testSetup() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getActiveSheet();
-  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-  Logger.log("Current sheet: " + sheet.getName());
-  Logger.log("Headers: " + JSON.stringify(headers));
-  Logger.log("Connection Level col: " + headers.indexOf(CONNECTION_LEVEL_COLUMN));
-  Logger.log("All sheets: " + ss.getSheets().map(s => s.getName()));
 }
 ```
 
@@ -186,10 +124,9 @@ function testSetup() {
 
 After pasting the script:
 
-1. Click the dropdown next to "Debug" and select `initializeSheets`
-2. Click **Run**
-3. Authorize when prompted (click through the warnings)
-4. This creates any missing sheets and copies headers
+1. Click **Run** to authorize (click through the warnings)
+2. Run `testSetup` to verify headers and sheet names are correct
+3. Ensure all target sheets exist and have matching headers
 
 ---
 
@@ -202,6 +139,7 @@ After pasting the script:
 | Change to value not in list | Nothing happens (row stays) |
 | Edit any other column | Nothing happens |
 | Run `sortCurrentSheet` | Manually sort current sheet (Connection Level above empty) |
+| Run `testSetup` | Debug: log headers and sheet names |
 
 ---
 

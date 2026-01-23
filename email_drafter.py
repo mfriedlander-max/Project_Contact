@@ -14,6 +14,7 @@ Usage:
 import argparse
 import json
 import os
+import subprocess
 from pathlib import Path
 
 import gspread
@@ -22,6 +23,20 @@ from playwright.sync_api import sync_playwright
 
 CONFIG_FILE = "outlook_config.json"
 CREDENTIALS_FILE = "credentials/google_sheets_key.json"
+
+
+def get_current_branch() -> str:
+    """Get current git branch name."""
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        return result.stdout.strip()
+    except subprocess.CalledProcessError:
+        return "unknown"
 
 
 def load_config():
@@ -48,8 +63,11 @@ def get_google_sheet(config):
     return sheet.sheet1
 
 
-def get_contacts_to_draft(worksheet):
-    """Get contacts that need drafts created."""
+def get_contacts_to_draft(worksheet, campaign: str = None):
+    """Get contacts that need drafts created.
+
+    If campaign is provided, only returns contacts matching that campaign.
+    """
     records = worksheet.get_all_records()
     contacts = []
     for i, row in enumerate(records, start=2):  # Row 2 is first data row
@@ -58,12 +76,22 @@ def get_contacts_to_draft(worksheet):
             continue
         if not row.get("Email"):
             continue
+        # Filter by campaign if specified
+        if campaign and row.get("Campaign", "") != campaign:
+            continue
+
+        # Get insert and handle LOW confidence marker
+        insert = row.get("Personalized Insert", "")
+        insert_confidence = row.get("Insert Confidence", "")
+        if insert_confidence == "LOW" and insert and not insert.startswith("LOW - "):
+            insert = f"LOW - {insert}"
+
         contacts.append({
             "row": i,
             "name": row.get("Name", ""),
             "email": row.get("Email", ""),
             "company": row.get("Company", ""),
-            "insert": row.get("Personalized Insert", ""),
+            "insert": insert,
         })
     return contacts
 
@@ -241,10 +269,14 @@ def create_drafts(config, windows=None):
         print("Error: Subject line not set. Run --set-subject first.")
         return
 
-    # Get contacts from sheet
+    # Get current campaign (branch name)
+    campaign = get_current_branch()
+    print(f"Campaign: {campaign}")
+
+    # Get contacts from sheet (filtered by campaign)
     print("Connecting to Google Sheet...")
     worksheet = get_google_sheet(config)
-    contacts = get_contacts_to_draft(worksheet)
+    contacts = get_contacts_to_draft(worksheet, campaign=campaign)
 
     if not contacts:
         print("No contacts need drafts.")
@@ -353,13 +385,20 @@ def sync_sent_emails(config):
         print("Error: No saved session. Run --login first.")
         return
 
-    # Get contacts from sheet that are in "drafted" status
+    # Get current campaign (branch name)
+    campaign = get_current_branch()
+    print(f"Campaign: {campaign}")
+
+    # Get contacts from sheet that are in "drafted" status (filtered by campaign)
     print("Connecting to Google Sheet...")
     worksheet = get_google_sheet(config)
     records = worksheet.get_all_records()
 
     drafted_emails = {}
     for i, row in enumerate(records, start=2):
+        # Filter by campaign if Campaign column exists
+        if row.get("Campaign", "") and row.get("Campaign", "") != campaign:
+            continue
         if row.get("Email Status") == "drafted" and row.get("Email"):
             drafted_emails[row["Email"].lower()] = {"row": i, "name": row.get("Name", "")}
 
