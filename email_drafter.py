@@ -112,7 +112,8 @@ def update_draft_status(worksheet, row, status="drafted"):
 
 def build_email_body(config, contact, windows=None):
     """Build the email body from template and contact data."""
-    template = config["template"]
+    # Use template_cold if available, otherwise fall back to template
+    template = config.get("template_cold", config["template"])
 
     # Get first name
     name = contact.get("name", "")
@@ -123,17 +124,18 @@ def build_email_body(config, contact, windows=None):
     if not insert:
         insert = "I'd love to learn from your experience."
 
-    # Default windows if not provided
-    if windows is None:
-        windows = ["[Time slot 1]", "[Time slot 2]", "[Time slot 3]"]
+    # Build format kwargs based on what placeholders the template uses
+    format_kwargs = {"name": first_name, "insert": insert}
 
-    body = template.format(
-        name=first_name,
-        insert=insert,
-        window1=windows[0],
-        window2=windows[1],
-        window3=windows[2]
-    )
+    # Only add windows if template uses them
+    if "{window1}" in template:
+        if windows is None:
+            windows = ["[Time slot 1]", "[Time slot 2]", "[Time slot 3]"]
+        format_kwargs["window1"] = windows[0]
+        format_kwargs["window2"] = windows[1]
+        format_kwargs["window3"] = windows[2]
+
+    body = template.format(**format_kwargs)
     return body
 
 

@@ -1,11 +1,12 @@
 {
-  "subject_line": "Middlebury Freshman - Hungry to Learn",
+  "subject_line": "College Sophomore - Hungry to Learn",
   "availability": {
     "window1": "Tuesday 10am-1pm EST",
     "window2": "Wednesday 1:30-4pm EST",
     "window3": "Friday 9am-3pm EST"
   },
-  "template": "Hello {name},\n\nMy name is Max Friedlander, I am 20 years old, and a current Freshman at Middlebury. I am interested in entrepreneurship, ambitious, and curious about the world. {insert}\n\nI understand that you're very busy, but if you had 15 minutes to chat with me, I would love to introduce myself, and learn from you.\n\nI have a few windows open this week and the weeks ahead:\n- {window1}\n- {window2}\n- {window3}\n\nFeel free to let me know what works best.\n\nBest,\nMax",
+  "template": "Hi {name},\n\nMax here from Middlebury, hope all is well. Here is an update on the start of the spring semester so far:\n\nMy business has been progressing, and we are negotiating contracts that could potentially put us over 1K MRR, and I have learned so much. I definitely plan to do another startup in the future and solve a problem that is more meaningful to me (maybe AI in education).\n\nI've been using more agentic coding tools, designing workflows, and doing prompt engineering. With this, I want to not only produce clean-looking code but also make more robust backends and pretty UIs/UXs.\n\nI have also started taking higher-level math classes, Multivariable Calculus, and Differential Equations, which I am excited for!\n\n-Lastly, I am going to be taking part in one of the largest global competitions by L'Oréal, Brandstorm!\n\nI am looking forward to applying my skills in math to the machine learning space, using more agentic coding tools to solve the next \"meaningful problem,\" and to seeing how Brandstorm goes!\n\nNo need to reply to this, but if anything comes to mind, feel free to respond.\n\nBest,\nMax",
+  "template_cold": "Hello {name},\n\nMy name is Max Friedlander, I am 20 years old, and a current Sophomore at Middlebury. I am interested in entrepreneurship, ambitious, and curious about the world. {insert}\n\nIf you had 15 minutes to chat, I would love to learn from you. I promise I'll pay it forward.\n\nBest,\nMax",
   "google_sheet_id": "1wX-FLA28wLFegn7pwBJvD3VKZkABMhC9VDGKbLzQXuE",
   "session_dir": ".playwright_session"
 }
