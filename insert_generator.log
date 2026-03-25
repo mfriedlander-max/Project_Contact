@@ -1,0 +1,189 @@
+2026-02-11 18:48:34 | ERROR | ANTHROPIC_API_KEY environment variable not set
+2026-02-11 18:52:41 | INFO | Loading contacts from: with_emails.csv
+2026-02-11 18:52:41 | INFO | Found 24 contacts in input file
+2026-02-11 18:52:41 | INFO | Connecting to Google Sheet...
+2026-02-11 18:52:43 | INFO | Using model: sonnet (claude-sonnet-4-20250514)
+2026-02-11 18:52:43 | WARNING | Jason Bigman | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Dario Amodei | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Daniela Amodei | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Jack Clark | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Sam McCandlish | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Greg Brockman | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Jonathan Reiber | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Jeremy Schreiner | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Demis Hassabis | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Garry Tan | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Michael Seibel | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Dalton Caldwell | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Jared Friedman | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Patrick Collison | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | John Collison | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Dylan Field | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Mark Cuban | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Doug Leone | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Alfred Lin | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Roelof Botha | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Elad Gil | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Vinod Khosla | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Sarah Guo | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | WARNING | Daniel Dines | SKIP | Missing required field: Email
+2026-02-11 18:52:43 | INFO | Complete. Processed: 0, Skipped: 24, Errors: 0
+2026-02-11 18:53:14 | INFO | Loading contacts from: with_emails.csv
+2026-02-11 18:53:14 | INFO | Found 24 contacts in input file
+2026-02-11 18:53:14 | INFO | Connecting to Google Sheet...
+2026-02-11 18:53:15 | INFO | Using model: sonnet (claude-sonnet-4-20250514)
+2026-02-11 18:53:15 | WARNING | Jason Bigman | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Dario Amodei | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Daniela Amodei | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Jack Clark | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Sam McCandlish | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Greg Brockman | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Jonathan Reiber | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Jeremy Schreiner | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Demis Hassabis | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Garry Tan | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Michael Seibel | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Dalton Caldwell | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Jared Friedman | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Patrick Collison | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | John Collison | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Dylan Field | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Mark Cuban | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Doug Leone | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Alfred Lin | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Roelof Botha | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Elad Gil | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Vinod Khosla | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Sarah Guo | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | WARNING | Daniel Dines | SKIP | Missing required field: Title
+2026-02-11 18:53:15 | INFO | Complete. Processed: 0, Skipped: 24, Errors: 0
+2026-02-11 18:53:38 | INFO | Loading contacts from: with_emails.csv
+2026-02-11 18:53:38 | INFO | Found 24 contacts in input file
+2026-02-11 18:53:38 | INFO | Connecting to Google Sheet...
+2026-02-11 18:53:39 | INFO | Using model: sonnet (claude-sonnet-4-20250514)
+2026-02-11 18:53:39 | INFO | [1/24] Jason Bigman | PROCESSING
+2026-02-11 18:53:49 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 18:53:53 | INFO | Jason Bigman | DONE | 19 words, HIGH confidence
+2026-02-11 18:53:54 | INFO | [2/24] Dario Amodei | PROCESSING
+2026-02-11 18:54:02 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 18:54:05 | INFO | Dario Amodei | DONE | 18 words, HIGH confidence
+2026-02-11 18:54:06 | INFO | [3/24] Daniela Amodei | PROCESSING
+2026-02-11 18:54:16 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 18:54:19 | INFO | Daniela Amodei | DONE | 26 words, LOW confidence
+2026-02-11 18:54:20 | INFO | [4/24] Jack Clark | PROCESSING
+2026-02-11 18:54:20 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 18:54:20 | INFO | Retrying request to /v1/messages in 43.000000 seconds
+2026-02-11 18:55:11 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 18:55:14 | INFO | Jack Clark | DONE | 20 words, HIGH confidence
+2026-02-11 18:55:15 | INFO | [5/24] Sam McCandlish | PROCESSING
+2026-02-11 18:55:32 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 18:55:35 | INFO | Sam McCandlish | DONE | 19 words, HIGH confidence
+2026-02-11 18:55:36 | INFO | [6/24] Greg Brockman | PROCESSING
+2026-02-11 18:55:36 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 18:55:36 | INFO | Retrying request to /v1/messages in 47.000000 seconds
+2026-02-11 18:56:31 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 18:56:34 | INFO | Greg Brockman | DONE | 19 words, HIGH confidence
+2026-02-11 18:56:35 | INFO | [7/24] Jonathan Reiber | PROCESSING
+2026-02-11 18:56:35 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 18:56:35 | INFO | Retrying request to /v1/messages in 27.000000 seconds
+2026-02-11 18:57:17 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 18:57:20 | INFO | Jonathan Reiber | DONE | 20 words, HIGH confidence
+2026-02-11 18:57:21 | INFO | [8/24] Jeremy Schreiner | PROCESSING
+2026-02-11 18:57:21 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 18:57:21 | INFO | Retrying request to /v1/messages in 57.000000 seconds
+2026-02-11 18:58:32 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 18:58:35 | INFO | Jeremy Schreiner | DONE | 26 words, LOW confidence
+2026-02-11 18:58:36 | INFO | [9/24] Demis Hassabis | PROCESSING
+2026-02-11 18:58:36 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 18:58:36 | INFO | Retrying request to /v1/messages in 53.000000 seconds
+2026-02-11 18:59:35 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 18:59:37 | INFO | Demis Hassabis | DONE | 19 words, HIGH confidence
+2026-02-11 18:59:38 | INFO | [10/24] Garry Tan | PROCESSING
+2026-02-11 18:59:39 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 18:59:39 | INFO | Retrying request to /v1/messages in 23.000000 seconds
+2026-02-11 19:00:19 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:00:23 | INFO | Garry Tan | DONE | 20 words, HIGH confidence
+2026-02-11 19:00:24 | INFO | [11/24] Michael Seibel | PROCESSING
+2026-02-11 19:00:24 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:00:24 | INFO | Retrying request to /v1/messages in 57.000000 seconds
+2026-02-11 19:01:30 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:01:33 | INFO | Michael Seibel | DONE | 22 words, HIGH confidence
+2026-02-11 19:01:34 | INFO | [12/24] Dalton Caldwell | PROCESSING
+2026-02-11 19:01:34 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:01:34 | INFO | Retrying request to /v1/messages in 26.000000 seconds
+2026-02-11 19:02:15 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:02:18 | INFO | Dalton Caldwell | DONE | 21 words, HIGH confidence
+2026-02-11 19:02:19 | INFO | [13/24] Jared Friedman | PROCESSING
+2026-02-11 19:02:19 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:02:19 | INFO | Retrying request to /v1/messages in 49.000000 seconds
+2026-02-11 19:03:24 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:03:26 | INFO | Jared Friedman | DONE | 18 words, HIGH confidence
+2026-02-11 19:03:27 | INFO | [14/24] Patrick Collison | PROCESSING
+2026-02-11 19:03:28 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:03:28 | INFO | Retrying request to /v1/messages in 47.000000 seconds
+2026-02-11 19:04:31 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:04:33 | INFO | Patrick Collison | DONE | 20 words, HIGH confidence
+2026-02-11 19:04:34 | INFO | [15/24] John Collison | PROCESSING
+2026-02-11 19:04:34 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:04:34 | INFO | Retrying request to /v1/messages in 52.000000 seconds
+2026-02-11 19:05:47 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:05:50 | INFO | John Collison | DONE | 20 words, HIGH confidence
+2026-02-11 19:05:51 | INFO | [16/24] Dylan Field | PROCESSING
+2026-02-11 19:05:51 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:05:51 | INFO | Retrying request to /v1/messages in 0.424037 seconds
+2026-02-11 19:05:52 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:05:52 | INFO | Retrying request to /v1/messages in 0.861845 seconds
+2026-02-11 19:05:53 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:05:53 | ERROR | Rate limit hit for Dylan Field, waiting...
+2026-02-11 19:05:53 | WARNING | Rate limited, waiting 5s...
+2026-02-11 19:05:58 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:05:58 | INFO | Retrying request to /v1/messages in 59.000000 seconds
+2026-02-11 19:07:11 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:07:15 | INFO | [17/24] Mark Cuban | PROCESSING
+2026-02-11 19:07:16 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:07:16 | INFO | Retrying request to /v1/messages in 47.000000 seconds
+2026-02-11 19:08:16 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:08:18 | INFO | Mark Cuban | DONE | 24 words, HIGH confidence
+2026-02-11 19:08:19 | INFO | [18/24] Doug Leone | PROCESSING
+2026-02-11 19:08:27 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:08:29 | INFO | Doug Leone | DONE | 20 words, HIGH confidence
+2026-02-11 19:08:30 | INFO | [19/24] Alfred Lin | PROCESSING
+2026-02-11 19:08:43 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:08:46 | INFO | Alfred Lin | DONE | 17 words, HIGH confidence
+2026-02-11 19:08:47 | INFO | [20/24] Roelof Botha | PROCESSING
+2026-02-11 19:08:47 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:08:47 | INFO | Retrying request to /v1/messages in 20.000000 seconds
+2026-02-11 19:09:23 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:09:26 | INFO | Roelof Botha | DONE | 17 words, HIGH confidence
+2026-02-11 19:09:27 | INFO | [21/24] Elad Gil | PROCESSING
+2026-02-11 19:09:27 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:09:27 | INFO | Retrying request to /v1/messages in 0.456922 seconds
+2026-02-11 19:09:28 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:09:28 | INFO | Retrying request to /v1/messages in 0.994238 seconds
+2026-02-11 19:09:29 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:09:29 | ERROR | Rate limit hit for Elad Gil, waiting...
+2026-02-11 19:09:29 | WARNING | Rate limited, waiting 5s...
+2026-02-11 19:09:34 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:09:34 | INFO | Retrying request to /v1/messages in 57.000000 seconds
+2026-02-11 19:10:39 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:10:41 | INFO | [22/24] Vinod Khosla | PROCESSING
+2026-02-11 19:10:42 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:10:42 | INFO | Retrying request to /v1/messages in 19.000000 seconds
+2026-02-11 19:11:17 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:11:20 | INFO | Vinod Khosla | DONE | 19 words, HIGH confidence
+2026-02-11 19:11:21 | INFO | [23/24] Sarah Guo | PROCESSING
+2026-02-11 19:11:21 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:11:21 | INFO | Retrying request to /v1/messages in 51.000000 seconds
+2026-02-11 19:12:21 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-11 19:12:22 | ERROR | Sarah Guo | ERROR | APIError: [400]: Range ('Message Sent'!Q82) exceeds grid limits. Max rows: 81, max columns: 30
+2026-02-11 19:12:22 | INFO | [24/24] Daniel Dines | PROCESSING
+2026-02-11 19:12:22 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:12:22 | INFO | Retrying request to /v1/messages in 0.446277 seconds
+2026-02-11 19:12:23 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:12:23 | INFO | Retrying request to /v1/messages in 0.822606 seconds
+2026-02-11 19:12:24 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:12:24 | ERROR | Rate limit hit for Daniel Dines, waiting...
+2026-02-11 19:12:24 | WARNING | Rate limited, waiting 5s...
+2026-02-11 19:12:29 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2026-02-11 19:12:29 | INFO | Retrying request to /v1/messages in 53.000000 seconds
+2026-02-11 19:13:32 | INFO | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
