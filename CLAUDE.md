@@ -32,7 +32,7 @@ This project automates cold email outreach to Middlebury alumni.
 
 **User provides 3 things:**
 1. **Contacts** - CSV or list with name, company, title (email optional)
-2. **Subject line** - e.g., "Middlebury Freshman - Hungry to Learn"
+2. **Subject line** - e.g., "Middlebury Sophomore - Hungry to Learn"
 3. **Availability** - 3 time windows, e.g., "Tue 10am-1pm, Wed 2-5pm, Fri 9am-12pm"
 
 **Steps:**
@@ -144,7 +144,7 @@ When starting a new outreach round, user provides **3 required inputs**:
 
 | Input | Example | Stored In |
 |-------|---------|-----------|
-| **Subject line** | "Middlebury Freshman - Hungry to Learn" | `outlook_config.json` |
+| **Subject line** | "Middlebury Sophomore - Hungry to Learn" | `outlook_config.json` |
 | **Availability** | Tuesday 10am-1pm, Wed 1:30-4pm, Fri 9am-3pm | `outlook_config.json` |
 | **Contacts** | CSV or list | Google Sheet |
 
@@ -387,7 +387,7 @@ When creating drafts, contacts with LOW confidence inserts will have "LOW - " pr
 ```
 Hello {first_name},
 
-My name is Max Friedlander, I am 20 years old, and a current Freshman at
+My name is Max Friedlander, I am 20 years old, and a current Sophomore at
 Middlebury. I am interested in entrepreneurship, ambitious, and curious
 about the world. {personalized_insert}
 
@@ -544,7 +544,7 @@ set_cell("Personalized Insert", "Your personalized insert here")
 Marc Baghadjian, HyperCard, CEO
 Sumanyu Sharma, Hamming, CEO
 ```
-Subject: "Middlebury Freshman - Hungry to Learn"
+Subject: "Middlebury Sophomore - Hungry to Learn"
 Availability: Tue 10am-1pm, Wed 1:30-4pm, Fri 9am-3pm
 
 **Claude:**
@@ -558,7 +558,7 @@ Sumanyu Sharma,Hamming,CEO
 EOF
 
 # 1. Set subject + availability
-python3 email_drafter.py --set-subject "Middlebury Freshman - Hungry to Learn"
+python3 email_drafter.py --set-subject "Middlebury Sophomore - Hungry to Learn"
 python3 email_drafter.py --set-availability \
   --window1 "Tuesday 10am-1pm EST" \
   --window2 "Wednesday 1:30-4pm EST" \
@@ -658,7 +658,7 @@ Claude cannot fix this - requires human interaction with browser.
 
 ## About Max (For Writing Inserts)
 
-- 20 years old, Middlebury freshman
+- 20 years old, Middlebury sophomore
 - Runs a voice agent company
 - Into AI, startups, finance, investing
 - Wants to learn how people made big decisions
