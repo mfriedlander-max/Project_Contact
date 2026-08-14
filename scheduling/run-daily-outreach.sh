@@ -30,6 +30,32 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:$PATH"
 # other project, keep OMC exactly as it was.
 export DISABLE_OMC=1
 
+# Wait for the network before doing anything.
+#
+# launchd fires a missed calendar job the instant the machine wakes, which is
+# usually seconds before Wi-Fi reassociates. On 2026-08-14 the job woke at
+# 10:19, reported the Outlook session dead when it was fine, then failed with
+# ENOTFOUND against the API and burned two hours before exiting 1. Both were DNS
+# failures, not real ones.
+wait_for_network() {
+    local waited=0
+    local limit=600          # ten minutes is generous for a laptop waking up
+    until ping -c1 -W2 1.1.1.1 >/dev/null 2>&1 && \
+          ping -c1 -W2 api.anthropic.com >/dev/null 2>&1; do
+        if [ "$waited" -ge "$limit" ]; then
+            echo "FATAL: no network after ${limit}s. Not starting; the next wake will retry."
+            return 1
+        fi
+        [ $((waited % 60)) -eq 0 ] && echo "  waiting for network... (${waited}s)"
+        sleep 10
+        waited=$((waited + 10))
+    done
+    echo "Network up after ${waited}s."
+    return 0
+}
+
+wait_for_network || exit 1
+
 # Secrets. A cron-style run never sources the shell profile.
 if [ -f credentials/.env ]; then
     set -a

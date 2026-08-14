@@ -58,7 +58,8 @@ Aiming this high changes the writing, it does not change the rules.
   admiration is instantly recognisable and instantly deleted.
 - **The question must be one they have not answered in a podcast.** If a quick search turns up
   them answering it publicly, it is the wrong question.
-- **Still 85 words.** Seniority is not a reason to write more. It is a reason to write less.
+- **Still 90-95 words.** Seniority is not a reason to write more. It is a reason to write less.
+  `elite-brevity-10min` goes to ~55 and is often the right choice at this altitude.
 - Everything in `variants/` still applies: no em dashes, no availability windows, no banned
   phrases, judgment not compliment.
 
@@ -120,13 +121,79 @@ weaker, and say so rather than pretending the control passed.
 **2026-08-13.** Younger alumni leave a much thinner public trail, so they are harder to verify.
 That is a research difficulty, not a reason to avoid them, and it matters less under this brief.
 
-## Current context about me
+**2026-08-14 (run).** **The trustee roster is now mined out at this altitude.** All six names the
+third run left are checked and only Sandhya Douglas '93 (Partner and Head of Strategic
+Partnerships, Wellington Management) clears the bar. Bob Sideli '77 retired from Columbia in 2019;
+Janine Hetherington '95 is a development officer at Williams; Om Gokhale '22 is a designer a few
+years out; Jasmin Johnson Glaeser '05 and Lisa van Santen Gillanders '00 have no traceable current
+role at all. Of the nine names the roster surfaced, four were worth having and all four are now
+contacted. **Do not budget another run on this source.** The Crunchbase alumni-founders hub and
+Middlebury Magazine back issues are still untried.
 
-- 20, Middlebury sophomore, applied math (multivariable calculus, differential equations)
-- Building an AI teaching assistant for Middlebury STEM courses
-- Won $5K at MiddChallenge with a co-founder
-- Interviewing with Entrepreneur First
-- Running AI integration work for SMBs through MotionTech
-- Heading to Buenos Aires next fall to study at UBA
+**2026-08-14 (run).** Deliverability was **5 of 5**, against the brief's expectation that this tier
+has no reachable addresses. The method that did it is the catch-all control test, used in both
+directions. Probe a nonsense mailbox at the domain first, then:
 
-Keep this current. It is what makes the "what I am building" line in each email true.
+- **Control rejected** (not a catch-all): SMTP results are meaningful, so Hunter's `valid` can be
+  trusted, *and* pattern probing becomes legitimate rather than guessing. `calendly.com` returned a
+  score-5 dead end from the finder, but probing four patterns gave one deliverable and three
+  undeliverable, which is a real mailbox. That is a VERIFIED address Hunter alone would have missed.
+- **Control accepted** (catch-all): the domain accepts anything, so a `valid` or score-85 result
+  proves nothing. Grade MEDIUM and say the control failed. `wellington.com` and `uala.com.ar` both
+  landed here.
+
+The asymmetry is the useful part: the control test upgrades as often as it downgrades.
+
+**2026-08-14 (run).** Facts about people at this altitude move fast, and search-result summaries
+lag them. Two of five were wrong on first pass: Marcos Galperin has not been MercadoLibre's CEO
+since 2026-01-01 (he is Executive Chairman), and the Cursor and SpaceX deal was not a rumour but
+closed the morning of the run. Both would have been role errors in line one. **Confirm the current
+title against a dated primary source even when the person is famous enough that you think you know.**
+
+## About Max - the only facts you may use
+
+**Everything an email says about Max comes from this list. Nothing else.** Do not infer, embellish,
+or carry a detail over from a previous run. If it is not written here, it does not go in an email.
+
+| Fact | Use it when |
+|---|---|
+| 20, Middlebury sophomore, studies **Applied Math** | identity. See the Middlebury rule below |
+| Built an **AI teaching assistant**, won **$5K** in a pitch competition, piloting live in a school this fall | any education, AI, or product angle. The strongest single asset |
+| **Turned down money for it** despite having the opportunity | talking to founders and investors about conviction. The best asset in this list, because it is a decision rather than an achievement |
+| Made **$30k cold-calling SMBs** for his own business, which helps pay for school | sales, grit, going direct, anyone who started by selling |
+| Working at a **YC startup, S26** | YC people, early-stage founders, anyone who values that signal |
+| Loves math and technical work **and** loves sales | the combination is rarer than either half. Use with technical founders who had to learn to sell, or vice versa |
+| Looking for his next idea; curious how founders had their **"hell yes" moment** | founders. Makes an excellent closing question |
+| Played a lot of **tennis** | only if they have a real, sourced tennis connection |
+| Lived in **Barcelona**; **living in Buenos Aires now** | anyone with a Spain, Argentina, or Latin America connection. He is there *now*, not going later |
+
+### The Middlebury rule
+
+**Middlebury is a wedge, and a wedge only works on someone it fits.**
+
+- **Confirmed Middlebury connection** (alum, trustee, parent, faculty, gave a talk there): lead with
+  it. Subject line and opening clause both. It is the strongest opener available and nobody else can
+  use it.
+- **No Middlebury connection**: do not lead with it, and **never put it in the subject line.** To a
+  Snowflake CEO with no tie to the school, "Middlebury Sophomore" is a meaningless credential
+  burning the most valuable line in the email. Mentioning he is a sophomore studying applied math is
+  fine as plain identity; selling the school is not.
+
+The first live run got this wrong: three of five subject lines were "Middlebury Sophomore, Hungry to
+Learn", including one to Sridhar Ramaswamy, who has no connection to the college at all.
+
+### Subject lines
+
+**The subject is chosen per person, not defaulted.** Pick the one true thing most likely to make
+*this* recipient open it:
+
+| Situation | Subject |
+|---|---|
+| Confirmed Middlebury connection | `Middlebury Sophomore, Hungry to Learn` |
+| Referral | `{Referrer} suggested I reach out` |
+| Builder or technical founder | `20 Year Old Building an AI Teaching Assistant` |
+| Sales-led or SMB background | `20 Year Old Who Cold Called His Way Through College` |
+| Anyone else | write one from the strongest fact above that fits them |
+
+Never send a batch where every subject line is identical. If two people get the same subject, it
+should be because the same thing is genuinely the best hook for both.

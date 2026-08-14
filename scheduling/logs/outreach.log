@@ -1,0 +1,5 @@
+=== 2026-08-14 10:19:44 -03 starting daily outreach ===
+Outlook session: DEAD. Drafts go to daily/ only.
+  Fix with: ./.venv/bin/python outlook_drafter.py --login
+API Error: Can't reach the API server — check your internet or DNS (ENOTFOUND)
+=== 2026-08-14 12:20:48 -03 finished, exit 1 ===

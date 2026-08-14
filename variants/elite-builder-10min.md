@@ -28,8 +28,8 @@ built, and the read is the only currency.
 ```
 Hi {first_name},
 
-I'm Max, a Middlebury sophomore. I built an AI teaching assistant for our STEM courses, won $5K at
-MiddChallenge for it, and I'm partway through Entrepreneur First interviews.
+I'm Max, 20, studying applied math. I built an AI teaching assistant, won $5K for it in a pitch
+competition, and we turned down money to keep building it ourselves.
 
 {the read - one sentence, a judgment about what they built}
 

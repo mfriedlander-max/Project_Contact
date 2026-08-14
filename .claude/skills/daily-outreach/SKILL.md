@@ -136,28 +136,29 @@ A full batch at that depth will hit limits. Manage it:
   arXiv PDFs, the GitHub API. LinkedIn and Facebook block automated fetch and burn calls for
   nothing.
 
-### Running researchers in parallel
+### Research inline. Do not dispatch subagents.
 
-Dispatch one research subagent per person. They are isolated by design, which is what stops one
-agent quietly inheriting another's assumptions, but it also means **they cannot see each other's
-findings and will converge on the same obvious person.**
+**One session does all the research itself, person by person.** This was tested both ways and
+inline won.
 
-This is not hypothetical. On the first live run, the "AI founder" and "software founder" agents
-independently returned Andy Rossmeissl, because he is the strongest match for both.
+Run 4 researched inline because the Agent tool was unavailable, and produced the best batch of
+the project: 5 of 5 deliverable, five distinct subject lines, and two factual errors caught before
+they reached a draft (Galperin had handed over the CEO seat; a claim about Barbieri's academic work
+was an inference dressed as a fact). Runs 1 to 3 used one subagent per person and were worse.
 
-Prevent it:
+Why inline is better here:
 
-- Give each agent a **distinct domain** (AI, edtech, venture, software, quant) *and* an explicit
-  list of names already claimed this run.
-- Assign domains that do not overlap. "AI founder" and "software founder" overlap heavily; "AI
-  research" and "developer tooling" do not.
-- When a collision happens anyway, **keep the better-researched result and re-dispatch for the
-  empty slot** with the taken name added to the exclusions. Do not paper over it by shipping nine.
+- **No collisions.** Two isolated agents converged on the same person in run 1, because each was
+  independently solving "who is the strongest match", and the answer was the same. One session
+  holds the whole batch in view and simply picks five different people.
+- **Cross-person judgement becomes possible.** Choosing which variant and which of Max's facts fits
+  which person is a decision across the batch, not within one person. An isolated agent cannot see
+  that four others already used the Middlebury angle.
+- **Search budget is shared, not multiplied.** Parallel agents each burn their own quota and one
+  hit its 200-call ceiling mid-task.
 
-A collision is not wasted work. The second pass on Andy Rossmeissl found a better email
-(`andy@continuousartifact.com`, published on his own site, versus a GitHub alias he likely
-filters) and a stronger angle (self-taught, no CS degree). **When two agents return the same
-person, merge their findings and take the strongest of each field** rather than discarding one.
+Keep the discipline that made subagents useful: research each person completely before starting
+the next, and never let a claim about one person carry over to another.
 
 ## Step 3 - Research each person properly
 
@@ -224,6 +225,28 @@ Split the two apart when verifying:
 When the two disagree, the self-maintained source wins for currency and the institutional one
 wins for history. Say which you relied on.
 
+### SEC EDGAR is the strongest free source for anyone at a public company or a fund
+
+Full-text search at `https://efts.sec.gov/LATEST/search-index?q=...` and filings under
+`https://www.sec.gov/cgi-bin/browse-edgar`. Free, structured, no rate wall, and legally filed,
+which makes it better evidence than anything a data vendor sells.
+
+It produced the single strongest verification in this project. For Alex Finkelstein, a Flywire
+DEF 14A stated his Middlebury degree **verbatim**, and his personally-filed Form 4 from nine days
+earlier proved he was alive and in role. No aggregator comes close to that.
+
+What to look for:
+
+| Filing | Gives you |
+|---|---|
+| **DEF 14A** (proxy) | director and officer biographies, education, career history, board seats |
+| **Form 4** | a filing the person is personally liable for. Excellent proof of life and current role |
+| **8-K** | board elections, appointments, departures, with dates |
+| **Form D** | fund closes and the executive officers named on them |
+
+Use it for public-company executives, board members, and anyone at a fund that files. It does not
+help for private startups, where the company's own site and public commits are better.
+
 ### Look for a published address first, always
 
 **Order matters. Search for a real published address before touching Hunter.** A published
@@ -240,7 +263,31 @@ address is better evidence and costs no quota. In order:
 Tell the research agents this ordering explicitly in their brief. An agent that jumps to Hunter
 first burns quota on someone whose address was on their own homepage.
 
-### Hunter is mandatory when no address is published
+### Use the prober before spending a Hunter search
+
+`email_prober.py` does the catch-all control test and pattern probing in one step, using Hunter's
+**email-verifier at 0.5 credit** rather than the email-finder at 1 credit. It is both cheaper and
+better evidence, so run it first.
+
+```bash
+./.venv/bin/python email_prober.py --domain calendly.com --first Tope --last Awotona
+./.venv/bin/python email_prober.py --domain vercel.com --catchall-only
+./.venv/bin/python email_prober.py --domain uala.com.ar --first X --last Y --known real@uala.com.ar
+```
+
+It refuses to guess. On an accept_all domain it stops and tells you to grade `GUESSED` and leave
+the cell empty, because on such a domain every candidate verifies whether or not it exists. If you
+already know one real address at the company, pass `--known` and it infers the format and tests a
+single candidate.
+
+Its grades map directly onto the Email Confidence column: `VERIFIED` at score 90+, `HIGH` at 70+,
+`MEDIUM` below that, and nothing at all when the control test fails.
+
+**One caution.** Hunter's `accept_all` flag is not stable over time. A run in this project recorded
+`vercel.com` as a catch-all and a later probe reported it was not. Trust the control test you ran
+today, and say in the notes which way it came out.
+
+### Hunter's email-finder, when the prober comes up empty
 
 **If you cannot find a published address, you MUST run a Hunter search before recording "no
 email". Not optional. Not "if it seems worth it".**
@@ -349,6 +396,24 @@ brevity beats the band. Its own file governs.
 
 If the read runs past one sentence, it is not finished being edited.
 
+### Facts about Max come only from BRIEF.md
+
+**Every claim about Max in an email must appear verbatim in `BRIEF.md`'s "About Max" table.** No
+inference, no embellishment, no detail carried over from a previous run's draft.
+
+Pick the one or two facts that actually connect to this person. The table says when each applies.
+A founder gets the turned-down-money decision; someone sales-led gets the $30k cold-calling; a
+technical founder who had to learn to sell gets the math-and-sales combination. Listing all of them
+is a résumé, and a résumé reads as someone asking for a job.
+
+**The Middlebury rule is in `BRIEF.md` and is not optional.** No confirmed connection to the
+college means Middlebury never appears in the subject line and never leads the email.
+
+### The subject line is chosen per person
+
+Read the subject-line table in `BRIEF.md` and pick the one true thing most likely to make **this**
+recipient open it. A batch where every subject is identical means no choice was made.
+
 ### Everything else
 
 Follow the reference email in the variant file exactly: structure, sign-off, ordering. **No em
@@ -415,8 +480,21 @@ it is what makes a wrong fact traceable afterwards.
 
 ## Step 7 - File them
 
-Append to the **To Contact** tab and to `contacts-log.csv`. Six tabs share one 20-column schema
-and the Apps Script row mover copies **by position**, so column order is not negotiable:
+**Insert today's batch at the TOP of `To Contact`, at row 2. Do not append to the bottom.**
+
+`To Contact` carries 232 rows of unqualified backlog import. A batch appended underneath lands
+around row 240 and is effectively invisible, which is exactly what happened on the first three
+runs. The people Max is meant to act on this morning must be the first thing he sees when he
+opens the tab.
+
+```python
+ws.insert_rows(rows, row=2, value_input_option='USER_ENTERED')
+```
+
+`contacts-log.csv` can keep append order; it is a log, not a worklist.
+
+Six tabs share one 20-column schema and the Apps Script row mover copies **by position**, so
+column order is not negotiable:
 
 ```
 Name | Status | Email | Email Confidence | Company | Role | Industry | Phone | LinkedIn |
@@ -430,10 +508,23 @@ Meeting Notes | Ask Them About | What They Can Offer Me | What I Can Offer Them 
   result. On a re-contact, append rather than overwrite.
 - **Personalized Insert** = the read from step 4.
 - **Meeting Notes** = a short, concrete line on **what they do and why they are worth Max's
-  time.** One or two sentences. This is required on every new row, not optional. Before a meeting
-  happens it is the "who is this and why do I care" line Max reads when scanning the tab; after a
-  meeting the `update-contacts` skill appends the real notes below it. The first live run left
-  this blank on all five rows because this step used to say to leave it empty.
+  time.** One or two sentences. Required on every new row. Before a meeting it is the "who is this
+  and why do I care" line Max reads when scanning the tab; after a meeting the `update-contacts`
+  skill appends the real notes below it.
+
+  **Where a connection exists, name it here explicitly and precisely.** "Middlebury '92, sitting
+  Term Trustee" is the single most useful thing on the row and must not be left implicit. Same for
+  a shared city, sport, or employer.
+
+- **Source** = where the lead came from *and* the route that found them, so a productive vein can
+  be mined again. "Middlebury Board of Trustees roster" is useful; "research" is not.
+**`Source` is free text, never a dropdown.** It records the route that found someone, which is
+open-ended by nature ("Middlebury Board of Trustees roster", "public commits on vercel/next.js").
+A fixed dropdown was tried and flagged every researched row as invalid. If a dropdown ever
+reappears on that column, remove it.
+- The email's **question** goes at the end of `Personalized Insert`, after the read, separated by
+  a space. When someone replies weeks later, the sheet alone has to show what Max asked. Do not
+  make him open a research file to remember his own question.
 - Leave `Sent Date`, `Ask Them About`, both offer columns, and `Notion Page` empty. Those are
   filled after an actual conversation.
 
