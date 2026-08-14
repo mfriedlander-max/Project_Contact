@@ -136,29 +136,211 @@ A full batch at that depth will hit limits. Manage it:
   arXiv PDFs, the GitHub API. LinkedIn and Facebook block automated fetch and burn calls for
   nothing.
 
-### Research inline. Do not dispatch subagents.
+### The main session picks the people. Subagents verify them.
 
-**One session does all the research itself, person by person.** This was tested both ways and
-inline won.
+**Split the work this way, and only this way:**
 
-Run 4 researched inline because the Agent tool was unavailable, and produced the best batch of
-the project: 5 of 5 deliverable, five distinct subject lines, and two factual errors caught before
-they reached a draft (Galperin had handed over the CEO seat; a claim about Barbieri's academic work
-was an inference dressed as a fact). Runs 1 to 3 used one subagent per person and were worse.
+| Who | Does |
+|---|---|
+| **This session** | decides *who* the batch is, assigns variants and which of Max's facts each person gets, writes every email |
+| **Subagents** | verify one *named* person each, in parallel, and report facts with sources |
 
-Why inline is better here:
+Never ask a subagent "find someone who fits the brief". Ask it "verify this person".
 
-- **No collisions.** Two isolated agents converged on the same person in run 1, because each was
-  independently solving "who is the strongest match", and the answer was the same. One session
-  holds the whole batch in view and simply picks five different people.
-- **Cross-person judgement becomes possible.** Choosing which variant and which of Max's facts fits
-  which person is a decision across the batch, not within one person. An isolated agent cannot see
-  that four others already used the Middlebury angle.
-- **Search budget is shared, not multiplied.** Parallel agents each burn their own quota and one
-  hit its 200-call ceiling mid-task.
+**Why the split falls here.** On run 1 two agents were each told to find the strongest match in
+overlapping domains and both returned Andy Rossmeissl. That is not a defect in isolation, it is
+what isolation does: same brief, same evidence, same answer. Naming the person first makes a
+collision structurally impossible.
 
-Keep the discipline that made subagents useful: research each person completely before starting
-the next, and never let a claim about one person carry over to another.
+The decisions that must stay in one place are the ones made *across* the batch. Which variant each
+person gets, which of Max's facts fits whom, whether the Middlebury wedge applies. An isolated
+agent cannot know that four other people already took the school angle, or that the batch is about
+to go out on one variant.
+
+**What isolation is genuinely worth.** A verifier that only knows one person cannot let a fact
+about someone else leak into its findings, and it cannot quietly inherit another agent's
+assumption. That is worth keeping, and it is why verification is still farmed out.
+
+**Dispatching verifiers.** One per person, all in a single message so they run in parallel. Use
+this prompt. It is not a summary to paraphrase; the detail is what makes the results usable.
+
+```
+Verify {NAME}, {ROLE} at {COMPANY}, for a cold email from Max, a 20-year-old Middlebury
+sophomore studying applied math who is building an AI teaching assistant.
+
+You are NOT choosing who to contact. This person is already chosen. Your job is to find out
+whether the facts hold up and to surface the one thing worth writing about.
+
+ACCURACY CONTRACT, absolute:
+- Every factual claim must trace to a URL you actually fetched and read. Not a search snippet,
+  not a summary, not an aggregator.
+- RocketReach, ZoomInfo, getprog, theorg and Crunchbase summaries are NOT sources. If only an
+  aggregator asserts something, exclude it and say so.
+- Institutional pages (a university, a conference) prove history and class year but NOT current
+  employment. For current role use something the person or company controls: a live company team
+  page, a dated post they authored, an SEC filing, a GitHub profile with recent activity.
+- If two sources disagree, say which you believe and why. Do not silently pick one.
+- Never construct an email address. first@company.com is forbidden.
+- A fact that would be perfect for the email and cannot be traced is the most dangerous kind.
+  Leave it out and flag it explicitly.
+
+FIND:
+1. Current role and company, confirmed within the last 12 months, with a dated source.
+2. Proof they are alive and active: something dated in the last year.
+3. Any connection to Middlebury College, and say plainly if there is none. This decides whether
+   the school can be used as the opener, so a wrong answer here ruins the email.
+4. Email address, in this order of preference, and grade it:
+   company team page (VERIFIED) > their own site (HIGH) > public commit or paper metadata
+   (MEDIUM) > generic hello@ (LOW) > nothing found (GUESSED, and leave it blank).
+   Do not run Hunter; the main session handles that with the prober.
+5. LinkedIn URL. Note that LinkedIn blocks fetching, so the URL may be all you can confirm.
+6. THE FULL CAREER TRAJECTORY, in order, with dates where you can get them. Not a list of
+   achievements, the actual sequence: what they studied, what they did first, every move since,
+   and what they do now. Include the unglamorous and early jobs, which are usually the most
+   revealing part.
+   This matters more than any single accomplishment. The strongest emails written from this
+   research were built on the SHAPE of a career, not a fact from it: "brewing beer before law
+   school, then leaving law for consulting and consulting for investing" and "no CS degree,
+   taught himself to ship, then twenty-one years on one unglamorous bet without leaving
+   Vermont." Neither is an achievement. Both are arcs, and an arc is what you can form a
+   judgment about.
+   Flag any move that looks like a step sideways or backwards. Those are the interesting ones.
+7. Two to four specific, verifiable things they built, shipped, ran or decided, each with its
+   source. Numbers and dates, not adjectives.
+8. A DOCUMENTED HARD DECISION if one exists: a moment where the obvious choice and the taken
+   choice diverged. Turning down money or an acquisition, leaving somewhere successful early,
+   building the thing that undercut their own business, staying somewhere unfashionable,
+   publishing something inconvenient for their own position. This is the single most valuable
+   thing you can find. Say "none documented" rather than inferring one.
+9. Anything genuinely shared with Max: a sport, a city (he lives in Buenos Aires and lived in
+   Barcelona), a non-linear path, having started something young, selling before building.
+10. What they have already been asked publicly. A question they have answered in three podcasts
+   is the wrong question.
+
+RETURN:
+NAME / COMPANY / ROLE / INDUSTRY / LINKEDIN / EMAIL / EMAIL_CONFIDENCE
+MIDDLEBURY: the connection with its source, or "none found"
+CURRENT_ROLE_PROOF: dated source URL
+CAREER_TRAJECTORY: the sequence in order, with dates and sources. Mark sideways or
+  backwards moves.
+WHAT_THEY_DID: each concrete fact with its URL
+HARD_DECISION: with source, or "none documented"
+SHARED_WITH_MAX: or "none"
+ALREADY_ASKED_PUBLICLY: questions to avoid
+SOURCES: every URL you actually read
+COULD_NOT_VERIFY: everything you tried and failed to confirm. Be specific. A verifier that
+reports no gaps has not looked hard enough.
+```
+
+Do not ask a verifier to write the email or pick the variant. Those are decisions across the
+batch and belong to this session.
+
+### When the verifiers come back
+
+All five reports land before anything is written. Then, in this order:
+
+**1. Triage each report before trusting any of it.**
+
+Read `COULD_NOT_VERIFY` first, not last. It is the most informative section, and a report
+claiming no gaps has usually not looked hard enough.
+
+| Report says | Do |
+|---|---|
+| Current role unconfirmed, or sources disagree | **Drop the person.** An email that names the wrong employer ends at line one. Replace them or ship a shorter batch. |
+| Not provably alive or active in the last year | **Drop.** No exceptions. |
+| Middlebury connection "none found" | Fine. It just means the school cannot be used. Not a reason to drop. |
+| No email found | Fine. Run the prober, then Hunter. If still nothing, repo-only with LinkedIn as the route. |
+| A perfect-sounding fact with no traceable source | **Cut the fact, keep the person.** This is the most common failure and the most dangerous. |
+| Budget exhausted mid-task | Treat as provisional. Either re-dispatch for the missing checks or say in the report which did not run. |
+
+**2. Assign variants across the batch, not one at a time.**
+
+Lay the five side by side and allocate roughly two controls and three experiments:
+
+- A documented hard decision → `elite-decision-10min`. This is the strongest signal, so let it win.
+- A builder who respects evidence of work → `elite-builder-10min`.
+- A firehose inbox where the read compresses to one short sentence → `elite-brevity-10min`.
+- A real referral → `referral-15min`.
+- Everything else → `cold-midd-personal-10min`.
+
+Where two fit equally, pick the id with fewer sends behind it. The experiment only pays off if
+each variant accumulates volume.
+
+**3. Cross-reference their history against Max's KB and find the real overlap.**
+
+This is the step that makes an email land, and it is a matching problem, not an allocation one.
+Put the verifier's `CAREER_TRAJECTORY` and `SHARED_WITH_MAX` next to the `About Max` table in
+`BRIEF.md` and look for where the two genuinely touch.
+
+| What the verifier found | What of Max's it resonates with |
+|---|---|
+| Sold before they built. Started in sales, carried a bag, cold called | **$30k cold-calling SMBs.** He has done the unglamorous version of their origin |
+| Turned down money, refused an acquisition, stayed independent | **Turned down money for the teaching assistant.** The same decision at a hundredth the scale |
+| Took the money, sold, or raised big | Same fact, opposite side. He made the other call and wants to understand theirs |
+| Technical founder who had to learn to sell, or a seller who learned to build | **Loves math and technical work and loves sales.** The combination is rarer than either half |
+| Built something in or for education | **AI teaching assistant, $5K, piloting in a school this fall** |
+| Argentina, Spain, or Latin America | **Living in Buenos Aires now**, lived in Barcelona. Present tense, not a plan |
+| Started something while still a student, or very young | He is 20 and mid-build. A real peer signal, not aspiration |
+| Non-linear path, career switch, no formal credential | Applied math undergrad building software and selling it |
+| Genuine tennis connection | Played a lot of tennis. Only with a real, sourced connection |
+| An early unglamorous job in the trajectory | Whichever of the above rhymes with it |
+
+**When nothing overlaps, do not fall back to generic. Fall back to interesting.**
+
+A KB fact does not have to mirror their history to earn its place. It only has to be worth
+reading. The opener's job is to make Max someone worth answering in the next four seconds, and a
+concrete, specific, slightly unexpected fact does that on its own.
+
+Compare, for the same person:
+
+> **generic:** "I'm Max, 20, a sophomore studying applied math."
+> **hook:** "I'm Max, 20, a sophomore studying applied math, and I made $30k cold calling small
+> businesses to help pay for school."
+
+Same person, same paragraph, no thematic connection to the recipient required. The second is
+simply more interesting, and it costs eleven words.
+
+So the order of preference is:
+
+1. **A real overlap**, where their history and Max's genuinely touch. Strongest, use it whenever
+   it exists.
+2. **The most interesting KB fact that fits the audience**, used as a hook with no claimed
+   connection. Perfectly good, and this is the normal case.
+3. **Plain identity only**, if every fact would be jarring for this reader. Rare. An institutional
+   figure like a museum director or bank chairman may be one.
+
+**Never** write an opener that is only "I'm Max, 20, a sophomore" when a hook was available. That
+is the actual failure, not the absence of a parallel.
+
+What you are avoiding is five emails opening with the same sentence about Max. Two people can
+share a fact when it is genuinely the best for both, but five identical openers means no choice
+was made.
+
+**4. Middlebury, per person.** Connection confirmed by the verifier means it leads the subject
+line and the opener. `none found` means it appears in neither. This is a per-person decision, so
+a batch can and should be mixed.
+
+**5. Write the read from the trajectory, not from the achievements.**
+
+The `CAREER_TRAJECTORY` section is where the read comes from. Look for the shape: the sideways
+move, the early unglamorous job, the thing they left before they had to, the bet they kept making.
+Then state it in one sentence with a judgment attached.
+
+Achievements produce "you founded X and it grew to Y", which is a fact they already know about
+themselves. Arcs produce "leaving law for consulting and consulting for investing is a career of
+trading earned credentials away on purpose", which is a view they have not heard.
+
+**6. Write the question from `ALREADY_ASKED_PUBLICLY`.**
+
+That section exists to be subtracted. Whatever they have answered in interviews is off the table,
+and what remains is usually the good question.
+
+**7. Then write the emails.** Length band per variant, count before writing the file, and run
+`verify_batch.py` when the batch is complete.
+
+**Budget.** Each agent burns its own web-search quota, so `CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION`
+is raised to 600 in the wrapper. If a verifier reports exhaustion, treat its result as provisional
+and say which checks did not run.
 
 ## Step 3 - Research each person properly
 
@@ -324,10 +506,48 @@ Then grade by what Hunter returns, not by hope:
 **Get the domain right first.** Hunter keys off the company domain, so a wrong domain returns
 nothing and wastes a search. Confirm it from the company's own site before searching.
 
-**Budget.** 50 searches a month, 100 verifications. At five people a day, expect to need three or
-four searches per batch, which is roughly 100/month, so it will run out. Spend them on people
-with no published address, never on someone whose address you already have. Report usage at the
-end. If the key is missing, say so plainly and never fall back to guessing a pattern.
+### Hunter budget: a hard cap per run
+
+Free tier is **50 searches and 100 verifications a month**. Run 5 spent **10 searches and 20
+verifications in a single batch**, which is a fifth of the month in one morning and would empty
+the quota in five days.
+
+**Caps, per run, not negotiable:**
+
+| | Cap per run |
+|---|---|
+| `email-finder` searches | **5** |
+| `email-verifier` calls, including the prober's | **12** |
+
+Check the balance before starting and scale down if the month is nearly out:
+
+```bash
+set -a; . ./credentials/.env; set +a
+curl -s "https://api.hunter.io/v2/account?api_key=$HUNTER_API_KEY"
+```
+
+| Searches remaining | Do |
+|---|---|
+| 20 or more | normal caps above |
+| 10 to 19 | 3 searches, 8 verifications. Prefer public sources harder |
+| under 10 | **no Hunter at all.** Public sources and the prober only, and say so in the report |
+
+**Spend the budget in this order:**
+
+1. The catch-all control, one verification per new domain. Never skip it; without it every other
+   call on that domain is wasted.
+2. Probing a *known* format, when one address at the company is already confirmed. One
+   verification, high prior.
+3. Ranked candidate probing, capped at 3 per person.
+4. `email-finder`, last, and only for people still unreachable. It costs 1 credit against the
+   verifier's 0.5.
+
+**Never spend a call on someone whose address is already published.** That is the most common way
+the quota disappears.
+
+If the cap is hit mid-batch, stop and mark the rest `GUESSED` with a blank Email and LinkedIn as
+the route. Report exactly how many calls were used and how many remain. A batch that spends the
+whole month's quota is a failure even if every address is found.
 
 ## Step 4 - Find the angle
 
@@ -507,6 +727,10 @@ Meeting Notes | Ask Them About | What They Can Offer Me | What I Can Offer Them 
 - **Email Variant** = the id used. Never blank; it is the only link between a send and its
   result. On a re-contact, append rather than overwrite.
 - **Personalized Insert** = the read from step 4.
+- **LinkedIn** = required on every row, without exception. It is the contact route for everyone
+  who has no email, which at this altitude is most of them. Run 5 left it blank on all five rows,
+  which made five researched people unreachable by any means. LinkedIn blocks automated fetching,
+  so the URL is often all that can be confirmed. Record it anyway; the URL is the deliverable.
 - **Meeting Notes** = a short, concrete line on **what they do and why they are worth Max's
   time.** One or two sentences. Required on every new row. Before a meeting it is the "who is this
   and why do I care" line Max reads when scanning the tab; after a meeting the `update-contacts`

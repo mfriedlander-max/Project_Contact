@@ -150,6 +150,38 @@ since 2026-01-01 (he is Executive Chairman), and the Cursor and SpaceX deal was 
 closed the morning of the run. Both would have been role errors in line one. **Confirm the current
 title against a dated primary source even when the person is famous enough that you think you know.**
 
+**2026-08-14 (second run).** **Middlebury Magazine and the `alumni-and-families` section reopened
+the vein the trustee roster closed.** Both Middlebury names this run came from there: Rob Tod '91
+(founder of Allagash, and one of the college's *2026* Alumni Achievement Award winners) and Bill
+Phelps '78 (from the "Hot Business" page). The award announcements and the alumni-stories index are
+current, name class years, and are not consumed by the 261-name log. Crunchbase's alumni-founders
+hub **403'd again**, so it remains untried and is probably not worth another attempt.
+
+**2026-08-14 (second run).** The stale-title warning from the earlier run fired **twice more**, and
+both would have been line-one errors. Middlebury's own Hot Business page calls Bill Phelps CEO of
+Dave's Hot Chicken; he became Executive Chairman on 2026-01-05. Jonathan Ross is still called "Groq
+CEO" almost everywhere; NVIDIA took Groq's assets on 2025-12-24 and he went with them. **Assume the
+title is stale until a dated primary source says otherwise, and prefer a source the person
+controls.** Where the current title cannot be nailed down, write around it: Ross's email rests on
+the deal, which three outlets report, and never states his NVIDIA title.
+
+**2026-08-14 (second run).** **A verified mailbox is not the same as the right person's mailbox.**
+`jonathan@nvidia.com` verifies at score 100 with a clean control test, and it is certainly not
+Jonathan Ross, who arrived eight months ago at a 36,000-person company. Bare first-name aliases
+belong to whoever got there first. Ask "is this name unique at this company?" before trusting a
+pattern hit: `amjad@replit.com` and `eric@ramp.com` are safe because the founder owns the name,
+`rob@allagash.com` is safe at a 150-person brewery he owns, `jross@nvidia.com` is not and was
+graded MEDIUM for that reason rather than for any doubt about deliverability.
+
+**2026-08-14 (second run).** Deliverability was 5 of 5 again, and the prober did four of them with
+no email-finder search at all. Useful trick: **the invalid results are the evidence.** At nvidia.com
+`jonathanross@` and `jonathan.ross@` both came back hard invalid while `jross@` verified, which is
+what proves the domain discriminates and the hit is real rather than a catch-all artifact.
+
+**2026-08-14 (second run).** Hunter's quota **resets on the 15th**. Credits unspent on the 14th are
+lost, so a run landing near the reset should spend freely rather than conserve. This run finished
+with 15.5 credits that expired the next day.
+
 ## About Max - the only facts you may use
 
 **Everything an email says about Max comes from this list. Nothing else.** Do not infer, embellish,
@@ -195,5 +227,15 @@ Learn", including one to Sridhar Ramaswamy, who has no connection to the college
 | Sales-led or SMB background | `20 Year Old Who Cold Called His Way Through College` |
 | Anyone else | write one from the strongest fact above that fits them |
 
-Never send a batch where every subject line is identical. If two people get the same subject, it
-should be because the same thing is genuinely the best hook for both.
+**No two subjects in a batch may be identical, ever.** Not even when the same hook is genuinely
+best for both. Run 5 sent "Middlebury Sophomore, Hungry to Learn" to two different Middlebury
+alumni; the hook was right for each, the identical wording was not.
+
+Vary the phrasing while keeping the hook:
+
+> `Middlebury Sophomore, Hungry to Learn`
+> `Midd Sophomore Building an AI Teaching Assistant`
+> `Applied Math Sophomore at Middlebury`
+
+If Max ever appears in both inboxes, or the two forward to each other, identical subject lines are
+what make it look automated.
