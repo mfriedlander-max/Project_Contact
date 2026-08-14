@@ -12,3 +12,12 @@ __pycache__/
 *.pyc
 *.pyo
 .env
+
+# Local Python env for the daily-outreach skill
+.venv/
+
+# Noise
+.DS_Store
+.firecrawl/
+.omc/
+.draft_preview_*.png
