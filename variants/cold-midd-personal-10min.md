@@ -45,11 +45,30 @@ Max
 
 1. `Hi {first_name},`
 2. **Who Max is** - age, posture, Middlebury. Kept to one clause; it is not the point.
-3. **The read on them** - their path plus a judgment about it. One or two sentences.
-4. **What Max is building** that makes the question genuine.
-5. **The question** - specific, opinionated, answerable.
-6. `If you're open to 10 minutes, I promise I'll pay it forward.`
-7. `Best,` / `Max`
+3. *(optional)* **The shared thing** - see below.
+4. **The read on them** - their path plus a judgment about it. One or two sentences.
+5. **What Max is building** that makes the question genuine.
+6. **The question** - specific, opinionated, answerable.
+7. `If you're open to 10 minutes, I promise I'll pay it forward.`
+8. `Best,` / `Max`
+
+## The optional shared-context clause
+
+When research surfaces something concrete you have in common beyond the school itself, one short
+clause earns its place. Real examples from the first live run:
+
+- he played Middlebury men's ice hockey
+- she has already given a Middlebury talk on careers in AI
+- he founded his first company as a Middlebury senior, which is what Max is doing now
+
+Three rules:
+
+- **Only if source-confirmed.** An unverified shared detail is worse than none, because Max may
+  repeat it out loud on the call.
+- **One clause, not a sentence.** It sits inside the intro line; it does not get its own paragraph.
+- **Never invent proximity.** "We both love building things" is not shared context, it is filler.
+
+If nothing verified turns up, skip it entirely. The read is what carries the email.
 
 ## Rules
 
@@ -63,4 +82,37 @@ Max
   or split it into two sentences.
 - **No availability windows.** The older template listed three time slots. These do not - it
   reads as presumptuous before someone has agreed to talk.
-- Keep it under 120 words.
+
+## Length is a hard constraint
+
+**Target band: 90-95 words.** Not a cap, a band. Land inside it.
+
+The George Lee reference email is 85 words and reads well; 90-95 gives the read enough room to
+carry the detail that proves the research, without letting it stack clauses.
+
+| Part | Words |
+|---|---|
+| Who Max is | ~13 |
+| The read | **22-28, one sentence** |
+| What he's building plus the question | ~35 |
+| The close | 12 |
+| **Total body** | **90-95** |
+
+The first hand-written batch came in at 117-120 words and every one was too long. The bloat is
+always in the read: a 45-word sentence with three stacked clauses instead of one clean judgment.
+
+Compare:
+
+> **too long (45 words):** "Going from Blackstone to First Round to the founding investment team
+> of a brand new fund, then spending six years earning the partnership from the inside rather
+> than fund-hopping for the title, is the slower route but the one that leaves you personally
+> accountable for the thesis you keep staking out."
+>
+> **right (23 words):** "Earning your partnership from the inside over six years instead of
+> fund-hopping for the title is the slower path and the more accountable one."
+
+The second says the same thing. Everything cut was scaffolding proving the research happened,
+which is for Max's benefit, not the reader's.
+
+**If the read runs past one sentence, it is not finished being edited.** Count the words before
+drafting into Outlook.

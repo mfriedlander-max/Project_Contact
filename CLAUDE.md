@@ -80,8 +80,13 @@ pivoting to lead research on the economics of AI infrastructure is strategic and
 a career was studied. Test every line: *could this be sent to any of the other nine people
 today?* If yes, it is not finished.
 
-House rules: **no em dashes**, no availability windows, under 120 words, and never "I came
-across", "I noticed", "your remarkable", "I would be honored", "resonates with me".
+House rules: **no em dashes**, no availability windows, and never "I came across", "I noticed",
+"your remarkable", "I would be honored", "resonates with me".
+
+**Length: 90-95 words.** A band, not a ceiling. Under 90 means detail that proved the research
+got cut; over 95 means the read is stacking clauses. Each variant file carries its own budget
+table (`elite-brevity-10min` is deliberately ~55). If the read runs past one sentence, it is not
+finished.
 
 Full writing rules live in `email_personalization_prompt.md`.
 
@@ -101,12 +106,22 @@ longer exist. **Confirm a person is living and currently working before adding t
 
 Still present in the repo, no longer used, kept only as reference:
 
-- `email_drafter.py`, `email_finder.py`, `insert_generator.py`, `linkedin_scraper.py`,
-  `quick_start.py`, `verify_drafts.py` and their tests
-- `.playwright_session/` - the saved Outlook login, expired May 2026
+- `email_finder.py`, `insert_generator.py`, `linkedin_scraper.py`, `quick_start.py`,
+  `verify_drafts.py` and their tests
 
-**Outlook drafting no longer works.** Drafts are written to `daily/YYYY-MM-DD/` as markdown and
-Max pastes them into Outlook himself.
+**Outlook drafting works, headlessly.** `outlook_drafter.py` drives a headless browser using the
+saved profile in `.playwright_session/`, which was re-authenticated 2026-08-13. It creates drafts
+and has no send path anywhere in the file.
+
+```bash
+./.venv/bin/python outlook_drafter.py --check                    # session still alive?
+./.venv/bin/python outlook_drafter.py --create daily/DATE/drafts.json
+./.venv/bin/python outlook_drafter.py --login                    # visible re-auth when cookies lapse
+```
+
+Cookies last roughly two to three months. When `--check` fails, `--login` opens a window, Max
+signs in once, and it is headless again. Drafts are also always written to `daily/YYYY-MM-DD/` as
+markdown, so a dead session never costs a morning's research.
 
 The old per-campaign branch workflow (`round-1-middlebury-alumni` and friends) is history. New
 work uses `Campaign` = `daily-YYYY-MM` on `main`.

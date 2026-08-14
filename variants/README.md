@@ -45,12 +45,30 @@ email, and you won't learn anything from the result.
 
 | id | audience | ask | status |
 |---|---|---|---|
-| `cold-midd-personal-10min` | default cold email | 10 min | active |
+| `cold-midd-personal-10min` | default cold email, 90-95 words | 10 min | active |
 | `referral-15min` | a real referral offered | 15 min | active |
+| `elite-brevity-10min` | firehose inboxes, ~55 words, drops the credential | 10 min | active |
+| `elite-decision-10min` | one documented hard call, asks the counterfactual | 10 min | active |
+| `elite-builder-10min` | leads with what Max shipped, 90-100 words | 10 min | active |
 | `warm-all-update` | already spoken | none | active |
 | `cold-tech-10min` | founders/operators | 10 min | superseded |
 | `cold-midd-10min` | Middlebury alumni | 10 min | superseded |
 | `cold-all-15min` | anyone | 15 min | retired |
+
+## The three elite variants are a designed experiment
+
+They exist to answer one question each, against `cold-midd-personal-10min` as the control. Each
+changes exactly one thing, so a win is attributable:
+
+| Variant | What it removes or adds | What a win would prove |
+|---|---|---|
+| `elite-brevity-10min` | drops the credential, cuts to ~55 words | brevity reads as respect; the résumé was dead weight |
+| `elite-decision-10min` | swaps career summary for one documented decision | a counterfactual beats a summary they already know |
+| `elite-builder-10min` | leads with Max's shipped work | evidence of building beats "hungry to learn" |
+
+**Spread them across a batch rather than assigning by mood.** Five people a day means roughly one
+per variant plus two controls, and results only mean something once each id has 15-20 sends
+behind it. Attribution is the `Email Variant` column, so it is never left blank.
 
 ## House rules
 

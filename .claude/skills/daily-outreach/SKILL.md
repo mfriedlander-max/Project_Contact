@@ -5,11 +5,11 @@ description: Use each morning at 8am EST, or when Max says "run outreach", "find
 
 # Daily Outreach
 
-Ten people a day. Every one researched properly, every email good enough that Max sends it
-without editing.
+A small batch every morning, the size set by `BRIEF.md`. Every person researched properly, every
+email good enough that Max sends it without editing.
 
-**The output is not ten emails. The output is ten emails Max would be glad he sent.** A batch
-that needs rewriting cost him more time than it saved.
+**The output is not N emails. It is N emails Max would be glad he sent.** A batch that needs
+rewriting cost him more time than it saved.
 
 ## The Iron Rule
 
@@ -26,7 +26,7 @@ Violating the letter of this rule is violating the spirit of it.
 - "This angle is probably close enough"
 - "I'll verify the details after drafting"
 - "Their bio says it, so it's true"
-- "I need ten, and this is the tenth"
+- "I need one more to hit the number, and this is it"
 - "The pattern email format is obvious, so this address will work"
 - "This is a well-known person, I already know their background"
 - "Two sources said it, that's enough" (were they the same source twice?)
@@ -37,18 +37,36 @@ All of these mean: go back and research, or drop the person.
 
 | Excuse | Reality |
 |---|---|
-| "Nine feels like failure" | Ten generic emails damage a list you cannot rebuild. Nine researched ones do not. |
+| "One short of the number feels like failure" | Generic emails damage a list you cannot rebuild. A short batch does not. |
 | "The guessed email is probably right" | It is probably a bounce, and bounces train spam filters against your domain. Blank is better. |
 | "I know who Demis Hassabis is" | You know his Wikipedia summary. That is not an angle, and he can tell. |
 | "The company website is current" | Company sites go years without updates. Check LinkedIn and recent news. |
 | "Close enough on the title" | Naming the wrong role in line one ends the email there. |
 | "I'll note the uncertainty in research.md" | Max reads the draft, not the caveats. Uncertainty belongs in the confidence grade or nowhere. |
-| "This person is famous, worth a shot" | Household names do not reply. Aim two to fifteen years ahead of Max. |
+| "They're too senior to bother" | Not your call. `BRIEF.md` sets the altitude, and it currently aims high on purpose. |
 
-## Before starting
+## Step 0 - Read the brief. Max decides who and how many, not you.
 
-Read `variants/cold-midd-personal-10min.md` and `variants/referral-15min.md` in full. Do not
-work from memory or paraphrase them; copy drifts every time it is summarised.
+**`BRIEF.md` is the first thing you read.** It holds the target profile, the daily count, notes
+from previous runs, and current context about what Max is building. He edits it; you follow it.
+
+- **Running interactively** (Max is here): ask whether the brief is still current, and what he
+  wants today. If he names a different profile or count, follow that and offer to update
+  `BRIEF.md` so tomorrow's unattended run inherits it.
+- **Running unattended** (the morning trigger): `BRIEF.md` is the whole instruction. There is
+  nobody to ask.
+
+Never substitute your own idea of who is worth contacting. If the brief is unclear and nobody is
+there to ask, do the smallest defensible thing and say in the report that the brief needs work.
+
+## Then read the rules, in full
+
+- `variants/cold-midd-personal-10min.md` and `variants/referral-15min.md` - the reference emails,
+  the structure, the length budget.
+- `email_personalization_prompt.md` - the full banned-AI-phrase list and writing rules.
+
+Do not work from memory or paraphrase these. Copy drifts every time it is summarised, and the
+banned-phrase list is the thing that keeps these emails from reading like everyone else's.
 
 ## Reaching the sheet
 
@@ -71,8 +89,8 @@ shell profile, so never depend on it.
 
 ## Step 1 - Load who is already known
 
-Read every tab of the sheet and `contacts-log.csv`. Everyone already there is disqualified, on
-any tab, regardless of outcome.
+Read every tab of the sheet and `contacts-log.csv`. **This is a dedupe check and nothing else.**
+Everyone already there is disqualified, on any tab, regardless of outcome.
 
 Match on **name and on email domain plus surname**. "Mike Seibel" and "Michael Seibel" are one
 person, and re-emailing someone who already said no is worse than not emailing at all.
@@ -82,16 +100,12 @@ they never reached the sheet.
 
 ## Step 2 - Find candidates
 
-Target profile, in priority order:
+**The target profile and the count both come from `BRIEF.md`.** Do not invent your own and do
+not fall back to a remembered profile; the brief is the only authority on who Max wants today.
 
-1. **Middlebury alumni** in AI, software, finance, or venture. The school tie is the strongest
-   opener available and nobody else can use it.
-2. **Founders or researchers in AI for education** - adjacent to what Max is building.
-3. **People whose path rhymes with Max's** - self-taught builders, humanities-to-code switchers,
-   people who started something at 20.
-4. **Operators two to fifteen years ahead.** A Series A founder replies. A household name does not.
+What follows is how to execute against whatever the brief says.
 
-Hard exclusions:
+Hard exclusions, which apply regardless of what the brief asks for:
 
 - **Anyone not verifiably alive and working.** An earlier list contained John Deere (d. 1886),
   A. Barton Hepburn (d. 1922), and Willard C. Butcher (d. 2012), at banks that no longer exist.
@@ -99,7 +113,51 @@ Hard exclusions:
 - Anyone already in the sheet, the log, or a recent `daily/` folder.
 
 Find more candidates than you need. Some will fail research, and you want to drop those without
-being tempted to keep a weak one to hit ten.
+being tempted to keep a weak one to hit the number.
+
+### Use web search only
+
+**Do not use Firecrawl.** Max's instruction, and it is out of credits anyway. Research runs on
+web search plus direct page fetches, and on cheap structured endpoints where they exist: the
+GitHub API, arXiv, Maven Central, Google Scholar, company team pages, `middlebury.edu`.
+
+### Search budget is finite, and it binds
+
+On the first live run one researcher **exhausted its 200-call web search budget** mid-task. It
+still delivered, but it could not run the broader sweep it wanted to.
+
+A full batch at that depth will hit limits. Manage it:
+
+- Do not give one agent an open-ended "find someone" brief when a narrower one will do. Naming a
+  domain and a seniority band cuts the search space hard.
+- If an agent reports budget exhaustion, treat its result as **provisional**, not wrong, and note
+  in the report which checks it could not run.
+- Prefer primary sources that are cheap to fetch: `middlebury.edu` pages, company team pages,
+  arXiv PDFs, the GitHub API. LinkedIn and Facebook block automated fetch and burn calls for
+  nothing.
+
+### Running researchers in parallel
+
+Dispatch one research subagent per person. They are isolated by design, which is what stops one
+agent quietly inheriting another's assumptions, but it also means **they cannot see each other's
+findings and will converge on the same obvious person.**
+
+This is not hypothetical. On the first live run, the "AI founder" and "software founder" agents
+independently returned Andy Rossmeissl, because he is the strongest match for both.
+
+Prevent it:
+
+- Give each agent a **distinct domain** (AI, edtech, venture, software, quant) *and* an explicit
+  list of names already claimed this run.
+- Assign domains that do not overlap. "AI founder" and "software founder" overlap heavily; "AI
+  research" and "developer tooling" do not.
+- When a collision happens anyway, **keep the better-researched result and re-dispatch for the
+  empty slot** with the taken name added to the exclusions. Do not paper over it by shipping nine.
+
+A collision is not wasted work. The second pass on Andy Rossmeissl found a better email
+(`andy@continuousartifact.com`, published on his own site, versus a GitHub alias he likely
+filters) and a stronger angle (self-taught, no CS degree). **When two agents return the same
+person, merge their findings and take the strongest of each field** rather than discarding one.
 
 ## Step 3 - Research each person properly
 
@@ -130,10 +188,99 @@ Then go deeper, because the email depends on it. Look for:
 it `GUESSED` and **leave the Email cell empty**. A blank email next to a verified LinkedIn URL
 is more useful, because LinkedIn still reaches them.
 
-Hunter has 50 searches/month on the free tier. Check remaining quota at
-`https://api.hunter.io/v2/account?api_key=...` before spending any. At ten people a day it runs
-out in five days, so spend it on people who are otherwise unreachable. If the key is missing,
-say so; do not fall back to guessing.
+Where a real address turns up, record *how it was published*, because that determines whether it
+will actually be read:
+
+| Kind | Grade | Note |
+|---|---|---|
+| Listed on the company's own team page | `VERIFIED` | best case, a real monitored mailbox |
+| Published on their personal site | `HIGH` | usually read, but may be a side-project inbox |
+| Author address on public commits | `MEDIUM` | often a tagged alias they filter |
+| Generic `hello@` / `info@` | `LOW` | reaches a queue, not the person |
+| Anything you constructed | `GUESSED` | leave the Email cell empty |
+
+An address being published is not the same as it being monitored. Say which one you have.
+
+**Primary sources only for load-bearing claims.** Middlebury affiliation, current role, and
+anything that goes into the email must come from a page actually read, not a search-result
+snippet. Aggregators such as RocketReach and ZoomInfo are not sources. On the first live run one
+of them asserted a Middlebury "Architecture and Mathematics" degree that would have rhymed
+perfectly with Max's applied math, and no primary source confirmed it. That claim stayed out of
+the email. **A perfect-sounding fact you cannot trace is the most dangerous kind.**
+
+**A page being institutional does not make it current.** Middlebury's own ELC video pages all
+carry an identical `article:published_time` of 2026-06-18, which is a site-migration artifact
+rather than a publication date. The companion page for one alum still lists her at a company she
+left in May 2025. So a `middlebury.edu` page is excellent proof of *class year and affiliation*
+and weak proof of *where someone works today*.
+
+Split the two apart when verifying:
+
+- **Class year, degree, past affiliation** - an institutional page is the best source available.
+- **Current employer and title** - needs something the person controls and updates: a live
+  LinkedIn page title, a GitHub profile with recent activity, a dated post they authored, a
+  company team page that lists them today.
+
+When the two disagree, the self-maintained source wins for currency and the institutional one
+wins for history. Say which you relied on.
+
+### Look for a published address first, always
+
+**Order matters. Search for a real published address before touching Hunter.** A published
+address is better evidence and costs no quota. In order:
+
+1. **The company's own site** - team page, about page, contact page. Best case: a real monitored
+   mailbox, graded `VERIFIED`.
+2. **Their personal site or blog.** Often an About or Contact section. Graded `HIGH`. The first
+   run found `simon@sirupsen.com` this way.
+3. **Public artifacts they authored** - git commit metadata, arXiv PDFs, conference papers,
+   published slides. Graded `MEDIUM`, since these are often tagged aliases they filter.
+4. **Only then, Hunter.** See below.
+
+Tell the research agents this ordering explicitly in their brief. An agent that jumps to Hunter
+first burns quota on someone whose address was on their own homepage.
+
+### Hunter is mandatory when no address is published
+
+**If you cannot find a published address, you MUST run a Hunter search before recording "no
+email". Not optional. Not "if it seems worth it".**
+
+This is the single most valuable thing Hunter does, and the first live run got it exactly
+backwards: four of five people had no published address, and it used **zero** searches because
+the guidance here read as "conserve this". Two of those four were then found on the first try,
+both verified valid:
+
+```
+Immad Akhund   / mercury.com      -> immad@mercury.com            score 84, valid
+Patrick Dorton / rational360.com  -> patrickdorton@rational360.com score 98, valid
+```
+
+Conserving the quota to zero while shipping unreachable contacts is the worst possible outcome.
+An unused search at month end is worth nothing; a found address is worth the entire batch.
+
+**The procedure:**
+
+```bash
+set -a; . ./credentials/.env; set +a
+curl -s "https://api.hunter.io/v2/email-finder?domain=COMPANY.com&first_name=FIRST&last_name=LAST&api_key=$HUNTER_API_KEY"
+```
+
+Then grade by what Hunter returns, not by hope:
+
+| Hunter says | Record |
+|---|---|
+| `verification.status: valid`, score 80+ | `VERIFIED`, use the address |
+| `verification.status: valid`, score 50-79 | `HIGH`, use the address |
+| returns an address, not verified | `MEDIUM`, use it and say it is unverified |
+| returns nothing | genuinely no email. `GUESSED`, leave the cell empty |
+
+**Get the domain right first.** Hunter keys off the company domain, so a wrong domain returns
+nothing and wastes a search. Confirm it from the company's own site before searching.
+
+**Budget.** 50 searches a month, 100 verifications. At five people a day, expect to need three or
+four searches per batch, which is roughly 100/month, so it will run out. Spend them on people
+with no published address, never on someone whose address you already have. Report usage at the
+end. If the key is missing, say so plainly and never fall back to guessing a pattern.
 
 ## Step 4 - Find the angle
 
@@ -161,22 +308,94 @@ If after genuine effort no honest angle exists, **drop the person and say so in 
 
 ## Step 5 - Write the emails
 
-Variant: real referral → `referral-15min`. Everything else → `cold-midd-personal-10min`.
+### Pick the variant, and spread them across the batch
 
-Follow the reference email in the variant file exactly: structure, length, sign-off. Under 120
-words. **No em dashes.** No availability windows. Never "I came across", "I noticed", "your
-remarkable", "I would be honored", "resonates with me".
+`variants/` holds five active variants. **Do not send the whole batch on one id.** Three of them
+exist to answer a specific question, and they only answer it once each has 15-20 sends behind it.
 
-Read each finished email once as if you were the recipient. If the honest reaction is "this is
-a form letter", it is not done.
+| Variant | Use when | Length |
+|---|---|---|
+| `referral-15min` | a real person offered the referral | 90-95 |
+| `elite-decision-10min` | research documented a hard call they made | 90-95 |
+| `elite-brevity-10min` | a firehose inbox, and the read fits in one short sentence | **~55** |
+| `elite-builder-10min` | a builder who respects evidence of work over stated interest | 90-100 |
+| `cold-midd-personal-10min` | the control. Everything else | 90-95 |
+
+On a five-person batch, aim for roughly **two controls and three different experiments.** Assign
+by fit first: a documented hard decision makes `elite-decision-10min` the obvious pick, an
+institutional figure rules out `elite-builder-10min`. Where two fit equally, choose the one with
+fewer sends so far.
+
+**Record the id in the sheet's `Email Variant` column.** It is the only link between a send and
+its outcome. A batch that is all one id teaches nothing.
+
+### Length: 90-95 words
+
+**That is the band. Not a cap, a band.** Count the body words and land inside it.
+
+**Counting is a gate, not a note.** Count, and if the number is outside 90-95, revise and count
+again *before* writing the file. Run 2 wrote emails at 88 and 97 and recorded the count next to
+them, which means it measured and shipped anyway. Recording a violation is not the same as fixing
+one.
+
+Body words means `Hi {name},` through `Max` inclusive.
+
+- Under 90 means something was cut that should not have been. Usually the read has lost the
+  detail that proved the research.
+- Over 95 means the read is carrying stacked clauses. Split it or cut it.
+
+The one exception is `elite-brevity-10min`, which is deliberately ~55 words and tests whether
+brevity beats the band. Its own file governs.
+
+If the read runs past one sentence, it is not finished being edited.
+
+### Everything else
+
+Follow the reference email in the variant file exactly: structure, sign-off, ordering. **No em
+dashes.** No availability windows. Never "I came across", "I noticed", "your remarkable", "I
+would be honored", "resonates with me". The full banned list is in
+`email_personalization_prompt.md`.
+
+Read each finished email once as if you were the recipient. If the honest reaction is "this is a
+form letter", it is not done.
 
 ## Step 6 - Put the drafts in Outlook
 
 Max reviews and sends from his Middlebury Outlook, so the drafts go there.
 
-Use Claude in Chrome against `https://outlook.office.com/mail/` (Middlebury account). For each
-person: new message, fill To / Subject / body, close it so Outlook saves it to Drafts. **Do not
-click Send.** Ever. Max sends them himself after reading.
+**Use `outlook_drafter.py`. It is the only method that works unattended.** It drives a headless
+browser using the saved profile in `.playwright_session/`, so it needs no Chrome, no extension and
+nobody at the keyboard. There is no send path anywhere in that file, by design.
+
+```bash
+./.venv/bin/python outlook_drafter.py --check          # is the session still alive?
+./.venv/bin/python outlook_drafter.py --create daily/YYYY-MM-DD/drafts.json
+```
+
+Write `drafts.json` alongside the markdown as a list of `{"to", "subject", "body"}` objects, and
+include only people who have a real address.
+
+If `--check` reports the session is dead, cookies have expired. **Do not try to work around it and
+do not stop the run.** Write the drafts to the repo, and say in the report that Outlook was
+skipped and that Max needs to run:
+
+```bash
+./.venv/bin/python outlook_drafter.py --login
+```
+
+**Claude in Chrome is the interactive fallback only.** If Max is present and the extension is
+connected, driving `https://outlook.office.com/mail/` by hand also works. It is unavailable in a
+scheduled run, so never depend on it. **Do not click Send.** Ever, by either route.
+
+**People with no email cannot be drafted.** An Outlook draft needs a recipient. When research
+finds no real address, write the draft to the repo only, put the LinkedIn URL at the top as the
+route, and say so in the report. Do not invent an address to make the draft creatable. Expect this on a large share of any
+batch aimed at this altitude, and only after Hunter has been tried.
+
+**People with an unconfirmed employer cannot be sent.** If research cannot confirm where someone
+currently works, write the draft but mark it clearly as needing confirmation, and keep the
+employer's name out of the copy. Opening with the wrong company ends the email at line one. Lean
+on published work instead, which stays true regardless of where they sit today.
 
 If Outlook is not reachable - not logged in, or the browser is unavailable - **do not stop the
 run.** Write the drafts to the repo and say clearly in the report that Outlook was skipped and
@@ -210,7 +429,13 @@ Meeting Notes | Ask Them About | What They Can Offer Me | What I Can Offer Them 
 - **Email Variant** = the id used. Never blank; it is the only link between a send and its
   result. On a re-contact, append rather than overwrite.
 - **Personalized Insert** = the read from step 4.
-- Leave `Sent Date`, `Meeting Notes`, `Ask Them About`, both offer columns, and `Notion Page` empty.
+- **Meeting Notes** = a short, concrete line on **what they do and why they are worth Max's
+  time.** One or two sentences. This is required on every new row, not optional. Before a meeting
+  happens it is the "who is this and why do I care" line Max reads when scanning the tab; after a
+  meeting the `update-contacts` skill appends the real notes below it. The first live run left
+  this blank on all five rows because this step used to say to leave it empty.
+- Leave `Sent Date`, `Ask Them About`, both offer columns, and `Notion Page` empty. Those are
+  filled after an actual conversation.
 
 **Check before writing, and refuse the whole batch rather than half-writing it:**
 
@@ -232,8 +457,8 @@ State plainly:
 
 ## What good looks like
 
-Ten people who are alive, currently in the role you named, not already known, each with a read
-that could not be transplanted onto anyone else, and an email address that is either verified or
+A full batch of people who are alive, currently in the role you named, not already known, each
+with a read that could not be transplanted onto anyone else, and an email that is either real or
 honestly blank. Drafts sitting in Outlook, ready to read and send.
 
-Nine of those is a good day. Ten generic ones is a bad one.
+One short of the number, all researched, is a good day. A full batch of generic ones is a bad one.

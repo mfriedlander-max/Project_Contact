@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Daily outreach, 8:04am US Eastern.
+
+  This machine's clock is UTC-3, so Eastern time has to be converted by hand.
+  8:04am EDT (UTC-4) = 9:04 local. When US daylight saving ends in November,
+  8:04am EST (UTC-5) = 10:04 local, and Hour below must change from 9 to 10.
+
+  StartCalendarInterval fires a MISSED job as soon as the machine wakes, so a
+  closed laptop at 9:04 runs the batch the moment it is opened. That is the
+  intended behaviour, not a fallback.
+
+  Install:
+    cp scheduling/com.maxfriedlander.daily-outreach.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.maxfriedlander.daily-outreach.plist
+
+  Check:    launchctl list | grep daily-outreach
+  Run now:  launchctl start com.maxfriedlander.daily-outreach
+  Stop:     launchctl unload ~/Library/LaunchAgents/com.maxfriedlander.daily-outreach.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.maxfriedlander.daily-outreach</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/maxfriedlander/code/Networking/Project_Contact/scheduling/run-daily-outreach.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/maxfriedlander/code/Networking/Project_Contact</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>4</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/maxfriedlander/code/Networking/Project_Contact/scheduling/logs/outreach.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/maxfriedlander/code/Networking/Project_Contact/scheduling/logs/outreach.err.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <!-- Do not let macOS defer this to save power; it is a once-a-day job. -->
+    <key>LowPriorityBackgroundIO</key>
+    <false/>
+    <key>ProcessType</key>
+    <string>Interactive</string>
+</dict>
+</plist>
