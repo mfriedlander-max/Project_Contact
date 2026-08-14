@@ -30,6 +30,11 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:$PATH"
 # other project, keep OMC exactly as it was.
 export DISABLE_OMC=1
 
+# Each invocation below is a fresh Claude session, so this applies to it even
+# though it cannot change an already-running one. The default 200 was exhausted
+# mid-task by a single research pass, which left that person's checks incomplete.
+export CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION=600
+
 # Wait for the network before doing anything.
 #
 # launchd fires a missed calendar job the instant the machine wakes, which is
