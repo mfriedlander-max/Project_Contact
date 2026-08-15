@@ -339,35 +339,17 @@ was made.
 line and the opener. `none found` means it appears in neither. This is a per-person decision, so
 a batch can and should be mixed.
 
-**5a. The read must land a judgment, not stop at an observation.**
+**5a and 5b. The two ways a read fails.**
 
-A counterintuitive fact about someone is not yet a read. The read is finished when it says what
-Max makes of it, and a busy person has heard the fact about themselves many times but not the
-view.
+A read that stops at an observation, and an overlap the reader cannot see. **Both are defined with
+a worked before-and-after in `variants/README.md`, which is required reading for this step.**
 
-> **observation only:** "You quit drinking, then built the biggest non-alcoholic beer brand in
-> America by aiming it at drinkers instead of at people who quit."
-> **read:** "...which is a bet that the bigger market is also the harder sell."
+The short form, for checking your own work:
 
-Test it: strip the last clause. If the sentence still says the same thing, the judgment was never
-there.
-
-**5b. If a fact about Max was chosen because it overlaps, make the overlap visible.**
-
-The reader cannot see the research. Run 6 opened with "$30k cold calling small businesses" and
-then wrote a read about quitting drinking, because the overlap (he built distribution by
-cold-emailing race directors) lived in the research notes and never reached the email. To the
-recipient the first sentence is a non-sequitur.
-
-Surface the rhyming part of their history in the read itself, and let the two halves share a word:
-
-> "I made $30k cold calling small businesses to help pay for school. Building the biggest
-> non-alcoholic beer brand in America off **cold emails** to race directors, and aiming it at
-> drinkers rather than at people who quit, is a bet that the bigger market is also the harder
-> sell."
-
-Never write "just like you" or "we both". The shared word does the work silently. If the overlap
-cannot be made visible in one clause, it was decoration, so use a different fact.
+- **Strip test.** Delete the final clause of the read. If the sentence still says the same thing,
+  there was never a judgment in it.
+- **Visible overlap.** If a fact about Max was chosen because it rhymes with their history, both
+  halves must share a word. Never "just like you" or "we both".
 
 **5c. Write the read from the trajectory, not from the achievements.**
 

@@ -80,6 +80,14 @@ or carry a detail over from a previous run. If it is not written here, it does n
 | Played a lot of **tennis** | only if they have a real, sourced tennis connection |
 | Lived in **Barcelona**; **living in Buenos Aires now** | anyone with a Spain, Argentina, or Latin America connection. He is there *now*, not going later |
 
+### Picking the right fact is only half the job
+
+A correctly chosen fact still fails if the reader cannot see why it is there, and the read still
+fails if it stops at an observation. Both have happened for real.
+
+**`variants/README.md` has the worked before-and-after.** Read it before writing. It is not
+repeated here, because a rule in two places drifts into two different rules.
+
 ### The conviction angle, and how to use the money story
 
 **Do not use "we turned down money" as a flex.** Used flat, it reads as a boast from someone with
