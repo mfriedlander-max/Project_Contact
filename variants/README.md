@@ -70,7 +70,7 @@ changes exactly one thing, so a win is attributable:
 per variant plus two controls, and results only mean something once each id has 15-20 sends
 behind it. Attribution is the `Email Variant` column, so it is never left blank.
 
-## The two ways a read fails
+## Worked examples: how these emails fail
 
 These apply to every variant. Both were found by reading a finished email, not by reasoning about
 the rules, which is why the worked example matters more than the statement of them.
@@ -93,7 +93,14 @@ opener reads as a non-sequitur.
 Make both halves share a word. Never write "just like you", "we both", or "like you, I" - the
 shared word does the work silently, and claiming the parallel out loud is worse than not drawing it.
 
-### The worked example
+### The examples
+
+Each is a real email that went out or nearly did. **Read them; the rules above are short and the
+examples are the part that transfers.**
+
+---
+
+#### Example 1: Bill Shufelt, Athletic Brewing
 
 Bill Shufelt, Athletic Brewing. The research established that he built Athletic's first
 distribution by **cold-emailing race directors** and sponsoring 70 events in his first summer,
@@ -121,6 +128,52 @@ the final clause is now a claim he could disagree with.
 A third, smaller fix in the same email: the question was "if you had let it stay a sobriety story",
 which implies drift. It is now "if you had aimed it at the people who quit", which is the decision
 he actually faced. **Counterfactuals should name the choice, not describe passivity.**
+
+### Adding an example
+
+**Add one whenever a finished email turns out to have a defect worth naming.** This section is the
+memory of what has actually gone wrong, and it is more useful than any amount of rule-writing,
+because a rule tells you what to avoid and an example shows you what it looked like when someone
+failed to.
+
+The bar, and it is a real bar:
+
+| Add it if | Do not add it if |
+|---|---|
+| The email was actually written, and the defect was found by reading it | It is a hypothetical failure nobody has made |
+| The fix is demonstrable as a before-and-after on the same facts | The "fix" is just a different email |
+| The failure could plausibly recur | It was a one-off typo or a wrong fact |
+| Naming it changes what a future writer does | It is a matter of taste |
+
+The format, kept identical so they are scannable:
+
+```markdown
+#### Example N: {Person}, {Company}
+
+{One or two lines of context: what the research found, and why the choice made sense at the time.
+An example is only instructive if the mistake was reasonable.}
+
+> **Before, and what is wrong with it.**
+>
+> "{the actual text}"
+
+{Why it fails, in the reader's terms rather than the rules'. What does the recipient see?}
+
+> **After.**
+>
+> "{the actual text, same facts, same length band}"
+
+{What changed, one bolded fix per paragraph. Name the general rule it produced, if it produced one.}
+```
+
+Two things that keep this section honest:
+
+- **Use the real text, not a cleaned-up version.** The point is what actually got written.
+- **Keep the fix in the same length band and on the same facts.** If the "after" gets to be longer
+  or use different research, it proves nothing.
+
+When an example produces a rule general enough to apply every time, add the rule to the numbered
+list at the top of this section and leave the example below it as the evidence.
 
 ## House rules
 

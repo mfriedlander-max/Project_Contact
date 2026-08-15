@@ -132,7 +132,8 @@ remarkable" / "I would be honored" / "resonates with me". Every claim about Max 
 
 **The read must land a judgment, not stop at an observation.** Strip the final clause: if the
 sentence still says the same thing, the judgment was never there. `variants/README.md` carries the
-worked before-and-after that this rule came from.
+worked before-and-after this rule came from, and grows an example each time a finished email turns
+out to have a defect worth naming.
 
 **If a fact about Max was chosen because it overlaps them, make the overlap visible.** The reader
 cannot see the research. Let both halves share a word, and never write "just like you" or "we

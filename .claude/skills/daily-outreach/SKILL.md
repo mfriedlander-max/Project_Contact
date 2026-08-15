@@ -61,8 +61,10 @@ there to ask, do the smallest defensible thing and say in the report that the br
 
 ## Then read the rules, in full
 
-- `variants/README.md` - **the two ways a read fails, with a worked before-and-after.** Read this
-  every run. The rules are short; the example is the part that transfers.
+- `variants/README.md` - **the worked examples of how these emails fail.** Read this every run.
+  The rules are short; the examples are the part that transfers. It grows: whenever a finished
+  email turns out to have a defect worth naming, the before-and-after is added there, so it is the
+  memory of what has actually gone wrong rather than a list of hypotheticals.
 - `variants/cold-midd-personal-10min.md` and `variants/referral-15min.md` - the reference emails,
   the structure, the length budget.
 - `email_personalization_prompt.md` - the full banned-AI-phrase list and writing rules.
