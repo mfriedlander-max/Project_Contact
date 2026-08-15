@@ -31,10 +31,10 @@ Francisco, or shipped a feature that cannibalised their own product, proves you 
 ```
 Hi {first_name},
 
-I'm Max, 20, ambitious, curious about entrepreneurship, and a current Midd kid. {the specific
-decision, stated plainly, with what made it hard}
+{who Max is - one clause. Middlebury form ONLY if they have a confirmed connection, otherwise a
+hook from BRIEF.md} {the specific decision, stated plainly, with what made it hard}
 
-I'm building an AI teaching assistant for Middlebury, so I'm hungry to learn and would love to
+I'm building an AI teaching assistant, so I'm hungry to learn and would love to
 know {what would have happened / what you saw that others did not / what you would decide
 differently now}. If you're open to 10 minutes, I promise I'll pay it forward.
 

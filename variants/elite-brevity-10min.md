@@ -33,7 +33,9 @@ knowing.
 ```
 Hi {first_name},
 
-Max here, 20, Middlebury sophomore building an AI teaching assistant.
+{Max here, 20, + one identifying clause. Use "Middlebury sophomore" only with a confirmed
+connection, otherwise "a sophomore studying applied math" or a hook from BRIEF.md} building an
+AI teaching assistant.
 
 {the read - one sentence, a judgment about a specific decision they made}
 

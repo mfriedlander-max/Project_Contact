@@ -152,16 +152,25 @@ def cmd_create(args):
             ctx.close()
             sys.exit("SESSION DEAD - run --login first. No drafts created.")
 
-        made = 0
+        made, receipt = 0, []
         for d in drafts:
             try:
                 create_draft(page, d["to"], d["subject"], d["body"])
                 made += 1
+                receipt.append({"to": d["to"], "subject": d["subject"], "created": True})
                 print("  drafted: %-34s %s" % (d["to"], d["subject"]))
             except Exception as e:
+                receipt.append({"to": d["to"], "subject": d["subject"],
+                                "created": False, "error": str(e)[:200]})
                 print("  FAILED:  %-34s %s" % (d["to"], str(e)[:90]))
         ctx.close()
-        print("\n%d of %d drafts created. Nothing was sent." % (made, len(drafts)))
+
+        # A receipt written by this script, not by a model. A run cannot claim
+        # drafts it did not create, which is exactly what run 4 did.
+        out = path.parent / (path.stem + "-receipt.json")
+        out.write_text(json.dumps(receipt, indent=1))
+        print("\nreceipt: %s" % out)
+        print("%d of %d drafts created. Nothing was sent." % (made, len(drafts)))
         return 0 if made == len(drafts) else 1
 
 

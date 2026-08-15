@@ -153,6 +153,35 @@ def main():
         except Exception as e:
             check("drafts.json parses", False, str(e)[:50])
 
+    print("\nOUTLOOK")
+    # A run reporting "5 of 5 drafts created" is not evidence. Run 4 said exactly
+    # that and only 2 of 5 existed. Check the mailbox itself.
+    queued_addrs = []
+    for f in folder.glob("drafts*.json"):
+        try:
+            queued_addrs += [q["to"] for q in json.loads(f.read_text()) if q.get("to")]
+        except Exception:
+            pass
+    if not queued_addrs:
+        check("drafts queued for Outlook", False, "no drafts*.json entries")
+    else:
+        receipts = list(folder.glob("*-receipt.json"))
+        if not receipts:
+            check("drafter receipt present", False,
+                  "no *-receipt.json. The run did not use outlook_drafter.py, so its "
+                  "claim to have created drafts is unverifiable")
+        else:
+            created, failed = [], []
+            for rf in receipts:
+                for r in json.loads(rf.read_text()):
+                    (created if r.get("created") else failed).append(r["to"])
+            check("drafter receipt present", True, "%d receipt file(s)" % len(receipts))
+            check("every created draft confirmed by the drafter", not failed,
+                  "failed: %s" % failed if failed else "%d created" % len(created))
+            unreceipted = [a for a in queued_addrs if a not in created and a not in failed]
+            check("every queued address has a receipt entry", not unreceipted,
+                  "no receipt for: %s" % unreceipted if unreceipted else "")
+
     print("\nSHEET")
     cfg = json.loads((ROOT / "outlook_config.json").read_text())
     creds = Credentials.from_service_account_file(

@@ -3,7 +3,7 @@
 - **To:** marcos.galperin@mercadolibre.com (VERIFIED)
 - **Company:** MercadoLibre
 - **Role:** Founder & Executive Chairman
-- **Contact route:** https://en.wikipedia.org/wiki/Marcos_Galperin
+- **Contact route:** https://x.com/marcos_galperin (he posts there; Wikipedia is not a route)
 - **Subject:** Writing From Buenos Aires, Hungry to Learn
 - **Variant:** `elite-brevity-10min`
 - **Body words:** 55

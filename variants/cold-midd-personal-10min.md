@@ -44,7 +44,13 @@ Max
 ## Structure
 
 1. `Hi {first_name},`
-2. **Who Max is** - age, posture, Middlebury. Kept to one clause; it is not the point.
+2. **Who Max is** - one clause, and it is a SLOT, not fixed text. Pick from `BRIEF.md`:
+   - Confirmed Middlebury connection: `I'm Max, 20, ambitious, curious about entrepreneurship,
+     and a current Midd kid.`
+   - No connection: open with a hook instead. `I'm Max, 20, a sophomore studying applied math,
+     and I made $30k cold calling small businesses to help pay for school.`
+   The reference email below uses the Middlebury form because George Lee is an alum. Do not copy
+   that clause to someone with no tie to the school.
 3. *(optional)* **The shared thing** - see below.
 4. **The read on them** - their path plus a judgment about it. One or two sentences.
 5. **What Max is building** that makes the question genuine.

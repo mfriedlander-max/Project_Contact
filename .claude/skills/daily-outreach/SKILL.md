@@ -1,6 +1,6 @@
 ---
 name: daily-outreach
-description: Use each morning at 8am EST, or when Max says "run outreach", "find 10 people", "do today's batch", or asks for new people to connect with. Also use when a batch of cold emails needs researching and drafting for Middlebury networking.
+description: Use each morning at 8am EST, or when Max says "run outreach", "do today's batch", "find people", or asks for new people to connect with. Also use when a batch of cold emails needs researching and drafting for Middlebury networking.
 ---
 
 # Daily Outreach
