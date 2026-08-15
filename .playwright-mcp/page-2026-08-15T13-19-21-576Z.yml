@@ -1,0 +1,209 @@
+- generic [active] [ref=f10e1]:
+  - navigation "Skip to content":
+    - link "Skip to content" [ref=f10e2] [cursor=pointer]:
+      - /url: "#midd-main"
+  - generic [ref=f10e3]:
+    - complementary [ref=f10e4]:
+      - paragraph [ref=f10e5]:
+        - text: We use cookies and other technologies to better understand a visitor's experience and to help improve our websites. By continuing to use the website, you consent to Middlebury's use of cookies and other technologies as outlined in our
+        - link "Privacy Policy" [ref=f10e6] [cursor=pointer]:
+          - /url: https://go.middlebury.edu/privacy
+        - text: .
+      - button "Close cookie consent banner" [ref=f10e7] [cursor=pointer]: Close
+    - generic [ref=f10e8]:
+      - banner [ref=f10e9]:
+        - generic [ref=f10e10]:
+          - link "Logo for Middlebury Middlebury Middlebury" [ref=f10e12] [cursor=pointer]:
+            - /url: https://www.middlebury.edu
+            - img "Logo for Middlebury" [ref=f10e13]
+            - img "Middlebury" [ref=f10e14]
+            - generic [ref=f10e15]: Middlebury
+          - navigation "Primary navigation" [ref=f10e16]:
+            - list [ref=f10e17]:
+              - listitem [ref=f10e18]:
+                - link "Our Schools" [ref=f10e19] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=f10e20]:
+                - link "Apply" [ref=f10e21] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=f10e22]:
+                - link "About Middlebury" [ref=f10e23] [cursor=pointer]:
+                  - /url: https://www.middlebury.edu/about
+              - listitem [ref=f10e24]:
+                - link "Offices and Services" [ref=f10e25] [cursor=pointer]:
+                  - /url: https://www.middlebury.edu/offices-services
+              - listitem [ref=f10e26]:
+                - link "Midd Stories" [ref=f10e27] [cursor=pointer]:
+                  - /url: https://www.middlebury.edu/stories
+          - region "Search" [ref=f10e28]:
+            - button "Search" [ref=f10e29] [cursor=pointer]
+      - main [ref=f10e30]:
+        - heading "Search" [level=1] [ref=f10e35]
+        - tablist [ref=f10e38]:
+          - generic [ref=f10e41]:
+            - generic [ref=f10e43]:
+              - textbox "buscar" [ref=f10e44]: Mercado Libre
+              - button "Borrar contenido del cuadro de búsqueda" [ref=f10e46] [cursor=pointer]:
+                - generic [ref=f10e47]: ×
+            - generic [ref=f10e48]:
+              - generic [ref=f10e51]:
+                - tab "refinement" [ref=f10e52]: Todos los resultados
+                - tab "refinement" [ref=f10e53] [cursor=pointer]: GO
+                - tab "refinement" [ref=f10e54] [cursor=pointer]: Courses
+                - tab "refinement" [ref=f10e55] [cursor=pointer]: News and Announcements
+                - tab "refinement" [ref=f10e56] [cursor=pointer]: Events
+              - generic [ref=f10e57]: Aproximadamente 5 resultados (0.47 segundos)
+              - generic [ref=f10e62]:
+                - generic [ref=f10e63]:
+                  - generic [ref=f10e65]:
+                    - link "Lo que significa beber una taza de café - Middlebury" [ref=f10e68] [cursor=pointer]:
+                      - /url: https://middlebury.figshare.com/articles/thesis/Lo_que_significa_beber_una_taza_de_caf_el_mantenimiento_y_la_creaci_n_de_nuevas_tradiciones/21537798/1/files/38175024.pdf
+                    - generic [ref=f10e69]: middlebury.figshare.com › articles › thesis › files
+                    - main [ref=f10e71]:
+                      - generic [ref=f10e72]:
+                        - generic [ref=f10e73]: "Formato de archivo: PDF/Adobe Acrobat"
+                        - generic [ref=f10e74]: económicas que favorecen el libre mercado a causa de la presión internacional, como de. Washington, el Banco Mundial y el Fondo Monetario Internacional. La ...
+                  - generic [ref=f10e76]:
+                    - link "La identidad japonesa en la literatura latinoamericana - Middlebury" [ref=f10e79] [cursor=pointer]:
+                      - /url: https://middlebury.figshare.com/articles/thesis/La_identidad_japonesa_en_la_literatura_latinoamericana/21537663/1/files/38174889.pdf
+                    - generic [ref=f10e80]: middlebury.figshare.com › articles › thesis › files
+                    - main [ref=f10e82]:
+                      - generic [ref=f10e83]:
+                        - generic [ref=f10e84]: "Formato de archivo: PDF/Adobe Acrobat"
+                        - generic [ref=f10e85]: En este poema, escrito en verso libre, se lee más como un conjunto de párrafos que ... mercado. El pájaro en este contexto económico, fuera de la naturaleza, se ...
+                  - generic [ref=f10e87]:
+                    - 'link "Mujeres Creando: - Middlebury" [ref=f10e90] [cursor=pointer]':
+                      - /url: https://middlebury.figshare.com/articles/thesis/Mujeres_Creando_Un_feminismo_boliviano_nico_y_revolucionario/21537819/1/files/38175042.pdf
+                    - generic [ref=f10e91]: middlebury.figshare.com › articles › thesis › files
+                    - main [ref=f10e93]:
+                      - generic [ref=f10e94]:
+                        - generic [ref=f10e95]: "Formato de archivo: PDF/Adobe Acrobat"
+                        - generic [ref=f10e96]: mercado y la regulación del poder político-administrativo”. Este espacio ... manera distinta pero ninguna mujer está libre de sufrirlas. Por esta razón ...
+                  - generic [ref=f10e98]:
+                    - link "4. El Movimiento Misionero Evangélico - Middlebury College" [ref=f10e101] [cursor=pointer]:
+                      - /url: https://community.middlebury.edu/~dstoll/ALPC04.rtf
+                    - generic [ref=f10e102]: community.middlebury.edu › ~dstoll › ALPC04
+                    - main [ref=f10e104]:
+                      - generic [ref=f10e105]:
+                        - generic [ref=f10e106]: "Formato de archivo: Rich Text Format"
+                        - generic [ref=f10e107]: ... mercado para ofrecer un camino agradable para la salvación definitivamente funcionaba (22). ... Bajo la dirección de un personal que se sentía libre de ...
+                  - generic [ref=f10e109]:
+                    - 'link "El Femicidio: Las Causas Subyacentes y el Caso Especial de ..." [ref=f10e112] [cursor=pointer]':
+                      - /url: https://middlebury.figshare.com/articles/thesis/El_Femicidio_Las_Causas_Subyacentes_y_el_Caso_Especial_de_Argentina/21538158/1/files/38175384.pdf
+                    - generic [ref=f10e113]: middlebury.figshare.com › articles › thesis › files
+                    - main [ref=f10e115]:
+                      - generic [ref=f10e116]:
+                        - generic [ref=f10e117]: "Formato de archivo: PDF/Adobe Acrobat"
+                        - generic [ref=f10e118]: 18 abr 2018 ... 69 Hay un mercado de hombres a lo que les gusta ver la violencia ... libre de este problema. En algunas de mis entrevistas, hubo una ...
+                - link "buscarBuscar \" Mercado Libre \" en Google" [ref=f10e120] [cursor=pointer]:
+                  - /url: https://www.google.com/search?client=ms-google-coop&q=Mercado+Libre&cx=601bee7edcca142fa
+                  - generic [ref=f10e121]:
+                    - img "buscar" [ref=f10e122]
+                    - text: Buscar "
+                    - generic [ref=f10e124]: Mercado Libre
+                    - text: "\" en Google"
+                - contentinfo "Branding de la Búsqueda personalizada de Google" [ref=f10e126]:
+                  - link [ref=f10e127] [cursor=pointer]:
+                    - /url: https://cse.google.com/?ref=b&hl=es
+                    - img "optimizado por Google" [ref=f10e128]
+      - contentinfo [ref=f10e129]:
+        - generic [ref=f10e131]:
+          - generic [ref=f10e133]:
+            - generic [ref=f10e134]:
+              - paragraph [ref=f10e135]: Help shape Middlebury's future.
+              - link "Make a Gift" [ref=f10e136] [cursor=pointer]:
+                - /url: https://engage.middlebury.edu/give
+            - generic [ref=f10e137]:
+              - generic [ref=f10e138]:
+                - strong [ref=f10e139]: Public Safety
+                - link "802-443-5911" [ref=f10e140] [cursor=pointer]:
+                  - /url: tel:+18024435911
+                - link "publicsafety@middlebury.edu" [ref=f10e141] [cursor=pointer]:
+                  - /url: mailto:publicsafety@middlebury.edu
+              - list [ref=f10e142]:
+                - listitem [ref=f10e143]:
+                  - link "Link to page/content on instagram" [ref=f10e144] [cursor=pointer]:
+                    - /url: https://instagram.com/middleburycollege
+                - listitem [ref=f10e146]:
+                  - link "Link to page/content on x" [ref=f10e147] [cursor=pointer]:
+                    - /url: https://twitter.com/middlebury
+                - listitem [ref=f10e149]:
+                  - link "Link to page/content on vimeo" [ref=f10e150] [cursor=pointer]:
+                    - /url: https://vimeo.com/middlebury
+                - listitem [ref=f10e152]:
+                  - link "Link to page/content on facebook" [ref=f10e153] [cursor=pointer]:
+                    - /url: https://www.facebook.com/middleburycollege
+          - generic [ref=f10e158]:
+            - heading "Quick Links" [level=3] [ref=f10e159]
+            - list [ref=f10e160]:
+              - listitem [ref=f10e161]:
+                - link "Emergency" [ref=f10e162] [cursor=pointer]:
+                  - /url: http://go.middlebury.edu/er
+              - listitem [ref=f10e163]:
+                - link "Banner9 Registration" [ref=f10e164] [cursor=pointer]:
+                  - /url: https://reg-prod.ec.middlebury.edu/StudentRegistrationSsb/ssb/registration
+              - listitem [ref=f10e165]:
+                - link "BannerWeb" [ref=f10e166] [cursor=pointer]:
+                  - /url: http://go.middlebury.edu/bannerweb
+              - listitem [ref=f10e167]:
+                - link "Campus Map" [ref=f10e168] [cursor=pointer]:
+                  - /url: http://map.middlebury.edu/
+              - listitem [ref=f10e169]:
+                - link "Covid-19 Updates" [ref=f10e170] [cursor=pointer]:
+                  - /url: https://www.middlebury.edu/office/covid-19-updates
+              - listitem [ref=f10e171]:
+                - link "Directory" [ref=f10e172] [cursor=pointer]:
+                  - /url: http://go.middlebury.edu/directory
+              - listitem [ref=f10e173]:
+                - link "Ethical Reporting" [ref=f10e174] [cursor=pointer]:
+                  - /url: https://www.middlebury.edu/enterprise-risk-management/resources/ethical-reporting
+              - listitem [ref=f10e175]:
+                - link "Library" [ref=f10e176] [cursor=pointer]:
+                  - /url: http://go.middlebury.edu/library
+              - listitem [ref=f10e177]:
+                - link "Oracle Cloud" [ref=f10e178] [cursor=pointer]:
+                  - /url: https://myapps.microsoft.com/gmhec.org
+              - listitem [ref=f10e179]:
+                - link "Report an issue with this page" [ref=f10e180] [cursor=pointer]:
+                  - /url: https://support.gmhec.org/TDClient/47/middlebury/Requests/TicketRequests/NewForm?ID=Fj69Te7J3ww_&RequestorType=Service
+              - listitem [ref=f10e181]:
+                - link "Technology Help" [ref=f10e182] [cursor=pointer]:
+                  - /url: http://go.middlebury.edu/helpdesk
+              - listitem [ref=f10e183]:
+                - link "Webmail" [ref=f10e184] [cursor=pointer]:
+                  - /url: http://go.middlebury.edu/webmail
+      - navigation "Additional navigation" [ref=f10e185]:
+        - generic [ref=f10e186]:
+          - link [ref=f10e189] [cursor=pointer]:
+            - /url: https://www.middlebury.edu
+            - img "Middlebury" [ref=f10e190]
+          - list [ref=f10e192]:
+            - listitem [ref=f10e193]:
+              - link "About Middlebury" [ref=f10e194] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/about
+            - listitem [ref=f10e195]:
+              - link "Giving" [ref=f10e196] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/alumni-and-families
+            - listitem [ref=f10e197]:
+              - link "Employment" [ref=f10e198] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/human-resources/work-middlebury
+            - listitem [ref=f10e199]:
+              - link "Offices and Services" [ref=f10e200] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/offices-services
+            - listitem [ref=f10e201]:
+              - link "Copyright" [ref=f10e202] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/about/copyright
+            - listitem [ref=f10e203]:
+              - link "Privacy" [ref=f10e204] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/about/website-privacy-policy
+            - listitem [ref=f10e205]:
+              - link "Emergency" [ref=f10e206] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/emergency-response
+            - listitem [ref=f10e207]:
+              - link "Site-Editor Login" [ref=f10e208] [cursor=pointer]:
+                - /url: /saml/login?destination=/search?query=GI+Bill
+        - link "Back to Top" [ref=f10e209] [cursor=pointer]:
+          - /url: "#midd-pagetop"
+          - generic [ref=f10e210]:
+            - generic [ref=f10e211]: Back to
+            - text: Top

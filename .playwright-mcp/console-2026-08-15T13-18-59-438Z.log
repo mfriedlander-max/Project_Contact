@@ -1,0 +1,4 @@
+[    3294ms] [ERROR] Not signed in with the identity provider. @ https://x.com/migoya:0
+[    5154ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://api.x.com/1.1/graphql/viewer_context.json:0
+[    5155ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://api.x.com/1.1/flow/viewer.json:0
+[    6757ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token. @ https://abs.twimg.com/x-web/x-web/assets/sentry-filter-VSs5z1TR.js:2

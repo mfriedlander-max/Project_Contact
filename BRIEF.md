@@ -434,3 +434,80 @@ individually. Read the failure list against the row before treating it as a verd
 matches the `drafts-N-receipt.json` files the drafter writes, so receipt addresses get counted as
 queued drafts and inflate the subject-collision and receipt checks. Harmless but noisy. Worth a
 one-line exclusion at some point.
+
+**2026-08-15 (run).** **The `alumni-and-families` stories index is now checked and it is thin, not a
+vein.** Page 1 carries nine stories and the only two at this brief's altitude are Rob Tod '91 and
+Robynne Maii '96, both contacted on 2026-08-14. Two other Middlebury pages were tried for the first
+time and are worth writing off: `alumni-and-families/innovative-startup-profiles` names exactly two
+people, Brett Perlmutter '23 and Sam Segal '23, both already in the tracker, and
+`innovation-hub/middlebury-entrepreneurs` names one person, Craig Wilson, a Collaborative Fund venture
+partner who teaches the course and is not stated to be an alum. `ways-engage/alumni-businesses` now
+301s to the PeopleGrove directory at `midd2midd.middlebury.edu`, which is behind authentication and
+cannot be read by this system at all. **Five searches and four fetches produced no new Middlebury
+name, so this batch took zero from priority 1.** That is now three consecutive runs finding the same
+thing. The untried sources remaining are Middlebury Magazine's own archive at `middleburymagazine.com`
+(distinct from the `middlebury.edu` stories index, and not yet actually read) and the Internet Archive
+copy of the magazine at `go.middlebury.edu/middmagarchive`. Crunchbase has 403'd twice and should not
+be attempted again.
+
+**2026-08-15 (run).** **Deliverability was 3 of 5, and both misses were catch-all domains.**
+`globant.com` and `sabacapital.com` both accepted the nonsense probe, which ends the matter: on a
+catch-all every candidate verifies whether or not it exists. The pattern across six runs is now clear
+enough to plan around. **A big company with a compliance department is usually a catch-all; a person
+with their own domain usually is not.** The three addresses this run all came from individuals rather
+than employers, two of them off public commit metadata. When a target's employer is large, do not
+budget calls on the corporate domain at all: go straight to their personal domain, their own site, or
+their commits.
+
+**2026-08-15 (run).** **The prober beat the finder for the fifth consecutive run, and the run used
+zero email-finder searches** because Hunter opened at 8, under the skill's threshold of 10. Note the
+quota did **not** reset on the 15th as the 2026-08-14 note predicted: the account still read 41 of 50
+searches used on the morning of the 15th. Do not plan a run around that reset date.
+
+**2026-08-15 (run).** **The one wasted spend is worth more than the four good ones.** Christina
+Cacioppo's address was already published on her own site, and the skill says never to spend a call on
+someone whose address is already published. The prober was run anyway and cost **5 verifier calls**,
+because her local part is a single letter, `c@`, which `--known` does not recognise as a pattern, so
+it silently fell back to probing four ranked candidates that were never going to be right. Two
+lessons. **`--known` only works when the known address matches a nameable format**, so check that
+before passing it. And the skill's "never spend on a published address" rule exists precisely for
+this case: the control result was worth one call, and four more bought nothing.
+
+**2026-08-15 (run).** **Two verifiers spawned sub-agents of their own, which the skill forbids**, so
+the batch consumed at least eight agents rather than five. Both extra reports corroborated their
+parent rather than contradicting it, so nothing was discarded, and one of them was genuinely useful:
+it caught that Boaz Weinstein lost at the **US Supreme Court on 2026-06-11**, 6-3, which is the
+largest fact in his current career and which the parent report missed entirely. So the cap has a real
+cost as well as a real benefit. The fix is not to raise it. It is to **state the prohibition inside
+the verifier prompt**, since the verifier never reads the skill, and to accept that a single verifier
+will sometimes miss something. Note also the timing hazard: the second report arrived **after the
+batch had been written, drafted and filed**, which is why one sheet row needed correcting afterwards.
+
+**2026-08-15 (run).** **Two sources agreeing that a number exists is not the same as the number being
+sourced.** Weinstein's $1M gift to Stuyvesant is repeated everywhere; one verifier traced the named
+library to an alumni newsletter, the other explicitly could not verify the figure from any primary
+page. It stayed out of the email, but it had gone into Meeting Notes as fact and had to be walked
+back to "a major gift." **Meeting Notes is read aloud by Max on a call, so it needs the same sourcing
+bar as the email**, not a lower one.
+
+**2026-08-15 (run).** The stale-title trap fired again, this time **in reverse**: search summaries
+asserted a "Jeff Smith" had been promoted to CEO of Globant. The underlying SEC filing shows the real
+event, the COO resigning in July 2025 without replacement, and no CEO change at all. So the rule is
+not just "the title you remember may be stale" but **"the title the search results give you may be
+invented."** Both directions get resolved the same way, by a dated primary source.
+
+**2026-08-15 (run).** **A new kind of finding worth asking verifiers for: how the person behaves with
+strangers who write about them.** Institutional Investor recorded that Boaz Weinstein asked their
+reporter to stay off his family, personal matters, career history and outside interests. That single
+fact determined the whole email: it ruled out the biography that a flattering cold email reaches for,
+and it made `elite-brevity-10min` the obvious variant, because a man who does not want to be admired
+at length should not receive 95 words of admiration. **Add "is there any record of how they react to
+being written about" to what verifiers are asked to find.**
+
+**2026-08-15 (run).** `ALREADY_ASKED_PUBLICLY` paid for the **fifth** consecutive run, and this time
+the useful shape was a variation worth naming. For Weinstein the open ground was not a forgotten part
+of the career but **a famous event told from the wrong angle**: the 2008 loss is universally framed as
+his bad bet, when the Wall Street Journal's contemporaneous account says he argued to hedge harder,
+was overruled by risk managers into liquidating, and the positions the bank kept rebounded about $600
+million the following month. Same event everybody knows, a fact inside it nobody uses. **When the
+famous story is unavoidable, look for the sentence in the primary source that the retellings drop.**

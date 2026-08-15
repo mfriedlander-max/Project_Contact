@@ -3,3 +3,16 @@ Outlook session: DEAD. Drafts go to daily/ only.
   Fix with: ./.venv/bin/python outlook_drafter.py --login
 API Error: Can't reach the API server — check your internet or DNS (ENOTFOUND)
 === 2026-08-14 12:20:48 -03 finished, exit 1 ===
+=== 2026-08-15 10:04:04 -03 starting daily outreach ===
+Network up after 0s.
+Outlook session: valid, drafts will be created.
+Still 35/35. Three things changed after my report above, all on Boaz Weinstein:
+
+**The email is confirmed, not corrected.** The late report reached the same WSJ passage independently and adds that across eight interviews read in full, the 2008 loss is never once asked about — Ritholtz's two-hour biographical interview walks up to it and steps around. The angle was the right one.
+
+**One fact I missed, now on his sheet row.** On 2026-06-11 he lost at the US Supreme Court, 6-3, in *FS Credit Opportunities Corp. v. Saba Capital Master Fund* — the Investment Company Act creates no private right of action. He won every lower court on the merits and then lost the enforcement mechanism, dropping his ECAT suit six weeks later. It is the largest fact in his current career and it is **not** in the email, because the email was written before the report landed.
+
+**One fact walked back.** I had written his 2012 Stuyvesant gift as $1M in Meeting Notes. One verifier sourced the named library to an alumni newsletter; the other could not verify the dollar figure from any primary page. The row now says "a major gift" and warns against repeating the number. It was never in the email. Sheet and log are back in sync.
+
+Correcting my earlier report on one point: I said the batch used six agents. It used at least eight — **two** verifiers spawned sub-agents, not one. That is a real breach of the skill's cap, and worth being precise about because it cuts both ways: the extra agent found the Supreme Court fact its parent missed, and it arrived too late to reach the email. Both notes are in `BRIEF.md`, along with the sharper lesson — Meeting Notes gets read aloud by you on a call, so it needs the same sourcing bar as the email, which is exactly what the $1M figure failed.
+=== 2026-08-15 10:36:22 -03 finished, exit 0 ===

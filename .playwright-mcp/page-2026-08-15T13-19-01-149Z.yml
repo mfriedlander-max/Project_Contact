@@ -1,0 +1,424 @@
+- generic [ref=e2]:
+  - banner [ref=e4]:
+    - link "X" [ref=e6] [cursor=pointer]:
+      - /url: /
+  - main [ref=e9]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - button "Back" [ref=e14] [cursor=pointer]
+        - generic [ref=e17]:
+          - generic [ref=e19]:
+            - generic [ref=e20]: Martin Migoya
+            - generic [ref=e23]:
+              - button "Verified account" [ref=e24] [cursor=pointer]
+              - link "Globant" [ref=e27] [cursor=pointer]:
+                - /url: https://twitter.com/Globant
+                - img "Globant" [ref=e30]
+          - generic [ref=e31]: 2,696 posts
+        - button "Grok" [ref=e32] [cursor=pointer]
+        - button "Search" [ref=e35] [cursor=pointer]
+      - link "Opens header photo" [ref=e39] [cursor=pointer]:
+        - /url: /migoya/header_photo
+        - img "Martin Migoya profile banner" [ref=e40]
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - link "Opens profile photo" [ref=e45] [cursor=pointer]:
+              - /url: /migoya/photo
+              - img "user avatar" [ref=e47]
+            - generic [ref=e48]:
+              - generic [ref=e49]:
+                - heading "Martin Migoya" [level=1] [ref=e50]
+                - generic [ref=e53]:
+                  - button "Verified account" [ref=e54] [cursor=pointer]
+                  - link "Globant" [ref=e57] [cursor=pointer]:
+                    - /url: https://twitter.com/Globant
+                    - img "Globant" [ref=e60]
+              - generic [ref=e61]: "@migoya"
+          - generic [ref=e63]:
+            - text: Entrepreneur, Co-Founder & CEO
+            - link "@Globant" [ref=e64] [cursor=pointer]:
+              - /url: https://x.com/Globant
+            - text: (NYSE:GLOB), Music & Technology lover
+          - generic [ref=e65]:
+            - generic [ref=e66]: "ÜT: 10.422282,-75.549944"
+            - link "globant.com" [ref=e73] [cursor=pointer]:
+              - /url: https://t.co/250PbLQnlT
+            - generic [ref=e74]: Joined March 2009
+          - generic [ref=e78]:
+            - link "1,004 Following" [ref=e79] [cursor=pointer]:
+              - /url: /migoya/following
+              - generic [ref=e80]:
+                - generic [ref=e81]: 1,004
+                - generic [ref=e82]: Following
+            - link "61.4K Followers" [ref=e83] [cursor=pointer]:
+              - /url: /migoya/verified_followers
+              - generic [ref=e84]:
+                - generic [ref=e85]: 61.4K
+                - generic [ref=e86]: Followers
+        - generic [ref=e87]:
+          - generic [ref=e89]:
+            - button "Mention" [ref=e91] [cursor=pointer]
+            - link "Mention" [ref=e93] [cursor=pointer]:
+              - /url: /compose/post?text=%40migoya+
+          - generic [ref=e95]:
+            - button "Follow" [ref=e97] [cursor=pointer]
+            - link "Follow" [ref=e99] [cursor=pointer]:
+              - /url: /migoya
+        - tablist [ref=e102]:
+          - tab "Posts" [selected] [ref=e103] [cursor=pointer]
+          - tab "Replies" [ref=e107] [cursor=pointer]
+          - tab "Media" [ref=e111] [cursor=pointer]
+      - generic [ref=e115]:
+        - list [ref=e116]:
+          - listitem [ref=e117]:
+            - link [ref=e119] [cursor=pointer]:
+              - article [ref=e120]:
+                - generic [ref=e121]:
+                  - link [ref=e124]:
+                    - /url: /migoya
+                    - img "user avatar" [ref=e126]
+                  - generic [ref=e127]:
+                    - generic [ref=e128]:
+                      - generic [ref=e129]:
+                        - generic [ref=e130]:
+                          - generic [ref=e132]:
+                            - generic [ref=e133]:
+                              - link "Martin Migoya" [ref=e134]:
+                                - /url: https://x.com/migoya
+                              - generic [ref=e137]:
+                                - button "Verified account" [ref=e138]
+                                - link "Globant" [ref=e141]:
+                                  - /url: https://twitter.com/Globant
+                                  - img "Globant" [ref=e144]
+                            - link "@migoya" [ref=e146]:
+                              - /url: https://x.com/migoya
+                          - generic [ref=e147]:
+                            - text: ·
+                            - link "Aug 6" [ref=e148]:
+                              - /url: /migoya/status/2085423749571174518
+                        - button "More" [ref=e150]
+                      - generic [ref=e153]:
+                        - text: "For 20+ years, we've stayed ahead of every major shift in technology. Today we take the next one: we're introducing"
+                        - link "Glob.AI" [ref=e154]:
+                          - /url: http://Glob.AI
+                        - text: ", the world's first AI-native tech services model. Most of the industry is adding AI to the way it already works. Like bolting a copilot"
+                        - button "Show more" [ref=e155]
+                    - generic [ref=e158]:
+                      - generic [ref=e163]:
+                        - button "Play" [ref=e164]
+                        - button "Play" [ref=e165]
+                        - generic: 00:00
+                      - link "View media" [ref=e172]:
+                        - /url: /migoya/status/2085423749571174518/photo/1
+                    - generic [ref=e173]:
+                      - generic [ref=e175]:
+                        - button "Reply" [ref=e176]
+                        - button [ref=e179]:
+                          - generic [ref=e180]: "42"
+                      - generic [ref=e183]:
+                        - button "Repost" [ref=e184]
+                        - button [ref=e187]:
+                          - generic [ref=e188]: "71"
+                      - generic [ref=e191]:
+                        - button "Like" [ref=e192]
+                        - button [ref=e195]:
+                          - generic [ref=e196]: "365"
+                      - generic [ref=e199]:
+                        - button "View count" [ref=e200]
+                        - button [ref=e203]:
+                          - generic [ref=e204]: 390K
+                      - button "Bookmark" [ref=e209]
+                      - button "Share" [ref=e212]
+          - listitem [ref=e215]:
+            - link [ref=e217] [cursor=pointer]:
+              - article [ref=e218]:
+                - generic [ref=e219]:
+                  - link [ref=e222]:
+                    - /url: /migoya
+                    - img "user avatar" [ref=e224]
+                  - generic [ref=e225]:
+                    - generic [ref=e226]:
+                      - generic [ref=e227]:
+                        - generic [ref=e228]:
+                          - generic [ref=e230]:
+                            - generic [ref=e231]:
+                              - link "Martin Migoya" [ref=e232]:
+                                - /url: https://x.com/migoya
+                              - generic [ref=e235]:
+                                - button "Verified account" [ref=e236]
+                                - link "Globant" [ref=e239]:
+                                  - /url: https://twitter.com/Globant
+                                  - img "Globant" [ref=e242]
+                            - link "@migoya" [ref=e244]:
+                              - /url: https://x.com/migoya
+                          - generic [ref=e245]:
+                            - text: ·
+                            - link "Jul 29" [ref=e246]:
+                              - /url: /migoya/status/2082269574624338206
+                        - button "More" [ref=e248]
+                      - generic [ref=e251]:
+                        - link "@santibibiloni" [ref=e252]:
+                          - /url: https://x.com/santibibiloni
+                        - text: Felicitaciones a todo el equipo !!
+                    - link [ref=e254]:
+                      - article [ref=e255]:
+                        - generic [ref=e257]:
+                          - generic [ref=e258]:
+                            - link [ref=e259]:
+                              - /url: /clarincom
+                              - img "user avatar" [ref=e261]
+                            - generic [ref=e262]:
+                              - generic [ref=e264]:
+                                - generic [ref=e265]:
+                                  - link "Clarín" [ref=e266]:
+                                    - /url: https://x.com/clarincom
+                                  - button "Verified account" [ref=e270]
+                                - link "@clarincom" [ref=e274]:
+                                  - /url: https://x.com/clarincom
+                              - generic [ref=e275]:
+                                - text: ·
+                                - link "Jul 28" [ref=e276]:
+                                  - /url: /clarincom/status/2082239680540508241
+                          - generic [ref=e277]:
+                            - text: UNA EMPRESA ARGENTINA CONSIGUIÓ US$ 30 MILLONES DE UN FONDO GLOBAL COR, fundada por Santi Bibiloni y José Gettas, obtuvo una inversión de US$ 30 millones del fondo FTV Capital. La firma, respaldada en sus inicios por Marcos Galperin, opera en 38 países y desarrolla herramientas
+                            - button "Show more" [ref=e278]
+                        - generic [ref=e280]:
+                          - link "Image" [ref=e282]:
+                            - /url: /clarincom/status/2082239680540508241/photo/1
+                          - link "View media" [ref=e283]:
+                            - /url: /clarincom/status/2082239680540508241/photo/1
+                    - generic [ref=e284]:
+                      - button "Reply" [ref=e287]
+                      - button "Repost" [ref=e292]
+                      - generic [ref=e296]:
+                        - button "Like" [ref=e297]
+                        - button [ref=e300]:
+                          - generic [ref=e301]: "6"
+                      - generic [ref=e304]:
+                        - button "View count" [ref=e305]
+                        - button [ref=e308]:
+                          - generic [ref=e309]: 5.4K
+                      - button "Bookmark" [ref=e314]
+                      - button "Share" [ref=e317]
+          - listitem [ref=e320]:
+            - link [ref=e322] [cursor=pointer]:
+              - article [ref=e323]:
+                - generic [ref=e324]:
+                  - link [ref=e327]:
+                    - /url: /migoya
+                    - img "user avatar" [ref=e329]
+                  - generic [ref=e330]:
+                    - generic [ref=e331]:
+                      - generic [ref=e332]:
+                        - generic [ref=e333]:
+                          - generic [ref=e335]:
+                            - generic [ref=e336]:
+                              - link "Martin Migoya" [ref=e337]:
+                                - /url: https://x.com/migoya
+                              - generic [ref=e340]:
+                                - button "Verified account" [ref=e341]
+                                - link "Globant" [ref=e344]:
+                                  - /url: https://twitter.com/Globant
+                                  - img "Globant" [ref=e347]
+                            - link "@migoya" [ref=e349]:
+                              - /url: https://x.com/migoya
+                          - generic [ref=e350]:
+                            - text: ·
+                            - link "Jul 19" [ref=e351]:
+                              - /url: /migoya/status/2078894303137394946
+                        - button "More" [ref=e353]
+                      - generic [ref=e356]: Charly Miguens, descansa en paz. Enorme persona, amigo, emprendedor y transformador de todo lo que lo rodeaba. Te vamos a extrañar mucho.
+                    - generic [ref=e358]:
+                      - link "AOP0938 Carlos Miguens, el empresario que nunca \"se fue a la banquina\"" [ref=e359]:
+                        - /url: https://t.co/CLVW1lwCg3
+                        - generic [ref=e360]:
+                          - img "AOP0938" [ref=e361]
+                          - generic [ref=e362]: Carlos Miguens, el empresario que nunca "se fue a la banquina"
+                      - link "From cronista.com" [ref=e365]:
+                        - /url: https://t.co/CLVW1lwCg3
+                    - generic [ref=e367]:
+                      - generic [ref=e369]:
+                        - button "Reply" [ref=e370]
+                        - button [ref=e373]:
+                          - generic [ref=e374]: "2"
+                      - generic [ref=e377]:
+                        - button "Repost" [ref=e378]
+                        - button [ref=e381]:
+                          - generic [ref=e382]: "2"
+                      - generic [ref=e385]:
+                        - button "Like" [ref=e386]
+                        - button [ref=e389]:
+                          - generic [ref=e390]: "20"
+                      - generic [ref=e393]:
+                        - button "View count" [ref=e394]
+                        - button [ref=e397]:
+                          - generic [ref=e398]: 3.2K
+                      - button "Bookmark" [ref=e403]
+                      - button "Share" [ref=e406]
+          - listitem [ref=e409]:
+            - link [ref=e411] [cursor=pointer]:
+              - article [ref=e412]:
+                - generic [ref=e413]:
+                  - link [ref=e416]:
+                    - /url: /migoya
+                    - img "user avatar" [ref=e418]
+                  - generic [ref=e419]:
+                    - generic [ref=e420]:
+                      - generic [ref=e421]:
+                        - generic [ref=e422]:
+                          - generic [ref=e424]:
+                            - generic [ref=e425]:
+                              - link "Martin Migoya" [ref=e426]:
+                                - /url: https://x.com/migoya
+                              - generic [ref=e429]:
+                                - button "Verified account" [ref=e430]
+                                - link "Globant" [ref=e433]:
+                                  - /url: https://twitter.com/Globant
+                                  - img "Globant" [ref=e436]
+                            - link "@migoya" [ref=e438]:
+                              - /url: https://x.com/migoya
+                          - generic [ref=e439]:
+                            - text: ·
+                            - link "Jul 18" [ref=e440]:
+                              - /url: /migoya/status/2078513614428803228
+                        - button "More" [ref=e442]
+                      - generic [ref=e445]:
+                        - text: Caught up with
+                        - link "@rauchg" [ref=e446]:
+                          - /url: https://x.com/rauchg
+                        - text: from
+                        - link "@vercel" [ref=e447]:
+                          - /url: https://x.com/vercel
+                        - text: — talking AI, speed, and building the next generation of dev tools. So much good happening right now.
+                    - generic [ref=e450]:
+                      - link "Image" [ref=e452]:
+                        - /url: /migoya/status/2078513614428803228/photo/1
+                      - link "View media" [ref=e453]:
+                        - /url: /migoya/status/2078513614428803228/photo/1
+                    - generic [ref=e454]:
+                      - generic [ref=e456]:
+                        - button "Reply" [ref=e457]
+                        - button [ref=e460]:
+                          - generic [ref=e461]: "5"
+                      - generic [ref=e464]:
+                        - button "Repost" [ref=e465]
+                        - button [ref=e468]:
+                          - generic [ref=e469]: "5"
+                      - generic [ref=e472]:
+                        - button "Like" [ref=e473]
+                        - button [ref=e476]:
+                          - generic [ref=e477]: "84"
+                      - generic [ref=e480]:
+                        - button "View count" [ref=e481]
+                        - button [ref=e484]:
+                          - generic [ref=e485]: 7K
+                      - button "Bookmark" [ref=e490]
+                      - button "Share" [ref=e493]
+          - listitem [ref=e496]:
+            - link [ref=e498] [cursor=pointer]:
+              - article [ref=e499]:
+                - generic [ref=e500]:
+                  - link [ref=e503]:
+                    - /url: /migoya
+                    - img "user avatar" [ref=e505]
+                  - generic [ref=e506]:
+                    - generic [ref=e507]:
+                      - generic [ref=e508]:
+                        - generic [ref=e509]:
+                          - generic [ref=e511]:
+                            - generic [ref=e512]:
+                              - link "Martin Migoya" [ref=e513]:
+                                - /url: https://x.com/migoya
+                              - generic [ref=e516]:
+                                - button "Verified account" [ref=e517]
+                                - link "Globant" [ref=e520]:
+                                  - /url: https://twitter.com/Globant
+                                  - img "Globant" [ref=e523]
+                            - link "@migoya" [ref=e525]:
+                              - /url: https://x.com/migoya
+                          - generic [ref=e526]:
+                            - text: ·
+                            - link "Jul 17" [ref=e527]:
+                              - /url: /migoya/status/2077937071591948449
+                        - button "More" [ref=e529]
+                      - generic [ref=e532]: Kimi K3 is now available in our Globant Enterprise AI Intelligent Hub.
+                    - link [ref=e534]:
+                      - article [ref=e535]:
+                        - generic [ref=e537]:
+                          - generic [ref=e538]:
+                            - link [ref=e539]:
+                              - /url: /GMilano
+                              - img "user avatar" [ref=e541]
+                            - generic [ref=e542]:
+                              - generic [ref=e544]:
+                                - link "Gaston Milano Millan" [ref=e546]:
+                                  - /url: https://x.com/GMilano
+                                - link "@GMilano" [ref=e548]:
+                                  - /url: https://x.com/GMilano
+                              - generic [ref=e549]:
+                                - text: ·
+                                - link "Jul 17" [ref=e550]:
+                                  - /url: /GMilano/status/2077936157065609632
+                          - generic [ref=e551]:
+                            - text: Kimi K3 is now available in our Globant Enterprise AI Intelligent Hub. Its arrival marks an important milestone for open-weight models. In benchmarks such as front-end development, Kimi K3 outperforms some frontier models. Having models like Kimi K3, GLM 5.2, and many others
+                            - button "Show more" [ref=e552]
+                    - generic [ref=e553]:
+                      - generic [ref=e555]:
+                        - button "Reply" [ref=e556]
+                        - button [ref=e559]:
+                          - generic [ref=e560]: "1"
+                      - generic [ref=e563]:
+                        - button "Repost" [ref=e564]
+                        - button [ref=e567]:
+                          - generic [ref=e568]: "2"
+                      - generic [ref=e571]:
+                        - button "Like" [ref=e572]
+                        - button [ref=e575]:
+                          - generic [ref=e576]: "22"
+                      - generic [ref=e579]:
+                        - button "View count" [ref=e580]
+                        - button [ref=e583]:
+                          - generic [ref=e584]: 6K
+                      - button "Bookmark" [ref=e589]
+                      - button "Share" [ref=e592]
+        - generic [ref=e595]:
+          - status [ref=e597]
+          - status [ref=e612]
+  - complementary [ref=e626]:
+    - generic [ref=e628]:
+      - generic [ref=e629]:
+        - heading "Log in or sign up for X" [level=2] [ref=e630]
+        - generic [ref=e631]:
+          - paragraph [ref=e632]: See what’s happening and join the conversation
+          - generic [ref=e633]:
+            - link "Continue with phone" [ref=e634] [cursor=pointer]:
+              - /url: /i/jf/onboarding/web?mode=signup&redirect_after_login=%2Fmigoya
+            - button "Continue with Apple" [disabled] [ref=e637]
+            - button "Continue with Google" [disabled] [ref=e640]
+          - generic [ref=e646]: or
+          - link "Log in with username or email" [ref=e649] [cursor=pointer]:
+            - /url: /i/jf/onboarding/web?mode=login&redirect_after_login=%2Fmigoya
+      - navigation "Footer" [ref=e652]:
+        - generic [ref=e653]:
+          - link "Terms" [ref=e654] [cursor=pointer]:
+            - /url: https://x.com/tos
+          - generic [ref=e655]: ·
+        - generic [ref=e656]:
+          - link "Privacy" [ref=e657] [cursor=pointer]:
+            - /url: https://x.com/privacy
+          - generic [ref=e658]: ·
+        - generic [ref=e659]:
+          - link "Cookies" [ref=e660] [cursor=pointer]:
+            - /url: https://support.x.com/articles/20170514
+          - generic [ref=e661]: ·
+        - generic [ref=e662]:
+          - link "Accessibility" [ref=e663] [cursor=pointer]:
+            - /url: https://help.x.com/resources/accessibility
+          - generic [ref=e664]: ·
+        - generic [ref=e665]:
+          - link "Ads Info" [ref=e666] [cursor=pointer]:
+            - /url: https://business.x.com/en/help/troubleshooting/how-twitter-ads-work.html?ref=web-twc-ao-gbl-adsinfo&utm_source=twc&utm_medium=web&utm_campaign=ao&utm_content=adsinfo
+          - generic [ref=e667]: ·
+        - button "More" [ref=e668] [cursor=pointer]
+        - generic [ref=e671]: © 2026 X Corp.

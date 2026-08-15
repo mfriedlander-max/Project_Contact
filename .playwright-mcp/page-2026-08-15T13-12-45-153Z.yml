@@ -1,0 +1,168 @@
+- generic [active] [ref=f5e1]:
+  - navigation "Skip to content":
+    - link "Skip to content" [ref=f5e2] [cursor=pointer]:
+      - /url: "#midd-main"
+  - generic [ref=f5e3]:
+    - complementary [ref=f5e4]:
+      - paragraph [ref=f5e5]:
+        - text: We use cookies and other technologies to better understand a visitor's experience and to help improve our websites. By continuing to use the website, you consent to Middlebury's use of cookies and other technologies as outlined in our
+        - link "Privacy Policy" [ref=f5e6] [cursor=pointer]:
+          - /url: https://go.middlebury.edu/privacy
+        - text: .
+      - button "Close cookie consent banner" [ref=f5e7] [cursor=pointer]: Close
+    - generic [ref=f5e8]:
+      - banner [ref=f5e9]:
+        - generic [ref=f5e10]:
+          - link "Logo for Middlebury Middlebury Middlebury" [ref=f5e12] [cursor=pointer]:
+            - /url: https://www.middlebury.edu
+            - img "Logo for Middlebury" [ref=f5e13]
+            - img "Middlebury" [ref=f5e14]
+            - generic [ref=f5e15]: Middlebury
+          - navigation "Primary navigation" [ref=f5e16]:
+            - list [ref=f5e17]:
+              - listitem [ref=f5e18]:
+                - link "Our Schools" [ref=f5e19] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=f5e20]:
+                - link "Apply" [ref=f5e21] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=f5e22]:
+                - link "About Middlebury" [ref=f5e23] [cursor=pointer]:
+                  - /url: https://www.middlebury.edu/about
+              - listitem [ref=f5e24]:
+                - link "Offices and Services" [ref=f5e25] [cursor=pointer]:
+                  - /url: https://www.middlebury.edu/offices-services
+              - listitem [ref=f5e26]:
+                - link "Midd Stories" [ref=f5e27] [cursor=pointer]:
+                  - /url: https://www.middlebury.edu/stories
+          - region "Search" [ref=f5e28]:
+            - button "Search" [ref=f5e29] [cursor=pointer]
+      - main [ref=f5e30]:
+        - heading "Search" [level=1] [ref=f5e35]
+        - tablist [ref=f5e38]:
+          - generic [ref=f5e41]:
+            - generic [ref=f5e43]:
+              - textbox "buscar" [ref=f5e44]: Globant
+              - button "Borrar contenido del cuadro de búsqueda" [ref=f5e46] [cursor=pointer]:
+                - generic [ref=f5e47]: ×
+            - generic [ref=f5e48]:
+              - generic [ref=f5e51]:
+                - tab "refinement" [ref=f5e52]: Todos los resultados
+                - tab "refinement" [ref=f5e53] [cursor=pointer]: GO
+                - tab "refinement" [ref=f5e54] [cursor=pointer]: Courses
+                - tab "refinement" [ref=f5e55] [cursor=pointer]: News and Announcements
+                - tab "refinement" [ref=f5e56] [cursor=pointer]: Events
+              - generic [ref=f5e61]:
+                - generic [ref=f5e62]: No se ha obtenido ningún resultado para tu búsqueda.
+                - link "buscarBuscar \" Globant \" en Google" [ref=f5e67] [cursor=pointer]:
+                  - /url: https://www.google.com/search?client=ms-google-coop&q=Globant&cx=601bee7edcca142fa
+                  - generic [ref=f5e68]:
+                    - img "buscar" [ref=f5e69]
+                    - text: Buscar "
+                    - generic [ref=f5e71]: Globant
+                    - text: "\" en Google"
+                - contentinfo "Branding de la Búsqueda personalizada de Google" [ref=f5e73]:
+                  - link [ref=f5e74] [cursor=pointer]:
+                    - /url: https://cse.google.com/?ref=b&hl=es
+                    - img "optimizado por Google" [ref=f5e75]
+      - contentinfo [ref=f5e76]:
+        - generic [ref=f5e78]:
+          - generic [ref=f5e80]:
+            - generic [ref=f5e81]:
+              - paragraph [ref=f5e82]: Help shape Middlebury's future.
+              - link "Make a Gift" [ref=f5e83] [cursor=pointer]:
+                - /url: https://engage.middlebury.edu/give
+            - generic [ref=f5e84]:
+              - generic [ref=f5e85]:
+                - strong [ref=f5e86]: Public Safety
+                - link "802-443-5911" [ref=f5e87] [cursor=pointer]:
+                  - /url: tel:+18024435911
+                - link "publicsafety@middlebury.edu" [ref=f5e88] [cursor=pointer]:
+                  - /url: mailto:publicsafety@middlebury.edu
+              - list [ref=f5e89]:
+                - listitem [ref=f5e90]:
+                  - link "Link to page/content on instagram" [ref=f5e91] [cursor=pointer]:
+                    - /url: https://instagram.com/middleburycollege
+                - listitem [ref=f5e93]:
+                  - link "Link to page/content on x" [ref=f5e94] [cursor=pointer]:
+                    - /url: https://twitter.com/middlebury
+                - listitem [ref=f5e96]:
+                  - link "Link to page/content on vimeo" [ref=f5e97] [cursor=pointer]:
+                    - /url: https://vimeo.com/middlebury
+                - listitem [ref=f5e99]:
+                  - link "Link to page/content on facebook" [ref=f5e100] [cursor=pointer]:
+                    - /url: https://www.facebook.com/middleburycollege
+          - generic [ref=f5e105]:
+            - heading "Quick Links" [level=3] [ref=f5e106]
+            - list [ref=f5e107]:
+              - listitem [ref=f5e108]:
+                - link "Emergency" [ref=f5e109] [cursor=pointer]:
+                  - /url: http://go.middlebury.edu/er
+              - listitem [ref=f5e110]:
+                - link "Banner9 Registration" [ref=f5e111] [cursor=pointer]:
+                  - /url: https://reg-prod.ec.middlebury.edu/StudentRegistrationSsb/ssb/registration
+              - listitem [ref=f5e112]:
+                - link "BannerWeb" [ref=f5e113] [cursor=pointer]:
+                  - /url: http://go.middlebury.edu/bannerweb
+              - listitem [ref=f5e114]:
+                - link "Campus Map" [ref=f5e115] [cursor=pointer]:
+                  - /url: http://map.middlebury.edu/
+              - listitem [ref=f5e116]:
+                - link "Covid-19 Updates" [ref=f5e117] [cursor=pointer]:
+                  - /url: https://www.middlebury.edu/office/covid-19-updates
+              - listitem [ref=f5e118]:
+                - link "Directory" [ref=f5e119] [cursor=pointer]:
+                  - /url: http://go.middlebury.edu/directory
+              - listitem [ref=f5e120]:
+                - link "Ethical Reporting" [ref=f5e121] [cursor=pointer]:
+                  - /url: https://www.middlebury.edu/enterprise-risk-management/resources/ethical-reporting
+              - listitem [ref=f5e122]:
+                - link "Library" [ref=f5e123] [cursor=pointer]:
+                  - /url: http://go.middlebury.edu/library
+              - listitem [ref=f5e124]:
+                - link "Oracle Cloud" [ref=f5e125] [cursor=pointer]:
+                  - /url: https://myapps.microsoft.com/gmhec.org
+              - listitem [ref=f5e126]:
+                - link "Report an issue with this page" [ref=f5e127] [cursor=pointer]:
+                  - /url: https://support.gmhec.org/TDClient/47/middlebury/Requests/TicketRequests/NewForm?ID=Fj69Te7J3ww_&RequestorType=Service
+              - listitem [ref=f5e128]:
+                - link "Technology Help" [ref=f5e129] [cursor=pointer]:
+                  - /url: http://go.middlebury.edu/helpdesk
+              - listitem [ref=f5e130]:
+                - link "Webmail" [ref=f5e131] [cursor=pointer]:
+                  - /url: http://go.middlebury.edu/webmail
+      - navigation "Additional navigation" [ref=f5e132]:
+        - generic [ref=f5e133]:
+          - link [ref=f5e136] [cursor=pointer]:
+            - /url: https://www.middlebury.edu
+            - img "Middlebury" [ref=f5e137]
+          - list [ref=f5e139]:
+            - listitem [ref=f5e140]:
+              - link "About Middlebury" [ref=f5e141] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/about
+            - listitem [ref=f5e142]:
+              - link "Giving" [ref=f5e143] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/alumni-and-families
+            - listitem [ref=f5e144]:
+              - link "Employment" [ref=f5e145] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/human-resources/work-middlebury
+            - listitem [ref=f5e146]:
+              - link "Offices and Services" [ref=f5e147] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/offices-services
+            - listitem [ref=f5e148]:
+              - link "Copyright" [ref=f5e149] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/about/copyright
+            - listitem [ref=f5e150]:
+              - link "Privacy" [ref=f5e151] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/about/website-privacy-policy
+            - listitem [ref=f5e152]:
+              - link "Emergency" [ref=f5e153] [cursor=pointer]:
+                - /url: https://www.middlebury.edu/emergency-response
+            - listitem [ref=f5e154]:
+              - link "Site-Editor Login" [ref=f5e155] [cursor=pointer]:
+                - /url: /saml/login?destination=/search?query=GI+Bill
+        - link "Back to Top" [ref=f5e156] [cursor=pointer]:
+          - /url: "#midd-pagetop"
+          - generic [ref=f5e157]:
+            - generic [ref=f5e158]: Back to
+            - text: Top

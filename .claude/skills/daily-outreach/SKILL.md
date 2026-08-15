@@ -181,6 +181,13 @@ sophomore studying applied math who is building an AI teaching assistant.
 You are NOT choosing who to contact. This person is already chosen. Your job is to find out
 whether the facts hold up and to surface the one thing worth writing about.
 
+DO NOT SPAWN SUB-AGENTS. Do this research yourself. On 2026-08-15 a verifier spawned one anyway,
+which made the batch cost six agents instead of five. Its findings were useful, which is exactly
+why the rule needs stating here: the temptation is real and the cost is invisible from inside.
+
+DO NOT CALL HUNTER. The main session owns that budget and spends it with the prober. Report the
+addresses you find in public sources and grade them; the main session handles anything unreachable.
+
 ACCURACY CONTRACT, absolute:
 - Every factual claim must trace to a URL you actually fetched and read. Not a search snippet,
   not a summary, not an aggregator.
@@ -546,6 +553,120 @@ Then grade by what Hunter returns, not by hope:
 **Get the domain right first.** Hunter keys off the company domain, so a wrong domain returns
 nothing and wastes a search. Confirm it from the company's own site before searching.
 
+### Hunter budget: spend it, do not hoard it
+
+Free tier is 50 email-finder searches and 100 verifications a month, resetting monthly. **An
+unused search at month end is worth nothing.** Running the quota down by the 25th on real addresses
+is a good month; ending with 30 unused searches and people you could not reach is a bad one.
+
+There is **no per-run cap.** The earlier version had one, plus a sliding scale that cut to zero
+below 10 remaining, and it produced exactly the wrong behaviour: a run conserving credits while
+shipping people nobody could contact.
+
+What matters is not how many calls, it is **whether each call can pay.**
+
+**Never spend a call where it cannot pay:**
+
+| Situation | Why not |
+|---|---|
+| The address is already published | It is already found. This wasted 5 of 11 calls on 2026-08-15, probing patterns for someone whose address was on her own site |
+| The domain already tested accept_all | Every candidate will verify. One control answers it forever; a second call is pure waste |
+| You are on the fourth candidate for one person | If three ranked patterns failed on a discriminating domain, the format is unusual. Stop and use LinkedIn |
+| Confirming something a primary source already states | The source is better evidence than the probe |
+
+**Spend freely where it can:**
+
+1. **One control probe per new domain.** Always. Without it every other call on that domain is
+   meaningless, and it is the cheapest call you will make. It ended the Globant and Saba questions
+   for one call each.
+2. **A known format**, when one real address at the company is already confirmed. One call, high prior.
+3. **Ranked candidates, three maximum**, on a domain that has passed its control.
+4. **`email-finder`**, for anyone still unreachable. Costs 1 credit against the verifier's 0.5, so it
+   comes last, but use it rather than shipping a person with no route.
+
+**When the quota is genuinely gone:** say so plainly in the report, fall back to published sources
+and LinkedIn, and never stop the batch or fabricate an address. The month resets.
+
+Report actual usage at the end, per domain, with the outcome of each. The 2026-08-15 run did this
+and it is how the wasted five calls were found.
+
+### Look for a published address first, always
+
+**Order matters. Search for a real published address before touching Hunter.** A published
+address is better evidence and costs no quota. In order:
+
+1. **The company's own site** - team page, about page, contact page. Best case: a real monitored
+   mailbox, graded `VERIFIED`.
+2. **Their personal site or blog.** Often an About or Contact section. Graded `HIGH`. The first
+   run found `simon@sirupsen.com` this way.
+3. **Public artifacts they authored** - git commit metadata, arXiv PDFs, conference papers,
+   published slides. Graded `MEDIUM`, since these are often tagged aliases they filter.
+4. **Only then, Hunter.** See below.
+
+Tell the research agents this ordering explicitly in their brief. An agent that jumps to Hunter
+first burns quota on someone whose address was on their own homepage.
+
+### Use the prober before spending a Hunter search
+
+`email_prober.py` does the catch-all control test and pattern probing in one step, using Hunter's
+**email-verifier at 0.5 credit** rather than the email-finder at 1 credit. It is both cheaper and
+better evidence, so run it first.
+
+```bash
+./.venv/bin/python email_prober.py --domain calendly.com --first Tope --last Awotona
+./.venv/bin/python email_prober.py --domain vercel.com --catchall-only
+./.venv/bin/python email_prober.py --domain uala.com.ar --first X --last Y --known real@uala.com.ar
+```
+
+It refuses to guess. On an accept_all domain it stops and tells you to grade `GUESSED` and leave
+the cell empty, because on such a domain every candidate verifies whether or not it exists. If you
+already know one real address at the company, pass `--known` and it infers the format and tests a
+single candidate.
+
+Its grades map directly onto the Email Confidence column: `VERIFIED` at score 90+, `HIGH` at 70+,
+`MEDIUM` below that, and nothing at all when the control test fails.
+
+**One caution.** Hunter's `accept_all` flag is not stable over time. A run in this project recorded
+`vercel.com` as a catch-all and a later probe reported it was not. Trust the control test you ran
+today, and say in the notes which way it came out.
+
+### Hunter's email-finder, when the prober comes up empty
+
+**If you cannot find a published address, you MUST run a Hunter search before recording "no
+email". Not optional. Not "if it seems worth it".**
+
+This is the single most valuable thing Hunter does, and the first live run got it exactly
+backwards: four of five people had no published address, and it used **zero** searches because
+the guidance here read as "conserve this". Two of those four were then found on the first try,
+both verified valid:
+
+```
+Immad Akhund   / mercury.com      -> immad@mercury.com            score 84, valid
+Patrick Dorton / rational360.com  -> patrickdorton@rational360.com score 98, valid
+```
+
+Conserving the quota to zero while shipping unreachable contacts is the worst possible outcome.
+An unused search at month end is worth nothing; a found address is worth the entire batch.
+
+**The procedure:**
+
+```bash
+set -a; . ./credentials/.env; set +a
+curl -s "https://api.hunter.io/v2/email-finder?domain=COMPANY.com&first_name=FIRST&last_name=LAST&api_key=$HUNTER_API_KEY"
+```
+
+Then grade by what Hunter returns, not by hope:
+
+| Hunter says | Record |
+|---|---|
+| `verification.status: valid`, score 80+ | `VERIFIED`, use the address |
+| `verification.status: valid`, score 50-79 | `HIGH`, use the address |
+| returns an address, not verified | `MEDIUM`, use it and say it is unverified |
+| returns nothing | genuinely no email. `GUESSED`, leave the cell empty |
+
+**Get the domain right first.** Hunter keys off the company domain, so a wrong domain returns
+nothing and wastes a search. Confirm it from the company's own site before searching.
+
 ### Hunter budget: a hard cap per run
 
 Free tier is **50 searches and 100 verifications a month**. Run 5 spent **10 searches and 20
@@ -737,6 +858,19 @@ daily/YYYY-MM-DD/
 
 `research.md` is not optional. It is how a claim gets checked before it goes to a stranger, and
 it is what makes a wrong fact traceable afterwards.
+
+## Scratch scripts do not go in daily/
+
+Write throwaway code to a temp directory, never into `daily/YYYY-MM-DD/`. That folder holds things
+Max reads: the drafts, the research, the receipt. The 2026-08-15 run left an 11KB `file_batch.py`
+next to the emails, which is one stray script per day forever and makes the folder harder to scan.
+
+```bash
+mkdir -p /tmp/outreach && ./.venv/bin/python /tmp/outreach/whatever.py
+```
+
+The only files that belong in `daily/YYYY-MM-DD/` are `NN-firstname-lastname.md`, `batch.md`,
+`research.md`, `drafts.json` and `drafts-receipt.json`.
 
 ## Step 7 - File them
 
