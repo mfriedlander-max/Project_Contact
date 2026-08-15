@@ -27,7 +27,7 @@ claude -p  →  .claude/skills/daily-outreach/SKILL.md
    ├── outlook_drafter.py --create ...... headless drafts + a machine-written receipt
    └── writes rows ...................... Google Sheet (top of To Contact) + contacts-log.csv
    ▼
-verify_batch.py                           37 automated checks, exits non-zero on any failure
+verify_batch.py                           automated checks, exits non-zero on any failure
 ```
 
 ## New here? Read in this order
@@ -229,7 +229,8 @@ work it did not do.
 ./.venv/bin/python verify_batch.py --date 2026-08-14
 ```
 
-37 checks, non-zero exit on any failure. **Every check exists because a real run got it wrong at
+Around 25 checks, more on a larger batch since some run per draft and per field. Non-zero
+exit on any failure. **Every check exists because a real run got it wrong at
 least once**, grouped so a failure names the broken subsystem:
 
 - **EMAIL COPY**, word count per variant band, em dashes, banned phrases, stale facts about Max,
@@ -297,6 +298,7 @@ scheduling/                               launchd plist + wrapper + logs
 daily/YYYY-MM-DD/                         each day's drafts, research and receipts
 contacts-log.csv                          mirror of the sheet, in git
 campaigns.xlsx                            frozen archive of the five 2026 campaigns
+PART-2-FOLLOWUPS.md                       design for follow-ups. Scoped, not built
 backups/                                  dated sheet snapshots (data, not formatting)
 ```
 
@@ -320,6 +322,30 @@ inbox. Deliverability across runs was 1/5, 3/5, 5/5, 5/5 as the address-finding 
 so a row deleted there disappears from the log.
 
 ---
+
+## Part 2: follow-ups, not built yet
+
+`PART-2-FOLLOWUPS.md` is the scoped design for the second half: emails to people who never replied.
+
+It reuses everything here. Same variants, same KB, same drafter, same schema, same verifier. It
+adds one skill and a weekly job.
+
+The shape: anyone sitting in `Message Sent` for 14+ days with fewer than three attempts gets fresh
+research, an **unused** variant, and a second email built on a **new** angle. It updates their
+existing row by appending rather than overwriting, so both reads stay visible and `Email Variant`
+accumulates.
+
+The rule that matters: **the follow-up must stand alone as a first email.** No "just following up",
+no "circling back". And if the research turns up nothing new and no unused angle, **it does not
+send** - a forced follow-up turns a silent no into an irritated one.
+
+**Why it is not built:** nothing has been sent yet, so there is nobody to follow up with and the
+variant experiment has no data. Writing the rules now would mean writing them against imagined
+behaviour, which is how the first eight defects got into the daily skill. Build it once 20 or so
+emails have gone out and some have gone quiet.
+
+Four open questions are listed at the end of that file, including whether 14 days is right at this
+altitude and whether a second attempt should switch to LinkedIn instead of email.
 
 ## History
 

@@ -13,7 +13,7 @@ The daily routine is a skill, not a pipeline. Read
 **`.claude/skills/daily-outreach/SKILL.md`** and do the work directly: research the people,
 write the emails, file them in the sheet. There is no script to invoke.
 
-`HOW-IT-WORKS.md` is the same system described in prose, for a human reader.
+`README.md` is the full description of the system, for a human reader.
 
 ## The sheet is the database
 
@@ -130,13 +130,18 @@ work uses `Campaign` = `daily-YYYY-MM` on `main`.
 
 ```
 .claude/skills/daily-outreach/SKILL.md   the morning routine
-HOW-IT-WORKS.md                          prose description
+README.md                                full description of the system
 variants/                                one file per email variant
 apps-script/RowMover.gs                  mirrored from the sheet's Apps Script
 daily/YYYY-MM-DD/                        each day's drafts and research
 backups/                                 sheet snapshots (data only, not formatting)
 credentials/                             service account key + .env, both gitignored
 ```
+
+## Part 2, not built
+
+`PART-2-FOLLOWUPS.md` scopes follow-up emails to people who never replied. Deliberately unbuilt
+until real sends exist to learn from. Do not start it without asking Max.
 
 ## Cautions
 
