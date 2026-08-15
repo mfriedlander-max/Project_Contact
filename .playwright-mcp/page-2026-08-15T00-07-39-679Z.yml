@@ -1,0 +1,1015 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - banner [ref=e6]:
+      - generic [ref=e7]:
+        - navigation "CPG Media Navigation" [ref=e8]:
+          - list [ref=e9]:
+            - listitem [ref=e10]:
+              - link "BevNET" [ref=e11] [cursor=pointer]:
+                - /url: https://www.bevnet.com
+            - listitem [ref=e12]:
+              - link "Nosh" [ref=e13] [cursor=pointer]:
+                - /url: https://www.nosh.com
+            - listitem [ref=e14]:
+              - link "Taste Radio" [ref=e15] [cursor=pointer]:
+                - /url: https://www.tasteradio.com
+            - listitem [ref=e16]:
+              - link "Nombase" [ref=e17] [cursor=pointer]:
+                - /url: https://www.nombase.com
+            - listitem [ref=e18]:
+              - link "CPG Jobs" [ref=e19] [cursor=pointer]:
+                - /url: https://www.cpgjobs.com
+        - link "BevNET CPG Media" [ref=e20] [cursor=pointer]:
+          - /url: https://www.cpgmedia.com
+          - img "BevNET CPG Media Logo" [ref=e21]
+        - generic [ref=e22]:
+          - link "Newsletter" [ref=e23] [cursor=pointer]:
+            - /url: https://www.cpgmedia.com/newsletter
+          - link "Join Slack" [ref=e26] [cursor=pointer]:
+            - /url: https://slack.bevnet.com/
+          - link "Podcasts" [ref=e29] [cursor=pointer]:
+            - /url: https://www.cpgmedia.com/podcasts
+        - generic [ref=e32]:
+          - link "Login" [ref=e33] [cursor=pointer]:
+            - /url: "#"
+          - button "Become an Insider" [ref=e34] [cursor=pointer]
+      - generic [ref=e35]:
+        - button "Menu" [ref=e37] [cursor=pointer]
+        - text:                     
+        - link "Brewbound Home" [ref=e43] [cursor=pointer]:
+          - /url: https://www.brewbound.com/
+        - navigation [ref=e46]:
+          - list [ref=e47]:
+            - listitem [ref=e48]:
+              - 'link "Brewbound Live: Dec. 9+10" [ref=e49] [cursor=pointer]':
+                - /url: https://www.brewbound.com/events/brewboundlive
+            - listitem [ref=e50]:
+              - link "Jobs" [ref=e51] [cursor=pointer]:
+                - /url: https://www.brewbound.com/jobs
+            - listitem [ref=e52]:
+              - link "Podcast" [ref=e53] [cursor=pointer]:
+                - /url: https://www.brewbound.com/podcast
+            - listitem [ref=e54]:
+              - link "Data" [ref=e55] [cursor=pointer]:
+                - /url: https://www.brewbound.com/tag/data/
+            - listitem [ref=e56]:
+              - link "M&A" [ref=e57] [cursor=pointer]:
+                - /url: https://www.brewbound.com/tag/mergers-acquisitions/
+            - listitem [ref=e58]:
+              - link "Newsletter" [ref=e59] [cursor=pointer]:
+                - /url: https://www.brewbound.com/newsletter-archive
+            - listitem [ref=e60]:
+              - link "PR" [ref=e61] [cursor=pointer]:
+                - /url: https://brewbound.com/pr
+            - listitem [ref=e62]:
+              - link "Submit News" [ref=e63] [cursor=pointer]:
+                - /url: https://submit.bevnet.com/news
+        - button "Expand Search Field" [ref=e66] [cursor=pointer]
+        - search
+    - main [ref=e69]:
+      - generic [ref=e73]:
+        - generic [ref=e76]:
+          - generic [ref=e78]:
+            - generic [ref=e79]:
+              - navigation "Breadcrumb" [ref=e80]:
+                - list [ref=e81]:
+                  - listitem [ref=e82]:
+                    - link "Brewbound" [ref=e83] [cursor=pointer]:
+                      - /url: https://www.brewbound.com
+                  - listitem [ref=e84]
+                  - listitem [ref=e88]:
+                    - link "Brewbound Podcast" [ref=e89] [cursor=pointer]:
+                      - /url: /podcast
+              - generic [ref=e90]:
+                - heading "Athletic’s Bill Shufelt is Bullish on the Future of NA Beer – and the Beer Category" [level=1] [ref=e91]
+                - heading "Episode 341" [level=2] [ref=e92]
+              - generic [ref=e93]:
+                - generic [ref=e94]:
+                  - paragraph [ref=e95]: "Hosted by:"
+                  - list [ref=e96]:
+                    - listitem [ref=e97]:
+                      - img "Brewbound.com Staff" [ref=e100] [cursor=pointer]
+                - paragraph [ref=e101]:
+                  - time [ref=e102]: Jun. 17, 2026 at 10:23 am
+              - generic [ref=e103]:
+                - link "Share on X" [ref=e104] [cursor=pointer]:
+                  - /url: https://twitter.com/intent/tweet?text=Athletic%E2%80%99s%20Bill%20Shufelt%20is%20Bullish%20on%20the%20Future%20of%20NA%20Beer%20%E2%80%93%20and%20the%20Beer%20Category&url=https%3A%2F%2Fwww.brewbound.com%2Fpodcast%2Fathletics-bill-shufelt-is-bullish-on-the-future-of-na-beer--and-the-beer-category
+                - link "Share on LinkedIn" [ref=e107] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.brewbound.com%2Fpodcast%2Fathletics-bill-shufelt-is-bullish-on-the-future-of-na-beer--and-the-beer-category
+                - link "Share on Reddit" [ref=e110] [cursor=pointer]:
+                  - /url: https://www.reddit.com/submit?url=https%3A%2F%2Fwww.brewbound.com%2Fpodcast%2Fathletics-bill-shufelt-is-bullish-on-the-future-of-na-beer--and-the-beer-category&title=Athletic%E2%80%99s%20Bill%20Shufelt%20is%20Bullish%20on%20the%20Future%20of%20NA%20Beer%20%E2%80%93%20and%20the%20Beer%20Category
+                - link "Share on Facebook" [ref=e113] [cursor=pointer]:
+                  - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.brewbound.com%2Fpodcast%2Fathletics-bill-shufelt-is-bullish-on-the-future-of-na-beer--and-the-beer-category
+                - link "Share by email" [ref=e116] [cursor=pointer]:
+                  - /url: "mailto:?subject=Athletic%E2%80%99s%20Bill%20Shufelt%20is%20Bullish%20on%20the%20Future%20of%20NA%20Beer%20%E2%80%93%20and%20the%20Beer%20Category&body=Athletic%20Brewing%20co-founder%20and%20CEO%20Bill%20Shufelt%20is%20%E2%80%9Cthe%20most%20excited%E2%80%9D%20he%E2%80%99s%20felt%20since%20founding%20the....%0D%0A%0D%0ARead More Here: https%3A%2F%2Fwww.brewbound.com%2Fpodcast%2Fathletics-bill-shufelt-is-bullish-on-the-future-of-na-beer--and-the-beer-category"
+                - button "Copy link" [ref=e119] [cursor=pointer]
+            - navigation "Tags" [ref=e122]:
+              - list [ref=e123]:
+                - listitem [ref=e124]:
+                  - link "Industry Leader" [ref=e125] [cursor=pointer]:
+                    - /url: /podcast?searchText=Industry%20Leader
+            - article [ref=e126]:
+              - generic [ref=e127]:
+                - iframe [ref=e130]:
+                  - generic:
+                    - main "Apple Podcasts Web Embed"
+                - generic [ref=e131]:
+                  - heading "In this episode:" [level=4] [ref=e132]
+                  - generic [ref=e133]:
+                    - paragraph [ref=e134]: Athletic Brewing co-founder and CEO Bill Shufelt is “the most excited” he’s felt since founding the dedicated non-alcoholic (NA) beer brand.
+                    - paragraph [ref=e135]: On the latest edition of the Brewbound Podcast, Shufelt shared what’s driving his hyped feeling, with a foundation he and co-founder John Walker laid about a decade ago. That foundation is built on a team of 300 co-workers, bicoastal brewing facilities, a strong distribution base for its core beers, a slate of new products hitting retailers and marketing campaigns beginning to ramp up.
+                    - paragraph [ref=e136]: “I’m very bullish on the long-term health and growth of the category and our part in growing that,” Shufelt said. “It was very hard to get non-alcoholic beer from zero to 2% of beer, but there are actual retailers in the U.S. [where] non-alcoholic beer is touching up against 20% of their beer sales.”
+                    - paragraph [ref=e137]: Those retailers lend credence to Shufelt’s belief that NA beer can be a much bigger part of the beer category. Shufelt explained that consumers are very early in the NA beer discovery curve, with the vast majority unaware how the product has changed in the last decade.
+                    - paragraph [ref=e138]: Even with the stage set for growth, Shufelt acknowledged that Athletic still has work to do for the company and the segment to reach some of his loftier goals.
+                    - paragraph [ref=e139]: For Athletic in particular, which holds around 22% of the NA beer segment, distribution remains its biggest opportunity.
+                    - paragraph [ref=e140]: “In independents, no matter how much our distributors smile at us and tell us we’re a priority, we’re in like 10% of their independents,” Shufelt said. “And I can go into stores in almost any state in the country and look at a shelf that is controlled by our distributor that has five-plus non-alcoholic beer products on it, and Athletic will have none. There’s just such untapped distribution out there still.”
+                    - paragraph [ref=e141]: For now, Shufelt is focused on driving Athletic and NA beer forward. But could the future include an IPO? An Athletic led by someone else? Shufelt said it’s possible, but he doesn't want to be on the outside looking in on an opportunity he was one of the few people to see.
+                    - paragraph [ref=e142]: Before the interview, Justin, Jess and Zoe discuss the latest headlines, including the mixed results craft brewers are seeing from the World Cup, the American Cider Association co-locating its 2027 CiderCon conference with the Brewers Association’s Craft Brewers Conference, the closure of Nebraska’s largest craft brewery and the top new products of so far this year.
+                - generic [ref=e143]:
+                  - heading "Guest" [level=4] [ref=e144]
+                  - generic [ref=e148]:
+                    - generic [ref=e149]: Bill Shufelt
+                    - generic [ref=e151]: Co-Founder & CEO • Athletic Brewing Co.
+                - generic [ref=e152]:
+                  - generic [ref=e153]:
+                    - heading "Episode Transcript" [level=4] [ref=e154]
+                    - generic [ref=e155]:
+                      - generic [ref=e156]: Search transcript
+                      - searchbox "Search transcript" [ref=e160]
+                  - paragraph [ref=e161]: "Note: Transcripts are automatically generated and may contain inaccuracies and spelling errors."
+                  - generic [ref=e163]:
+                    - paragraph [ref=e164]:
+                      - strong [ref=e165]: "[00:00:00] Justin Kendall:"
+                      - text: Next on the Brewbound podcast, why athletics Bill Shufelt is excited heading into this summer. Hello, and welcome to the Brewbound podcast. I'm Justin Kendall.
+                    - paragraph [ref=e166]:
+                      - strong [ref=e167]: "[00:00:21] Jessica Infante:"
+                      - text: I'm Jessica Infante.
+                    - paragraph [ref=e168]:
+                      - strong [ref=e169]: "[00:00:22] Zoe Licata:"
+                      - text: And I'm Zoe Licata.
+                    - paragraph [ref=e170]:
+                      - strong [ref=e171]: "[00:00:24] Justin Kendall:"
+                      - text: And this week, we're going to bring you a featured interview with athletic brewing companies, Bill Shufelt. So stay tuned for that. But good to see you both. It's been a while.
+                    - paragraph [ref=e172]:
+                      - strong [ref=e173]: "[00:00:35] Jessica Infante:"
+                      - text: Yeah, welcome back, man. Welcome back to the pod.
+                    - paragraph [ref=e174]:
+                      - strong [ref=e175]: "[00:00:37] Justin Kendall:"
+                      - text: Thank you. It's exciting to be back. It does feel like it's been a while.
+                    - paragraph [ref=e176]:
+                      - strong [ref=e177]: "[00:00:43] Jessica Infante:"
+                      - text: Yeah, well, you were in Chicago two weeks ago, which is where you recorded this interview.
+                    - paragraph [ref=e178]:
+                      - strong [ref=e179]: "[00:00:48] Justin Kendall:"
+                      - text: That's right. I was in Chicago for the Beer Marketers Insights Spring Meeting, which was a good time. And we've got a lot of stuff that has come out of that. We had a recap of Rayya's CEO Tom Day's talk. We've looked at some of the best new products or the top new products out there, which we'll talk about in a little bit here. Yeah, lots going on there. You got some of the hot up and coming brands, Carbless, Spiked Aid and Happy Dad talking about their progress and potentially selling. Lots of interest there. Cool. So before we get into all of this week's episode, we've got to plug Brewbound Live, which is coming up December 9th and 10th. You can get your tickets now. We've got a keynote address that we're going to share for the first time here. It's Allagash Brewings, Rob Todd and Celine Ferru. They're going to talk about building and nurturing a company culture.
+                    - paragraph [ref=e180]:
+                      - strong [ref=e181]: "[00:01:45] Jessica Infante:"
+                      - text: So exciting. I'm so excited about this.
+                    - paragraph [ref=e182]:
+                      - strong [ref=e183]: "[00:01:49] Justin Kendall:"
+                      - text: Well, you should be. It was your idea.
+                    - paragraph [ref=e184]:
+                      - strong [ref=e185]: "[00:01:52] Jessica Infante:"
+                      - text: Well, look, I mean, everybody talks about the culture at Allagash. Anytime you kind of talk to somebody and Allagash comes up in conversation, they will say, oh, if I didn't work at my brewery, I would want to work at Allagash. And I think we should find out why. The way that they have been able to build that culture that really seems super inclusive of all employees. I've never met a disgruntled Allagashian. Have you guys? No. And it's work. It's really hard work organizationally. You know, sometimes I think people assume it's like, well, we'll just be like a cool place to work and we'll get pizza on Fridays and it'll be great. And it's like, no, you can't do that. What do you actually have to do? So Rob and Selene are going to tell us.
+                    - paragraph [ref=e186]:
+                      - strong [ref=e187]: "[00:02:33] Zoe Licata:"
+                      - text: Yeah, I think they also bring a unique perspective where we've seen a lot of newer, more modern companies create or start off with these foundations of culture, but they've been doing this for a really long time. So how have their strategies for creating this culture evolved over that time and changed and made sure it stayed up to date with whatever is needed from employees throughout the various time periods for their breweries? Really great perspective to have.
+                    - paragraph [ref=e188]:
+                      - strong [ref=e189]: "[00:02:59] Justin Kendall:"
+                      - text: You've probably seen Rob Todd speak before, but you really haven't seen him dive into company culture in this way. So we think we're going to be bringing you something different. Very excited about this. More to come on Brewbound Live. Look out for some announcements very soon. Let's get into the news of the week. And we've got the Knicks win. We've got Carolina's win. But we've got the World Cup that's going on now. And Jess, you've started to talk to a few breweries out there about what's been going on. And so what are you learning so far about how this is playing out for craft breweries out there?
+                    - paragraph [ref=e190]:
+                      - strong [ref=e191]: "[00:03:35] Jessica Infante:"
+                      - text: Well, it's really interesting to me because I feel like the conversations I've had are pretty split. You know, I chatted with Katie Kamlin at KC Beer in Kansas City last week, and she told me that, you know, it was Friday morning, so like Thursday had been like the first friendly game. And she said their taproom seemed busy. You know, it was much busier than normally would be on a Thursday, and she was feeling really hopeful. They also got included on the New York Times' list of where to go in Kansas City if you're going to the World Cup, which she was really excited about. And then, you know, I just got off the phone with Bob at Boleros Nori. They are within walking distance to the New York-New Jersey Stadium. It's like a quick 15-minute walk down sidewalk roads. But I think they were expecting it to turn out to be a little different. And I think a lot of this is because the communication from, you know, FIFA and the governments of New York and New Jersey have made people feel they cannot walk to the game. They've got to take the train or a bus or something. So he told me that they were expecting to be really busy and their taproom traffic on Saturday looked more like a Saturday in January instead of the middle of June. So I think there's like a lot of logistical ins outs and what's have you's here that are making things a little bit complicated. But Zoe, you went out and about in Boston over the weekend, right? And you and I have both heard from people who We're hanging out in our fair city here where we have been invaded by the Tartan army. And I think they have really stolen the hearts and minds of Bostonians. And I think we're all ready to declare allegiance to Scotland.
+                    - paragraph [ref=e192]:
+                      - strong [ref=e193]: "[00:05:07] Zoe Licata:"
+                      - text: Yeah, we might be the first place that Scotland has colonized in a long time. They have truly taken over the entire city. There's no real proper way to describe that. You just have to look up videos of how many Scotland fans are in the city. They are everywhere. Like, you are seeing more people from Scotland than any Bostonians. It is quite impressive. And they are in full force at all of the bars and taprooms around here. A lot of the bars, especially a lot of, you know, we have a lot of Irish bars in Boston, Ireland is not in the World Cup and so they have kind of switched it up and put out Scotland banners and encouraged Scotland fans to come and use their spots as home bases and they're flocking there and they are there all day long. It kind of started around like Wednesday, Thursday and Thursday, Friday, Saturday was just non-stop you were seeing Scots partying and drinking lots of beers.
+                    - paragraph [ref=e194]:
+                      - strong [ref=e195]: "[00:06:06] Justin Kendall:"
+                      - text: You got a scoop too, right?
+                    - paragraph [ref=e196]:
+                      - strong [ref=e197]: "[00:06:08] Zoe Licata:"
+                      - text: Yeah, we found on, I believe it was Friday, the downtown Boston Sam Adams Tap Room, so right by Samuel Hall where a lot of these folks are based, sold over a thousand pints of Boston lager. And they went through their full weekend supply of Boston Lager just on Thursday, Friday. So they had to go and get some more.
+                    - paragraph [ref=e198]:
+                      - strong [ref=e199]: "[00:06:30] Jessica Infante:"
+                      - text: That's wild. But they are drinking so much beer. A friend of the pod, Castle Island Adam, had posted over the weekend that he was doing an emergency keg delivery to an account that had run out of beer.
+                    - paragraph [ref=e200]:
+                      - strong [ref=e201]: "[00:06:42] Zoe Licata:"
+                      - text: Yeah. There's a Scotland bar in Jamaica Plain. That's kind of the only big Scotland bar in the area. And they ran out of their number one beer kind of halfway through the weekend, too. Even the folks that have been preparing for these people to be here are selling even more than they expected.
+                    - paragraph [ref=e202]:
+                      - strong [ref=e203]: "[00:07:00] Jessica Infante:"
+                      - text: It's impressive. You know, I was kind of ambivalent to negative on the whole notion of the World Cup, but I think it's really won me over. It's just really nice.
+                    - paragraph [ref=e204]:
+                      - strong [ref=e205]: "[00:07:08] Zoe Licata:"
+                      - text: Yeah, there's always some wholesome stories out of it. We'll see how things progress as we get further through the tournament. We're at the very beginning stages where it's a lot of like the smaller countries that are really excited to be here and just to be in the tournament because they maybe haven't been in decades. So this is the more wholesome. time of year. The game today, Spain didn't score. It was like 0-0 against another one of the smallest countries participating at all. So like that's something that you didn't think was going to happen. And so they're all excited to have one positive game by just having no one score. This is the happy part. As we get further in, I don't know what it's going to look like and how this momentum will continue, but it's nice right now.
+                    - paragraph [ref=e206]:
+                      - strong [ref=e207]: "[00:07:48] Jessica Infante:"
+                      - text: Whoever did the location matching to send Scotland here was genius. I'm sure it maybe was at random, but it was great.
+                    - paragraph [ref=e208]:
+                      - strong [ref=e209]: "[00:07:54] Zoe Licata:"
+                      - text: Yeah, really smart.
+                    - paragraph [ref=e210]:
+                      - strong [ref=e211]: "[00:07:57] Justin Kendall:"
+                      - text: Yeah. Well, speaking of location matching, let's talk about the Brewers Association and the Craft Brewers Conference and CiderCon.
+                    - paragraph [ref=e212]:
+                      - strong [ref=e213]: "[00:08:06] Zoe Licata:"
+                      - text: Yeah, so the two trade groups have announced this week that they are co-locating the crappers conference and Cytokon. So that is what they are calling it co-locating. But what that means is both conferences are going to be happening at the same time in the same venue in San Antonio, Texas next year. So that's already where CBC was going to be happening. We knew that Cytokon was, you know, every other year it's in Chicago. So 2027 was supposed to be another Chicago year. They have decided to kind of collaborate with the Brewers Association and host it there. So what that looks like in practice, they're still figuring some things out, but it's mainly going to be additional educational seminars at CBC that are going to be solely focused on things that are relevant for cider folks to bring in that educational piece that they would be getting at CiderCon, but it's going to be one ticket. It's actually cheaper For the folks that have been paying for CiderCon, you know, those prices are actually more expensive than CBC. So now they'd be paying less for their conference. And there'll be a lot of other kind of, you know, if you're into cider, go to this. If you're into beer, go to this. But it's going to be all grouped together in one big event.
+                    - paragraph [ref=e214]:
+                      - strong [ref=e215]: "[00:09:19] Justin Kendall:"
+                      - text: It's way too early. But what's your sense on how the cider folks are going to take this?
+                    - paragraph [ref=e216]:
+                      - strong [ref=e217]: "[00:09:26] Zoe Licata:"
+                      - text: There's going to be quite a range of reactions. I mean, we know based on some of the responses to CiderCon this year that there are going to be quite a few folks with some criticism for the decision. There is a decent sized community within Cider who feels that Cider is doing really well right now, so why do they have to listen to craft beer, which is not in the most positive position? That same community also has feelings about, you know, beer is so much bigger than cider. Are they going to get forgotten or squished or not thought about or not treated with the same care as they were before if you're prioritizing beer, including them with beer? and then also some cider folks operate more like wineries so they don't even think that beer is relevant to what they do at all. So there's definitely going to be some criticism and I'm as we're recording this this news isn't out there yet so we don't know what the response is but there's going to be folks on the other end of that that they now have to only pay for one conference. They now are going to get just as much content as they were getting before Maybe they're already operating more like a brewery, but as, you know, as a distributing cidery. And they were going to the craft brewers conference already and going to CiderCon, and this just makes a lot more sense for them.
+                    - paragraph [ref=e218]:
+                      - strong [ref=e219]: "[00:10:37] Justin Kendall:"
+                      - text: Is this one ticket all access?
+                    - paragraph [ref=e220]:
+                      - strong [ref=e221]: "[00:10:40] Zoe Licata:"
+                      - text: Yep, one ticket you get into everything because there's going to be and I talked to Bart Watson from the Brewers Association and Christine Walter who is from the American Cider Association and they both emphasize, you know, so many of the conversations we're having at these events are relevant to folks whether you're in beer or you're insider. So this is one ticket to get you to this event and you can kind of pick your course as you would before, your path of what places you want to go to and what's relevant to you, and you'll get access to all of it.
+                    - paragraph [ref=e222]:
+                      - strong [ref=e223]: "[00:11:11] Jessica Infante:"
+                      - text: One thing I've always admired about CiderCon is they cram in a ton of content. Every time block has up to like five, six seminars going on at the same time. Are they going to be doing that again or will they be able to see where joint sessions might make sense?
+                    - paragraph [ref=e224]:
+                      - strong [ref=e225]: "[00:11:28] Zoe Licata:"
+                      - text: I think it's going to be a little bit of both based on the conversation I had with Christine and Bart. They are going to be actively communicating about what their plans are for each of their designated seminars, just to make sure, you know, hey, if we're each having a conversation that looks pretty similar, could we create this as something with both cider folks and beer folks? But there is also going to be plenty of other things that are just meant for cider people. That comes for both technical stuff, they're going to keep all of the technical seminars that they've done in the past for CIDR, as well as business track related things. They really emphasize this is going to be just more content in general than previous CBCs.
+                    - paragraph [ref=e226]:
+                      - strong [ref=e227]: "[00:12:05] Justin Kendall:"
+                      - text: Does this foretell any type of broader, bigger partnership between the two?
+                    - paragraph [ref=e228]:
+                      - strong [ref=e229]: "[00:12:11] Zoe Licata:"
+                      - text: Right now it's been purely an event-based conversation, but they have already been collabing in different ways for years beforehand. The American Cider Association worked with the BA to bring cider to the Great American Beer Festival to have a presence there and bring cider to consumers. So, there's already been a collaboration for a while. We know from some of the conversations I had at CytroKon, the ACA is not in a great financial situation, neither is the British Association, but they are looking for ways to better support members and also make sure they can still have a functioning trade association.
+                    - paragraph [ref=e230]:
+                      - strong [ref=e231]: "[00:12:50] Justin Kendall:"
+                      - text: And BA does have a war chest, though. I mean, they're sitting on a lot of cash.
+                    - paragraph [ref=e232]:
+                      - strong [ref=e233]: "[00:12:55] Zoe Licata:"
+                      - text: Yes, exactly. The BA is so much larger than the American Cider Association. So the ability to have those resources is going to be a major move for the ACA. So, yeah, they're definitely still in active conversations of how they can better work together and better serve each of their members. And if that includes further collaboration or integration, we'll have to see.
+                    - paragraph [ref=e234]:
+                      - strong [ref=e235]: "[00:13:16] Justin Kendall:"
+                      - text: From homebrewers to cider.
+                    - paragraph [ref=e236]:
+                      - strong [ref=e237]: "[00:13:18] Zoe Licata:"
+                      - text: I mean, we've seen it once where there's been kind of an integration and then they went off and were independent again. So who knows what will happen here.
+                    - paragraph [ref=e238]:
+                      - strong [ref=e239]: "[00:13:28] Justin Kendall:"
+                      - text: Let's switch gears and talk a little bit about the closure of Zipline Brewing in Nebraska. They were the largest craft brewer. They were making around 8,000 barrels of beer, I think, when they shut the doors very abruptly last week. no warning to staff, essentially, that just they came to work and found out that they were shutting down. And one of the things that we sort of learned through this was Zipline was owned by a John Deere dealership, which I didn't know.
+                    - paragraph [ref=e240]:
+                      - strong [ref=e241]: "[00:14:02] Jessica Infante:"
+                      - text: So random. Yeah. And had been for a couple of years, right? It wasn't like they bought it and then all of a sudden shut it down. They maybe came on board, what, 23?
+                    - paragraph [ref=e242]:
+                      - strong [ref=e243]: "[00:14:12] Justin Kendall:"
+                      - text: 22, 23 is when it was estimated that they came on board. And I tried to get in touch with one of the founders and no response back.
+                    - paragraph [ref=e244]:
+                      - strong [ref=e245]: "[00:14:22] Jessica Infante:"
+                      - text: That's got to be rough.
+                    - paragraph [ref=e246]:
+                      - strong [ref=e247]: "[00:14:23] Justin Kendall:"
+                      - text: Yeah.
+                    - paragraph [ref=e248]:
+                      - strong [ref=e249]: "[00:14:24] Jessica Infante:"
+                      - text: They're keeping open their restaurant.
+                    - paragraph [ref=e250]:
+                      - strong [ref=e251]: "[00:14:27] Justin Kendall:"
+                      - text: Yeah, it still has the Zipline name. So Zipline Tap and Grill will stay open, but they're closing their tap room. They're shutting down. I mean, they did shut down Brewing Ops and then they shut down another location. It was, I think, called a Beer Lounge in Lincoln.
+                    - paragraph [ref=e252]:
+                      - strong [ref=e253]: "[00:14:45] Jessica Infante:"
+                      - text: So ostensibly, this restaurant will stay open and serve other companies beers?
+                    - paragraph [ref=e254]:
+                      - strong [ref=e255]: "[00:14:51] Justin Kendall:"
+                      - text: Unless they're trying to work through that cooler full of beer that they had left over that they were supposed to ship out.
+                    - paragraph [ref=e256]:
+                      - strong [ref=e257]: "[00:14:58] Jessica Infante:"
+                      - text: Or they like contract brewing and licensing. And neither of these are very high margin industries. So it's funny to me to get out of the one but stay in the other. Right?
+                    - paragraph [ref=e258]:
+                      - strong [ref=e259]: "[00:15:08] Justin Kendall:"
+                      - text: If I were going to bet on one, I don't know that I would bet on the restaurant industry.
+                    - paragraph [ref=e260]:
+                      - strong [ref=e261]: "[00:15:12] Jessica Infante:"
+                      - text: Right. I mean, maybe they just discovered that brewing is a lot harder than they thought it was going to be.
+                    - paragraph [ref=e262]:
+                      - strong [ref=e263]: "[00:15:18] Justin Kendall:"
+                      - text: Yeah. And this is the second large Nebraska brewing company that shut down in the last less than a year, really. Nebraska Brewing Company shuttered in October.
+                    - paragraph [ref=e264]:
+                      - strong [ref=e265]: "[00:15:31] Jessica Infante:"
+                      - text: And they were what, same like 8,000 barrels?
+                    - paragraph [ref=e266]:
+                      - strong [ref=e267]: "[00:15:34] Justin Kendall:"
+                      - text: At one time, they had been whittled down over time. But yeah, at one time they were neck and neck for being the largest in the state, I believe, these two. And I remember when I lived in Kansas City, both of them had pretty prominent distribution in the Kansas City area. But this is mid-2010s, you know, craft beer boom.
+                    - paragraph [ref=e268]:
+                      - strong [ref=e269]: "[00:15:56] Jessica Infante:"
+                      - text: a different time. Guys, I almost could have been from Nebraska. My dad went to his first year of law school at Creighton in Omaha, and then my parents got married the summer in between, and he had not yet heard back about transferring home to law school in New Jersey, so my mom was all ready to move out there. What if I were this obnoxious person, but instead of being obnoxious about New Jersey, I was obnoxious about Nebraska?
+                    - paragraph [ref=e270]:
+                      - strong [ref=e271]: "[00:16:21] Justin Kendall:"
+                      - text: Can you imagine the photos of Jess with giant corn, like the corn husker thing on her head because she went to the University of Nebraska?
+                    - paragraph [ref=e272]:
+                      - strong [ref=e273]: "[00:16:31] Zoe Licata:"
+                      - text: I mean, yes.
+                    - paragraph [ref=e274]:
+                      - strong [ref=e275]: "[00:16:33] Justin Kendall:"
+                      - text: Yeah, I mean, I can imagine it, actually.
+                    - paragraph [ref=e276]:
+                      - strong [ref=e277]: "[00:16:35] Zoe Licata:"
+                      - text: I mean, maybe.
+                    - paragraph [ref=e278]:
+                      - strong [ref=e279]: "[00:16:36] Justin Kendall:"
+                      - text: It's like the sliding doors thing, though. There's an alternate universe where there's a Jessica Infante who is from Nebraska.
+                    - paragraph [ref=e280]:
+                      - strong [ref=e281]: "[00:16:45] Zoe Licata:"
+                      - text: Would you even be as passionate about it? I feel like New Jersey folks are just, it's because it's New Jersey. I don't think I've ever met a person who's that enthusiastic about Nebraska.
+                    - paragraph [ref=e282]:
+                      - strong [ref=e283]: "[00:16:55] Jessica Infante:"
+                      - text: But if you're out there, let us know. Yeah, give us a shout. It's crazy to me that they've lost both of their biggest breweries in the past year, which I think probably says something about the development of the market there.
+                    - paragraph [ref=e284]:
+                      - strong [ref=e285]: "[00:17:08] Justin Kendall:"
+                      - text: And it's that tough middle ground, too, that they're under 10,000 barrels. So you're right there. But you would think that there would be a market opportunity. And I mean, remember when Green Flash opened a taproom randomly in Nebraska?
+                    - paragraph [ref=e286]:
+                      - strong [ref=e287]: "[00:17:26] Jessica Infante:"
+                      - text: Yeah, like you could see that they clearly did their homework on that. And we're looking at numbers but didn't talk to people.
+                    - paragraph [ref=e288]:
+                      - strong [ref=e289]: "[00:17:32] Justin Kendall:"
+                      - text: Yeah.
+                    - paragraph [ref=e290]:
+                      - strong [ref=e291]: "[00:17:33] Jessica Infante:"
+                      - text: Either way, all of this is super unfortunate for the 18 people that lost their jobs with very little notice into a super tough job market.
+                    - paragraph [ref=e292]:
+                      - strong [ref=e293]: "[00:17:41] Justin Kendall:"
+                      - text: Yeah. One of the stories was talking to someone who ran trivia nights there for essentially the last year. And I, I kind of wonder, you know, what's happening to those ancillary folks, whether it's musicians, trivia folks out there who have been relying on craft breweries all these years for various nights of entertainment. And now they're losing this source of income, these venues that they had agreements with.
+                    - paragraph [ref=e294]:
+                      - strong [ref=e295]: "[00:18:11] Jessica Infante:"
+                      - text: Dude, I think we need to tap that market for sourcing. Because the trivia people, one, have no obligations to the company. You know, they can talk, right?
+                    - paragraph [ref=e296]:
+                      - strong [ref=e297]: "[00:18:23] Justin Kendall:"
+                      - text: Yeah.
+                    - paragraph [ref=e298]:
+                      - strong [ref=e299]: "[00:18:23] Jessica Infante:"
+                      - text: It's not like they've got to sign an NDA in order to get their severance. And you know the taproom staff all love to talk to them because it's like a neutral third party who comes in every week, who knows all the players and knows all the drama. And you could just talk to them. This is, God, I think every week we got to be interviewing a trivia person.
+                    - paragraph [ref=e300]:
+                      - strong [ref=e301]: "[00:18:39] Justin Kendall:"
+                      - text: I think you're right. Geeksu Drink, hit us up. Before we get to our featured interview, let's talk a little bit about the top new products out there so far. Because I was a little surprised when I saw this list that was shared at Beer Marketers Insights last week or two weeks ago at this point. Sorry, I've been frozen in time. And the list is topped by 4LOCO jackpot, which is, I mean, it couldn't be 14%. It had to be 13.9% ABV, but not on my radar before this. And the only thing with 4LOCO that I've been thinking about of late is they're looking for a buyer. What a time to have the top new product when you're looking to sell.
+                    - paragraph [ref=e302]:
+                      - strong [ref=e303]: "[00:19:25] Zoe Licata:"
+                      - text: Indeed. We thought, Hey, maybe 4LOCO could have a comeback. I didn't know what was happening right now with this new product. I also would love to know who is drinking these 24 ounce cans of, what is it? It's like strawberry daiquiri inspired beverage. Not to laugh at anyone who's drinking this, I'm just quite impressed by what your body can handle.
+                    - paragraph [ref=e304]:
+                      - strong [ref=e305]: "[00:19:51] Justin Kendall:"
+                      - text: Wait till the Scots find our C stores.
+                    - paragraph [ref=e306]:
+                      - strong [ref=e307]: "[00:19:56] Jessica Infante:"
+                      - text: Maybe that's why they came to Boston and not somewhere else.
+                    - paragraph [ref=e308]:
+                      - strong [ref=e309]: "[00:19:59] Justin Kendall:"
+                      - text: Maybe that's when it's going to turn ugly. If we keep running out of beer they're gonna have to find some other beverage so for local jackpots and buzz balls maybe Yeah, well this list 14 of the top 20 are 8% or above The top craft brewery on their top craft beer new one is New Belgium voodoo ranger g-force which no surprise 11% ABV And then just chaos.
+                    - paragraph [ref=e310]:
+                      - strong [ref=e311]: "[00:20:33] Jessica Infante:"
+                      - text: Chaos. The corner store on my block has a big window cling for GeForce right now.
+                    - paragraph [ref=e312]:
+                      - strong [ref=e313]: "[00:20:40] Zoe Licata:"
+                      - text: GeForce came in real quick. I mean, we've seen so many Voodoo Ranger extensions, but this one seems to be coming on much faster than some of the other ones. And I know it's specifically made to be a C-store play, but it's really hit the ground running.
+                    - paragraph [ref=e314]:
+                      - strong [ref=e315]: "[00:20:59] Justin Kendall:"
+                      - text: And then Keystone Light Apple was the top new brand in less than four weeks, apparently. So we got an apple fight going on here.
+                    - paragraph [ref=e316]:
+                      - strong [ref=e317]: "[00:21:08] Jessica Infante:"
+                      - text: Definitely an apple fight going on. I'd be interested to see if this apple craze extends. You know, cider's doing really well. You've got apple flavored beers, but then there's like apple forward spirits like Laird's Apple Jack, not to bring it back.
+                    - paragraph [ref=e318]:
+                      - strong [ref=e319]: "[00:21:24] Justin Kendall:"
+                      - text: Two Towns Bad Apple, Imperial Cider on here, 10.5%.
+                    - paragraph [ref=e320]:
+                      - strong [ref=e321]: "[00:21:28] Zoe Licata:"
+                      - text: Yeah. I've asked some cider folks about what they think about the apple flavored beer craze happening and if it'll be good or bad for cider. And it seems they lean more towards this as positive of just like having some sort of apple flavor profile. Great. Make people's palates used to it. Then maybe they'll look for something that's slightly lower ABV or more natural flavors or something off of that. But I also I'm imagining there might be a little bit of a angry orchard effect of oh I don't want anything apple flavored because I drink capels, and I don't want anything like that again, so we'll see Limes next and so is Bill Shufelt, so let's get to our featured interview
+                    - paragraph [ref=e322]:
+                      - strong [ref=e323]: "[00:22:13] Speaker 1:"
+                      - text: How you feeling, Bill? Awesome. Feeling great. Excited to be here. Excited for BevNET? Yeah, very excited. I love BevNET. You know, the entrepreneurial energy in the room. It's actually that event 10 years ago that I met one of our biggest advocates, Darren Revell. Right after he walked off stage, I walked right up to him and had a nice conversation. I remember like everyone who talked to me even at that stage in athletic, like it was very few people who like actually like hung out on the phone and like actually like talked to me about the idea and stuff. So I love being in the room of like entrepreneurial energy and people like fermenting ideas and stuff.
+                    - paragraph [ref=e324]:
+                      - strong [ref=e325]: "[00:22:47] Justin Kendall:"
+                      - text: And you feel on it today?
+                    - paragraph [ref=e326]:
+                      - strong [ref=e327]: "[00:22:48] Speaker 1:"
+                      - text: For sure. Yeah. I mean, this is definitely a bit of a different venue, but, you know, week after Memorial Day, weather's starting to heat up. It's, I mean, if your pulse isn't beating these weeks in the beer industry, you're definitely in the wrong industry. It's like the marketing ideas on our team are just like totally bubbling over. We have the most innovation we've ever had out at retail going on this year. And so I don't know, this is probably the most excited I've ever been in athletic history, like right now.
+                    - paragraph [ref=e328]:
+                      - strong [ref=e329]: "[00:23:17] Justin Kendall:"
+                      - text: You just said you're feeling the most excited about Athletic than you have ever felt. Why are you feeling that way right now?
+                    - paragraph [ref=e330]:
+                      - strong [ref=e331]: "[00:23:23] Speaker 1:"
+                      - text: You know, I think we've built a really good foundation over the past eight years in business at Athletic. John and I are coming up on 10 years working together on the company. And so I feel like we've built a really good foundation, getting the boulder rolling from a dead standstill, maybe even rolling backwards on us down the mountain. to getting it rolling in the right direction. And we have such an amazing team of people around us at Athletic. We've built finely scaled breweries on both coasts so we can reliably meet production from our partners and retailers. But we've also, I would say the last six, seven years have all been about establishing a base of distribution of our core products. That is so hard, as you know, in this industry across all the channels. And now we have a really good opportunity to bring a bunch of innovation to the market this year. We're really stepping up our marketing and ideas this summer. So it's just a really exciting time.
+                    - paragraph [ref=e332]:
+                      - strong [ref=e333]: "[00:24:17] Justin Kendall:"
+                      - text: Tell us about the innovation a little bit, because you've run with a pretty pat hand for the most part, with the exception of a few beers. You introduced Athletic Light a few years ago. But tell us a little more about the innovation that you're bringing to market, because you just said it, getting more distribution isn't always the easiest thing. But when you've run with that pat hand, and now you're bringing retailers something new, I imagine that there's some excitement there.
+                    - paragraph [ref=e334]:
+                      - strong [ref=e335]: "[00:24:44] Speaker 1:"
+                      - text: I mean, even zooming out before innovation, like our flagship products are some of the best selling products in the category, highest velocity. They're the highest awarded products in the category. Our team's coming up on 200 Global Taste Awards, and the peak distribution of our number one SKU is still only at 38%, where there are four brands in the category that are distributed above 55%. And so even though Athletic is the number one share player in non-alcoholic beer at like 18% of the category. So we still really want to get these really popular high velocity awarded beers out to better distribution and catch up with where the market is. But that being said, our brewing and quality teams on both coasts at our breweries, we have a three barrel on one system, a seven barrel on the other. They're constantly full of innovation ideas. We launch about 50 beers a year on athleticbrewing.com over 30 a year are new beers. And so like the innovation machine at athletic is unbelievable. Like we're not a contract brewed CPG company where it's our team putting the heart into everything. And so, some of those beers are becoming so popular that they have to get out to retail and then other things just releasing and leaning into is like fond retail programming and stuff.
+                    - paragraph [ref=e336]:
+                      - strong [ref=e337]: "[00:25:56] Justin Kendall:"
+                      - text: So what are some of those beers that are finally hitting retail?
+                    - paragraph [ref=e338]:
+                      - strong [ref=e339]: "[00:26:00] Speaker 1:"
+                      - text: I would say like our athletic light beer was extremely popular in e-commerce. It's 25 calories, no sugar. And that's like growing very fast at retail. It's got finally getting decent distribution, especially in like 12 packs. This year we launched brewed cocktails, so non-alcoholic cocktails. Paloma and Moscow Mule were the first two of those. We do have other ones in the pipeline that we've released online, but those were extremely popular last year. To the extent I wasn't expecting as much because Like most of the people on our website are like craft beer lovers who want traditional beer styles. And so it was really interesting to see craft beer lovers jump at those. And we've also seen really good reception of those from non-beer drinkers out in the world. So some of those launched in January, but that retail distribution's getting expanded. And then some flavor variants of very popular products too. Our Athletic Light Lime and Salt's been a really popular product this year.
+                    - paragraph [ref=e340]:
+                      - strong [ref=e341]: "[00:26:51] Justin Kendall:"
+                      - text: Yeah, I've seen some of those products show up at my local Target, so I've definitely been checking the shelves.
+                    - paragraph [ref=e342]:
+                      - strong [ref=e343]: "[00:26:57] Speaker 1:"
+                      - text: Yeah, the lime and salt is about as quenching a beverage as I've ever had. It's like I love that beer way more than I would have expected.
+                    - paragraph [ref=e344]:
+                      - strong [ref=e345]: "[00:27:06] Justin Kendall:"
+                      - text: I'm seeing multiple facings too. So what happened to your with your shelf space this year? It looks like it's expanded quite a bit to make room for all these offerings.
+                    - paragraph [ref=e346]:
+                      - strong [ref=e347]: "[00:27:15] Speaker 1:"
+                      - text: I think as is the case across all of craft beer, I think craft beer, high velocity craft beer is relatively under-faced at retail relative to some larger brands that are probably over-faced and have more brand blocking. You know, Run Wild, Free Wave, like Upside Down are like the category leaders of non-alcoholic craft beer in our portfolio. should have probably had multiple facings already. So that's starting to catch up a little bit because there really were a lot of out of stocks on retailer shelves. So that's definitely starting to pick up a little bit. But I'd say in non-alcoholic beer, even though there's 200 plus brands on the shelf, it's really five or six brands that are driving 70 plus percent of the sales and 70 plus percent of the growth.
+                    - paragraph [ref=e348]:
+                      - strong [ref=e349]: "[00:27:56] Justin Kendall:"
+                      - text: Yeah, it's been a top heavy segment, but we've seen such an influx of new brands to the market and we're seeing a lot of celebrity brands as well. When you look at sort of the state of play right now in non-ALC and where the category is and where you think it's going, and I think this sort of dovetails with some comments you made earlier today, we're in Chicago for different events, but You were quoted in the Wall Street Journal, or at least the headline said that you said that alcohol-free could become half of the category sales. So you want to clarify or you want to explain where you think this is going?
+                    - paragraph [ref=e350]:
+                      - strong [ref=e351]: "[00:28:35] Speaker 1:"
+                      - text: Yeah, a bit of a whoopsie there, but I think I'm well credentialed as one of the most delusional people in the industry.
+                    - paragraph [ref=e352]:
+                      - strong [ref=e353]: "[00:28:42] Justin Kendall:"
+                      - text: Is it delusion or is it optimism?
+                    - paragraph [ref=e354]:
+                      - strong [ref=e355]: "[00:28:45] Speaker 1:"
+                      - text: Yeah, it's honestly like optimism and passion for what we're doing. And, you know, we set out to make not just non-alcoholic beer, but like great beer that happens to be non-alcoholic. And we're still so early in that discovery curve. Like, I think our national awareness at Athletic is still like five or 6%. Like among non-alcoholic beer drinkers, it's like 25%, which is so low among that core. That being said, we think we've come so far, but if you honestly look at where we are in the world and how many people know about us, so few people out there in the country even know that non-alcoholic beer changed for the better eight years ago and was essentially totally reinvented in the product quality and marketing of the product. eight, 10 years ago started out of like a passion for making awesome non-alcoholic beer. And I'm more confident than ever that as people try it and fall in love with it, they're going to find more and more occasions during the week. And as I think everyone knows, like we're certainly not trying to bring back prohibition. We're not attacking alcohol, like We have no view on alcohol, if it's good or bad. I think people getting together and hanging out is just overall great for society. What we were aiming to do at Athletic is bring more people to those occasions, whether they're lapsed drinkers, non-drinkers. Drinkers who want more rounds in the same setting drink alcohol and non-alcoholic beer so a long way of saying we're we're trying to think about a very positive some bring and 80 plus percent of our drinkers drink alcohol at other times during the week athletic is a way they can drink beer all those other days hours of the day and And I think people are just going to discover over and over again, all these new occasions, you can have great beer. And so I'm very bullish on the long-term health and growth of the category and our part in helping grow in that. So it was very hard to get non-alcoholic beer from 0% to 2% of beer. But there are actual retailers in the US who non-alcoholic beer is touching up against 20% of their beer sales. that we know is a potential reality in the not too distant future. And then beyond that, like we're here to see it happen.
+                    - paragraph [ref=e356]:
+                      - strong [ref=e357]: "[00:31:05] Justin Kendall:"
+                      - text: Well, you talk a little bit about the recognition, the awareness that consumers have of athletic, but when you see something like the Axios, Harris, Pole, 100 most visible brands and athletics on the top 10 there, what does that tell you about what you're doing?
+                    - paragraph [ref=e358]:
+                      - strong [ref=e359]: "[00:31:24] Speaker 1:"
+                      - text: We got a super fan at Axios, potentially. We take it as a huge compliment, like our team and how we interact with the community. And even from when John and I were homebrewing on Gatorade jugs, we always thought about like, what do we want Athletic to be? As our consumers peel back the onion on our brand, what do we want them to find and fall in love with? What do we want out of Athletic as a workplace, a place to spend 40% of our waking hours with our team? And so we've been really lucky to have an incredible group of 300 people surround us at Athletic that we love working with every day. And then the community, we've been trying to invest in the backyard of all of our community. We have our Two for the Trails program, which is passing over $10 million contributed and over 1,000 outdoor organizations supported this year. literally like investing in the backyards of all of our customers across the country. We're a B Corp, we have all of our teammates are equity owners in the company. And so I think it's a long way of saying like the overall company, we're trying to be really intentional in what we build for the long term. And hopefully that shows up in reputational stats like that, because we are authentically many layers deep at Athletic, not just like a corporate marketing veneer like so many companies these days.
+                    - paragraph [ref=e360]:
+                      - strong [ref=e361]: "[00:32:40] Justin Kendall:"
+                      - text: You just mentioned that your teammates at Athletic are equity owners, and I don't know that I was aware of that. Can you explain a little further about what you're doing there?
+                    - paragraph [ref=e362]:
+                      - strong [ref=e363]: "[00:32:51] Speaker 1:"
+                      - text: So right from the start, John and I talked about two programs, two for the trails and two for the team. Internally and the team side of that was basically a way to accrue ownership in athletic for every year They're with the team and that starts on day one and it builds over time with the team philosophically what that was was, you know, I came from a finance background where you know in and there's like I'm certainly pure capitalist but like At the same time, I don't think it's in everyone's best interest for 100% of profitability to accrue only to shareholders. I think that does get incentives out of whack. And I want our teammates that are really contributing to building Athletic to participate in what they're creating and building. And so I think it also helps drive a real ownership mindset in how people make decisions because they take their role in the company. their role in supporting their teammates' careers and potential, like a little differently if they have that ownership mindset. And I think people make decisions really confidently because of that.
+                    - paragraph [ref=e364]:
+                      - strong [ref=e365]: "[00:33:56] Justin Kendall:"
+                      - text: Is there a certain percentage of the business that you've dedicated for the team and sort of capped at or how does that work?
+                    - paragraph [ref=e366]:
+                      - strong [ref=e367]: "[00:34:03] Speaker 1:"
+                      - text: Generally as a private company, we don't really disclose cap table details, but team ownership has grown to a pretty significant part of our cap table.
+                    - paragraph [ref=e368]:
+                      - strong [ref=e369]: "[00:34:11] Justin Kendall:"
+                      - text: Yeah. We've talked a little bit about how there's been an influx of brands into non-alcoholic beer and it feels like there's a little bit of a cold rush phase that's going on still and we've seen a lot of celebrity brands pop up and I guess what does that signal about NA beer and where this segment's headed?
+                    - paragraph [ref=e370]:
+                      - strong [ref=e371]: "[00:34:33] Speaker 1:"
+                      - text: I mean, I'm super bullish long-term on the category on health and wellness in general, our ability to add occasions and new customers to the category. But to like add occasions and new customers, you have to do the work like they, customers don't just show up at the shelf and look for your product and look for a category and understand what you're selling even to begin with. And so I, I do think even though non-alcoholic beer has grown over 10X in the last like six or seven years, that has not been widely distributed also. And I think it's like stepping out of non-alcoholic beer. I think we do see this in basically every category trend that plays out over time, even looking outside our category, energy drinks. Energy drinks have been growing 25 years straight with almost no deviation from a nice, healthy trend. But of the 500-plus energy drinks that launched between 2000 and 2005, there's probably only three to five still running, and I think that's In general, just kind of speaks to how these cycles work. I'm certainly not telling anyone how to run their business or anything, but just like observing trends and adult beverage, you know, we do see these tides come in and go out fairly fast over and over again. There's definitely certain trends in craft beer, hard seltzer, RTDs. And over and over again amongst these categories. So as I zoom out, I think, you know, it's not only just can I make a product in this category, but like, what is my differentiation or reason for being? Can I make a great product in that category? Or do I have a unique marketing message or angle or like, so it's, it's kind of everything together. I think that's required to have success in a category by any company. So. That's a very long way of saying there has been a steady stream of non-alcoholic brewers going out of business the last three to four years, too. And some of them are really well-funded. Companies that have raised $20 to $30-plus million are coming in and out of the category. And I think we're up to 10 celebrity brands or so now, and they're not in the top 10. So it's certainly not just a get a product made at a contract brewer and get it to the shelf and it's going to fly. Consumers are really sharp these days.
+                    - paragraph [ref=e372]:
+                      - strong [ref=e373]: "[00:36:49] Justin Kendall:"
+                      - text: When you look at the competitive landscape, do you see this remaining a top heavy segment?
+                    - paragraph [ref=e374]:
+                      - strong [ref=e375]: "[00:36:54] Speaker 1:"
+                      - text: You know, I hope long term for, you know, going back to what I said about this category grown to double digit percentage of the beer market. That's got to be a well diversified category that markets to a lot of different consumers and has a lot of different product varieties. You know, I love that there's both brands big that make versions of their loggers, versions of their imports, and then very small and regional too. I think all parts are necessary for a healthy ecosystem, but it truly does have to be different than what it was 10 years ago. There's a lot of beer that actually is no better than the products that were out 10 years ago. and are just marketing differently. It's got to actually deliver on that consumer surprise and delight. And I think one of the more frustrating things is too, we've seen an incredibly high number of packages and marketing messages in the category go from starting at a more unique place and drift towards athletic. there's at least five to 10 packages that are color matched exactly to our lead two SKUs these days, which is from products that started like pretty far away from that, which, you know, to really support a well-developed category, like that kind of behavior will not, and that will lead to a. top-heavy category, kind of like energy drinks. I think what leads to a really well-diversified, well-developed category is when everyone knows their reason for being, their marketing message, their unique things, and rather than brands that started as a music brand are now all of a sudden an outdoors athletics brand. And we've seen that over and over again.
+                    - paragraph [ref=e376]:
+                      - strong [ref=e377]: "[00:38:24] Justin Kendall:"
+                      - text: So sort of a copycat phase that you feel like you're seeing now.
+                    - paragraph [ref=e378]:
+                      - strong [ref=e379]: "[00:38:29] Speaker 1:"
+                      - text: Yeah, and there are a lot of opportunists out there. We've had our website copied top to bottom at least 25 times. Really? So yeah. Wow. But at the same time, it just is what it is. I know it comes with the territory and like there's also a lot of great interpreters out there and teams doing good stuff. And, you know, John and I just talked to one of our favorite local San Diego breweries last week and We'd love to be as supportive as we can, and we want this ecosystem to develop well. As you know, we care a lot about the craft beer community, we want to be good participants in it, so we hope it develops nicely.
+                    - paragraph [ref=e380]:
+                      - strong [ref=e381]: "[00:39:04] Justin Kendall:"
+                      - text: When you look at where Athletic is in its life cycle right now, what phase do you see Athletic in?
+                    - paragraph [ref=e382]:
+                      - strong [ref=e383]: "[00:39:12] Speaker 1:"
+                      - text: Yeah, I mean, honestly, the longer we're at it, the more and more I fall in love with the business over and over again. And I'd say, honestly, I'm having more fun now than I've ever had before. If you go back five years ago, things were pretty crazy, activating tons of events on 70 planes a year. And, you know, we'd go home and like 20 fires would be burning every night. And so We just have such a great team now. There's such great energy on the team between, you know, marketing ideas, our sales team out there covering the whole world, activating events, our brewing teams and the innovation, our food safety and quality teams are world class, like the improvement. on every metric inside the brewery too is like, I just marvel at it. And so I'd say honestly, and like in that have had found like what balance for me is. And I think John would say the same too, that like, yeah, we're working hard because we want to be working hard, but it doesn't even like feel like that to some extent, because we're having so much fun.
+                    - paragraph [ref=e384]:
+                      - strong [ref=e385]: "[00:40:08] Justin Kendall:"
+                      - text: Do you feel like you've found a balance from where you were? Or are you still that hard charging?
+                    - paragraph [ref=e386]:
+                      - strong [ref=e387]: "[00:40:14] Speaker 1:"
+                      - text: Oh, for sure, yeah. It's definitely some semblance of balance.
+                    - paragraph [ref=e388]:
+                      - strong [ref=e389]: "[00:40:17] Justin Kendall:"
+                      - text: Really? I don't know if I believe you.
+                    - paragraph [ref=e390]:
+                      - strong [ref=e391]: "[00:40:21] Speaker 1:"
+                      - text: No, definitely having fun. There's like always more I wish I could do. And like, I honestly get such FOMO, you know, there's so many things I used to be able to do. or don't get to do as much anymore that I wish I could do more of. And there just aren't enough hours in the day and I need to pick the things that are like important for me to do for the rest of the team, like clearing roadblocks or, you know, those two to three things a week that I really have to get done for the team to be able to operate well. But, you know, I wish I could be at so much more in real world events and handing out beers, talking to customers and stuff. I still get to double digit states every year and get to a bunch of events and a lot of fun stuff.
+                    - paragraph [ref=e392]:
+                      - strong [ref=e393]: "[00:41:04] Justin Kendall:"
+                      - text: What's the most untapped opportunity that athletics still has?
+                    - paragraph [ref=e394]:
+                      - strong [ref=e395]: "[00:41:09] Speaker 1:"
+                      - text: I mean, if you look at where athletic is, even though, so we are just going to numbers of the category. Athletic is roughly like 18% of the category to 22% of the category, depending on what cut of data you look at. And we're like 50% of craft non-alcoholic beer. But our distribution is still really low, like in independence, like. No matter how much our distributors smile at us and tell us we're a priority, we're in like 10% of their independence. And I can go into stores in almost any state in the country and look at a shelf that is controlled by our distributors, that has five plus non-alcoholic beer products on it, and Athletic will have none. And like, so there's, there's just like such untapped distribution out there still. I think that is just like broad across channels, but like there's whole channels of beer too, that I'm not even saying we're ready for yet. Like we've been holding back some pretty big channels and I think in the next two to three years, like we'll be ready and like have awareness high enough and the product recognition, but we're also being kind of realistic with ourselves though, that even though. We know we have a great product and people will like it. You know, we're launching into everything at the right time.
+                    - paragraph [ref=e396]:
+                      - strong [ref=e397]: "[00:42:19] Justin Kendall:"
+                      - text: Why do you think that there's, I don't know if it's a reluctance or why there isn't that buy-in to get athletic on those shelves and those independents like you think that they should be?
+                    - paragraph [ref=e398]:
+                      - strong [ref=e399]: "[00:42:32] Speaker 1:"
+                      - text: Yeah, well, I think part of it is awareness, like those retailers, honestly, like we have to go in those doors and do the work ourselves. And that's an education piece on our side is, you know, we have to go in and make everyone fall in love with the beer. You know, it's one thing. Yeah, we'd love our distributors to make more of those sales but as long as they make those deliveries like it's our job to make people fall in love with the beer and so that's on us and we'll be out there doing the work and ultimately have customers go to them and say you need to have this beer too. So if they're not asking for it, like that's also on us. But then there are, you know, if you go to gas and convenience, for example, that's 50 plus percent of beer sales for a lot of beer companies in this country. And athletics really not there yet. And that may be the right choice. Like certainly a few years ago, we were holding back that channel. I think we're probably getting pretty close to the right time for non-alcoholic beer to hit convenience in a big way. And I think you're seeing that in the trends. I saw something from our mutual friend in the industry Bumps team about the convenience is losing dollar shares of beer in recent cuts and stuff. I think that probably speaks to that they have a big gap in one of the fastest growing segments of adult beverage that actually probably fits the need state of the customers who are walking in there really well. We sell a delicious non-alcoholic canned beverage that is highly mobile and fits a ton of occasions. That to me is like convenience is on the move and that's a perfect fit.
+                    - paragraph [ref=e400]:
+                      - strong [ref=e401]: "[00:44:01] Justin Kendall:"
+                      - text: So earlier in athletics life, and I think in a conversation with me, you floated the possibility of an IPO. Is that still something that you look at as a long-term goal or part of the long-term vision?
+                    - paragraph [ref=e402]:
+                      - strong [ref=e403]: "[00:44:17] Speaker 1:"
+                      - text: I mean, I go back and forth. And at the end of the day, John and I spend so much time thinking about our customers, our team, our products, our sales, our marketing, everything. And capital structure only occupies a sliver of that. And so to be honest, I'm relatively indifferent to the ultimate capital structure-like decisions. And we've been able to build a really long-term private company in the private markets. kind of without the distraction of public markets. And so there's certainly days I wake up and would love to be a public company. I came from that world. We get investor emails all the time asking when they can invest and would love us to be a public company. And that breaks my heart when we can't. But at the same time, you know, there are days too where being a private company is really nice. And you can see through quarterly periods, even multi-year periods and invest for really long payback periods and time horizons. you know, do things for our team or our customers that wouldn't make sense financially in a very short term, hard to communicate cycle. And then there's all sorts of paths in between too, where, you know, we have great investors all the way from like a lot of angel investors who support us through the early days, all the way up till now, all the way up to Kirk, Dr. Pepper. And, you know, so there's obviously they're a very scaled beverage advisor for us. So, yeah.
+                    - paragraph [ref=e404]:
+                      - strong [ref=e405]: "[00:45:37] Justin Kendall:"
+                      - text: How much do you think about that balance between building something that's personally meaningful and satisfying, which it seems like you're really enjoying the ride right now, versus building something financially valuable?
+                    - paragraph [ref=e406]:
+                      - strong [ref=e407]: "[00:45:51] Speaker 1:"
+                      - text: I mean, as I look at it, I have like, It's not like I wake up in the morning, I'm thinking about 20 other things. Like I was a accidental interpreter to begin with who had one idea ever. And so with that as a backdrop, if I was ever to be on like the outside looking in at this company, like that seems like a tough place to be in where, you know, I said earlier, I think non-alcoholic beer could go from 2% to 20% of beer easily. And we want, I don't know if that happens without us helping steer that, help develop it. And so I think it could be one of the biggest regrets of a lifetime being on the outside, looking in and watching that play out when I was probably one of the only people in the country who thought that five years ago that it could ultimately get there. We want to be there to make that happen, but ultimately there are decisions that we have to weigh in what's best for our teammates, our customers, our shareholders all along the way as well. extremely stubborn in like Bill's vision of the world or Bill and John's vision of the world. So ultimately, this is probably the most I've thought about in a little while.
+                    - paragraph [ref=e408]:
+                      - strong [ref=e409]: "[00:47:05] Justin Kendall:"
+                      - text: Well, and I mean, you've repeatedly said that this is the most fun you're you're having, but businesses go through different cycles in their lives. And do you see a point where you're not the CEO of Athletic and that you've sort of handed that job off to somebody else to take it to some other level?
+                    - paragraph [ref=e410]:
+                      - strong [ref=e411]: "[00:47:25] Speaker 1:"
+                      - text: Yeah. Similarly, I, I don't want to be overly stubborn and say I'm the CEO for all seasons of athletics life, but I, I would like to think John and I've been on this incredible learning journey where, you know, I thought I was this like super smart finance guy coming into the beer world and Ultimately none of those skills ended up being transferable and I've like very humbly tried to learn this trade and this craft and how the industry works step by step and we've tried to learn how to be better managers to our teammates and adapt and grow and lay out our manufacturing in this industry and like we've learned a lot about sales and marketing and all the way up to like our boardroom and stuff like that. And so I like to think that I'm growing and learning and keeping up with the business and I'm always looking six to 12 months out for where the team needs me to be today and try not to get stuck in any era of the business also like, but You know, if I, especially if like John or teammates ever came to me and were like, Bill, I think the business is outgrowing you. Like, do you need help? Like stuff like that. Like I would of course, listen to that and do some introspection, but I'd also do my best to keep up.
+                    - paragraph [ref=e412]:
+                      - strong [ref=e413]: "[00:48:35] Justin Kendall:"
+                      - text: So. When you're looking at the next three to five years, what does success look like for athletic? What are sort of the milestone, you know, mile markers that you're going to be looking at?
+                    - paragraph [ref=e414]:
+                      - strong [ref=e415]: "[00:48:46] Speaker 1:"
+                      - text: Keeping the lights on, making delicious beer. I think in general, just trying to like financial milestones and like forecasts and stuff like that are, are numbers on a page and are helpful for like, just making sure we run the systems of business well. And of course we'd like to hit our goals, but at the end of the day, it's like, being the best part of people's day every day. You know, we're at this conference here in Chicago and like some of the conversations around lunch and like people coming up with like their anecdotes of athletic in their life, like that's the kind of thing that fills my cup up over and over again and is why I love to like think about reaching new people and working on this business and why I can't wait to like get back to work for one more hour after dinner at night or something like that, then anything about like, oh, we hit our financial target or something.
+                    - paragraph [ref=e416]:
+                      - strong [ref=e417]: "[00:49:36] Justin Kendall:"
+                      - text: What do you think is the biggest risk to the business going forward?
+                    - paragraph [ref=e418]:
+                      - strong [ref=e419]: "[00:49:39] Speaker 1:"
+                      - text: I think there's like both things in our control and out of our control. We have seen basically every year of our company's life, a new entrant come into our category and basically get double our distribution on day one. And that kind of thing is like pretty frustrating for us. But There are a lot of products in the category that have incredibly low repeat rates, you know, for any number of reasons, but they exist. There's a very long tail of products with sub 15% repeat purchase rates. Athletic is the only one in the category above 50%. Like obviously I love seeing athletic at eye level, chest level on a shelf, but like I think it is a retailer assortment is a major risk. Distributors putting low repeat purchase rate products at chest height for the category does bounce out a lot of category shoppers. For example, in the past 12 months, we've seen a new product with very low repeats, get a ton of distribution and not help grow the category as much as I thought it would have. Another thing is probably sobriety messaging. You know, the category 10 years ago was a designated drinker, sober messaged category that was in the penalty box. And I think we did a lot of work to push it out of that and like bring it to a positive aspirational thing. I think one of the more dangerous things about all these celebrity brands is all of them are talking about sobriety. and almost reinforcing a sobriety message for the category, which is actually a really small part of the consumers. But it also puts a lot of people who aren't sober into non-consideration of non-alcoholic beer, which I think is actually a way bigger risk than people think to the category. And so I would say those are probably two of the bigger risks out there, especially that are out of our hands.
+                    - paragraph [ref=e420]:
+                      - strong [ref=e421]: "[00:51:17] Justin Kendall:"
+                      - text: So those being out of your hands, how do you sort of work around those risks or, you know, try and mitigate those?
+                    - paragraph [ref=e422]:
+                      - strong [ref=e423]: "[00:51:25] Speaker 1:"
+                      - text: Yeah, I think time's our friend. I think opportunists and celebrity brands are short-term in nature. And so these waves will come and go, and we'll be here in five years and 10 years. And I think enough people will try athletic and love athletic and tell their friends about athletic or see a TV ad with athletic or see us at one of the 2,000-plus finish lines we'll be at this year and try a cold athletic at their favorite moment of the year. or be at a concert in one of their favorite moments of the year in triathletic. And so I think time's our friend. We're confident we're just making great beer that's going to add to people's favorite moments of the year. And at the end of the day, I think that wins out.
+                    - paragraph [ref=e424]:
+                      - strong [ref=e425]: "[00:52:07] Justin Kendall:"
+                      - text: Well, thanks for doing this, Bill. Really appreciate the time. For sure. Thank you. It was fun. Yeah. Always fun.
+                    - paragraph [ref=e426]:
+                      - strong [ref=e427]: "[00:52:13] Jessica Infante:"
+                      - text: And that's our show for this week. Thank you for listening. The Brewbound Podcast is a production of BevNET CPG. Our audio engineer for the Brewbound Podcast is Joe Cracci. Our technical director is Joshua Pratt and our video editor is Ryan Galang. Our social marketing manager is Amanda Smerlinski. Our designer is Amanda Huang. If you enjoyed this episode, please share it with your colleagues and friends and review us on your listening platform of choice. You can find our work at Brewbound.com. And we also welcome feedback and suggestions at podcast at Brewbound.com. On behalf of the entire Brewbound podcast team, thank you for listening. We'll be back next week.
+                  - button "Show Full Transcript" [ref=e428] [cursor=pointer]
+                - generic [ref=e429]:
+                  - heading "The Go-To Podcast for Beer Industry Professionals" [level=4] [ref=e430]
+                  - paragraph [ref=e431]: The Brewbound Podcast is an extension of Brewbound’s leading B2B beer industry reporting, featuring interviews with beer industry executives and entrepreneurs, along with highlights and commentary from the weekly news.
+                  - paragraph [ref=e432]:
+                    - text: New episodes are released every week. Send us comments and suggestions anytime to
+                    - link "podcast@brewbound.com" [ref=e433] [cursor=pointer]:
+                      - /url: mailto:podcast@brewbound.com
+                    - text: .
+                  - paragraph [ref=e434]:
+                    - link "Subscribe on Apple Podcasts" [ref=e435] [cursor=pointer]:
+                      - /url: https://podcasts.apple.com/us/podcast/brewbound-podcast/id1436101301
+            - generic [ref=e437]:
+              - img "Brewbound Insider" [ref=e439]
+              - generic [ref=e440]:
+                - heading "Stay Informed, Stay Competitive" [level=3] [ref=e441]
+                - paragraph [ref=e442]: Unlock the articles, expert interviews, and data reports that power the beer and beyond industry. Join our community and stay ahead with exclusive insights from Brewbound.
+                - generic [ref=e443]:
+                  - link "Get Started" [ref=e444] [cursor=pointer]:
+                    - /url: https://app.bevnet.com/subscribe?utm_site=brewbound&utm_page=http%3A%2F%2Fwww.brewbound.com%2Fpodcast%2Fathletics-bill-shufelt-is-bullish-on-the-future-of-na-beer--and-the-beer-category&utm_source=paywall&utm_campaign=gamma
+                  - paragraph [ref=e445]:
+                    - text: Already an Insider?
+                    - link "Log In" [ref=e446] [cursor=pointer]:
+                      - /url: https://auth.cpgmedia.com/?returnUrl=http%3A%2F%2Fwww.brewbound.com%2Fpodcast%2Fathletics-bill-shufelt-is-bullish-on-the-future-of-na-beer--and-the-beer-category&contentType=1&reportsite=1
+            - generic [ref=e447]:
+              - heading "Explore the Nombase CPG Database" [level=4] [ref=e448]
+              - paragraph [ref=e449]: Head to Nombase to learn more about the tagged companies and their offerings.
+              - list [ref=e450]:
+                - listitem [ref=e451]:
+                  - link "Athletic Brewing Co. CPG Companies View on Nombase" [ref=e452] [cursor=pointer]:
+                    - /url: https://www.nombase.com/companies/athletic-brewing-co
+                    - figure [ref=e453]:
+                      - img "Athletic Brewing Co." [ref=e454]
+                    - generic [ref=e455]:
+                      - strong [ref=e456]: Athletic Brewing Co.
+                      - generic [ref=e457]: CPG Companies
+                    - generic [ref=e458]: View on Nombase
+                - listitem [ref=e461]:
+                  - link "Brewers Association Other View on Nombase" [ref=e462] [cursor=pointer]:
+                    - /url: https://www.nombase.com/companies/brewers-association
+                    - figure [ref=e463]:
+                      - img "Brewers Association" [ref=e464]
+                    - generic [ref=e465]:
+                      - strong [ref=e466]: Brewers Association
+                      - generic [ref=e467]: Other
+                    - generic [ref=e468]: View on Nombase
+                - listitem [ref=e471]:
+                  - link "American Cider Association Other View on Nombase" [ref=e472] [cursor=pointer]:
+                    - /url: https://www.nombase.com/companies/american-cider-association
+                    - figure [ref=e473]:
+                      - img "American Cider Association" [ref=e474]
+                    - generic [ref=e475]:
+                      - strong [ref=e476]: American Cider Association
+                      - generic [ref=e477]: Other
+                    - generic [ref=e478]: View on Nombase
+                - listitem [ref=e481]:
+                  - link "Zipline Brewing Co. CPG Companies View on Nombase" [ref=e482] [cursor=pointer]:
+                    - /url: https://www.nombase.com/companies/zipline-brewing-co
+                    - figure [ref=e483]:
+                      - img "Zipline Brewing Co." [ref=e484]
+                    - generic [ref=e485]:
+                      - strong [ref=e486]: Zipline Brewing Co.
+                      - generic [ref=e487]: CPG Companies
+                    - generic [ref=e488]: View on Nombase
+                - listitem [ref=e491]:
+                  - link "Phusion Projects Inc. CPG Companies View on Nombase" [ref=e492] [cursor=pointer]:
+                    - /url: https://www.nombase.com/companies/Phusion_Projects_Inc
+                    - figure [ref=e493]:
+                      - img "Phusion Projects Inc." [ref=e494]
+                    - generic [ref=e495]:
+                      - strong [ref=e496]: Phusion Projects Inc.
+                      - generic [ref=e497]: CPG Companies
+                    - generic [ref=e498]: View on Nombase
+                - listitem [ref=e501]:
+                  - link "Molson Coors Beverage CPG Companies View on Nombase" [ref=e502] [cursor=pointer]:
+                    - /url: https://www.nombase.com/companies/molson_coors
+                    - figure [ref=e503]:
+                      - img "Molson Coors Beverage" [ref=e504]
+                    - generic [ref=e505]:
+                      - strong [ref=e506]: Molson Coors Beverage
+                      - generic [ref=e507]: CPG Companies
+                    - generic [ref=e508]: View on Nombase
+                - listitem [ref=e511]:
+                  - link "New Belgium Brewing CPG Companies View on Nombase" [ref=e512] [cursor=pointer]:
+                    - /url: https://www.nombase.com/companies/new-belgium-brewing
+                    - figure [ref=e513]:
+                      - img "New Belgium Brewing" [ref=e514]
+                    - generic [ref=e515]:
+                      - strong [ref=e516]: New Belgium Brewing
+                      - generic [ref=e517]: CPG Companies
+                    - generic [ref=e518]: View on Nombase
+                - listitem [ref=e521]:
+                  - link "Allagash Brewing Company CPG Companies View on Nombase" [ref=e522] [cursor=pointer]:
+                    - /url: https://www.nombase.com/companies/allagash-brewing-company
+                    - figure [ref=e523]:
+                      - img "Allagash Brewing Company" [ref=e524]
+                    - generic [ref=e525]:
+                      - strong [ref=e526]: Allagash Brewing Company
+                      - generic [ref=e527]: CPG Companies
+                    - generic [ref=e528]: View on Nombase
+          - complementary [ref=e531]:
+            - generic [ref=e532]:
+              - heading "Industry Marketplace" [level=3] [ref=e534]
+              - article [ref=e536]:
+                - link [ref=e537] [cursor=pointer]:
+                  - /url: /marketplace/contract-brewing-available_63083
+                  - figure [ref=e538]:
+                    - img "Contract Brewing Available" [ref=e540]
+                  - heading "Contract Brewing Available" [level=2] [ref=e542]
+              - list [ref=e544]:
+                - listitem [ref=e545]:
+                  - link "View All" [ref=e546] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/marketplace
+                  - text: "|"
+                - listitem [ref=e547]:
+                  - link "Post a Listing" [ref=e548] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/marketplace/postlisting
+            - generic [ref=e549]:
+              - heading "Latest News" [level=3] [ref=e551]
+              - generic [ref=e552]:
+                - article [ref=e553]:
+                  - link [ref=e554] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/news/samuel-adams-boston-brewery-workers-submit-intent-to-unionize
+                    - figure [ref=e555]:
+                      - img "Samuel Adams Boston Brewery Workers Submit Intent to Unionize" [ref=e556]
+                    - heading "Samuel Adams Boston Brewery Workers Submit Intent to Unionize" [level=2] [ref=e558]
+                - article [ref=e559]:
+                  - link [ref=e560] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/news/b3-completes-acquisition-of-yards-brewing-two-roads-heavy-seas-exit-platform
+                    - figure [ref=e561]:
+                      - img "B3 Completes Acquisition of Yards Brewing; Two Roads, Heavy Seas Exit Platform" [ref=e562]
+                    - heading "B3 Completes Acquisition of Yards Brewing; Two Roads, Heavy Seas Exit Platform" [level=2] [ref=e564]
+                - article [ref=e565]:
+                  - generic [ref=e566]: SPONSORED POST
+                  - link [ref=e567] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/sponsored/hop-water-what-breweries-should-consider-before-scaling-up/
+                    - figure [ref=e568]:
+                      - 'img "Hop Water: What Breweries Should Consider Before Scaling Up" [ref=e569]'
+                    - 'heading "Hop Water: What Breweries Should Consider Before Scaling Up" [level=2] [ref=e571]'
+            - generic [ref=e572]:
+              - heading "Featured Jobs" [level=3] [ref=e574]
+              - generic [ref=e575]:
+                - article [ref=e576]:
+                  - link [ref=e577] [cursor=pointer]:
+                    - /url: /jobs/62552-regional-sales-representative-new-trail-brewing-co
+                    - figure [ref=e578]:
+                      - img "Regional Sales Representative - New Trail Brewing Co." [ref=e580]
+                    - heading "Regional Sales Representative - New Trail Brewing ..." [level=2] [ref=e582]
+                - article [ref=e583]:
+                  - link [ref=e584] [cursor=pointer]:
+                    - /url: /jobs/63166-brewer-weldwerks-brewing-co
+                    - figure [ref=e585]:
+                      - img "Brewer - WeldWerks Brewing Co." [ref=e587]
+                    - heading "Brewer - WeldWerks Brewing Co." [level=2] [ref=e589]
+                - article [ref=e590]:
+                  - link [ref=e591] [cursor=pointer]:
+                    - /url: /jobs/63031-parttime-account-scout--brand-ambassador-equilibrium-brewery
+                    - figure [ref=e592]:
+                      - img "Part-Time Account Scout / Brand Ambassador - Equilibrium Brewery" [ref=e594]
+                    - heading "Part-Time Account Scout / Brand Ambassador - Equil..." [level=2] [ref=e596]
+                - article [ref=e597]:
+                  - link [ref=e598] [cursor=pointer]:
+                    - /url: /jobs/62522-offpremise-sales-representative-cinderlands-beer-co
+                    - figure [ref=e599]:
+                      - img "Pittsburgh Sales Representative - Cinderlands Beer Co." [ref=e601]
+                    - heading "Pittsburgh Sales Representative - Cinderlands Beer..." [level=2] [ref=e603]
+                - article [ref=e604]:
+                  - link [ref=e605] [cursor=pointer]:
+                    - /url: /jobs/63036-brewer-malibu-brewing-company
+                    - figure [ref=e606]:
+                      - img "Brewer - Malibu Brewing Company" [ref=e608]
+                    - heading "Brewer - Malibu Brewing Company" [level=2] [ref=e610]
+                - article [ref=e611]:
+                  - link [ref=e612] [cursor=pointer]:
+                    - /url: /jobs/63017-assistant-cidermaker-yonder-cider-co
+                    - figure [ref=e613]:
+                      - img "Assistant Cidermaker - Yonder Cider Co." [ref=e615]
+                    - heading "Assistant Cidermaker - Yonder Cider Co." [level=2] [ref=e617]
+              - list [ref=e619]:
+                - listitem [ref=e620]:
+                  - link "View All Jobs" [ref=e621] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/jobs
+                  - text: "|"
+                - listitem [ref=e622]:
+                  - link "Post a Job" [ref=e623] [cursor=pointer]:
+                    - /url: https://app.cpgjobs.com/PostJobListing/brewbound?utm_source=brewbound&utm_medium=right_module&utm_content=wp_left_sidebar
+            - generic [ref=e624]:
+              - heading "Additional News" [level=3] [ref=e626]
+              - generic [ref=e627]:
+                - article [ref=e628]:
+                  - link [ref=e629] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/news/c-stores-lead-bev-alc-declines-as-late-summer-losses-continue-per-niq-weekly-scans
+                    - figure [ref=e630]:
+                      - img "C-Stores Lead Bev-Alc Declines as Late Summer Losses Continue, per NIQ Weekly Scans" [ref=e631]
+                    - heading "C-Stores Lead Bev-Alc Declines as Late Summer Losses Continue, per NIQ Weekly Scans" [level=2] [ref=e633]
+                - article [ref=e634]:
+                  - link [ref=e635] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/news/adult-non-alc-in-2026-a-1-billion-category-with-a-splitting-playbook
+                    - figure [ref=e636]:
+                      - 'img "Adult Non-Alc In 2026: A $1 Billion Category With a Splitting Playbook" [ref=e637]'
+                    - 'heading "Adult Non-Alc In 2026: A $1 Billion Category With a Splitting Playbook" [level=2] [ref=e639]'
+                - article [ref=e640]:
+                  - link [ref=e641] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/news/freedom-to-focus-ska-begins-4th-decade-refocused-on-beer-following-ownership-change
+                    - figure [ref=e642]:
+                      - 'img "Freedom to Focus: Ska Begins 4th Decade Refocused on Beer, Following Ownership Change" [ref=e643]'
+                    - 'heading "Freedom to Focus: Ska Begins 4th Decade Refocused on Beer, Following Ownership Change" [level=2] [ref=e645]'
+                - article [ref=e646]:
+                  - link [ref=e647] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/news/rhinegeist-wades-into-rtds-with-cincy-splash
+                    - figure [ref=e648]:
+                      - img "Rhinegeist Wades into RTDs with Cincy Splash" [ref=e649]
+                    - heading "Rhinegeist Wades into RTDs with Cincy Splash" [level=2] [ref=e651]
+        - complementary [ref=e652]:
+          - generic [ref=e653]:
+            - heading "Jobs in the Beer Industry" [level=3] [ref=e655]
+            - generic [ref=e656]:
+              - list [ref=e659]:
+                - listitem [ref=e660]:
+                  - link "Brewer - WeldWerks Brewing Co. - WeldWerks Brewing Co." [ref=e661] [cursor=pointer]:
+                    - /url: http://www.brewbound.com/jobs/63166-brewer-weldwerks-brewing-co
+                - listitem [ref=e662]:
+                  - link "BREWER - 3rd shift - Lakefront Brewery - Lakefront Brewery" [ref=e663] [cursor=pointer]:
+                    - /url: http://www.brewbound.com/jobs/63165-brewer--3rd-shift-lakefront-brewery
+                - listitem [ref=e664]:
+                  - link "Brewing Specialist - Overnight - Prost Brewing Co. - Prost Brewing Co." [ref=e665] [cursor=pointer]:
+                    - /url: http://www.brewbound.com/jobs/63164-brewering-specialist--overnight-prost-brewing-co
+                - listitem [ref=e666]:
+                  - link "Lead Cellar Operator - Citizen Cider, LLC. - Citizen Cider, LLC." [ref=e667] [cursor=pointer]:
+                    - /url: http://www.brewbound.com/jobs/63159-lead-cellar-operator-citizen-cider-llc
+                - listitem [ref=e668]:
+                  - link "Sales Representative - Sarene Beer - Sarene Beer" [ref=e669] [cursor=pointer]:
+                    - /url: http://www.brewbound.com/jobs/63154-sales-representative-sarene-beer
+                - listitem [ref=e670]:
+                  - link "Connecticut and Rhode Island Sales Representative - Allagash Brewing Company - Allagash Brewing Company" [ref=e671] [cursor=pointer]:
+                    - /url: http://www.brewbound.com/jobs/63151-connecticut-and-rhode-island-sales-representative-allagash-brewing-company
+                - listitem [ref=e672]:
+                  - link "Packaging Manager - The Olde Mecklenburg Brewery - The Olde Mecklenburg Brewery" [ref=e673] [cursor=pointer]:
+                    - /url: http://www.brewbound.com/jobs/63146-packaging-manager-the-olde-mecklenburg-brewery
+              - list [ref=e675]:
+                - listitem [ref=e676]:
+                  - link "View All Jobs" [ref=e677] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/jobs
+                  - text: "|"
+                - listitem [ref=e678]:
+                  - link "Post a Job" [ref=e679] [cursor=pointer]:
+                    - /url: https://app.cpgjobs.com/PostJobListing/brewbound?utm_source=brewbound&utm_medium=right_module&utm_content=wp_sidebar
+          - generic [ref=e680]:
+            - heading "Promoted PR Posts" [level=3] [ref=e682]
+            - generic [ref=e683]:
+              - generic [ref=e684]:
+                - article [ref=e685]:
+                  - figure [ref=e686]:
+                    - link [ref=e687] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/06/18/celebrate-and-support-tennessee-state-parks-with-beer
+                      - img "Celebrate and Support Tennessee State Parks with Beer" [ref=e688]
+                  - heading [level=2] [ref=e690]:
+                    - link "Celebrate and Support Tennessee State Parks with Beer" [ref=e691] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/06/18/celebrate-and-support-tennessee-state-parks-with-beer
+                - article [ref=e692]:
+                  - heading [level=2] [ref=e694]:
+                    - link "Hummingbirds Launches Offers, Connecting Creator-Powered Discovery to Verified In-Store Purchases" [ref=e695] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/06/22/hummingbirds-launches-offers-connecting-creatorpowered-discovery-to-verified-instore-purchases
+                - article [ref=e696]:
+                  - heading [level=2] [ref=e698]:
+                    - link "Revello Modern Mixers Launches Across Florida with Southern Glazer’s, Introducing a New Standard for Mixers" [ref=e699] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/06/22/revello-modern-mixers-launches-across-florida-with-southern-glazers-introducing-a-new-standard-for-mixers
+                - article [ref=e700]:
+                  - figure [ref=e701]:
+                    - link [ref=e702] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/07/28/skip-shapiro-enterprises-launches-specialized-website-for-beverage-destruction-and-sustainable-waste-management
+                      - img "Skip Shapiro Enterprises Launches Specialized Website for Beverage Destruction and Sustainable Waste Management" [ref=e703]
+                  - heading [level=2] [ref=e705]:
+                    - link "Skip Shapiro Enterprises Launches Specialized Website for Beverage Destruction and Sustainable Waste Management" [ref=e706] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/07/28/skip-shapiro-enterprises-launches-specialized-website-for-beverage-destruction-and-sustainable-waste-management
+                - article [ref=e707]:
+                  - figure [ref=e708]:
+                    - link [ref=e709] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/07/28/form-launches-ai-posm-recognition-giving-food--beverage-brands-instant-visibility-into-instore-displays-and-promotions
+                      - img "FORM Launches AI POSM Recognition, Giving Food & Beverage Brands Instant Visibility Into In-Store Displays and Promotions" [ref=e710]
+                  - heading [level=2] [ref=e712]:
+                    - link "FORM Launches AI POSM Recognition, Giving Food & Beverage Brands Instant Visibility Into In-Store Displays and Promotions" [ref=e713] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/07/28/form-launches-ai-posm-recognition-giving-food--beverage-brands-instant-visibility-into-instore-displays-and-promotions
+                - article [ref=e714]:
+                  - figure [ref=e715]:
+                    - link [ref=e716] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/07/14/burke-distributing-renews-partnership-with-provi-pairing-more-than-90-years-of-service-with-modern-digital-commerce
+                      - img "Burke Distributing Renews Partnership with Provi, Pairing More Than 90 Years of Service with Modern Digital Commerce" [ref=e717]
+                  - heading [level=2] [ref=e719]:
+                    - link "Burke Distributing Renews Partnership with Provi, Pairing More Than 90 Years of Service with Modern Digital Commerce" [ref=e720] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/07/14/burke-distributing-renews-partnership-with-provi-pairing-more-than-90-years-of-service-with-modern-digital-commerce
+              - list [ref=e722]:
+                - listitem [ref=e723]:
+                  - link "View All" [ref=e724] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/pr
+                  - text: "|"
+                - listitem [ref=e725]:
+                  - link "Post a PR" [ref=e726] [cursor=pointer]:
+                    - /url: https://submit.bevnet.com/news
+          - generic [ref=e727]:
+            - heading "Recent Articles" [level=3] [ref=e729]
+            - generic [ref=e730]:
+              - generic [ref=e731]:
+                - list [ref=e732]:
+                  - listitem [ref=e733]:
+                    - link "Newswire" [ref=e734] [cursor=pointer]:
+                      - /url: "#"
+                  - listitem [ref=e735]:
+                    - link "Features" [ref=e736] [cursor=pointer]:
+                      - /url: "#"
+                  - listitem [ref=e737]:
+                    - link "Spirits" [ref=e738] [cursor=pointer]:
+                      - /url: "#"
+                - list [ref=e740]:
+                  - listitem [ref=e741]:
+                    - link "Fall Starts Early in Bourbon Country as Kentucky Pumpkin Barrel Ale Returns for the Season" [ref=e742] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/08/14/fall-starts-early-in-bourbon-country-as-kentucky-pumpkin-barrel-ale-returns-for-the-season
+                  - listitem [ref=e743]:
+                    - link "Shiner and Ella Langley Release Limited-Edition Honey Kölsch on 8/13" [ref=e744] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/08/13/shiner-and-ella-langley-release-limitededition-honey-kolsch-on-813
+                  - listitem [ref=e745]:
+                    - link "Rhinegeist Becomes an Official Hometown Beer Partner of the Cincinnati Bengals" [ref=e746] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/08/13/rhinegeist-becomes-an-official-hometown-beer-partner-of-the-cincinnati-bengals
+                  - listitem [ref=e747]:
+                    - link "Cincy Light Expands Family with Cincy Splash, Cincinnati's Vodka Soda" [ref=e748] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/08/13/cincy-light-expands-family-with-cincy-splash-cincinnatis-vodka-soda
+                  - listitem [ref=e749]:
+                    - link "Dô Asian Cocktails Soft Launches in California at Plate by Plate Los Angeles" [ref=e750] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/pr/2026/08/13/do-asian-cocktails-soft-launches-in-california-at-plate-by-plate-los-angeles
+                - list [ref=e751]:
+                  - listitem [ref=e752]:
+                    - link "Samuel Adams Boston Brewery Workers Submit Intent to Unionize" [ref=e753] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/news/samuel-adams-boston-brewery-workers-submit-intent-to-unionize
+                  - listitem [ref=e754]:
+                    - link "B3 Completes Acquisition of Yards Brewing; Two Roads, Heavy Seas Exit Platform" [ref=e755] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/news/b3-completes-acquisition-of-yards-brewing-two-roads-heavy-seas-exit-platform
+                  - listitem [ref=e756]:
+                    - 'link "Spirits Distribution: Original Southside Hits Major Retailers; SGWS Adds to Its Book" [ref=e757] [cursor=pointer]':
+                      - /url: https://www.brewbound.com/news/spirits-distribution-original-southside-hits-major-retailers-sgws-adds-to-its-book
+                  - listitem [ref=e758]:
+                    - link "C-Stores Lead Bev-Alc Declines as Late Summer Losses Continue, per NIQ Weekly Scans" [ref=e759] [cursor=pointer]:
+                      - /url: https://www.brewbound.com/news/c-stores-lead-bev-alc-declines-as-late-summer-losses-continue-per-niq-weekly-scans
+                  - listitem [ref=e760]:
+                    - 'link "Adult Non-Alc In 2026: A $1 Billion Category With a Splitting Playbook" [ref=e761] [cursor=pointer]':
+                      - /url: https://www.brewbound.com/news/adult-non-alc-in-2026-a-1-billion-category-with-a-splitting-playbook
+                - list [ref=e762]:
+                  - listitem [ref=e763]:
+                    - 'link "Adult Non-Alc In 2026: A $1 Billion Category With a Splitting Playbook" [ref=e764] [cursor=pointer]':
+                      - /url: https://www.bevnet.com/spirits/2026/adult-non-alc-in-2026-a-1-billion-category-with-a-splitting-playbook
+                  - listitem [ref=e765]:
+                    - link "High-ABV RTDs Are On The Rise, But They’re More Than Buzz For Your Buck" [ref=e766] [cursor=pointer]:
+                      - /url: https://www.bevnet.com/spirits/2026/high-abv-rtds-are-on-the-rise-but-theyre-more-than-buzz-for-your-buck
+                  - listitem [ref=e767]:
+                    - 'link "Spirits Distribution: Original Southside Hits Major Retailers; SGWS Adds To Its Book" [ref=e768] [cursor=pointer]':
+                      - /url: https://www.bevnet.com/spirits/2026/spirits-distribution-original-southside-hits-major-retailers-sgws-adds-to-its-book
+                  - listitem [ref=e769]:
+                    - link "After Breakthru Walks, KEG 1 Moves on RNDC’s Kentucky Business" [ref=e770] [cursor=pointer]:
+                      - /url: https://www.bevnet.com/spirits/2026/after-breakthru-walks-keg-1-moves-on-rndcs-kentucky-business
+                  - listitem [ref=e771]:
+                    - link "UK Non-Alc Botivo Sells Pleasure, Not Moderation, as Non-Alc Drinks Mature" [ref=e772] [cursor=pointer]:
+                      - /url: https://www.bevnet.com/spirits/2026/uk-non-alc-botivo-sells-pleasure-not-moderation-as-non-alc-drinks-mature
+                  - listitem [ref=e773]:
+                    - link "Suntory RTD -196 Sales Soaring Behind Culturally Rooted Activations" [ref=e774] [cursor=pointer]:
+                      - /url: https://www.bevnet.com/spirits/2026/suntory-rtd-196-sales-soaring-behind-culturally-rooted-activations
+                  - listitem [ref=e775]:
+                    - link "Diageo to Focus on RTDs; Unveils $1B Cost-Cutting Plan" [ref=e776] [cursor=pointer]:
+                      - /url: https://www.bevnet.com/spirits/2026/diageo-to-focus-on-rtds-unveils-1b-cost-cutting-plan
+              - list [ref=e778]:
+                - listitem [ref=e779]:
+                  - link "View All" [ref=e780] [cursor=pointer]:
+                    - /url: https://www.brewbound.com/newswire
+                  - text: "|"
+                - listitem [ref=e781]:
+                  - link "Submit News" [ref=e782] [cursor=pointer]:
+                    - /url: https://submit.bevnet.com/news
+    - contentinfo [ref=e784]:
+      - generic [ref=e785]:
+        - heading [level=2] [ref=e786]:
+          - link "Brewbound" [ref=e787] [cursor=pointer]:
+            - /url: ./
+        - generic [ref=e789]:
+          - navigation [ref=e790]:
+            - heading "Contact" [level=3] [ref=e791]
+            - list [ref=e792]:
+              - listitem [ref=e793]:
+                - link "Advertise with Brewbound" [ref=e794] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/advertise/
+              - listitem [ref=e795]:
+                - link "Submit News" [ref=e796] [cursor=pointer]:
+                  - /url: https://submit.bevnet.com/news
+              - listitem [ref=e797]:
+                - link "Submit a Beer Event" [ref=e798] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/beerevents/create
+              - listitem [ref=e799]:
+                - link "Post a Job Listing" [ref=e800] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/jobs/postjoblisting
+              - listitem [ref=e801]:
+                - link "Contact Us" [ref=e802] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/contact
+          - navigation [ref=e803]:
+            - heading "Follow" [level=3] [ref=e804]
+            - list [ref=e805]:
+              - listitem [ref=e806]:
+                - link "Newsletter" [ref=e807] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/newsletter/
+              - listitem [ref=e808]:
+                - link "Facebook" [ref=e809] [cursor=pointer]:
+                  - /url: https://www.facebook.com/brewbound
+              - listitem [ref=e810]:
+                - link "Twitter" [ref=e811] [cursor=pointer]:
+                  - /url: https://twitter.com/brewbound
+              - listitem [ref=e812]:
+                - link "Instagram" [ref=e813] [cursor=pointer]:
+                  - /url: http://instagram.com/brewbound
+              - listitem [ref=e814]:
+                - link "Youtube" [ref=e815] [cursor=pointer]:
+                  - /url: http://www.youtube.com/brewbound
+          - navigation [ref=e816]:
+            - heading "Resources" [level=3] [ref=e817]
+            - list [ref=e818]:
+              - listitem [ref=e819]:
+                - link "About Brewbound" [ref=e820] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/about
+              - listitem [ref=e821]:
+                - link "BevNET.com" [ref=e822] [cursor=pointer]:
+                  - /url: https://www.bevnet.com
+              - listitem [ref=e823]:
+                - link "Taste Radio Podcast" [ref=e824] [cursor=pointer]:
+                  - /url: https://www.tasteradio.com
+              - listitem [ref=e825]:
+                - link "BevNET Magazine" [ref=e826] [cursor=pointer]:
+                  - /url: https://www.bevnet.com/magazine
+              - listitem [ref=e827]:
+                - link "NOSH" [ref=e828] [cursor=pointer]:
+                  - /url: https://www.nosh.com
+              - listitem [ref=e829]:
+                - link "Nombase" [ref=e830] [cursor=pointer]:
+                  - /url: https://www.nombase.com/
+          - navigation [ref=e831]:
+            - heading "Navigate" [level=3] [ref=e832]
+            - list [ref=e833]:
+              - listitem [ref=e834]:
+                - link "News" [ref=e835] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/news
+              - listitem [ref=e836]:
+                - link "Events" [ref=e837] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/events
+              - listitem [ref=e838]:
+                - link "Breweries" [ref=e839] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/breweries
+              - listitem [ref=e840]:
+                - link "Craft Beer Jobs" [ref=e841] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/jobs
+              - listitem [ref=e842]:
+                - link "Craft Beer Events Calendar" [ref=e843] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/beerevents
+              - listitem [ref=e844]:
+                - link "Industry Marketplace" [ref=e845] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/marketplace
+              - listitem [ref=e846]:
+                - link "Videos" [ref=e847] [cursor=pointer]:
+                  - /url: https://www.brewbound.com/video
+      - generic [ref=e849]:
+        - generic [ref=e850]:
+          - link [ref=e851] [cursor=pointer]:
+            - /url: https://www.cpgmedia.com/
+            - img "BevNET CPG Media Logo" [ref=e852]
+          - paragraph [ref=e853]:
+            - text: Brewbound is a part of BevNET CPG Media. All rights reserved (
+            - link "Terms" [ref=e854] [cursor=pointer]:
+              - /url: https://www.brewbound.com/legal-terms
+            - text: "&"
+            - link "Privacy Policy" [ref=e855] [cursor=pointer]:
+              - /url: https://www.brewbound.com/privacy-policy
+            - text: ) © 2016 - 2026.
+        - button "Our Sites" [ref=e857] [cursor=pointer]
+  - alert [ref=e861]

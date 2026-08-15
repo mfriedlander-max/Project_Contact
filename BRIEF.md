@@ -10,7 +10,10 @@ still current before starting.
 
 ## How many per day
 
-**5**
+**1**
+
+TEMPORARY: set to 1 for test-loop iterations, so each run is fast and cheap to
+grade. Set back to 5 when testing is finished.
 
 Range is 5-10. Fewer, better-researched people beat more shallow ones. Ship fewer than this
 number rather than pad the batch.

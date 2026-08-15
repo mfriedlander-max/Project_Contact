@@ -1,0 +1,415 @@
+- generic [ref=f189e1]:
+  - text: 
+  - generic [ref=f189e3]:
+    - generic [ref=f189e4]:
+      - banner [ref=f189e5]:
+        - navigation "primary" [ref=f189e8]:
+          - generic:
+            - list [ref=f189e9]:
+              - listitem [ref=f189e10]:
+                - link "Resources" [ref=f189e11] [cursor=pointer]:
+                  - /url: https://www.prnewswire.com/resources/
+              - listitem [ref=f189e12]:
+                - link "Investor Relations" [ref=f189e13] [cursor=pointer]:
+                  - /url: https://www.prnewswire.com/investor-relations-solutions/
+              - listitem [ref=f189e14]:
+                - link "Journalists" [ref=f189e15] [cursor=pointer]:
+                  - /url: https://prnmedia.prnewswire.com/
+              - listitem [ref=f189e16]:
+                - link "Agencies" [ref=f189e17] [cursor=pointer]:
+                  - /url: https://www.cision.com/agencies/?utm_medium=referral&utm_source=prnewswire&utm_content=product&utm_campaign=2023-prn-all-products-page
+            - list [ref=f189e18]:
+              - listitem [ref=f189e19]:
+                - link "Client Login" [ref=f189e20] [cursor=pointer]:
+                  - /url: https://app.prnewswire.com/login/auto
+              - listitem [ref=f189e21]:
+                - link "Send a Release" [ref=f189e22] [cursor=pointer]:
+                  - /url: https://www.prnewswire.com/account/online-account-form/
+        - navigation "secondary" [ref=f189e25]:
+          - link [ref=f189e27] [cursor=pointer]:
+            - /url: https://www.prnewswire.com/
+            - img "Return to PR Newswire homepage" [ref=f189e28]
+          - list [ref=f189e29]:
+            - listitem [ref=f189e30]:
+              - link "News" [ref=f189e31] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/news-releases/
+            - listitem [ref=f189e32]:
+              - link "Products" [ref=f189e33] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/amplify-platform/
+            - listitem [ref=f189e34]:
+              - link "Contact" [ref=f189e35] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/contact-us/
+          - generic:
+            - generic:
+              - button "Search" [ref=f189e37] [cursor=pointer]:
+                - text: Search
+                - generic [ref=f189e38]: 
+              - text:  
+        - navigation "news" [ref=f189e42]:
+          - list [ref=f189e43]:
+            - listitem [ref=f189e44]:
+              - button "News in Focus" [ref=f189e45] [cursor=pointer]
+            - listitem [ref=f189e46]:
+              - button "Business & Money" [ref=f189e47] [cursor=pointer]
+            - listitem [ref=f189e48]:
+              - button "Science & Tech" [ref=f189e49] [cursor=pointer]
+            - listitem [ref=f189e50]:
+              - button "Lifestyle & Health" [ref=f189e51] [cursor=pointer]
+            - listitem [ref=f189e52]:
+              - button "Policy & Public Interest" [ref=f189e53] [cursor=pointer]
+            - listitem [ref=f189e54]:
+              - button "People & Culture" [ref=f189e55] [cursor=pointer]
+      - text:     
+    - main [ref=f189e56]:
+      - article [ref=f189e57]:
+        - generic [ref=f189e59]:
+          - generic [ref=f189e62]:
+            - heading "Athletic Brewing Brings Award-Winning Non-Alcoholic Beer to MetLife Stadium" [level=1] [ref=f189e64]
+            - generic [ref=f189e65]:
+              - generic:
+                - button "Athletic Brewing Company is the largest and most decorated non-alcoholic brewery in America. Athletic is revolutionizing how modern adults drink by crafting game-changing brews that can be consumed anytime and anywhere.":
+                  - img "Athletic Brewing Company is the largest and most decorated non-alcoholic brewery in America. Athletic is revolutionizing how modern adults drink by crafting game-changing brews that can be consumed anytime and anywhere." [ref=f189e66] [cursor=pointer]
+          - separator [ref=f189e69]
+          - generic [ref=f189e70]:
+            - generic [ref=f189e71]:
+              - heading "News provided by" [level=2] [ref=f189e72]
+              - link [ref=f189e73] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/news/athletic-brewing-company/
+                - strong [ref=f189e74]:
+                  - text: Athletic Brewing Company
+                  - generic [ref=f189e75]: 
+              - paragraph [ref=f189e76]: Aug 11, 2026, 12:00 ET
+            - generic [ref=f189e78]:
+              - heading "Share this article" [level=2] [ref=f189e79]
+              - list [ref=f189e81]:
+                - link "facebook sharing" [ref=f189e82] [cursor=pointer]:
+                  - /url: javascript:;
+                  - listitem [ref=f189e83]:
+                    - generic [ref=f189e84]: 
+                - link "twitter sharing" [ref=f189e86] [cursor=pointer]:
+                  - /url: javascript:;
+                  - listitem [ref=f189e87]:
+                    - generic [ref=f189e88]: 
+                - link "linkedin sharing" [ref=f189e90] [cursor=pointer]:
+                  - /url: javascript:;
+                  - listitem [ref=f189e91]:
+                    - generic [ref=f189e92]: 
+                - link "Whatsapp sharing" [ref=f189e94] [cursor=pointer]:
+                  - /url: javascript:;
+                  - listitem [ref=f189e95]:
+                    - generic [ref=f189e96]: 
+                - link "pinterest sharing" [ref=f189e98] [cursor=pointer]:
+                  - /url: javascript:;
+                  - listitem [ref=f189e99]:
+                    - generic [ref=f189e100]: 
+                - link "email sharing" [ref=f189e102] [cursor=pointer]:
+                  - /url: javascript:;
+                  - listitem [ref=f189e103]:
+                    - generic [ref=f189e104]: 
+            - text:       
+          - separator [ref=f189e108]
+        - generic [ref=f189e109]:
+          - generic [ref=f189e111]:
+            - paragraph [ref=f189e112]: America's Leading Non-Alcoholic Brewer Named a Proud Non-Alcoholic Beer Partner of MetLife Stadium, the New York Jets, and the New York Giants
+            - paragraph [ref=f189e113]:
+              - text: MILFORD, Conn. and SAN DIEGO, Aug. 11, 2026 /PRNewswire/ --
+              - link "Athletic Brewing Company" [ref=f189e114] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=1941010416&u=https%3A%2F%2Fathleticbrewing.com%2F&a=Athletic+Brewing+Company
+              - text: ", America's largest dedicated non-alcoholic brewer, today announced a new multi-year agreement with MetLife Stadium, one of the country's premier sports and entertainment venues."
+            - paragraph [ref=f189e115]: Under the agreement, Athletic Brewing will become a Proud Non-Alcoholic Beer Partner of MetLife Stadium, the New York Giants, and the New York Jets.
+            - paragraph [ref=f189e116]: The arrival of Athletic Brewing's award-winning non-alcoholic beer at MetLife Stadium, alongside the New York Jets and the New York Giants, represents a first-of-its-kind milestone for all four organizations. It marks Athletic Brewing's first formal sponsorship of two professional football teams and a professional football stadium, a major step in the company's mission to elevate the modern fan experience by bringing great-tasting non-alcoholic beer to more people across more occasions. It is also the first time MetLife Stadium and its two home teams have aligned with a dedicated non-alcoholic brewer in this capacity.
+            - paragraph [ref=f189e117]: "\"We're thrilled to team up with MetLife Stadium, the New York Giants, and the New York Jets to bring Athletic's great-tasting brews to one of the most exciting venues in sports and entertainment,\" said Bill Shufelt, Co-Founder and CEO of Athletic Brewing Company. \"This is an exciting step forward in our mission to revolutionize the way the world drinks and make modern moderation more accessible. We can't wait for Athletic to become the game day ritual fans count on, from the tailgate to the final whistle.\""
+            - paragraph [ref=f189e118]:
+              - text: As part of the agreement, fans can enjoy 19.2 oz. cans of
+              - link "Run Wild IPA" [ref=f189e119] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=3168494381&u=https%3A%2F%2Fathleticbrewing.com%2Fproducts%2Frun-wild&a=Run+Wild+IPA
+              - text: and
+              - link "Upside Dawn Golden" [ref=f189e120] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=3751734214&u=https%3A%2F%2Fathleticbrewing.com%2Fproducts%2Fupside-dawn&a=Upside+Dawn+Golden
+              - text: at locations throughout MetLife Stadium.
+            - paragraph [ref=f189e121]: Athletic will also be integrated throughout the game day and live entertainment experience through video board content and interactive fan promotions. Fans will also see Athletic branding across prominent stadium placements, including concourse displays, pylons, LED displays, menus, retail kiosks, and digital highway signage near the Stadium.
+            - paragraph [ref=f189e122]: During the season and beyond, guests will see Athletic integrated across MetLife Stadium and New York Jets and New York Giants media platforms. On select game days, fans can discover Athletic's award-winning flavor firsthand through product sampling and interactive activations.
+            - paragraph [ref=f189e123]: "\"Delivering an exceptional experience for every guest is our highest priority at MetLife Stadium,\" said Ron VanDeVeen, President & CEO, MetLife Stadium. \"As the live event experience continues to evolve, we are committed to offering amenities that reflect the preferences of all guests. Partnering with a non-alcoholic brewing pioneer like Athletic allows us to broaden our beverage offerings, provide greater choice, and further shape the experience for all guests who visit MetLife Stadium throughout the year.\""
+            - paragraph [ref=f189e124]: Athletic will reach fans beyond the stadium across New York Giants and New York Jets television, radio, digital, social media, and fan-engagement platforms. Athletic will also participate in both teams' training camps, community initiatives, and select events, creating additional opportunities to connect with fans throughout the season and across the New York metropolitan area.
+            - paragraph [ref=f189e125]: Later this year, Athletic Brewing plans to release special-edition packaging celebrating the New York Jets and New York Giants. Football fans in the Tri-State area will be able to purchase 12-packs of Run Wild IPA featuring the New York Giants logo and 12-packs of Upside Dawn Golden bearing the New York Jets logo.
+            - paragraph [ref=f189e126]: The sponsorship further reinforces Athletic's leadership across the sports and entertainment landscape, bringing its non-alcoholic beer to more fans and more of the moments that matter. Athletic is already served at more than 200 venues nationwide, and the company maintains major partnerships spanning professional soccer, baseball, lacrosse, hockey, college athletics, endurance events, outdoor sports, and live music.
+            - paragraph [ref=f189e127]:
+              - text: Founded by Bill Shufelt and John Walker, Athletic pioneered a proprietary method for making non-alcoholic beer, re-engineering nearly every step of the brewing process through hundreds of small-batch trials. This innovative approach has made Athletic the most highly awarded non-alcoholic brewer of the past decade, with more than 200 prestigious taste awards. The company produces nearly 50 NA beers annually and is the best-selling NA craft beer brand in the U.S., with over 50% market share — outselling the next 100 NA craft brands combined and leading its closest competitor by 44 share points
+              - superscript [ref=f189e128]: "1"
+              - text: .
+            - paragraph [ref=f189e129]:
+              - generic [ref=f189e130]: "For press inquiries, please contact:"
+              - text: Chris Furnari, Athletic Brewing Company |
+              - link "press@athleticbrewing.com" [ref=f189e131] [cursor=pointer]:
+                - /url: mailto:press@athleticbrewing.com
+              - text: Jack Taylor PR |
+              - link "athleticbrewing@jacktaylorpr.com" [ref=f189e132] [cursor=pointer]:
+                - /url: mailto:athleticbrewing@jacktaylorpr.com
+              - text: Liz McFadden, MetLife Stadium |
+              - link "lmcfadden@metlifestadium.com" [ref=f189e133] [cursor=pointer]:
+                - /url: mailto:lmcfadden@metlifestadium.com
+              - text: Meghan Gilmore, New York Jets |
+              - link "Mgilmore@nyjets.com" [ref=f189e134] [cursor=pointer]:
+                - /url: mailto:Mgilmore@nyjets.com
+              - text: Jennifer Escalante, New York Giants |
+              - link "jennifer.escalante@giants.nfl.net" [ref=f189e135] [cursor=pointer]:
+                - /url: mailto:jennifer.escalante@giants.nfl.net
+            - paragraph [ref=f189e136]:
+              - generic [ref=f189e137]: "Additional Assets:"
+              - text: Brand images can be downloaded
+              - link "HERE" [ref=f189e138] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=2545043113&u=https%3A%2F%2Fathleticbrewing.bynder.com%2Fby%2Fmetlife-stadium&a=HERE
+              - text: .
+            - paragraph [ref=f189e139]: About Athletic Brewing Company
+            - paragraph [ref=f189e140]:
+              - text: Athletic Brewing Company is America's largest dedicated non-alcoholic brewer. Athletic is revolutionizing how modern adults drink by crafting full-flavored NA brews that can be enjoyed anytime and anywhere. Launched commercially in 2018, Athletic is the number one non-alcoholic beer brand in America
+              - superscript [ref=f189e141]: "2"
+              - text: and a top 15 U.S. brewing company
+              - superscript [ref=f189e142]: "3"
+              - text: . Its award-winning brews are available nationwide at over 75,000 retail locations. Athletic operates custom breweries in Connecticut and California and donates up to $2 million annually to protecting and restoring outdoor spaces across the globe via its Two For The Trails program. Athletic is proudly a Certified B Corporation™. Learn more and shop at
+              - link "www.athleticbrewing.com" [ref=f189e143] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=49726002&u=http%3A%2F%2Fwww.athleticbrewing.com%2F&a=www.athleticbrewing.com
+              - text: .
+            - paragraph [ref=f189e144]:
+              - text: Follow Athletic Brewing on
+              - link "Facebook" [ref=f189e145] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=1915596862&u=https%3A%2F%2Fwww.facebook.com%2FAthleticBrewing%2F&a=Facebook
+              - text: ","
+              - link "Instagram" [ref=f189e146] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=3642764724&u=https%3A%2F%2Fwww.instagram.com%2Fathleticbrewing&a=Instagram
+              - text: ","
+              - link "LinkedIn" [ref=f189e147] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=364686989&u=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fathletic-brewing-company-llc%2F&a=LinkedIn
+              - text: ","
+              - link "TikTok" [ref=f189e148] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=604357075&u=https%3A%2F%2Fwww.tiktok.com%2F%40athleticbrewing&a=TikTok
+              - text: ","
+              - link "X" [ref=f189e149] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=3202914492&u=https%3A%2F%2Ftwitter.com%2FAthleticBrewing&a=X
+              - text: ", and"
+              - link "YouTube" [ref=f189e150] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=634207512&u=https%3A%2F%2Fwww.youtube.com%2Fc%2Fathleticbrewing&a=YouTube
+              - text: to stay up-to-date on all things Athletic.
+            - paragraph [ref=f189e151]:
+              - superscript [ref=f189e153]: 1, 2
+              - generic [ref=f189e154]: NielsenIQ, Total US xAOC + Liquor Open State + Conv, Latest 52 Wks ending 7/11/26
+              - superscript [ref=f189e156]: "3"
+              - text: "Brewers Association:"
+              - link "2025 Annual Craft Brewing Industry Production Report" [ref=f189e157] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=1729722921&u=https%3A%2F%2Fwww.brewersassociation.org%2Fassociation-news%2Fa-year-of-correction-for-craft-beer-with-early-signals-of-recovery%2F&a=2025+Annual+Craft+Brewing+Industry+Production+Report
+            - paragraph [ref=f189e158]:
+              - link "About MetLife Stadium" [ref=f189e159] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=3499769107&u=http%3A%2F%2Fwww.metlifestadium.com%2F&a=About+MetLife+Stadium+
+            - paragraph [ref=f189e160]: MetLife Stadium, located in East Rutherford, NJ, is the home of the New York Giants and New York Jets and has the largest seating capacity in the NFL (82,500). The venue is one of the busiest stadiums in the world and ranked No. 1 in the U.S. for both tickets sold and ticket revenue in 2024 per Pollstar. MetLife Stadium was named "Highest Grossing Stadium of the Year" nine times by Billboard and "Venue of the Year" by StadiumBusiness. In 2021, MetLife Stadium became the first NFL Stadium to join the UN Framework Convention on Climate Change's Sports for Climate Action Framework, which aims to achieve global greenhouse gas (GHG) emissions reductions goals. In 2026, MetLife Stadium became officially LEED Gold Certified, marking operational excellence across energy efficiency, water conservation, waste management, indoor environmental quality, and sustainable transportation practices.
+            - paragraph [ref=f189e161]: About the New York Giants
+            - paragraph [ref=f189e162]:
+              - text: "A cornerstone franchise of the National Football League, the New York Football Giants began play in 1925. The Giants have won eight championships: 1927, 1934, 1938, 1956, 1986, 1990, 2007 and 2011. After winning two titles in five years, the Giants are the only NFL franchise with Super Bowl victories in four consecutive decades. Headquartered at the Quest Diagnostics Training Center in East Rutherford, N.J., the Giants enter their 102nd season of play this fall. For more information, visit"
+              - link "www.giants.com" [ref=f189e163] [cursor=pointer]:
+                - /url: https://edge.prnewswire.com/c/link/?t=0&l=en&o=4750037-1&h=2424168587&u=http%3A%2F%2Fwww.giants.com%2F&a=www.giants.com
+              - text: .
+            - paragraph [ref=f189e164]: About the New York Jets
+            - paragraph [ref=f189e165]: The New York Jets were founded in 1959 as the New York Titans and served as a charter member of the American Football League. Following the 1968 season, the team made history by becoming the first AFL franchise to win a world championship, defeating the Baltimore Colts in Super Bowl III—a victory widely credited with validating the AFL ahead of its 1970 merger with the NFL. Today, as one of the league's flagship franchises in the nation's largest media market, the Jets represent the sport on one of its biggest global stages.
+            - paragraph [ref=f189e166]: The Jets enhance the fan experience through innovation and storytelling, including 1JD Entertainment, a digital content platform that connects fans across social and digital channels. The organization is also committed to community impact, supporting youth football, girls' and women's flag football, and programs serving disadvantaged communities throughout the tri-state area.
+            - paragraph [ref=f189e167]: The Jets play at MetLife Stadium - one of the world's most successful multi use venues - and are headquartered at the Atlantic Health Jets Training Center in Florham Park, New Jersey.
+            - paragraph [ref=f189e168]: SOURCE Athletic Brewing Company
+          - link "Request a Demo" [ref=f189e171] [cursor=pointer]:
+            - /url: https://www.prnewswire.com/amplify-platform/?site_refer=press-release-widget
+            - generic [ref=f189e173]:
+              - generic [ref=f189e177]:
+                - heading "21%" [level=2] [ref=f189e178]
+                - generic [ref=f189e179]: more press release views with
+              - generic [ref=f189e181]: Request a Demo
+      - generic [ref=f189e187]:
+        - generic [ref=f189e188]:
+          - heading "Also from this source" [level=2] [ref=f189e189]
+          - group "Also From this Source" [ref=f189e190]:
+            - link [ref=f189e192] [cursor=pointer]:
+              - /url: https://www.prnewswire.com/news-releases/athletic-brewing-launches-largest-ever-summer-campaign-alongside-patriotic-packaging-and-new-seasonal-brew-302777860.html
+              - generic [ref=f189e193]:
+                - img "Athletic Brewing Launches Largest-Ever Summer Campaign Alongside Patriotic Packaging and New Seasonal Brew"
+            - link [ref=f189e196] [cursor=pointer]:
+              - /url: https://www.prnewswire.com/news-releases/athletic-brewing-launches-largest-ever-summer-campaign-alongside-patriotic-packaging-and-new-seasonal-brew-302777860.html
+              - heading "Athletic Brewing Launches Largest-Ever Summer Campaign Alongside Patriotic Packaging and New Seasonal Brew" [level=3] [ref=f189e197]
+              - paragraph [ref=f189e198]: Athletic Brewing Company, America's largest dedicated non-alcoholic brewer, is kicking off summer 2026 in a big way with its largest-ever seasonal...
+          - group "Also From this Source" [ref=f189e199]:
+            - link [ref=f189e201] [cursor=pointer]:
+              - /url: https://www.prnewswire.com/news-releases/athletic-brewing-company-and-premier-lacrosse-league-launch-non-alcoholic-collaboration-brew-crease-crusher-302765036.html
+              - generic [ref=f189e202]:
+                - img "Athletic Brewing Company and Premier Lacrosse League Launch Non-Alcoholic Collaboration Brew, 'Crease Crusher'"
+            - link [ref=f189e205] [cursor=pointer]:
+              - /url: https://www.prnewswire.com/news-releases/athletic-brewing-company-and-premier-lacrosse-league-launch-non-alcoholic-collaboration-brew-crease-crusher-302765036.html
+              - heading "Athletic Brewing Company and Premier Lacrosse League Launch Non-Alcoholic Collaboration Brew, 'Crease Crusher'" [level=3] [ref=f189e206]
+              - paragraph [ref=f189e207]: Athletic Brewing Company, America's largest dedicated non-alcoholic brewer, and the Premier Lacrosse League (PLL), today announced the launch of...
+          - link "More Releases From This Source" [ref=f189e210] [cursor=pointer]:
+            - /url: https://www.prnewswire.com/news/athletic-brewing-company/
+        - generic [ref=f189e216]:
+          - heading "Explore" [level=2] [ref=f189e217]
+          - generic [ref=f189e218]:
+            - group "category" [ref=f189e219]:
+              - link [ref=f189e220] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/news-releases/sports-latest-news/general-sports-list/
+                - img "General Sports" [ref=f189e222]
+              - paragraph [ref=f189e223]:
+                - link "General Sports" [ref=f189e224] [cursor=pointer]:
+                  - /url: https://www.prnewswire.com/news-releases/sports-latest-news/general-sports-list/
+            - group "category" [ref=f189e225]:
+              - link [ref=f189e226] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/news-releases/sports-latest-news/sporting-events-list/
+                - img "Sporting Events" [ref=f189e228]
+              - paragraph [ref=f189e229]:
+                - link "Sporting Events" [ref=f189e230] [cursor=pointer]:
+                  - /url: https://www.prnewswire.com/news-releases/sports-latest-news/sporting-events-list/
+            - group "category" [ref=f189e231]:
+              - link [ref=f189e232] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/news-releases/consumer-products-retail-latest-news/beers-wines-and-spirits-list/
+                - img "Beers, Wines and Spirits" [ref=f189e234]
+              - paragraph [ref=f189e235]:
+                - link "Beers, Wines and Spirits" [ref=f189e236] [cursor=pointer]:
+                  - /url: https://www.prnewswire.com/news-releases/consumer-products-retail-latest-news/beers-wines-and-spirits-list/
+            - group "category" [ref=f189e237]:
+              - link [ref=f189e238] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/news-releases/consumer-products-retail-latest-news/beverages-list/
+                - img "Beverages" [ref=f189e240]
+              - paragraph [ref=f189e241]:
+                - link "Beverages" [ref=f189e242] [cursor=pointer]:
+                  - /url: https://www.prnewswire.com/news-releases/consumer-products-retail-latest-news/beverages-list/
+          - link "News Releases in Similar Topics" [ref=f189e243] [cursor=pointer]:
+            - /url: https://www.prnewswire.com/news-releases/
+    - contentinfo [ref=f189e250]:
+      - generic [ref=f189e253]:
+        - generic [ref=f189e254]:
+          - generic [ref=f189e255]:
+            - heading "Contact PR Newswire" [level=2] [ref=f189e257]
+            - list [ref=f189e258]:
+              - listitem [ref=f189e259]:
+                - generic [ref=f189e260]: 
+                - generic [ref=f189e262]:
+                  - link "Call PR Newswire at 888-776-0942" [ref=f189e263] [cursor=pointer]:
+                    - /url: tel:Call%20PR%20Newswire%20at%20888-776-0942
+                  - text: from 8 AM - 9 PM ET
+              - listitem [ref=f189e264]
+          - button "Contact Us" [ref=f189e267] [cursor=pointer]:
+            - text: Contact Us
+            - generic [ref=f189e268]: 
+          - generic [ref=f189e270]:
+            - link "LinkedIn" [ref=f189e271] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/pr-newswire/
+              - generic [ref=f189e272]: 
+            - link "Facebook" [ref=f189e273] [cursor=pointer]:
+              - /url: https://www.facebook.com/prnewswireglobal
+              - generic [ref=f189e274]: 
+            - link "Twitter" [ref=f189e275] [cursor=pointer]:
+              - /url: https://twitter.com/PRNewswire
+              - generic [ref=f189e276]: 
+        - generic [ref=f189e278]:
+          - heading "Products" [level=2] [ref=f189e280]
+          - list [ref=f189e281]:
+            - listitem [ref=f189e282]:
+              - link "Explore Our Platform" [ref=f189e283] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/amplify-platform/
+            - listitem [ref=f189e284]:
+              - link "Plan Campaigns" [ref=f189e285] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/amplify-ai-plan-module/
+            - listitem [ref=f189e286]:
+              - link "Create with AI" [ref=f189e287] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/ai-press-release/
+            - listitem [ref=f189e288]:
+              - link "Distribute Press Releases" [ref=f189e289] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/pr-distribution-and-placement/
+            - listitem [ref=f189e290]:
+              - link "Report Results" [ref=f189e291] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/amplify-report-module/
+            - listitem [ref=f189e292]:
+              - link "Amplify Content" [ref=f189e293] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/multichannel-amplification/
+        - generic [ref=f189e294]:
+          - generic [ref=f189e295]:
+            - heading "About" [level=2] [ref=f189e297]
+            - list [ref=f189e298]:
+              - listitem [ref=f189e299]:
+                - link "About PR Newswire" [ref=f189e300] [cursor=pointer]:
+                  - /url: https://www.prnewswire.com/about-pr-newswire/
+              - listitem [ref=f189e301]:
+                - link "About Cision" [ref=f189e302] [cursor=pointer]:
+                  - /url: https://www.cision.com/us/?utm_medium=website&utm_source=prnewswire&utm_content=cishomepage&utm_campaign=prnewswire
+              - listitem [ref=f189e303]:
+                - link "Careers" [ref=f189e304] [cursor=pointer]:
+                  - /url: https://www.cision.com/careers/
+              - listitem [ref=f189e305]:
+                - link "Accessibility Statement" [ref=f189e306] [cursor=pointer]:
+                  - /url: https://www.prnewswire.com/accessibility/
+          - button "Global Sites" [ref=f189e309] [cursor=pointer]:
+            - text: Global Sites
+            - generic [ref=f189e310]: 
+        - generic [ref=f189e311]:
+          - generic [ref=f189e312]:
+            - heading "My Services" [level=2] [ref=f189e314]
+            - list [ref=f189e315]:
+              - listitem [ref=f189e316]:
+                - link "All New Releases" [ref=f189e317] [cursor=pointer]:
+                  - /url: https://www.prnewswire.com/news-releases/
+              - listitem [ref=f189e318]:
+                - link "Platform Login" [ref=f189e319] [cursor=pointer]:
+                  - /url: https://app.prnewswire.com/login/auto
+              - listitem [ref=f189e320]:
+                - link "Data Privacy" [ref=f189e321] [cursor=pointer]:
+                  - /url: https://www.cision.com/legal/privacy-policy/
+          - generic [ref=f189e325]:
+            - paragraph [ref=f189e326]:
+              - link "Do not sell or share my personal information" [ref=f189e327] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/cookies/
+              - text: ":"
+            - list [ref=f189e328]:
+              - listitem [ref=f189e329]:
+                - text: Submit via
+                - link "privacy@cision.com" [ref=f189e330] [cursor=pointer]:
+                  - /url: mailto:privacy@cision.com
+              - listitem [ref=f189e331]:
+                - text: "Call Privacy toll-free:"
+                - link "877-297-8921" [ref=f189e332] [cursor=pointer]:
+                  - /url: tel:+8772978921
+        - text:  
+      - generic [ref=f189e336]:
+        - generic [ref=f189e337]:
+          - list:
+            - listitem [ref=f189e338]:
+              - link "Terms of Use" [ref=f189e339] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/terms-of-use/
+            - listitem [ref=f189e340]:
+              - link "Privacy Policy" [ref=f189e341] [cursor=pointer]:
+                - /url: https://www.cision.com/legal/privacy-policy/
+            - listitem [ref=f189e342]:
+              - link "Information Security Policy" [ref=f189e343] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/prn-information-security-policy/
+            - listitem [ref=f189e344]:
+              - link "Site Map" [ref=f189e345] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/sitemap/
+            - listitem [ref=f189e346]:
+              - link "RSS" [ref=f189e347] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/rss/
+            - listitem [ref=f189e348]:
+              - link "Cookies" [ref=f189e349] [cursor=pointer]:
+                - /url: https://www.prnewswire.com/cookies/
+        - generic [ref=f189e351]:
+          - text: Copyright © 2026
+          - link "Cision" [ref=f189e352] [cursor=pointer]:
+            - /url: https://www.cision.com/us/?utm_medium=website&utm_source=prnewswire&utm_content=cishomepage&utm_campaign=prnewswire
+          - text: US Inc.
+  - text:            
+  - link "Accessibility Statement" [ref=f189e353] [cursor=pointer]:
+    - /url: https://www.cision.com/about/accessibility/
+  - link "Skip Navigation" [ref=f189e354] [cursor=pointer]:
+    - /url: https://www.prnewswire.com/news-releases/athletic-brewing-brings-award-winning-non-alcoholic-beer-to-metlife-stadium-302848404.html#main
+  - dialog "Cookie consent banner" [ref=f189e355]:
+    - generic [ref=f189e356]:
+      - generic [ref=f189e357]:
+        - heading "We value your privacy" [level=2] [ref=f189e358]
+        - paragraph [ref=f189e359]:
+          - generic [ref=f189e360]:
+            - text: We use cookies to personalize content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners.
+            - link "Cookie Policy" [ref=f189e361] [cursor=pointer]:
+              - /url: https://gdpr.cision.com/
+            - text: .
+      - generic [ref=f189e363]:
+        - button "Accept All" [ref=f189e364] [cursor=pointer]
+        - button "Manage Preferences" [ref=f189e365] [cursor=pointer]

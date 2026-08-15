@@ -1,0 +1,61 @@
+- generic [active] [ref=f150e1]:
+  - generic [ref=f150e4]:
+    - banner [ref=f150e6]:
+      - link [ref=f150e8] [cursor=pointer]:
+        - /url: https://www.athleticbrewing.com
+        - img "Athletic Brewing Co. logo" [ref=f150e9]
+    - generic [ref=f150e12]:
+      - generic [ref=f150e14]:
+        - navigation "Breadcrumb" [ref=f150e16]:
+          - link "Home" [ref=f150e17] [cursor=pointer]:
+            - /url: /en-US
+          - link "All articles" [ref=f150e23] [cursor=pointer]:
+            - /url: /en-US/articles
+          - link "Press Inquiries" [ref=f150e27] [cursor=pointer]:
+            - /url: /en-US/articles/press-inquiries-65922
+        - combobox [ref=f150e30]:
+          - search [ref=f150e31]:
+            - generic [ref=f150e35]: Search
+            - searchbox "Search" [ref=f150e36]
+      - main [ref=f150e38]:
+        - generic [ref=f150e39]:
+          - generic [ref=f150e40]:
+            - heading "Press Inquiries" [level=1] [ref=f150e42]
+            - paragraph [ref=f150e43]: "Press inquiries? Connect with us at: press@athleticbrewing.com"
+          - generic [ref=f150e44]:
+            - generic:
+              - heading [level=3]
+            - link "I'm a Journalist, Can We Connect?" [ref=f150e46] [cursor=pointer]:
+              - /url: /en-US/im-a-journalist-can-we-connect-132949
+              - generic [ref=f150e47]:
+                - heading "I'm a Journalist, Can We Connect?" [level=4] [ref=f150e48]
+                - paragraph [ref=f150e49]: Absolutely! Please send an email to press@athleticbrewing.com with your media request, and we'll get back to you as soon as possible. Please note that the press@athleticbrewing.com email is reserved for media inquiries. All other requests, including
+    - contentinfo [ref=f150e50]:
+      - generic [ref=f150e52]:
+        - navigation [ref=f150e53]:
+          - link "Twitter" [ref=f150e54] [cursor=pointer]:
+            - /url: https://twitter.com/AthleticBrewing
+          - link "Instagram" [ref=f150e57] [cursor=pointer]:
+            - /url: https://www.instagram.com/athleticbrewing/
+          - link "Facebook" [ref=f150e60] [cursor=pointer]:
+            - /url: https://www.facebook.com/AthleticBrewing/
+        - navigation [ref=f150e63]:
+          - link "Main Site" [ref=f150e64] [cursor=pointer]:
+            - /url: https://athleticbrewing.com/
+          - link "My Account" [ref=f150e65] [cursor=pointer]:
+            - /url: https://athleticbrewing.com/account
+          - link "Shipping & Returns" [ref=f150e66] [cursor=pointer]:
+            - /url: https://athleticbrewing.com/pages/shipping-returns
+          - link "Order Status" [ref=f150e67] [cursor=pointer]:
+            - /url: https://athleticbrewing.com/account#/orders
+          - link "Community" [ref=f150e68] [cursor=pointer]:
+            - /url: https://athleticbrewing.com/pages/community-hub
+          - link "Contact" [ref=f150e69] [cursor=pointer]:
+            - /url: /en-US/contact
+  - alert [ref=f150e70]
+  - region "Live chat":
+    - generic:
+      - generic:
+        - iframe
+        - iframe [ref=f150e71]:
+          - button [ref=f152e4] [cursor=pointer]

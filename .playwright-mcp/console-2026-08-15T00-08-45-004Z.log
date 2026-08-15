@@ -1,0 +1,37 @@
+[    1664ms] [WARNING] Failed parsing 'srcset' attribute value since it has an unknown descriptor. @ :0
+[    1664ms] [WARNING] Dropped srcset candidate "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ibK6rVbil6Cc/v0/76x48.webp" @ :0
+[    1664ms] [WARNING] Failed parsing 'srcset' attribute value since it has an unknown descriptor. @ :0
+[    1664ms] [WARNING] Dropped srcset candidate "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ibK6rVbil6Cc/v0/152x96.webp" @ :0
+[    1664ms] [WARNING] Failed parsing 'srcset' attribute value since it has an unknown descriptor. @ :0
+[    1664ms] [WARNING] Dropped srcset candidate "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ibK6rVbil6Cc/v0/76x48.webp" @ :0
+[    1664ms] [WARNING] Failed parsing 'srcset' attribute value since it has an unknown descriptor. @ :0
+[    1664ms] [WARNING] Dropped srcset candidate "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ibK6rVbil6Cc/v0/152x96.webp" @ :0
+[    1950ms] [WARNING] [GPT] PubAdsService.collapseEmptyDivs is deprecated, use googletag.setConfig({collapseDiv: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202608060101/pubads_impl.js?cb=122880269:18
+[    2350ms] [LOG] Messaging without detection successfully executed. @ https://sourcepointcmp.bloomberg.com/unified/wrapperMessagingWithoutDetection.js:0
+[    2351ms] [WARNING] [cmp-client] Ping data is not ready yet. waiting... @ https://assets.bwbx.io/s3/sparkle/v6/sparkle.mjs:1
+[    2351ms] [INFO] [cmp-client] gpp ping data is not ready yet @ https://assets.bwbx.io/s3/foundation/cmp-client/v3/cmp-client.min.js:0
+[    2353ms] [WARNING] [cmp-client] Ping data is not ready yet. waiting... @ https://assets.bwbx.io/s3/sparkle/v6/sparkle.mjs:1
+[    2353ms] [INFO] [cmp-client] gpp ping data is not ready yet @ https://assets.bwbx.io/s3/foundation/cmp-client/v3/cmp-client.min.js:0
+[    2353ms] [WARNING] [cmp-client] Ping data is not ready yet. waiting... @ https://assets.bwbx.io/s3/sparkle/v6/sparkle.mjs:1
+[    2353ms] [INFO] [cmp-client] gpp ping data is not ready yet @ https://assets.bwbx.io/s3/foundation/cmp-client/v3/cmp-client.min.js:0
+[    2372ms] [LOG] [cmp-modal] start (+0.0ms) @ https://assets.bwbx.io/s3/foundation/cmp-client/v3/cmp-client.min.js:0
+[    2373ms] [LOG] [cmp-modal] passed fast-path checks, checking cookies (+0.4ms) @ https://assets.bwbx.io/s3/foundation/cmp-client/v3/cmp-client.min.js:0
+[    2373ms] [LOG] [cmp-modal] waiting for coordinator (+0.6ms) @ https://assets.bwbx.io/s3/foundation/cmp-client/v3/cmp-client.min.js:0
+[    2376ms] [LOG] interaction complete @ https://sourcepointcmp.bloomberg.com/unified/wrapperMessagingWithoutDetection.js:0
+[    2378ms] [WARNING] [GPT] Slot.setTargeting is deprecated, use Slot.setConfig({targeting: ...}) instead.
+https://goo.gle/gpt-message#171 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202608060101/pubads_impl.js?cb=122880269:18
+[    2548ms] [LOG] [cmp-modal] coordinator settled, showing modal (+176.1ms) @ https://assets.bwbx.io/s3/foundation/cmp-client/v3/cmp-client.min.js:0
+[    2897ms] [ERROR] Error fetching watchlist targeting: undefined undefined @ https://assets.bwbx.io/s3/sparkle/v6/sparkle.mjs:1
+[    3658ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    3927ms] [ERROR] Attestation check for Attribution Reporting on https://ara.paa-reporting-advertising.amazon failed. @ https://www.bloomberg.com/news/features/2025-01-13/how-athletic-brewing-sparked-a-massive-nonalcoholic-beer-market:0
+[    3927ms] [ERROR] Attestation check for Shared Storage on https://ara.paa-reporting-advertising.amazon failed. @ https://www.bloomberg.com/news/features/2025-01-13/how-athletic-brewing-sparked-a-massive-nonalcoholic-beer-market:0
+[    5151ms] [WARNING] [TikTok Pixel] - Missing 'content_id' paramter
+Issue: The 'content_id' parameter isn't being received. This is required for Video Shopping Ads (VSA).
+Suggestion: Include the 'content_id' parameter in your source code. This is required for Video Shopping Ads (VSA). See https://ads.tiktok.com/help/article/standard-events-parameters?redirected=2 for more information. @ https://analytics.tiktok.com/i18n/pixel/static/main.MTZkNzEzYmVhMQ.js:0
+[    5153ms] [WARNING] [Meta Pixel] - Duplicate Pixel ID: 227995338998622. @ https://connect.facebook.net/en_US/fbevents.js:197
+[    5885ms] [ERROR] Attestation check for Attribution Reporting on https://ara.paa-reporting-advertising.amazon failed. @ https://www.bloomberg.com/news/features/2025-01-13/how-athletic-brewing-sparked-a-massive-nonalcoholic-beer-market:0
+[    5886ms] [ERROR] Attestation check for Shared Storage on https://ara.paa-reporting-advertising.amazon failed. @ https://www.bloomberg.com/news/features/2025-01-13/how-athletic-brewing-sparked-a-massive-nonalcoholic-beer-market:0
+[    7266ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://nsone-healthcheck.lumenedge.dev/ns1-healthcheck.gif?t=umj144:0
+[    7379ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://nsone-healthcheck.lumenedge.dev/ns1-healthcheck.gif?t=pphm1w:0
+[    7482ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://nsone-healthcheck.lumenedge.dev/ns1-healthcheck.gif?t=77cphe:0

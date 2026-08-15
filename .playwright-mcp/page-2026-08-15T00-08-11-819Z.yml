@@ -1,0 +1,297 @@
+- generic [active] [ref=f20e1]:
+  - generic [ref=f20e3]:
+    - banner [ref=f20e5]:
+      - button "Open Navigation Menu" [ref=f20e8] [cursor=pointer]
+      - link "Forbes Logo" [ref=f20e12] [cursor=pointer]:
+        - /url: https://www.forbes.com/
+      - generic [ref=f20e16]:
+        - 'link "Subscribe: Less than $2/wk" [ref=f20e17] [cursor=pointer]':
+          - /url: https://account.forbes.com/subscribe?eventSource=header&redirect=https://www.forbes.com/sites/stevenbertoni/2023/02/15/inside-athletic-brewings-plan-to-make-boozeless-beer-a-billion-dollar-business/
+        - generic [ref=f20e18]:
+          - button "Account Drawer" [ref=f20e19] [cursor=pointer]:
+            - generic [ref=f20e20]: 5+
+          - generic [ref=f20e28]:
+            - button "Close Notifications Panel" [ref=f20e33] [cursor=pointer]
+            - generic [ref=f20e38]:
+              - button "Notification Panel Tab" [ref=f20e39] [cursor=pointer]: My Account
+              - button "Notification Panel Tab" [ref=f20e40] [cursor=pointer]: Notifications
+              - button "Notification Panel Tab" [ref=f20e41] [cursor=pointer]
+            - generic [ref=f20e44]:
+              - generic [ref=f20e45]:
+                - generic [ref=f20e50]:
+                  - generic [ref=f20e51]: BREAKING
+                  - paragraph [ref=f20e54]:
+                    - link "Selena Gomez And Wondermind Startup Sued For Allegedly Defrauding Investors" [ref=f20e55] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/conormurray/2026/08/13/selena-gomez-and-wondermind-startup-sued-for-allegedly-defrauding-investors/?ctpv=notifications-breakingnews
+                  - time [ref=f20e58]: 1d ago
+                - generic [ref=f20e63]:
+                  - generic [ref=f20e64]: DAILY COVER STORY
+                  - paragraph [ref=f20e67]:
+                    - link "The Los Angeles Lakers’ Record $12.5 Billion Sale Resets The Market For Sports Teams" [ref=f20e68] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/hanktucker/2026/08/13/the-los-angeles-lakers-record-125-billion-sale-resets-the-market-for-sports-teams/?ctpv=notifications-dailycoverstory
+                  - time [ref=f20e71]: 1d ago
+                - generic [ref=f20e76]:
+                  - generic [ref=f20e77]: FORBES DAILY
+                  - paragraph [ref=f20e80]:
+                    - link "Lakers sell for record $12.5 billion, fueling conspiracy theories" [ref=f20e81] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/chrisdobstaff/2026/08/13/lakers-fetch-another-record-price-fueling-ownership-conspiracy-theories/?ctpv=notifications-forbesdaily
+                  - time [ref=f20e84]: 1d ago
+                - generic [ref=f20e89]:
+                  - generic [ref=f20e90]: DAILY COVER STORY
+                  - paragraph [ref=f20e93]:
+                    - 'link "Forbes 250: America’s Most Successful Living Veterans" [ref=f20e94] [cursor=pointer]':
+                      - /url: http://www.forbes.com/sites/alexknapp/2026/08/13/forbes-250-most-successful-living-veterans/?ctpv=notifications-dailycoverstory
+                  - time [ref=f20e97]: 2d ago
+                - generic [ref=f20e102]:
+                  - generic [ref=f20e103]: BREAKING
+                  - paragraph [ref=f20e106]:
+                    - link "MyPillow Founder Mike Lindell Won’t Concede Losing Minnesota Republican Gubernatorial Primary" [ref=f20e107] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/saradorn/2026/08/12/mypillow-founder-mike-lindell-wont-concede-losing-minnesota-republican-gubernatorial-primary/?ctpv=notifications-breakingnews
+                  - time [ref=f20e110]: 2d ago
+                - generic [ref=f20e115]:
+                  - generic [ref=f20e116]: FORBES DAILY
+                  - paragraph [ref=f20e119]:
+                    - link "Claude adds hidden marks to AI content for EU compliance." [ref=f20e120] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/sarahwhitmire/2026/08/12/forbes-daily-why-claude-is-adding-hidden-marks-on-ai-generated-content/?ctpv=notifications-forbesdaily
+                  - time [ref=f20e123]: 2d ago
+                - generic [ref=f20e128]:
+                  - generic [ref=f20e129]: DAILY COVER STORY
+                  - paragraph [ref=f20e132]:
+                    - link "Forbes Travel Guide’s 2026 Edge List" [ref=f20e133] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/forbestravelguide/2026/08/12/forbes-travel-guides-2026-edge-list/?ctpv=notifications-dailycoverstory
+                  - time [ref=f20e136]: 3d ago
+                - generic [ref=f20e141]:
+                  - generic [ref=f20e142]: BREAKING
+                  - paragraph [ref=f20e145]:
+                    - link "White House Seeking New Charges Against David Hearn After Dropped Reflecting Pool Vandalism Case, Report Says" [ref=f20e146] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/antoniopequenoiv/2026/08/11/white-house-seeking-new-charges-against-david-hearn-after-dropped-reflecting-pool-vandalism-case-report-says/?ctpv=notifications-breakingnews
+                  - time [ref=f20e149]: 3d ago
+                - generic [ref=f20e154]:
+                  - generic [ref=f20e155]: FORBES DAILY
+                  - paragraph [ref=f20e158]:
+                    - link "Zuckerberg's AI manifesto calls for regulation and individual empowerment." [ref=f20e159] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/daniellechemtob/2026/08/11/forbes-daily-mark-zuckerberg-outlines-his-ai-manifesto/?ctpv=notifications-forbesdaily
+                  - time [ref=f20e162]: 4d ago
+                - generic [ref=f20e167]:
+                  - generic [ref=f20e168]: BREAKING
+                  - paragraph [ref=f20e171]:
+                    - link "Ella Langley's 'Choosin' Texas' Earns 17th Week At No. 1—Surpasses This Mariah Carey Smash" [ref=f20e172] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/conormurray/2026/08/10/ella-langleys-choosin-texas-earns-17th-week-at-no-1-surpasses-this-mariah-carey-smash/?ctpv=notifications-breakingnews
+                  - time [ref=f20e175]: 4d ago
+                - generic [ref=f20e180]:
+                  - generic [ref=f20e181]: DAILY COVER STORY
+                  - paragraph [ref=f20e184]:
+                    - 'link "$5.5 Trillion Bet: Why Every Major Bank Is Racing To Put Wall Street On The Blockchain" [ref=f20e185] [cursor=pointer]':
+                      - /url: http://www.forbes.com/sites/ninabambysheva/2026/08/10/why-tokenization-otherwise-known-as-wall-streets-great-rewiring-finally-looks-real/?ctpv=notifications-dailycoverstory
+                  - time [ref=f20e188]: 4d ago
+                - generic [ref=f20e193]:
+                  - generic [ref=f20e194]: FORBES DAILY
+                  - paragraph [ref=f20e197]:
+                    - link "Rising concert ticket prices squeeze fans and artists amid tour costs, Ticketmaster." [ref=f20e198] [cursor=pointer]:
+                      - /url: http://www.forbes.com/sites/daniellechemtob/2026/08/10/forbes-daily-the-economics-behind-rising-concert-ticket-prices/?ctpv=notifications-forbesdaily
+                  - time [ref=f20e201]: 5d ago
+              - generic [ref=f20e202]:
+                - generic [ref=f20e203]:
+                  - heading "Get Custom Alerts With Member Perks" [level=3] [ref=f20e204]
+                  - button "Sign In or Create a Free Account" [ref=f20e205] [cursor=pointer]
+                - paragraph [ref=f20e225]: Powered by Forbes AI
+    - article [ref=f20e227]:
+      - main [ref=f20e228]:
+        - generic [ref=f20e231]:
+          - link "Leadership" [ref=f20e233] [cursor=pointer]:
+            - /url: https://www.forbes.com/leadership/
+          - link "CEO Network" [ref=f20e238] [cursor=pointer]:
+            - /url: https://www.forbes.com/ceo-network/
+        - generic [ref=f20e239]:
+          - generic [ref=f20e244]:
+            - link "Daily Cover" [ref=f20e246] [cursor=pointer]:
+              - /url: https://www.forbes.com/daily-cover-stories/
+            - heading "Inside Athletic Brewing’s Plan To Make Boozeless Beer A Billion-Dollar Business" [level=1] [ref=f20e248]
+          - generic [ref=f20e250]:
+            - generic [ref=f20e251]: "The Dry Life: Athletic Brewing cofounders Bill Shufelt and John Walker."
+            - generic [ref=f20e253]: Franco Vogt for Forbes
+        - generic [ref=f20e254]:
+          - generic [ref=f20e255]:
+            - generic [ref=f20e256]:
+              - generic [ref=f20e259]:
+                - generic [ref=f20e260]:
+                  - paragraph [ref=f20e261]:
+                    - text: By
+                    - link "Steven Bertoni" [ref=f20e262] [cursor=pointer]:
+                      - /url: https://www.forbes.com/sites/stevenbertoni/
+                    - text: ","
+                  - paragraph [ref=f20e263]: Forbes Staff.
+                - text: Steven Bertoni is a New York-based editor who covers entrepreneurs.
+              - button "See all about the author" [ref=f20e265] [cursor=pointer]
+            - button "Follow Author" [ref=f20e269] [cursor=pointer]
+          - generic [ref=f20e271]:
+            - time [ref=f20e272]: Published Feb 15, 2023, 06:30am EST
+            - text: ", Updated Feb 16, 2023, 03:41pm EST"
+          - generic [ref=f20e274]:
+            - button "open share menu" [ref=f20e276] [cursor=pointer]
+            - button "save article" [ref=f20e279] [cursor=pointer]
+          - generic [ref=f20e284]:
+            - generic [ref=f20e285]:
+              - heading "Bill Shufelt and John Walker are making nonalcoholic beers tasty enough to please the biggest suds snobs. And with a nearly $500 million valuation, investors are intoxicated." [level=2] [ref=f20e286]
+              - separator [ref=f20e287]
+              - paragraph [ref=f20e288]:
+                - generic [ref=f20e289]: "On"
+                - strong [ref=f20e290]: a dreary Wednesday in January,
+                - text: Bill Shufelt, the cofounder and CEO of Athletic Brewing, grabs a yellow can of golden ale off the humming conveyor belt in his new 150,000-square-foot Milford, Connecticut, brewery and cracks it open. It’s 10 a.m.—but there’s no need for an intervention.
+              - generic [ref=f20e293]:
+                - text: Advertisement
+                - iframe [ref=f20e296]:
+                  - generic [ref=f70e1]:
+                    - link [ref=f70e3] [cursor=pointer]:
+                      - /url: https://googleads.g.doubleclick.net/pcs/click?xai=AKAOjsvOQ_aO3PGAE1CiavL9VHCzfo0KUCRmLfjlbEbD6toNnedOzwYku9IqMtQWf_6RXx4Mt1gUwLrSYFeggyYr0CItwxsETiO3hVRhakguGJ9UCVoMt4Y3tJtB9iVKUD6F6kR0qMRQdJXbsfltXFjcvz6aej2bbm71O3277jkrn1fV5yev58cBbcZne4i9TS8mlE9aODlBT2HhxDGFosDMdx3N-FucNDOrNso2VRV89XhPxnTfEm58YpE-7Cz2EpsByjsTtKMrGvG9n_kozlon-dGtzyNUHdYrsfDoz78qGnUNainE23VBoOgcGibzfamFdSsvmrAHPwIGt_YNNryNEcG6DpW7D_khqDFu1sFWiEONf7Jervz9LZaIUzbeVT_luG97Lrv4hCcKTtTsHP4bRDUSKPtqVFKYHjfFmNZpftUOHrzh3225-gC6kre2GRdAHsJ8ENCBz3hk&sai=AMfl-YT6qC4xMzGUZ7sGBc1MLKEC2LmbxPWDFX3cXpeSbtg1hFbfi3Jp2CFRUVQjD-2H0S9AmjSm1qou84OxgE_fFQGMqHi21EwowwPcd48gOGGGG6YJsMGDeXKJMXHmiFaODOxDkxKNhTWtHJckRdbmhNFjI-YVe-treBV-iDSxEcS-JWlQZ7YsvFSP_tm16OO1A9v9a8dI6_IFc51hz9cwwvUfy6cO6kT-G8BrXCxLaRsSSSEQ4kq8Z8q0X4StR3k5IIus5_gnexdeMLhr5j4JtuEwLHUuN1Yz_bdRnfyi5YhIi4H6fTDdC_c87m44q7IWz085Ux8Z_E1E3iFDC8jtUwkamnzW5cyfEo8gLjvqV-ZL1aFnjCw_1lzg99t7iZKevOsOoFTadH5hJus&sig=Cg0ArKJSzLtIeojMSR3c&fbs_aeid=%5Bgw_fbsaeid%5D&adurl=https://admanager.forbes.com/%3Futm_source%3Dhousebannerad%26utm_medium%3Dhousebannerdesktop%26utm_campaign%3Dhousead970x250
+                    - iframe
+              - paragraph [ref=f20e297]: Over the last few years, Shufelt, 39, and his cofounder, John Walker, 42, have created the buzziest beer brand in America by creating craft brews without the buzz. Alcohol-free beer, often bland and thin, has long been seen as the brewer’s equivalent to decaf coffee or tofu turkey. Athletic Brewing is out to eliminate the stigma, making hoppy IPAs, crisp ales and toasty porters with the flavor and feel of a craft beer—but with less alcohol than a slice of rye bread. A six-pack costs about $10. “Humans have been drinking beer for more than 5,000 years,” says Shufelt, a former hedge fund trader who, a decade ago, gave up booze to improve his market focus. “I’m a beer lover and food lover—it blew my mind that there wasn’t a beer for people living modern, healthy lifestyles.”
+              - img "Forbes cover" [ref=f20e302]
+              - generic [ref=f20e303]: Franco Vogt for Forbes
+              - paragraph [ref=f20e306]: Investors are betting big that millions of drinkers feel the same. Since Shufelt and Walker started tinkering with home-brew equipment in 2017, they have raised a dizzying $173.5 million from Alliance Consumer Growth, TRB Advisors and Tastemaker Capital. In the fall of 2022, Keurig Dr Pepper, the $12.7 billion (sales) beverage giant, took a $50 million minority stake at a valuation just under $500 million, according to sources close to the deal. Celebrity investors including Naomi Osaka, J.J. Watt, Karlie Kloss and Toms Shoes founder Blake Mycoskie have also bellied up to the bar. “I’d never been a fan of nonalcoholic beer—not because it didn’t have alcohol, because it didn’t taste good,” says chef and Momofuku founder David Chang, who has invested in Athletic and carries its beers in his restaurants. “Athletic is breaking the stereotype—one of food’s taboos—and it’s gaining momentum.”
+              - paragraph [ref=f20e307]: While traditional U.S. beer sales have been relatively flat for years, the market for boozeless brews is booming, with total revenue up 20% to $330 million between the summers of 2021 and 2022, according to NielsenIQ. Athletic has outpaced the pack. It says 2022 sales grew almost 70%, topping $60 million, compared to $37 million in 2021. (Heineken 0.0 is the market leader with more than 25% of U.S. sales.) “Growth is being driven by people who enjoy alcohol and are interested in health, wellness and great taste,” says Keurig Dr Pepper’s head of strategy, Justin Whitmore.
+              - generic [ref=f20e309]:
+                - generic [ref=f20e310]:
+                  - generic [ref=f20e311]: Subscribe to Continue Reading
+                  - generic [ref=f20e312]: Become a member and unlock unlimited digital access, expert analysis and exclusive member benefits.
+                  - generic [ref=f20e313]:
+                    - text: Already a member?
+                    - button "Sign In" [ref=f20e314] [cursor=pointer]
+                - generic [ref=f20e315]:
+                  - generic [ref=f20e316]:
+                    - generic [ref=f20e317]:
+                      - paragraph [ref=f20e319]: Monthly
+                      - generic [ref=f20e320]:
+                        - paragraph [ref=f20e321]:
+                          - generic [ref=f20e322]: Digital Membership
+                        - paragraph [ref=f20e323]: $12.99
+                        - paragraph [ref=f20e324]: Billed monthly
+                    - button "Subscribe" [ref=f20e325] [cursor=pointer]
+                  - generic [ref=f20e326]:
+                    - generic [ref=f20e327]:
+                      - generic [ref=f20e328]:
+                        - paragraph [ref=f20e329]: Annual
+                        - generic [ref=f20e330]: LESS THAN $2/WEEK
+                      - generic [ref=f20e331]:
+                        - paragraph [ref=f20e332]:
+                          - generic [ref=f20e333]: Digital Membership
+                        - paragraph [ref=f20e334]: $89
+                        - paragraph [ref=f20e335]: Billed annually
+                    - button "Subscribe" [ref=f20e336] [cursor=pointer]
+                  - generic [ref=f20e337]:
+                    - generic [ref=f20e338]:
+                      - paragraph [ref=f20e340]: Two Year
+                      - generic [ref=f20e341]:
+                        - paragraph [ref=f20e342]:
+                          - generic [ref=f20e343]: Digital Membership
+                        - paragraph [ref=f20e344]: $165
+                        - paragraph [ref=f20e345]: Billed biennially
+                    - button "Subscribe" [ref=f20e346] [cursor=pointer]
+                - generic [ref=f20e347]:
+                  - paragraph [ref=f20e348]: Subscriptions renew automatically. You may cancel your subscription at any time.
+                  - generic [ref=f20e349]:
+                    - generic [ref=f20e350]: Premium access to exclusive events, thought-provoking conversations with global leaders and more, all available on-demand.
+                    - generic [ref=f20e353]: Elevated browsing experience with fewer ads and unlimited article saving power an enhanced reading experience.
+                  - link "Back to the Home page" [ref=f20e356] [cursor=pointer]:
+                    - /url: https://www.forbes.com/
+                    - text: Back to the Home page
+                    - button [ref=f20e357]
+            - link "Got a tip? Share confidential information with Forbes." [ref=f20e360] [cursor=pointer]:
+              - /url: https://www.forbes.com/tips/
+            - generic [ref=f20e361]:
+              - link "Editorial Standards" [ref=f20e362] [cursor=pointer]:
+                - /url: https://www.forbes.com/sites/forbesstaff/article/forbes-editorial-values-and-standards/
+              - link "Reprints & Permissions" [ref=f20e364] [cursor=pointer]:
+                - /url: https://www.parsintl.com/publications/forbes/
+          - generic [ref=f20e366]:
+            - generic [ref=f20e367]:
+              - link [ref=f20e369] [cursor=pointer]:
+                - /url: https://www.forbes.com/sites/stevenbertoni/
+                - img "Steven Bertoni" [ref=f20e370]
+              - generic [ref=f20e371]:
+                - generic [ref=f20e374]:
+                  - generic [ref=f20e375]:
+                    - paragraph [ref=f20e376]:
+                      - text: By
+                      - link "Steven Bertoni" [ref=f20e377] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/stevenbertoni/
+                    - paragraph
+                  - generic [ref=f20e378]:
+                    - text: .
+                    - paragraph [ref=f20e379]:
+                      - text: Steven Bertoni is an assistant managing editor who runs the Forbes Founders team, where he oversees coverage of top entrepreneurs and the Forbes 30 Under 30 and Top Creators franchises. He joined Forbes in 2008 and works in New York. Bertoni helped launch the Forbes Under 30 list in 2011 and is the founder of the Forbes Top Creator list. He has written more than 15 Forbes cover stories on companies including Facebook, Spotify, Instagram, PayPal, and the comeback of the Twinkie. His profile on Facebook's Sean Parker won the SABEW award for Best Business Feature in 2011. In 2021, Business Insider named Bertoni as one of its “Most Influential Financial Journalists to Know.” Earlier in his career, Bertoni worked on the Forbes Wealth Team, edited the magazine's front of book section, and launched the flagship podcast "The Forbes Interview." Bertoni earned an MA in Journalism from NYU and a BA in International Relations from Colgate University. Follow Bertoni for continued coverage of startups, investing, billionaires, the Forbes 30 Under 30, and top creators and influencers. Forbes reporters follow
+                      - link "company ethical guidelines" [ref=f20e380] [cursor=pointer]:
+                        - /url: https://www.forbes.com/sites/forbesstaff/article/forbes-editorial-values-and-standards/?sh=423d83a533ea
+                      - text: that ensure the highest quality.
+                - button "Read More" [ref=f20e381] [cursor=pointer]
+                - generic [ref=f20e382]:
+                  - text: Find
+                  - link "Steven Bertoni" [ref=f20e383] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/stevenbertoni/
+                  - text: "on"
+                  - link "LinkedIn" [ref=f20e384] [cursor=pointer]:
+                    - /url: https://www.linkedin.com/in/stevenbertoni/
+                  - text: ","
+                  - link "Facebook" [ref=f20e385] [cursor=pointer]:
+                    - /url: https://www.facebook.com/stevenbertoni
+                  - text: and
+                  - link "X" [ref=f20e386] [cursor=pointer]:
+                    - /url: https://www.x.com/StevenBertoni
+                  - text: . Visit
+                  - link "Steven's" [ref=f20e387] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/stevenbertoni/
+                  - link "website" [ref=f20e388] [cursor=pointer]:
+                    - /url: https://www.forbes.com/sites/stevenbertoni/?sh=525abe65501b
+                  - text: . Browse
+                  - link "additional work" [ref=f20e389] [cursor=pointer]:
+                    - /url: " https://www.forbes.com/newsletter/ceo/"
+                  - text: .
+            - button "Follow Author" [ref=f20e390] [cursor=pointer]
+    - contentinfo [ref=f20e392]:
+      - generic [ref=f20e393]:
+        - generic [ref=f20e394]:
+          - link "Link to Forbes Homepage" [ref=f20e395] [cursor=pointer]:
+            - /url: https://www.forbes.com/
+          - generic [ref=f20e398]: © 2026 Forbes Media LLC. All Rights Reserved.
+        - list [ref=f20e399]:
+          - listitem [ref=f20e400]:
+            - link "AdChoices" [ref=f20e401] [cursor=pointer]:
+              - /url: https://youradchoices.com/control
+          - listitem [ref=f20e402]:
+            - link "Privacy Statement" [ref=f20e403] [cursor=pointer]:
+              - /url: https://www.forbes.com/fdc/privacy.html
+          - listitem [ref=f20e404]:
+            - link "Your Privacy Choices" [ref=f20e414] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f20e415]:
+            - link "Cookie Preferences" [ref=f20e417] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f20e418]:
+            - link "Digital Terms of Sale" [ref=f20e419] [cursor=pointer]:
+              - /url: https://www.forbes.com/digital-terms-of-sale/
+          - listitem [ref=f20e420]:
+            - link "Terms of Service" [ref=f20e421] [cursor=pointer]:
+              - /url: https://www.forbes.com/terms-and-conditions/
+          - listitem [ref=f20e422]:
+            - link "Contact Us" [ref=f20e423] [cursor=pointer]:
+              - /url: https://www.forbes.com/fdc/contact.html
+          - listitem [ref=f20e424]:
+            - link "Send Us Feedback" [ref=f20e425] [cursor=pointer]:
+              - /url: mailto:feedback@forbes.com
+          - listitem [ref=f20e426]:
+            - link "Report a Security Issue" [ref=f20e427] [cursor=pointer]:
+              - /url: https://www.forbes.com/contact/
+          - listitem [ref=f20e428]:
+            - link "Jobs At Forbes" [ref=f20e429] [cursor=pointer]:
+              - /url: https://www.forbes.com/sites/careers-at-forbes/
+          - listitem [ref=f20e430]:
+            - link "Reprints & Permissions" [ref=f20e431] [cursor=pointer]:
+              - /url: http://forbesreprints.magreprints.com/
+          - listitem [ref=f20e432]:
+            - link "Forbes Press Room" [ref=f20e433] [cursor=pointer]:
+              - /url: https://www.forbes.com/pr/
+          - listitem [ref=f20e434]:
+            - link "Advertise" [ref=f20e435] [cursor=pointer]:
+              - /url: https://www.forbes.com/connect/digital-ad-products/
+  - alert [ref=f20e436]
+  - text: $ $

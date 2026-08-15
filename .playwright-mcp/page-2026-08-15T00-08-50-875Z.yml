@@ -1,0 +1,352 @@
+- generic [active]:
+  - generic:
+    - generic:
+      - generic:
+        - region "Leaderboard advertisement":
+          - iframe [ref=f154e1]:
+            - link [ref=f169e3] [cursor=pointer]:
+              - /url: https://googleads.g.doubleclick.net/pcs/click?xai=AKAOjstwNVTFSPLZ3pU3uOIvkcwC8nfiL3XfKr2uBLLiP6o6xl3P4XFudW1FFalvXjOhkOv37c3jlukiLbnJCJME-6B7tnyE0h1iFoIXQSkpPAIbA1sKSh3bkClAwjK4vnKokJRU9AZG3w9-0Mus7pMGo96g2Q83_PQPhaNCyrS-oV9MNAdgRqtzQLnmc_7Q8Lh5zDyycQcj9vGdak1v6ZbVq8IMd_3z0e2x6GmT0tLhqascZl744l8iZ5Bgav4SVQiBWm8XLlpMqjI3S0wIQzKbxnDgJrDCfEb8zBS6DcC8BVD7eCuvjMuqSWMYOHv4SbZ9cOmeD_1aqPT29rtFg3uKTjN7SPDznsU9zx1s4nPQetmQapusgxojnwTpZ10icq4F1lRe7yB5L6EsfIVHY-eESHNGLp2fWgAnASBdKbga6IyyLJ-xU4SwxM0O60FobgrXz0yEEOMBF1s&sai=AMfl-YTbieMlrW1_WgyPWPDXB-if4TdEsbJIx7PaeV5NKLrTVv005ByVlCBVagjagvHsnlUF2KdPMHDZQ6vzeX-eY55oiUcWaoCn8VWrSlcc2hbbFgY-nlCJUWT3u2lovWERhRK6YPLEVRzVnVsTeXoK39bywmEYJ66anQ62IYa9j2v8Yp2zL5lJcctMP79smRj9tetgPk5HfO_ViGKqAykAj5jkYGVCekPVWfQcDXsBurY9wDrLxYZvxtQF3oPZTbwXUbITJdJEUw62QtggBphgpZraB7x5IJo972-FSwOb2RNhFqm7gBBSNKN0kaNixxWUlWlddZ2meAczufSERwr_nW6-COMcpe1eCdoXaFOH-kd-7qSvvky4Uh8uBCee7h1o2bduVWAfsUCifw&sig=Cg0ArKJSzKZVG4uT0pO4&fbs_aeid=%5Bgw_fbsaeid%5D&adurl=https://professional.bloomberg.com/solutions/asset-management/%3Futm_source%3Ddotcom%26utm_medium%3Dintpro%26utm_campaign%3Dbside%26utm_content%3Dbanner_displayad%26tactic%3D1040068
+      - generic:
+        - navigation [ref=f154e2]:
+          - button "Skip to content" [ref=f154e3] [cursor=pointer]
+          - generic [ref=f154e4]:
+            - button "Bloomberg the Company & Its Products" [ref=f154e5] [cursor=pointer]
+            - link "Bloomberg Terminal Demo Request" [ref=f154e6] [cursor=pointer]:
+              - /url: https://www.bloomberg.com/professional/contact-menu/?utm_source=bloomberg-menu&utm_medium=bcom&bbgsum=DG-WS-PROF-DEMO-bbgmenu
+            - link "Bloomberg Anywhere Remote Login" [ref=f154e7] [cursor=pointer]:
+              - /url: https://bba.bloomberg.net/?utm_source=bloomberg-menu&utm_medium=bcom
+            - link "Bloomberg Customer Support" [ref=f154e8] [cursor=pointer]:
+              - /url: https://www.bloomberg.com/professional/support/?utm_source=bloomberg-menu&utm_medium=bcom
+        - generic:
+          - navigation [ref=f154e9]:
+            - generic [ref=f154e10]:
+              - generic [ref=f154e12]:
+                - generic "logo" [ref=f154e13]:
+                  - link [ref=f154e14] [cursor=pointer]:
+                    - /url: /
+                    - img "Bloomberg" [ref=f154e15]
+                - generic [ref=f154e26]:
+                  - button "Sign In" [ref=f154e27] [cursor=pointer]
+                  - link "Subscribe" [ref=f154e28] [cursor=pointer]:
+                    - /url: https://www.bloomberg.com/subscriptions?in_source=nav
+                  - button [ref=f154e29] [cursor=pointer]:
+                    - img "Search" [ref=f154e30]
+              - generic "Menu" [ref=f154e32]:
+                - generic [ref=f154e33]:
+                  - generic [ref=f154e34]:
+                    - link "Live TV" [ref=f154e35] [cursor=pointer]:
+                      - /url: /live
+                    - list [ref=f154e37]:
+                      - listitem "Markets" [ref=f154e38] [cursor=pointer]:
+                        - link "Markets" [ref=f154e39]:
+                          - /url: https://www.bloomberg.com/markets
+                        - img "Chevron Down" [ref=f154e41]
+                      - listitem "Finance" [ref=f154e43] [cursor=pointer]:
+                        - link "Finance" [ref=f154e44]:
+                          - /url: https://www.bloomberg.com/finance
+                      - listitem "Economics" [ref=f154e45] [cursor=pointer]:
+                        - link "Economics" [ref=f154e46]:
+                          - /url: https://www.bloomberg.com/economics
+                      - listitem "Industries" [ref=f154e47] [cursor=pointer]:
+                        - link "Industries" [ref=f154e48]:
+                          - /url: https://www.bloomberg.com/industries
+                      - listitem "Tech" [ref=f154e49] [cursor=pointer]:
+                        - link "Tech" [ref=f154e50]:
+                          - /url: https://www.bloomberg.com/technology
+                      - listitem "Politics" [ref=f154e51] [cursor=pointer]:
+                        - link "Politics" [ref=f154e52]:
+                          - /url: https://www.bloomberg.com/politics
+                      - listitem "Businessweek" [ref=f154e53] [cursor=pointer]:
+                        - link "Businessweek" [ref=f154e54]:
+                          - /url: https://www.bloomberg.com/businessweek
+                      - listitem "Opinion" [ref=f154e55] [cursor=pointer]:
+                        - link "Opinion" [ref=f154e56]:
+                          - /url: https://www.bloomberg.com/opinion
+                      - listitem "Video" [ref=f154e57] [cursor=pointer]:
+                        - link "Video" [ref=f154e58]:
+                          - /url: https://www.bloomberg.com/video
+                      - listitem "More" [ref=f154e59] [cursor=pointer]:
+                        - text: More
+                        - img "Chevron Down" [ref=f154e61]
+                  - button "Select Region" [ref=f154e65] [cursor=pointer]:
+                    - generic "Current Region" [ref=f154e66]: Latin America Edition
+                    - img "Chevron Down" [ref=f154e68]
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - link "Business of Non-Alcoholic:":
+                      - /url: /latest/business-of-non-alcoholic?itm_source=record&itm_campaign=Business_of_Non-Alcoholic&itm_content=title
+                    - generic:
+                      - link "Who Are They For?":
+                        - /url: https://www.bloomberg.com/news/articles/2025-01-09/recovering-drunks-aren-t-sold-on-mocktails-and-other-nonalcoholic-drinks?itm_source=record&itm_campaign=Business_of_Non-Alcoholic&itm_content=Who_Are_They_For?-0
+                    - generic:
+                      - link "Cannabis Cocktail Craze":
+                        - /url: https://www.bloomberg.com/news/features/2025-01-14/cannabis-cocktails-thc-infused-nonalcoholic-drinks-are-on-the-rise?itm_source=record&itm_campaign=Business_of_Non-Alcoholic&itm_content=Cannabis_Cocktail_Craze-1
+                    - generic:
+                      - link "Instagram Built Ghia":
+                        - /url: https://www.bloomberg.com/news/articles/2025-01-13/nonalcoholic-drink-startup-ghia-s-secret-to-success-was-instagram-launch?itm_source=record&itm_campaign=Business_of_Non-Alcoholic&itm_content=Instagram_Built_Ghia-2
+                    - generic:
+                      - link "Athletic’s $800 Million Business":
+                        - /url: https://www.bloomberg.com/news/features/2025-01-13/how-athletic-brewing-sparked-a-massive-nonalcoholic-beer-market?itm_source=record&itm_campaign=Business_of_Non-Alcoholic&itm_content=Athletic’s_$800_Million_Business-3
+                    - generic:
+                      - link "Best Booze-Free Drinks":
+                        - /url: https://www.bloomberg.com/news/articles/2025-01-10/nonalcoholic-spirits-taste-test-for-sober-january?itm_source=record&itm_campaign=Business_of_Non-Alcoholic&itm_content=Best_Booze-Free_Drinks-4
+                - generic:
+                  - button "Back" [disabled]
+                  - button "Forward"
+        - main:
+          - generic:
+            - article:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - link "Businessweek":
+                        - /url: /businessweek?source=eyebrow
+                    - text: "|Feature"
+                  - generic:
+                    - heading "How Athletic Sparked the Nonalcoholic Beer Boom With Brews That Don’t Suck" [level=1]
+                    - generic:
+                      - paragraph: The company that dominates the market wants to change how we experience beer.
+                - generic:
+                  - 'figure "Athletic Brewing Co. founders Bill Shufelt and John Walker.Photographer: Emma Rose Milligan for Bloomberg Businessweek"':
+                    - generic:
+                      - img "Athletic Brewing Co. founders Bill Shufelt&nbsp;and John Walker."
+                    - generic:
+                      - generic:
+                        - paragraph: Athletic Brewing Co. founders Bill Shufelt and John Walker.
+                      - text: "Photographer: Emma Rose Milligan for Bloomberg Businessweek"
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - button "Share this article on Facebook (opens in a new window)":
+                              - img "Facebook"
+                            - button "Share this article on X (opens in a new window)":
+                              - img "X"
+                            - button "Share this article on LinkedIn (opens in a new window)":
+                              - img "LinkedIn"
+                          - generic:
+                            - button "Share this article via email (opens native email client)":
+                              - img "Email"
+                            - button "Link":
+                              - img "Link"
+                      - button "Gift this article":
+                        - img "Gift"
+                      - generic:
+                        - button
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - text: By
+                                - link "Andrew Zaleski":
+                                  - /url: /authors/AT11QEL6ZzI/andrew-zaleski
+                          - generic:
+                            - generic:
+                              - time: January 13, 2025 at 7:00 AM GMT-3
+                        - generic:
+                          - generic:
+                            - generic:
+                              - button "Save":
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - img "Bookmark"
+                                        - text: Save
+                          - generic:
+                            - button "Translate"
+                        - generic:
+                          - generic:
+                            - link "This article is part of the February 1, 2025 issue of businessweek. Chevron Right":
+                              - /url: /magazine/businessweek/25_02
+                              - generic: This article is part of the February 1, 2025 issue of businessweek.
+                              - img "Chevron Right"
+                      - generic:
+                        - paragraph:
+                          - text: It began, as no beer startup ever has before, with a few too many virgin piña coladas. In December 2014, Bill Shufelt was 15 months into quitting alcohol. He’d never been a problem drinker—he often woke before 6 a.m. to hit the gym, something no one who harbors a punitive relationship with booze would do. But as a day trader at Point72 Asset Management, the hedge fund founded by New York Mets owner
+                          - link "Steve Cohen":
+                            - /url: https://www.bloomberg.com/billionaires/profiles/steven-a-cohen/
+                          - text: ", he’d found himself drinking at least five nights a week, between business dinners and outings with work friends. “I was just thinking about what kind of husband and father and colleague I wanted to be down the line,” Shufelt recalls. “And I did think alcohol was a ceiling on that.”"
+                        - iframe [ref=f154e70]:
+                          - generic [ref=f158e1]:
+                            - generic [ref=f158e6]:
+                              - img "Pour One Out for Alcohol" [ref=f158e9]
+                              - generic [ref=f158e10]:
+                                - generic [ref=f158e11]:
+                                  - generic [ref=f158e12]: Listen to the Story
+                                  - generic [ref=f158e13]:
+                                    - button "Info" [ref=f158e14] [cursor=pointer]
+                                    - button "Follow" [ref=f158e17] [cursor=pointer]
+                                    - button "Share" [ref=f158e20] [cursor=pointer]
+                                - generic [ref=f158e23]:
+                                  - button "Play" [ref=f158e24] [cursor=pointer]
+                                  - generic [ref=f158e27]:
+                                    - generic "Pour One Out for Alcohol" [ref=f158e29]
+                                    - generic [ref=f158e33]: 00:00 / 21:26
+                                - generic [ref=f158e35]:
+                                  - generic [ref=f158e36]:
+                                    - slider [ref=f158e37]: "0"
+                                    - generic [ref=f158e38] [cursor=pointer]
+                                  - link "Powered by Omny Studio" [ref=f158e44] [cursor=pointer]:
+                                    - /url: https://tritondigital.com/solutions/Enterprise-Podcasting/Omny-Studio
+                            - alert [ref=f158e47]
+                      - generic:
+                        - generic:
+                          - generic:
+                            - 'link "Contact us: Provide news feedback or report an error"':
+                              - /url: https://www.bloomberg.com/help/question/submit-feedback-news-coverage/
+                              - text: "Contact us:"
+                              - generic: Provide news feedback or report an error
+                          - generic:
+                            - link "Confidential tip? Send a tip to our reporters":
+                              - /url: https://www.bloomberg.com/tips/
+                              - text: Confidential tip?
+                              - generic: Send a tip to our reporters
+                          - generic:
+                            - 'link "Site feedback: Take our Survey New Window"':
+                              - /url: https://bmedia.iad1.qualtrics.com/jfe/form/SV_0xQ0jMsQ7QLRlj0?slug=2025-01-13/how-athletic-brewing-sparked-a-massive-nonalcoholic-beer-market
+                              - text: "Site feedback:"
+                              - generic:
+                                - text: Take our Survey
+                                - img "New Window"
+                          - link "Before it's here, it's on the Bloomberg Terminal":
+                            - /url: https://www.bloomberg.com/professional/solution/bloomberg-terminal-learn-more/?utm_source=bbg&utm_medium=intpro&utm_campaign=trmnl&utm_content=web_dotcom&tactic=794999
+            - region "Immersive advertisement": Advertisement
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic "logo":
+                    - link "Bloomberg":
+                      - /url: /
+                      - img "Bloomberg"
+                - generic "dropdown-menu-desktop":
+                  - generic "submenu-desktop":
+                    - link "Home":
+                      - /url: https://www.bloomberg.com/
+                    - link "BTV+":
+                      - /url: https://www.bloomberg.com/live
+                    - link "Market Data":
+                      - /url: https://www.bloomberg.com/markets/stocks
+                    - link "Opinion":
+                      - /url: https://www.bloomberg.com/opinion
+                    - link "Audio":
+                      - /url: https://www.bloomberg.com/audio
+                    - link "Originals":
+                      - /url: https://www.bloomberg.com/originals
+                    - link "Magazine":
+                      - /url: https://www.bloomberg.com/businessweek
+                    - link "Events":
+                      - /url: https://www.bloomberg.com/live-events
+                  - generic "submenu-desktop":
+                    - generic: News
+                    - link "Markets":
+                      - /url: https://www.bloomberg.com/markets
+                    - link "Economics":
+                      - /url: https://www.bloomberg.com/economics
+                    - link "Technology":
+                      - /url: https://www.bloomberg.com/technology
+                    - link "Politics":
+                      - /url: https://www.bloomberg.com/politics
+                    - link "Green":
+                      - /url: https://www.bloomberg.com/green
+                    - link "Crypto":
+                      - /url: https://www.bloomberg.com/crypto
+                    - link "AI":
+                      - /url: https://www.bloomberg.com/ai
+                  - generic "submenu-desktop":
+                    - generic: Work & Life
+                    - link "Wealth":
+                      - /url: https://www.bloomberg.com/wealth
+                    - link "Pursuits":
+                      - /url: https://www.bloomberg.com/pursuits
+                    - link "Businessweek":
+                      - /url: https://www.bloomberg.com/businessweek
+                    - link "CityLab":
+                      - /url: https://www.bloomberg.com/citylab
+                    - link "Sports":
+                      - /url: https://www.bloomberg.com/business-of-sports
+                    - link "Equality":
+                      - /url: https://www.bloomberg.com/equality
+                    - link "Management & Work":
+                      - /url: https://www.bloomberg.com/management-work
+                  - generic "submenu-desktop":
+                    - generic: Market Data
+                    - link "Stocks":
+                      - /url: https://www.bloomberg.com/markets/stocks
+                    - link "Commodities":
+                      - /url: https://www.bloomberg.com/markets/commodities
+                    - link "Rates & Bonds":
+                      - /url: https://www.bloomberg.com/markets/rates-bonds
+                    - link "Currencies":
+                      - /url: https://www.bloomberg.com/markets/currencies
+                    - link "Futures":
+                      - /url: https://www.bloomberg.com/markets/stocks/futures
+                    - link "Sectors":
+                      - /url: https://www.bloomberg.com/markets/sectors
+                    - link "Economic Calendar":
+                      - /url: https://www.bloomberg.com/markets/economic-calendar
+                  - generic "submenu-desktop":
+                    - generic: Explore
+                    - link "Newsletters":
+                      - /url: https://www.bloomberg.com/account/newsletters
+                    - link "Explainers":
+                      - /url: https://www.bloomberg.com/explainers
+                    - link "Pointed News Quiz":
+                      - /url: http://www.bloomberg.com/games/pointed?in_source=footer
+                    - link "Alphadots Game":
+                      - /url: https://www.bloomberg.com/games/alphadots?in_source=nav
+                    - link "The Big Take":
+                      - /url: https://www.bloomberg.com/bigtake
+                    - link "Graphics":
+                      - /url: https://www.bloomberg.com/graphics
+                    - link "Submit a Tip":
+                      - /url: https://www.bloomberg.com/tips/
+                    - link "About Us":
+                      - /url: https://bloomberg.com/context
+              - generic:
+                - generic:
+                  - link "Terms of Service":
+                    - /url: /tos
+                  - button "Do Not Sell or Share My Personal Information"
+                  - link "Trademarks":
+                    - /url: /trademarks
+                  - link "Privacy Policy":
+                    - /url: /privacy
+                - generic:
+                  - link "Careers":
+                    - /url: /careers/?utm_source=dotcom&utm_medium=footer
+                  - link "Advertise":
+                    - /url: https://www.bloombergmedia.com/contact
+                  - generic:
+                    - link "Ad Choices":
+                      - /url: /privacy#advertisements
+                  - link "Help":
+                    - /url: /help
+                  - generic: ©2026 Bloomberg L.P. All Rights Reserved.
+  - generic:
+    - alert
+  - generic [ref=f154e71]:
+    - generic [ref=f154e74]:
+      - generic [ref=f154e75]: Unlock trusted markets coverage
+      - generic [ref=f154e77]: Get markets, investing and global business news for $1.99 for your first month
+      - button "Claim This Offer" [ref=f154e79] [cursor=pointer]
+    - contentinfo [ref=f154e85]:
+      - button "Sign In" [ref=f154e86] [cursor=pointer]
+      - link "Terms of Service" [ref=f154e87] [cursor=pointer]:
+        - /url: /tos
+      - link "Privacy Policy" [ref=f154e88] [cursor=pointer]:
+        - /url: /privacy
+      - button "Do Not Sell or Share My Personal Information" [ref=f154e89] [cursor=pointer]
