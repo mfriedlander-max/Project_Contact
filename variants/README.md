@@ -70,6 +70,58 @@ changes exactly one thing, so a win is attributable:
 per variant plus two controls, and results only mean something once each id has 15-20 sends
 behind it. Attribution is the `Email Variant` column, so it is never left blank.
 
+## The two ways a read fails
+
+These apply to every variant. Both were found by reading a finished email, not by reasoning about
+the rules, which is why the worked example matters more than the statement of them.
+
+### 1. It stops at an observation
+
+A counterintuitive fact about someone is not a read. The read is finished when it says **what Max
+makes of it.** The recipient has heard the fact about themselves many times; they have not heard
+the view.
+
+**The strip test:** delete the final clause. If the sentence still says the same thing, there was
+never a judgment in it.
+
+### 2. The overlap is invisible
+
+When a fact about Max is chosen *because* it rhymes with their history, the email has to show the
+rhyme. **The reader cannot see the research.** If the connection lives only in `research.md`, the
+opener reads as a non-sequitur.
+
+Make both halves share a word. Never write "just like you", "we both", or "like you, I" - the
+shared word does the work silently, and claiming the parallel out loud is worse than not drawing it.
+
+### The worked example
+
+Bill Shufelt, Athletic Brewing. The research established that he built Athletic's first
+distribution by **cold-emailing race directors** and sponsoring 70 events in his first summer,
+which is why the $30k cold-calling fact was chosen for him.
+
+**Before, and wrong on both counts:**
+
+> I'm Max, 20, a current Midd kid, and I made $30k cold calling small businesses to help pay for
+> school. You quit drinking, then built the biggest non-alcoholic beer brand in America by aiming
+> it at drinkers instead of at people who quit.
+
+Strip the last clause and it says the same thing, so there is no judgment. And the cold-calling
+opener has nothing to attach to: to Bill it reads as "I cold call" then "you quit drinking".
+
+**After:**
+
+> I'm Max, 20, a current Midd kid who made $30k cold calling small businesses to pay for school.
+> Building the biggest non-alcoholic beer brand in America **off cold emails** to race directors,
+> then aiming it at drinkers rather than people who quit, **is a bet that the bigger market is the
+> harder sell.**
+
+Same facts, same length band. `off cold emails` connects the two halves without announcing it, and
+the final clause is now a claim he could disagree with.
+
+A third, smaller fix in the same email: the question was "if you had let it stay a sobriety story",
+which implies drift. It is now "if you had aimed it at the people who quit", which is the decision
+he actually faced. **Counterfactuals should name the choice, not describe passivity.**
+
 ## House rules
 
 - **No em dashes.** Standing rule from `email_personalization_prompt.md`, and it applies to

@@ -9,9 +9,9 @@
 ```
 Hi Bill,
 
-I'm Max, 20, a current Midd kid, and I made $30k cold calling small businesses to help pay for school. You quit drinking, then built the biggest non-alcoholic beer brand in America by aiming it at drinkers instead of at people who quit.
+I'm Max, 20, a current Midd kid who made $30k cold calling small businesses to pay for school. Building the biggest non-alcoholic beer brand in America off cold emails to race directors, then aiming it at drinkers rather than people who quit, is a bet that the bigger market is the harder sell.
 
-I'm building an AI teaching assistant, so I'm hungry to learn and would love to know where the category would be today if you had let it stay a sobriety story in 2018. If you're open to 10 minutes, I promise I'll pay it forward.
+I'm building an AI teaching assistant, and would love to know where the category would be if you had aimed it at the people who quit. If you're open to 10 minutes, I promise I'll pay it forward.
 
 Best,
 Max

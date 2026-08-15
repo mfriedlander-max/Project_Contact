@@ -131,7 +131,8 @@ remarkable" / "I would be honored" / "resonates with me". Every claim about Max 
 `BRIEF.md` and nowhere else.
 
 **The read must land a judgment, not stop at an observation.** Strip the final clause: if the
-sentence still says the same thing, the judgment was never there.
+sentence still says the same thing, the judgment was never there. `variants/README.md` carries the
+worked before-and-after that this rule came from.
 
 **If a fact about Max was chosen because it overlaps them, make the overlap visible.** The reader
 cannot see the research. Let both halves share a word, and never write "just like you" or "we
