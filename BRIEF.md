@@ -66,6 +66,148 @@ Aiming this high changes the writing, it does not change the rules.
 - Everything in `variants/` still applies: no em dashes, no availability windows, no banned
   phrases, judgment not compliment.
 
+## About Max - the only facts you may use
+
+**Everything an email says about Max comes from this list. Nothing else.** Do not infer, embellish,
+or carry a detail over from a previous run. If it is not written here, it does not go in an email.
+
+| Fact | Use it when |
+|---|---|
+| 20, Middlebury sophomore, studies **Applied Math** | identity. See the Middlebury rule below |
+| Built an **AI teaching assistant**, won **$5K** in a pitch competition, piloting live in a school this fall | any education, AI, or product angle. The strongest single asset |
+| **Turned down money for it** despite having the opportunity | see the conviction angle below. The best asset in this list, because it is a decision rather than an achievement |
+| Made **$30k cold-calling SMBs** for his own business, which helps pay for school | sales, grit, going direct, anyone who started by selling |
+| Working at a **YC startup, S26** | YC people, early-stage founders, anyone who values that signal |
+| Loves math and technical work **and** loves sales | the combination is rarer than either half. Use with technical founders who had to learn to sell, or vice versa |
+| Looking for his next idea; curious how founders had their **"hell yes" moment** | founders. Makes an excellent closing question |
+| Played a lot of **tennis** | only if they have a real, sourced tennis connection |
+| Lived in **Barcelona**; **living in Buenos Aires now** | anyone with a Spain, Argentina, or Latin America connection. He is there *now*, not going later |
+
+### The conviction angle, and how to use the money story
+
+**Do not use "we turned down money" as a flex.** Used flat, it reads as a boast from someone with
+nothing at stake yet. Used honestly it is the most interesting thing in this brief.
+
+The honest version: **he turned the money down because he did not have conviction in the idea, and
+he is still looking for the one he will.** That is true, it is unusual to admit, and it earns a
+real answer, because every founder worth writing to remembers the moment their own conviction
+arrived.
+
+That pairs with the other KB line, that he is looking for his next idea and curious how founders
+had their "hell yes" moment. **Treat those two as one story**, not two facts.
+
+The shape:
+
+> "I built an AI teaching assistant and we turned down money for it, mostly because I did not have
+> real conviction in the idea. I am still looking for the one I do. {read about them.} I would love
+> to know how you knew yours was right, or what the moment was."
+
+Use it with anyone who raised, refused to raise, sold, or bet years on a single idea. The question
+lands whichever side of it they were on:
+
+| Them | The question becomes |
+|---|---|
+| Raised big, went all in | how did you know before the money that it was the one? |
+| Refused money, bootstrapped | was the conviction there first, or did refusing create it? |
+| Sold or exited | did you still believe it when you sold, or had that gone earlier? |
+| Failed and started again | what did the second idea have that the first did not? |
+
+**Never claim conviction he does not have.** The whole value is the admission. Writing "I knew it
+was right" would be both a lie and a worse email.
+
+### Varying the cold-calling line
+
+The $30k figure is true and concrete, but it should not appear in every email that uses this fact.
+Vary it:
+
+- with the number: `I made $30k cold calling small businesses to help pay for school`
+- without: `I cold called small businesses to help pay for school`
+- as the habit rather than the result: `I have spent two years cold calling small businesses`
+
+Use the number when the recipient is someone who counts things, an investor, an operator, a
+founder who talks in metrics. Drop it when the point is the work rather than the result, or when
+the email already carries another number and a second one would make it read like a résumé.
+
+### The Middlebury rule
+
+**Middlebury is a wedge, and a wedge only works on someone it fits.**
+
+- **Confirmed Middlebury connection** (alum, trustee, parent, faculty, gave a talk there): lead with
+  it. Subject line and opening clause both. It is the strongest opener available and nobody else can
+  use it.
+- **No Middlebury connection**: do not lead with it, and **never put it in the subject line.** To a
+  Snowflake CEO with no tie to the school, "Middlebury Sophomore" is a meaningless credential
+  burning the most valuable line in the email. Mentioning he is a sophomore studying applied math is
+  fine as plain identity; selling the school is not.
+
+The first live run got this wrong: three of five subject lines were "Middlebury Sophomore, Hungry to
+Learn", including one to Sridhar Ramaswamy, who has no connection to the college at all.
+
+### Subject lines
+
+**Cross-reference the KB against the person, then write the subject from whatever matched.** The
+subject's whole job is to name the strongest true thing Max and this recipient share, in the four
+seconds before they decide.
+
+**Middlebury is fixed. Everything else is written fresh.**
+
+| Their connection | Subject |
+|---|---|
+| **Middlebury** (alum, trustee, parent, faculty, honorary degree) | `Middlebury Sophomore, Hungry to Learn` - always, unchanged |
+| Someone real referred Max | `{Referrer} suggested I reach out` |
+| **Everyone else** | write one from the KB fact that matched them |
+
+Middlebury does not vary. It has worked, it is a real credential to an alum, and two Midd alumni
+receiving the same subject is the system working. Never rewrite it for variety.
+
+#### Writing the subject for everyone else
+
+Find the KB fact that overlaps them, then say it plainly in five to nine words. **One subject can
+serve several profiles.** A line about cold calling lands on a salesperson, a bootstrapper, and
+anyone who funded a company out of their own pocket, because what they all recognise is the work,
+not the job title.
+
+| Who it lands on | KB fact | Subject |
+|---|---|---|
+| YC founder, partner, alum, portfolio company | working at a YC startup, S26 | `YC Startup Intern, Hungry to Learn` |
+| Bootstrappers, the self-funded, anyone who sold before they built, SMB roots | $30k cold calling to pay for school | `Cold Called My Way Through College` |
+| Anyone who refused money, stayed independent, or took it and knows the cost | turned down money for the teaching assistant | `20 Year Old Who Chose Not to Raise` |
+| Built, funded, or taught in education | AI teaching assistant, live in a school this fall | `Building an AI Teaching Assistant at 20` |
+| Argentina, Spain, Latin America | living in Buenos Aires now | `Writing From Buenos Aires, Hungry to Learn` |
+| Self-taught, career switchers, no formal credential | applied math undergrad who ships and sells | `Applied Math Sophomore Who Also Sells` |
+| Started something very young | 20 and mid-build | `Started Building at 19, Still Building` |
+| Nothing matched | the most interesting true fact that fits them | write one |
+
+These are starting points, not a fixed list. If the overlap you found is sharper than the row
+above it, write a better line.
+
+#### Stand out, but do not be clever
+
+The bar is **a plain true sentence about Max that this person would find interesting**. Not a
+headline, not a hook in the marketing sense.
+
+| Good | Why |
+|---|---|
+| `Cold Called My Way Through College` | concrete and true, and the work is recognisable to anyone who has done it |
+| `YC Startup Intern, Hungry to Learn` | states a real shared world in four words |
+| `20 Year Old Who Chose Not to Raise` | a decision, stated flatly, that a founder will have an opinion about |
+
+| Bad | Why |
+|---|---|
+| `20 Year Old Who Turned Down Money Too` | "too" claims a peerage he has not earned and reads as cute |
+| `A Question You've Never Been Asked` | a promise about the email, not a fact about Max |
+| `Quick question` | says nothing, and every cold email uses it |
+| `From One Builder to Another` | flattery, and presumes the same peerage |
+| `Why Your $60B Sale Was Right` | writing their headline for them |
+| `20yo, $30k cold calls, applied math, AI edtech` | a list, not a sentence |
+
+Rules: five to nine words, no question marks, no ellipses, no all caps, no emoji, no exclamation,
+and **never a word that claims equivalence with them** - no "too", "also", "same here", "like you".
+State the fact and let them draw the line.
+
+It must be **true standing alone**, without the body to explain it. If it reads like a subject a
+person typed, it is right. If it reads like one a marketer wrote, start over.
+
 ## Notes from previous runs
 
 **2026-08-13.** This brief replaced an earlier one that told the skill to avoid household names on
@@ -207,65 +349,91 @@ from every other one he gets. The email was built instead on a decision **he rai
 interviewer skipped past**: he quit drinking, then refused to market non-alcoholic beer to people who
 quit drinking. Look for the thing the host moved on from too quickly. That is reliably the open space.
 
+**2026-08-14 (fourth run).** The **Alumni Achievement Award page is the best remaining Middlebury
+source and it is far from mined out.** Working backwards as the third run advised produced Shabana
+Basij-Rasikh '11 off the **2021** list. Two corrections for whoever reads this next. First, the URL
+in the earlier notes 404s; the live path is
+`/alumni-and-families/volunteer/alumni-association/alumni-awards/achievement-award-recipients`.
+Second, the page goes back to **2020**, not just a year or two, and of the fifteen recipients listed
+only Rob Tod, Bill Shufelt and Basij-Rasikh are now contacted. The rest are mostly artists,
+athletes and educators rather than this brief's target, but **Robynne Maii '96** (James Beard Best
+Chef 2022, founder of Fête) is the one unclaimed name that plausibly clears the bar and is the
+obvious next pick from this source.
+
+**2026-08-14 (fourth run).** **A published address is not automatically the best address, and the
+page usually tells you so.** SOLA's Our Founder page publishes `president@sola-afghanistan.org`
+directly beneath the sentence "she is unable to meet every request," which marks it as the
+speaking-request filter rather than her inbox. The skill's grading table would have called that
+VERIFIED and stopped. Running the prober anyway cost two verifier calls and returned
+`shabana@sola-afghanistan.org` at score 100 on the **first** candidate, with the catch-all control
+passed. **Read the sentence around a published address before accepting it**; "published on the
+org's own site" and "monitored by the person" are different claims.
+
+**2026-08-14 (fourth run).** For a heavily-interviewed subject the `ALREADY_ASKED_PUBLICLY` section
+was again worth more than everything else combined, and this time it ruled out *two* stories rather
+than one. Basij-Rasikh has two famous facts, the secret school in Kabul and burning her students'
+records in 2021, and between them they open essentially every profile she has. The email was built
+instead on a decision that appears, as far as three passes could find, in **one place**: the New
+York Times obituary of her co-founder. In 2012 they shut down a scholarship programme that had
+placed more than $10M because it was causing brain drain, and spent four more years opening a
+school inside Afghanistan instead. Interviewers jump from "founded 2008" to "opened 2016" without
+ever asking what filled the gap. **When someone has two famous stories, the gap between them is
+where the unasked question lives.**
+
+**2026-08-14 (fourth run), housekeeping.** Four runs now share the `daily/2026-08-14/` folder, so
+`verify_batch.py --date 2026-08-14` grades all twelve drafts at once and reports earlier runs'
+gaps as this run's failures. The four failures it currently shows (two duplicate subject lines,
+missing receipts for runs 1 and 2, LinkedIn blank on five rows, Meeting Notes blank on five) all
+belong to runs 1 to 3. Worth knowing before reading its output as a verdict on the current batch.
+
+**2026-08-14 (fifth run).** **The Alumni Achievement Award page is now genuinely mined out for this
+brief, and the fourth run misread it.** Robynne Maii '96 is a **2026** recipient announced alongside
+Rob Tod '91, not a 2021 one. That is better than briefed: the award is ten weeks old and she was
+physically on campus co-curating a Reunion tasting event with Tod on 2026-06-05. But it also means
+the page holds nothing else. Reading all fifteen recipients back to 2020, the four at this brief's
+altitude are Tod, Shufelt, Basij-Rasikh and Maii, and **all four are now contacted.** The remainder
+are a mountain biker, three writers, a songwriter, two academics, a surgeon, a musician, a Pentagon
+communications director and two arts educators. **Do not budget another run on this source.** The
+live vein is Middlebury Magazine and the `alumni-and-families` stories index, which the second run
+found and which is not consumed by the 261-name log. Crunchbase has 403'd twice.
+
+**2026-08-14 (fifth run).** **The stale-title warning now extends to stale *facts* on Middlebury's
+own pages.** The achievement-award page dates Maii's James Beard win to **2019**; it was **2022**,
+per contemporaneous Honolulu Magazine reporting and her own Instagram bio. This is the third time a
+`middlebury.edu` page has carried a wrong or stale fact next to a correct class year. The existing
+rule was "institutional pages prove history, not current employment." Widen it: **an institutional
+page proves affiliation and class year, and nothing else on it should go in an email unchecked.**
+
+**2026-08-14 (fifth run).** **Some targets have no LinkedIn at all**, and the skill's "LinkedIn
+required on every row, without exception" needs a stated fallback. Four search formulations found no
+profile for Maii; her public channel is Instagram, where she posts. The Instagram URL went in the
+LinkedIn column with an explicit sentence in Meeting Notes saying what it is. The column's real job
+is "the route that reaches them", so recording the wrong-labelled right URL beats a blank, but only
+if the row says so out loud.
+
+**2026-08-14 (fifth run).** Hunter opened the run at **9 searches**, under the skill's threshold of
+10, so zero email-finder searches were used. It cost nothing: the prober found
+`robynne@fetehawaii.com` at score 88 on the **first** candidate with the catch-all control passed,
+for **2 verifier calls**. That is now four consecutive runs where the prober beat the finder. The
+finder cap is starting to look like the wrong thing to protect.
+
+**2026-08-14 (fifth run).** The `ALREADY_ASKED_PUBLICLY` section paid for the fourth run in a row,
+and the pattern is now consistent enough to state as a rule: **when someone is famous for one thing,
+the email lives in the part of the career the interviewer treats as backstory.** Maii's whole public
+record is food and being the first Native Hawaiian woman to win a Beard award. Nobody asks about the
+fifteen New York years in which she barely cooked: pastry at the Waldorf, an *editorial assistant*
+job at Gourmet, a shift at the Kitchen Arts & Letters bookstore, five years running the Art
+Institute's culinary program, then co-founding CUNY Kingsborough's and earning a tenure-track seat
+she gave up in 2015 to open a restaurant in her forties. The read and the question both came from
+there.
+
+**2026-08-14 (fifth run), housekeeping.** Five runs now share `daily/2026-08-14/`, and
+`verify_batch.py --date 2026-08-14` grades all thirteen drafts at once. Its four current failures
+(two repeated subject lines, missing receipts for runs 1 and 2, LinkedIn blank on six rows, Meeting
+Notes blank on five) **all belong to runs 1 to 3.** The fifth run's row passes every one of them
+individually. Read the failure list against the row before treating it as a verdict.
+
 **2026-08-14 (third run), minor tooling note.** `verify_batch.py` globs `drafts*.json`, which now also
 matches the `drafts-N-receipt.json` files the drafter writes, so receipt addresses get counted as
 queued drafts and inflate the subject-collision and receipt checks. Harmless but noisy. Worth a
 one-line exclusion at some point.
-
-## About Max - the only facts you may use
-
-**Everything an email says about Max comes from this list. Nothing else.** Do not infer, embellish,
-or carry a detail over from a previous run. If it is not written here, it does not go in an email.
-
-| Fact | Use it when |
-|---|---|
-| 20, Middlebury sophomore, studies **Applied Math** | identity. See the Middlebury rule below |
-| Built an **AI teaching assistant**, won **$5K** in a pitch competition, piloting live in a school this fall | any education, AI, or product angle. The strongest single asset |
-| **Turned down money for it** despite having the opportunity | talking to founders and investors about conviction. The best asset in this list, because it is a decision rather than an achievement |
-| Made **$30k cold-calling SMBs** for his own business, which helps pay for school | sales, grit, going direct, anyone who started by selling |
-| Working at a **YC startup, S26** | YC people, early-stage founders, anyone who values that signal |
-| Loves math and technical work **and** loves sales | the combination is rarer than either half. Use with technical founders who had to learn to sell, or vice versa |
-| Looking for his next idea; curious how founders had their **"hell yes" moment** | founders. Makes an excellent closing question |
-| Played a lot of **tennis** | only if they have a real, sourced tennis connection |
-| Lived in **Barcelona**; **living in Buenos Aires now** | anyone with a Spain, Argentina, or Latin America connection. He is there *now*, not going later |
-
-### The Middlebury rule
-
-**Middlebury is a wedge, and a wedge only works on someone it fits.**
-
-- **Confirmed Middlebury connection** (alum, trustee, parent, faculty, gave a talk there): lead with
-  it. Subject line and opening clause both. It is the strongest opener available and nobody else can
-  use it.
-- **No Middlebury connection**: do not lead with it, and **never put it in the subject line.** To a
-  Snowflake CEO with no tie to the school, "Middlebury Sophomore" is a meaningless credential
-  burning the most valuable line in the email. Mentioning he is a sophomore studying applied math is
-  fine as plain identity; selling the school is not.
-
-The first live run got this wrong: three of five subject lines were "Middlebury Sophomore, Hungry to
-Learn", including one to Sridhar Ramaswamy, who has no connection to the college at all.
-
-### Subject lines
-
-**The subject is chosen per person, not defaulted.** Pick the one true thing most likely to make
-*this* recipient open it:
-
-| Situation | Subject |
-|---|---|
-| Confirmed Middlebury connection | `Middlebury Sophomore, Hungry to Learn` |
-| Referral | `{Referrer} suggested I reach out` |
-| Builder or technical founder | `20 Year Old Building an AI Teaching Assistant` |
-| Sales-led or SMB background | `20 Year Old Who Cold Called His Way Through College` |
-| Anyone else | write one from the strongest fact above that fits them |
-
-**No two subjects in a batch may be identical, ever.** Not even when the same hook is genuinely
-best for both. Run 5 sent "Middlebury Sophomore, Hungry to Learn" to two different Middlebury
-alumni; the hook was right for each, the identical wording was not.
-
-Vary the phrasing while keeping the hook:
-
-> `Middlebury Sophomore, Hungry to Learn`
-> `Midd Sophomore Building an AI Teaching Assistant`
-> `Applied Math Sophomore at Middlebury`
-
-If Max ever appears in both inboxes, or the two forward to each other, identical subject lines are
-what make it look automated.

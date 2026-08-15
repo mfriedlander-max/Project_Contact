@@ -53,16 +53,21 @@ def check(name, passed, detail=""):
 
 
 def body_of(text):
+    """Body runs from 'Hi Name,' to the final sign-off 'Max'.
+
+    elite-brevity opens with "Max here, 20, ..." so a first-match on Max lands on
+    line two and returns a three-word body. Anchor on the sign-off instead: the
+    LAST 'Max' that follows a 'Best,' line.
+    """
     m = re.search(r"^Hi [A-Z][\w'\-]+,", text, re.M)
     if not m:
         return None
-    start = m.start()
-    tail = text[start:]
-    m2 = re.search(r"\nMax\s*$|\nMax\n", tail)
-    if not m2:
-        idx = tail.rfind("Max")
-        return tail[:idx + 3] if idx > 0 else None
-    return tail[:m2.end()].rstrip()
+    tail = text[m.start():]
+    sign = list(re.finditer(r"^Best,\s*\n\s*Max\s*$", tail, re.M))
+    if sign:
+        return tail[:sign[-1].end()].rstrip()
+    idx = tail.rfind("\nMax")
+    return tail[:idx + 4].rstrip() if idx > 0 else None
 
 
 def load_drafts(folder):

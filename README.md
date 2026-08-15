@@ -130,8 +130,38 @@ House rules: no em dashes, no availability windows, no "I came across" / "I noti
 remarkable" / "I would be honored" / "resonates with me". Every claim about Max comes from
 `BRIEF.md` and nowhere else.
 
-**Middlebury is a wedge and only works where it fits.** Confirmed connection means it leads the
-subject line and the opener; no connection means it appears in neither.
+**The read must land a judgment, not stop at an observation.** Strip the final clause: if the
+sentence still says the same thing, the judgment was never there.
+
+**If a fact about Max was chosen because it overlaps them, make the overlap visible.** The reader
+cannot see the research. Let both halves share a word, and never write "just like you" or "we
+both".
+
+### The subject line
+
+It names the strongest true thing Max and the recipient share, drawn from the KB.
+
+**Middlebury is fixed** and never varies: every alum gets `Middlebury Sophomore, Hungry to Learn`,
+because it works and it is a real credential to them. Two alumni getting the same subject is the
+system working.
+
+**Everyone else gets one written from whichever KB fact matched them** - `YC Startup Intern,
+Hungry to Learn` for a YC founder, `Cold Called My Way Through College` for a bootstrapper,
+`Writing From Buenos Aires, Hungry to Learn` for anyone in Latin America. Five to nine words, and
+**never a word claiming equivalence** - no "too", "also", "like you". State the fact and let them
+draw the line.
+
+### The conviction angle
+
+The strongest thing in the brief, and the easiest to get wrong. Max turned down money for the
+teaching assistant **because he did not have conviction in the idea**, and is still looking for the
+one he will. Used as a flex it reads as a boast from someone with nothing at stake; used honestly
+it earns a real answer, because every founder remembers when their own conviction arrived.
+
+The question then works from either side: how did you know before the money? Was the conviction
+there first, or did refusing create it? Did you still believe it when you sold?
+
+**Never claim conviction he does not have.** The admission is the whole value.
 
 ---
 
