@@ -161,6 +161,16 @@ to go out on one variant.
 about someone else leak into its findings, and it cannot quietly inherit another agent's
 assumption. That is worth keeping, and it is why verification is still farmed out.
 
+**Hard cap: one verifier per person in the batch, and no more. Ever.**
+
+A batch of one person gets one verifier. A batch of five gets five. Never dispatch a second agent
+for the same person, never dispatch a spare to "check the checker", and never let a verifier spawn
+agents of its own. If a report comes back thin, read it and decide yourself rather than spending
+another agent on it.
+
+Every agent burns its own web-search quota and its own tokens, and the parallel work that actually
+matters is one-per-person. More than that is cost without information.
+
 **Dispatching verifiers.** One per person, all in a single message so they run in parallel. Use
 this prompt. It is not a summary to paraphrase; the detail is what makes the results usable.
 
@@ -320,7 +330,37 @@ was made.
 line and the opener. `none found` means it appears in neither. This is a per-person decision, so
 a batch can and should be mixed.
 
-**5. Write the read from the trajectory, not from the achievements.**
+**5a. The read must land a judgment, not stop at an observation.**
+
+A counterintuitive fact about someone is not yet a read. The read is finished when it says what
+Max makes of it, and a busy person has heard the fact about themselves many times but not the
+view.
+
+> **observation only:** "You quit drinking, then built the biggest non-alcoholic beer brand in
+> America by aiming it at drinkers instead of at people who quit."
+> **read:** "...which is a bet that the bigger market is also the harder sell."
+
+Test it: strip the last clause. If the sentence still says the same thing, the judgment was never
+there.
+
+**5b. If a fact about Max was chosen because it overlaps, make the overlap visible.**
+
+The reader cannot see the research. Run 6 opened with "$30k cold calling small businesses" and
+then wrote a read about quitting drinking, because the overlap (he built distribution by
+cold-emailing race directors) lived in the research notes and never reached the email. To the
+recipient the first sentence is a non-sequitur.
+
+Surface the rhyming part of their history in the read itself, and let the two halves share a word:
+
+> "I made $30k cold calling small businesses to help pay for school. Building the biggest
+> non-alcoholic beer brand in America off **cold emails** to race directors, and aiming it at
+> drinkers rather than at people who quit, is a bet that the bigger market is also the harder
+> sell."
+
+Never write "just like you" or "we both". The shared word does the work silently. If the overlap
+cannot be made visible in one clause, it was decoration, so use a different fact.
+
+**5c. Write the read from the trajectory, not from the achievements.**
 
 The `CAREER_TRAJECTORY` section is where the read comes from. Look for the shape: the sideways
 move, the early unglamorous job, the thing they left before they had to, the bet they kept making.

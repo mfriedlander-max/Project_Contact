@@ -185,6 +185,33 @@ what proves the domain discriminates and the hit is real rather than a catch-all
 lost, so a run landing near the reset should spend freely rather than conserve. This run finished
 with 15.5 credits that expired the next day.
 
+**2026-08-14 (third run).** The **Alumni Achievement Award recipients page** is the same vein as
+Middlebury Magazine and it is deeper than one year. The second run took Rob Tod off the *2026* list;
+the **2025** list was sitting right above it, unread, and gave Bill Shufelt '05 (founder and CEO of
+Athletic Brewing, ~$800M, category leader in non-alcoholic beer). The page lists recipients going
+back decades with class years attached. Work backwards through it a year at a time before spending a
+run on general search. Crunchbase was not attempted again, per the second run's advice.
+
+**2026-08-14 (third run).** The catch-all control keeps paying. `athleticbrewing.com` rejected the
+nonsense probe, which made pattern probing legitimate, and `bill@athleticbrewing.com` verified at
+score 100 on the **first** candidate. Total cost 3 verifier calls and **zero** email-finder searches,
+for a company that publishes only `press@`. The name-uniqueness test from the second run resolved
+cleanly in the other direction this time: a bare first name is safe when the person **founded** the
+company and was employee number one, which is the `rob@allagash.com` case, not the
+`jross@nvidia.com` case. State which case you are in rather than just asserting the grade.
+
+**2026-08-14 (third run).** For a heavily-interviewed founder, `ALREADY_ASKED_PUBLICLY` is worth more
+than the whole rest of the report. Shufelt's famous fact, leaving a Steve Cohen hedge fund to brew
+beer, is the most-asked question in his public life and would have made the email indistinguishable
+from every other one he gets. The email was built instead on a decision **he raised himself and the
+interviewer skipped past**: he quit drinking, then refused to market non-alcoholic beer to people who
+quit drinking. Look for the thing the host moved on from too quickly. That is reliably the open space.
+
+**2026-08-14 (third run), minor tooling note.** `verify_batch.py` globs `drafts*.json`, which now also
+matches the `drafts-N-receipt.json` files the drafter writes, so receipt addresses get counted as
+queued drafts and inflate the subject-collision and receipt checks. Harmless but noisy. Worth a
+one-line exclusion at some point.
+
 ## About Max - the only facts you may use
 
 **Everything an email says about Max comes from this list. Nothing else.** Do not infer, embellish,
