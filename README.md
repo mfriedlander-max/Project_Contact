@@ -292,7 +292,7 @@ BRIEF.md                                  Max edits: who, how many, his facts
 variants/                                 email templates, one per file
 email_prober.py                           address finding without guessing
 outlook_drafter.py                        headless drafts, no send path, writes receipts
-verify_batch.py                           37 checks, grades a run without reading it
+verify_batch.py                           automated checks, grades a run without reading it
 apps-script/RowMover.gs                   the sheet's row mover, mirrored from Apps Script
 scheduling/                               launchd plist + wrapper + logs
 daily/YYYY-MM-DD/                         each day's drafts, research and receipts
