@@ -1,0 +1,27 @@
+[
+ {
+  "to": "ali@databricks.com",
+  "subject": "From Professor to CEO",
+  "created": true
+ },
+ {
+  "to": "arvind@glean.com",
+  "subject": "The 2018 Leap",
+  "created": true
+ },
+ {
+  "to": "santiago@tiendanube.com",
+  "subject": "Hungry to Learn From the One That Failed",
+  "created": true
+ },
+ {
+  "to": "cliff.asness@aqr.com",
+  "subject": "Cold Calling, and the Counteroffer",
+  "created": true
+ },
+ {
+  "to": "pedro@brex.com",
+  "subject": "Still Writing Code After the Exit",
+  "created": true
+ }
+]

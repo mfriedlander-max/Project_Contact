@@ -1,0 +1,32 @@
+[
+ {
+  "to": "ali@databricks.com",
+  "subject": "From Professor to CEO",
+  "variant": "cold-midd-personal-10min",
+  "body": "Hi Ali,\n\nI'm Max, 20, ambitious, and curious about entrepreneurship. Giving up an accepted Berkeley professorship for a one year trial as CEO of a company with almost no revenue is betting against a credential you spent twenty years earning.\n\nI love technical work but also selling, and want to understand how you leveraged those same skills going from professor to CEO, and take a leap of faith. Open to 10 minutes?\n\nBest,\nMax"
+ },
+ {
+  "to": "arvind@glean.com",
+  "subject": "The 2018 Leap",
+  "variant": "elite-decision-10min",
+  "body": "Hi Arvind,\n\nI'm Max, 20, and hungry to learn about entrepreneurship. I built an AI teaching assistant for colleges and turned down angel investors as I didn't feel convicted enough. You said no to Rubrik in 2013, then left in 2018 when something spoke to you.\n\nI'd love to know what led to your decision in 2018 to take a leap. If you're open to 10 minutes, I promise I'll pay it forward.\n\nBest,\nMax"
+ },
+ {
+  "to": "santiago@tiendanube.com",
+  "subject": "Hungry to Learn From the One That Failed",
+  "variant": "cold-midd-personal-10min",
+  "body": "Hi Santiago,\n\nI'm Max, 20, hungry to learn about entrepreneurship, and ambitious. Talking your way out of the required placement in Buenos Aires to found a company, then losing three years to one that failed, carries a lot of lessons I would love to learn.\n\nIf you're open to 10 minutes, I promise I'll pay it forward.\n\nBest,\nMax"
+ },
+ {
+  "to": "cliff.asness@aqr.com",
+  "subject": "Cold Calling, and the Counteroffer",
+  "variant": "elite-brevity-10min",
+  "body": "Hi Cliff,\n\nI'm Max, 20, and I paid for school cold calling small businesses.\n\nA fixed income paper got you cold called by PIMCO, and Goldman built a quant group to keep you. An industry started as a counteroffer.\n\nWhat did you do in the weeks when you thought they had a plan and they thought you had one?\n\nBest,\nMax"
+ },
+ {
+  "to": "pedro@brex.com",
+  "subject": "Still Writing Code After the Exit",
+  "variant": "elite-builder-10min",
+  "body": "Hi Pedro,\n\nI'm Max, 20, hungry to learn about entrepreneurship. I built an AI teaching assistant for my college's STEM courses.\n\nSelling Brex and then writing an open source tool yourself a few weeks later is a choice about which part of the job was ever really yours.\n\nWhat pulled you back to writing code once you no longer had to? If you're open to 10 minutes, I promise I'll pay it forward.\n\nBest,\nMax"
+ }
+]

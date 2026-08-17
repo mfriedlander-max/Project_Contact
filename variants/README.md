@@ -70,10 +70,23 @@ changes exactly one thing, so a win is attributable:
 per variant plus two controls, and results only mean something once each id has 15-20 sends
 behind it. Attribution is the `Email Variant` column, so it is never left blank.
 
+**Superseded as of 2026-08-16, and the table above is kept as history.** Rule 3 makes the posture
+opener (`20, ambitious, hungry to learn about entrepreneurship`) the default for every variant, so
+`elite-builder-10min` can no longer test it against `hungry to learn`. That comparison is closed
+without a result.
+
+What still varies between the three is worth keeping: brevity, a documented decision, and shipped
+work as the lead. **Rewrite all three to sit on top of the posture opener rather than replace it**,
+and treat what they change as the thing being tested. Sends made before this date were written to
+the old copy, so their counts are not comparable to what comes after.
+
 ## Worked examples: how these emails fail
 
-These apply to every variant. Both were found by reading a finished email, not by reasoning about
+These apply to every variant. Each was found by reading a finished email, not by reasoning about
 the rules, which is why the worked example matters more than the statement of them.
+
+**Where a rule here conflicts with a variant file's own copy, the rule wins and the variant gets
+rewritten to fit.** The variants are formats being tested; these are how the emails are written.
 
 ### 1. It stops at an observation
 
@@ -92,6 +105,62 @@ opener reads as a non-sequitur.
 
 Make both halves share a word. Never write "just like you", "we both", or "like you, I" - the
 shared word does the work silently, and claiming the parallel out loud is worse than not drawing it.
+
+### 3. It leads with the credential instead of the posture
+
+Open by saying what Max is and what he wants: **20, ambitious, hungry to learn about
+entrepreneurship.** It costs a clause and tells the reader what kind of email this is before they
+have to work it out. Leading with the credential makes them read to the end to find out what is
+being asked.
+
+`I'm Max, 20, a sophomore studying applied math` states a fact. `I'm Max, 20, hungry to learn about
+entrepreneurship` sets an expectation. Prefer the second. The credential moves down to wherever it
+carries the question, or comes out.
+
+**Not a fixed string.** The posture is the point, not the wording. If two emails in a batch open
+with the same sentence, both are unfinished.
+
+### 4. It empties the whole inventory of Max facts
+
+**One Max fact per email.** The AI teaching assistant, the $5K pitch win, the turned down money,
+the $30k cold calling, applied math, loves selling: these are a menu, and the email picks one.
+Reciting them reads as a résumé and crowds out the read, which is the only part that proves the
+research happened.
+
+Pick whichever fact the recipient's own history gives them a reason to care about. If two qualify,
+choose between them rather than keeping both.
+
+### 5. It fills the band instead of stopping when it is done
+
+90-95 words was written when the failure mode was thin research. The failure mode now is stacking.
+**The band is a ceiling, not a target.** If the read lands in 70 words, ship 70 words. Cutting
+reaches the ask sooner, and the ask is the point. Never pad back up.
+
+Every edit in the 2026-08-16 batch got shorter and none got longer: 92 to 85, 93 to 75, 92 to 65,
+92 to 60.
+
+### 6. It asks about the mechanism instead of the risk
+
+Aim the question at **a moment they took a real risk.** Not at the machinery behind it, and not at
+a distinction the email invented for them to introspect on.
+
+`What the nagging felt like, and how you told it apart from mere interest` asks someone to do
+philosophy for a stranger. `What led to your decision in 2018 to take a leap` is answerable in one
+breath and is the thing they would enjoy answering.
+
+"Leap" is not a magic word, it is just one way to say taking a risk. Phrase it however the specific
+decision wants to be phrased. What matters is that the question points at the risk.
+
+### 7. The detail is impressive but irrelevant
+
+**Impressive facts are fine when they are relevant.** Depth of research is not the problem;
+showboating it is. A fact earns its place by connecting to the question being asked, not by
+demonstrating how hard it was to find.
+
+The test: does this fact make the question make sense? If it is there to prove the research
+happened, cut it. Commit dates, a marketing degree at Sundsvall, an internship reapplied for under a
+middle name from a second email address: each is verifiable, and each was cut because the recipient
+reads it as surveillance rather than interest.
 
 ### The examples
 
@@ -128,6 +197,84 @@ the final clause is now a claim he could disagree with.
 A third, smaller fix in the same email: the question was "if you had let it stay a sobriety story",
 which implies drift. It is now "if you had aimed it at the people who quit", which is the decision
 he actually faced. **Counterfactuals should name the choice, not describe passivity.**
+
+---
+
+**Examples 2 and 3 are Max's own edits to drafts the system produced.** The "before" is what was
+drafted, the "after" is what Max rewrote it to. Spelling normalized, nothing else touched.
+
+---
+
+#### Example 2: Bill Shufelt, Athletic Brewing, Max's edit
+
+**This revises Example 1 above.** Same email, same facts, edited by Max after reading it.
+
+> **Before, which is the "after" from Example 1.**
+>
+> "I'm Max, 20, a current Midd kid who made $30k cold calling small businesses to pay for school.
+> Building the biggest non-alcoholic beer brand in America off cold emails to race directors, then
+> aiming it at drinkers rather than people who quit, is a bet that the bigger market is the harder
+> sell.
+>
+> I'm building an AI teaching assistant, and would love to know where the category would be if you
+> had aimed it at the people who quit."
+
+> **After.**
+>
+> "I'm Max, 20, a current Midd kid that's hungry to learn and ambitious. Building the biggest
+> non-alcoholic beer brand in America off cold emails to race directors, then aiming it at drinkers
+> rather than people who quit, is genius.
+>
+> My dad loves your beer, and if you're open to 10 minutes to chat so I could learn I'd love to
+> talk, I promise I'll pay it forward."
+
+92 words to roughly 65. What changed:
+
+- **The opener states the posture instead of the credential.** `hungry to learn and ambitious` tells
+  Bill what kind of email this is in the first line. The $30k cold-calling fact comes out.
+- **`My dad loves your beer` replaces the researched question.** This is a personal touch Max adds
+  himself when he has one. **Do not manufacture these.** A warm line that is actually true is worth
+  a lot; an invented one is worth less than nothing, and there is no way to research your way to it.
+- `is a bet that the bigger market is the harder sell` becomes `is genius`, which is shorter and
+  admiring rather than contestable.
+
+#### Example 3: Arvind Jain, Glean
+
+The research found a real pair: he declined to join Rubrik in 2013 because no problem had nagged at
+him, and left Google in 2018 when one had.
+
+> **Before.**
+>
+> "I'm Max, 20, studying applied math. I built an AI teaching assistant and turned down money for
+> it, because I did not have conviction, and I am still looking for the one I will. You said no to
+> Rubrik in 2013 because no problem had nagged at you yet, then left in 2018 when one had.
+>
+> I'd love to know what the nagging felt like the second time, and how you told it apart from mere
+> interest."
+
+The question is finely machined, and it asks him to introspect on a distinction the email invented
+for him. It is a good question that a stranger has not earned.
+
+> **After.**
+>
+> "I'm Max, 20, and hungry to learn about entrepreneurship. I built an AI teaching assistant for
+> colleges and turned down angel investors as I didn't feel convicted enough. You said no to Rubrik
+> in 2013, then left in 2018 when something spoke to you.
+>
+> I'd love to know what led to your decision in 2018 to take a leap, if you're open to 10 minutes I
+> promise I'll pay it forward."
+
+93 words to roughly 75. What changed:
+
+- **The posture leads.** `hungry to learn about entrepreneurship` before any credential.
+- **The question aims at the leap, not the mechanism.** `what led to your decision in 2018 to take a
+  leap` is answerable in one breath and is the thing he would enjoy answering. The taxonomy of
+  nagging versus interest was doing work the recipient did not ask for.
+- **The Max fact is compressed to one clause and made concrete.** `turned down angel investors`
+  beats `turned down money`, and the trailing `still looking for the one I will` comes out.
+
+One caution for reuse: `something spoke to you` is vaguer than the research supports. Keep the
+shape, keep the 2018 specificity from `research.md`.
 
 ### Adding an example
 

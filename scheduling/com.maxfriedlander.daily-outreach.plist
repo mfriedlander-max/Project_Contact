@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Daily outreach, 8:04am US Eastern.
+  Daily outreach, 8:04am US Eastern, Monday through Friday.
 
   This machine's clock is UTC-3, so Eastern time has to be converted by hand.
   8:04am EDT (UTC-4) = 9:04 local. When US daylight saving ends in November,
-  8:04am EST (UTC-5) = 10:04 local, and Hour below must change from 9 to 10.
+  8:04am EST (UTC-5) = 10:04 local, and Hour must change from 9 to 10 in ALL
+  FIVE entries below, not just the first.
 
   StartCalendarInterval fires a MISSED job as soon as the machine wakes, so a
   closed laptop at 9:04 runs the batch the moment it is opened. That is the
   intended behaviour, not a fallback.
+
+  Note how that interacts with the weekday restriction: the restriction governs
+  when the job is SCHEDULED, not when a missed one catches up. A laptop closed
+  Friday morning and opened Saturday runs Friday's batch on Saturday. That is
+  the missed weekday run arriving late, which is wanted. What will not happen is
+  a batch being scheduled for a Saturday in the first place.
 
   Install:
     cp scheduling/com.maxfriedlander.daily-outreach.plist ~/Library/LaunchAgents/
@@ -31,13 +38,60 @@
     <key>WorkingDirectory</key>
     <string>/Users/maxfriedlander/code/Networking/Project_Contact</string>
 
+    <!--
+      Weekdays only. launchd has no "range", so each day is its own entry and
+      StartCalendarInterval becomes an array. Weekday 1 = Monday ... 5 = Friday
+      (0 and 7 both mean Sunday). Every entry must carry Hour and Minute; a key
+      that is omitted means "every value of that key", so dropping Hour would
+      fire the job 24 times that day.
+
+      Weekday is the LOCAL weekday. At 09:04 UTC-3 it is still the same calendar
+      day in Eastern (08:04), so local and Eastern weekdays agree here. If Hour
+      ever moves past 21:00 local that stops being true.
+    -->
     <key>StartCalendarInterval</key>
-    <dict>
-        <key>Hour</key>
-        <integer>9</integer>
-        <key>Minute</key>
-        <integer>4</integer>
-    </dict>
+    <array>
+        <dict>
+            <key>Weekday</key>
+            <integer>1</integer>
+            <key>Hour</key>
+            <integer>9</integer>
+            <key>Minute</key>
+            <integer>4</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>2</integer>
+            <key>Hour</key>
+            <integer>9</integer>
+            <key>Minute</key>
+            <integer>4</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>3</integer>
+            <key>Hour</key>
+            <integer>9</integer>
+            <key>Minute</key>
+            <integer>4</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>4</integer>
+            <key>Hour</key>
+            <integer>9</integer>
+            <key>Minute</key>
+            <integer>4</integer>
+        </dict>
+        <dict>
+            <key>Weekday</key>
+            <integer>5</integer>
+            <key>Hour</key>
+            <integer>9</integer>
+            <key>Minute</key>
+            <integer>4</integer>
+        </dict>
+    </array>
 
     <key>StandardOutPath</key>
     <string>/Users/maxfriedlander/code/Networking/Project_Contact/scheduling/logs/outreach.log</string>

@@ -519,3 +519,72 @@ his bad bet, when the Wall Street Journal's contemporaneous account says he argu
 was overruled by risk managers into liquidating, and the positions the bank kept rebounded about $600
 million the following month. Same event everybody knows, a fact inside it nobody uses. **When the
 famous story is unavoidable, look for the sentence in the primary source that the retellings drop.**
+
+**2026-08-16 (run).** **Priority 1 is dry for the fourth consecutive run, and two more sources are
+now closed.** Middlebury Magazine's own site at `middleburymagazine.com` was finally read, as the
+2026-08-15 note asked: its current features are a rugby player, a novelist, a filmmaker, a retiring
+athletics director and one nonprofit education founder, Annie Weinberg '10. Nothing at this brief's
+altitude. **Honorary degree and commencement recipients were tried for the first time and are also
+thin**: 2026 gave Shabana Basij-Rasikh (already contacted), a UVM paediatrician and the publisher of
+the Addison County Independent; 2024 gave a Red Sox radio announcer and an emeritus Russian
+professor. That source is now checked and should not be budgeted again. What remains genuinely
+untried is only the Internet Archive copy of the magazine at `go.middlebury.edu/middmagarchive`.
+Crunchbase has now 403'd three times and should be considered permanently unavailable.
+
+**2026-08-16 (run).** **The "big company is usually a catch-all" rule from 2026-08-15 is wrong, or at
+least much weaker than it looked.** That run concluded from two domains that a large employer with a
+compliance department will accept anything. This run ran the control on five corporate domains and
+**every single one rejected the nonsense probe**: `databricks.com`, `glean.com`, `tiendanube.com`,
+`aqr.com` and `brex.com`, at companies of roughly 7,000, 1,000, 1,500, 1,000 and 1,000 people. Two
+catch-alls out of two was a small sample, not a pattern. **Run the control and believe today's
+result; do not skip a corporate domain on the theory that big means catch-all.**
+
+**2026-08-16 (run).** Deliverability was **5 of 5 with zero email-finder searches**, the sixth
+consecutive run where the prober beat the finder. Two of the five did not need a pattern guess at
+all, and both routes are worth making standard:
+
+- **Ghodsi's address came off a commit he personally configured** on his own GitHub repo, seven
+  years old, then verified live at score 100. The 2026-08-14 run found this for Rauch; it has now
+  worked twice. Any target who has ever pushed code gets this check.
+- **Franceschi had published his own address on X, twice, with the words "DM or email"**, and his
+  commit metadata confirmed it was in daily use. **Before probing, check whether the person has
+  posted their address on a channel they control.** This is a different search from "is it on the
+  company site", and the company site had nothing.
+
+**2026-08-16 (run).** The stale-title trap fired **twice more**, and both were line-one errors:
+
+- **Brex has been a wholly owned Capital One subsidiary since 2026-04-07.** Franceschi continues as
+  CEO of Brex, and is **not** co-CEO, which ended 2024-06-12. Writing to him as the co-CEO of an
+  independent startup would have been wrong in two ways at once.
+- **Cliff Asness is not "CIO" in any regulatory filing.** That title appears only in AQR's own
+  marketing prose and his LinkedIn headline. His filed title on Form ADV is *President, Founding and
+  Managing Principal*. **A title a firm uses commercially is not the title it swears to the SEC**,
+  and where they differ, prefer the filing and write around the gap. The email named no title at all.
+
+**2026-08-16 (run).** **A new target category worth looking for on purpose: people who have publicly
+asked to be cold emailed.** Franceschi posts his address alongside a stated bar, "Founder DNA, you've
+built something from scratch, or you will," and hosted an open AMA for founders. Sosa is the inverse
+and equally useful to know: he says he declines 95% of interview requests, but wrote a 2018 essay in
+praise of a stranger who followed an investor into a taxi rather than accept a no. **Ask verifiers
+not just how someone reacts to being written about, but whether they have ever invited it.** It
+changes which variant is right and how much the email has to justify itself.
+
+**2026-08-16 (run).** `ALREADY_ASKED_PUBLICLY` paid for the **sixth** consecutive run and produced
+the whole batch. Every one of the five reads came out of it: Ghodsi's pre-Berkeley decade at a small
+regional Swedish university (covered once, in Swedish, in 2022); Jain's W3C spec editorship and the
+fact that he **turned Rubrik down** in 2013 before joining it in 2014; Sosa's rejection from an
+internship in India that he answered by reapplying under his middle name from a second email address;
+Asness's first published paper being a **fixed income** paper that got him cold called by PIMCO,
+which is why Goldman created its quant group as a **retention counteroffer**; and Franceschi's
+thirteen-year-old vim config, which he was still committing to between agreeing to sell Brex and
+closing. **Not one of the five emails used the fact the person is famous for.** That is now the
+normal outcome rather than a lucky one, and it is worth treating the section as the deliverable the
+verifier exists to produce.
+
+**2026-08-16 (run), a caution about a perfect-sounding fact.** The Ghodsi verifier flagged that a
+**different Ali Ghodsi** is a statistics professor at Waterloo who publishes on deep learning
+education. Searching his name alongside "AI education" surfaces the wrong man and would have handed
+Max a flawless-looking overlap with his teaching assistant. Two of the five reports this run carried
+a same-name warning (the other being an Argentine footballer called Santiago Sosa). **Ask for the
+name collision explicitly; it is cheap to check and it is exactly the shape of error that survives
+into a sent email.**

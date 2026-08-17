@@ -1,0 +1,27 @@
+[
+ {
+  "to": "ali@databricks.com",
+  "subject": "Applied Math Sophomore Who Also Sells",
+  "created": true
+ },
+ {
+  "to": "arvind@glean.com",
+  "subject": "Turned Down Money, Still Looking for the Idea",
+  "created": true
+ },
+ {
+  "to": "santiago@tiendanube.com",
+  "subject": "Writing From Buenos Aires, Hungry to Learn",
+  "created": true
+ },
+ {
+  "to": "cliff.asness@aqr.com",
+  "subject": "Cold Called My Way Through College",
+  "created": true
+ },
+ {
+  "to": "pedro@brex.com",
+  "subject": "Building an AI Teaching Assistant at 20",
+  "created": true
+ }
+]
