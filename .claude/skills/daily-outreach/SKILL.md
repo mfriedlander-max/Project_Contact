@@ -480,7 +480,11 @@ first burns quota on someone whose address was on their own homepage.
 
 ### Resolve the email with email_resolver.py
 
-One command runs the whole waterfall and returns a grade per person. Feed it the batch research produced:
+**First write `candidates.json`** into the day's `daily/YYYY-MM-DD/` folder from the verifier
+reports: one object per person the batch keeps, `{name, first, last, domain, known, known_grade}`
+(`known` is the published address research found, or `null`; `known_grade` is where it came from).
+Then run the resolver on it — one command runs the whole waterfall and grades each person, writing
+`emails.json` and `hunter-receipt.json` beside it:
 
 ```bash
 # whole batch -> writes emails.json (drafts-ready) + hunter-receipt.json
@@ -559,7 +563,11 @@ first burns quota on someone whose address was on their own homepage.
 
 ### Resolve the email with email_resolver.py
 
-One command runs the whole waterfall and returns a grade per person. Feed it the batch research produced:
+**First write `candidates.json`** into the day's `daily/YYYY-MM-DD/` folder from the verifier
+reports: one object per person the batch keeps, `{name, first, last, domain, known, known_grade}`
+(`known` is the published address research found, or `null`; `known_grade` is where it came from).
+Then run the resolver on it — one command runs the whole waterfall and grades each person, writing
+`emails.json` and `hunter-receipt.json` beside it:
 
 ```bash
 # whole batch -> writes emails.json (drafts-ready) + hunter-receipt.json
