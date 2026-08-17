@@ -116,8 +116,13 @@ and has no send path anywhere in the file.
 ```bash
 ./.venv/bin/python outlook_drafter.py --check                    # session still alive?
 ./.venv/bin/python outlook_drafter.py --create daily/DATE/drafts.json
+./.venv/bin/python outlook_drafter.py --delete daily/DATE/drafts.json [--yes]
 ./.venv/bin/python outlook_drafter.py --login                    # visible re-auth when cookies lapse
 ```
+
+`--delete` is a dry run without `--yes`, matches subject plus address exactly, and only touches
+Drafts. **Delete before recreating, and re-run until it says `0 of N found`**, because the list is
+virtualised and one pass sees only what is rendered. Full notes in `README.md`, "Deleting drafts".
 
 Cookies last roughly two to three months. When `--check` fails, `--login` opens a window, Max
 signs in once, and it is headless again. Drafts are also always written to `daily/YYYY-MM-DD/` as
@@ -149,5 +154,7 @@ until real sends exist to learn from. Do not start it without asking Max.
 - **Drive API is disabled** on the Cloud project, so the spreadsheet cannot be duplicated
   programmatically. Backups in `backups/` are data only; a formatting-preserving backup needs
   File -> Make a copy by hand.
-- **Hunter is 50 searches/month** on the free tier. At ten people a day it is gone in five days.
-- **`HUNTER_API_KEY` needs rotating** - it was exposed on a since-deleted Vercel deployment.
+- **Hunter is a paid Data-platform plan** as of 2026-08-17: 10,000 searches and 11,000
+  verifications a year, resetting 2027-08-17. No monthly quota to ration, no per-run cap.
+- **`HUNTER_API_KEY` was replaced 2026-08-17.** The previous key was exposed on a since-deleted
+  Vercel deployment; confirm at hunter.io that the old one is actually revoked, not just unused.

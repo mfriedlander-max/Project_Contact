@@ -731,6 +731,10 @@ nobody at the keyboard. There is no send path anywhere in that file, by design.
 Write `drafts.json` alongside the markdown as a list of `{"to", "subject", "body"}` objects, and
 include only people who have a real address.
 
+**A daily run does not delete anything.** `--delete` exists for replacing a batch after Max changes
+the copy, it is a dry run without `--yes`, and it is his call to make, not the run's. See
+`README.md`, "Deleting drafts".
+
 If `--check` reports the session is dead, cookies have expired. **Do not try to work around it and
 do not stop the run.** Write the drafts to the repo, and say in the report that Outlook was
 skipped and that Max needs to run:

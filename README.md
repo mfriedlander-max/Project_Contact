@@ -206,11 +206,33 @@ No API keys, just cookies. **There is no send path anywhere in the file, deliber
 ```bash
 ./.venv/bin/python outlook_drafter.py --check                     # session still alive?
 ./.venv/bin/python outlook_drafter.py --create daily/DATE/drafts.json
+./.venv/bin/python outlook_drafter.py --delete daily/DATE/drafts.json         # dry run
+./.venv/bin/python outlook_drafter.py --delete daily/DATE/drafts.json --yes   # actually delete
 ./.venv/bin/python outlook_drafter.py --login                     # visible window, re-auth
 ```
 
 Cookies last roughly two to three months. When `--check` fails, `--login` opens a window, you sign
 in once, and it is headless again.
+
+### Deleting drafts
+
+For replacing a batch after the copy changed. It takes the same `drafts.json`, or a
+`-receipt.json`, and matches on **subject plus recipient address**, both exact, whole-line. It only
+ever looks inside Drafts, and deleted drafts land in Deleted Items where they can be recovered.
+
+**It is a dry run without `--yes`.** It prints what it matched and stops.
+
+Two behaviours that are not obvious and cost an hour to find on 2026-08-17:
+
+- **Deleting a draft raises a confirmation dialog**, "Are you sure you want to discard this draft?",
+  and nothing is deleted until OK is clicked. Pressing Escape answers Cancel. The first three
+  attempts at this failed silently on exactly that.
+- **The message list is virtualised at about seven rows**, so a single pass only sees what is
+  rendered. **Re-run until it reports `0 of N found`.** A row that fails with a menu timeout
+  usually succeeds on the next pass, which the same habit covers.
+
+Delete before recreating, never after. If a replacement reuses a subject, a later delete matches
+both and takes the new one with it.
 
 **It writes a receipt.** After each draft it records `created: true` or `false` with the actual
 error, from inside the loop that did the work. This exists because one run reported "5 of 5 drafts
@@ -290,7 +312,7 @@ BRIEF.md                                  Max edits: who, how many, his facts
 variants/                                 email templates, one per file
 email_resolver.py                         the email waterfall: finder + verify + prober
 email_prober.py                           the verifier/prober stage the resolver falls back to
-outlook_drafter.py                        headless drafts, no send path, writes receipts
+outlook_drafter.py                        headless drafts and deletes, no send path, writes receipts
 verify_batch.py                           automated checks, grades a run without reading it
 apps-script/RowMover.gs                   the sheet's row mover, mirrored from Apps Script
 scheduling/                               launchd plist + wrapper + logs
@@ -305,8 +327,11 @@ backups/                                  dated sheet snapshots (data, not forma
 
 ## Known limits
 
-**Hunter free tier is 50 searches a month** and 5 people a day needs roughly 150. Most addresses
-come from public sources and the prober; Hunter is a supplement.
+**Hunter is a paid Data-platform plan as of 2026-08-17**, 10,000 searches and 11,000 verifications
+per year, resetting 2027-08-17. There is no monthly quota to ration and no per-run cap, so a call
+that can pay for itself should be made. Most addresses still come from public sources and the
+prober first, because a published address is better evidence and costs nothing, not because
+credits are scarce.
 
 **No reply tracking.** Nothing detects a bounce or an answer, so `Status` is moved by hand. This
 means variant performance depends on you moving people between tabs.
