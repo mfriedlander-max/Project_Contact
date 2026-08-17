@@ -286,62 +286,74 @@ def sweep_round(page, targets):
     page.mouse.wheel(0, -40000)
     page.wait_for_timeout(600)
     deleted = 0
-    empty_scrolls = 0
-    for _ in range(200):
+    empty = 0
+    fails = 0
+    while empty < 14 and fails < 6:
         i = find_match_index(page, targets)
-        if i is not None:
-            page.keyboard.press("Escape")     # clear any modal left by a prior delete
-            page.wait_for_timeout(300)
-            try:
-                delete_row(page, i)
-                deleted += 1
-            except Exception as e:
-                print("  FAILED a delete: %s" % str(e)[:80])
-            page.wait_for_timeout(500)
-            empty_scrolls = 0
-        else:
+        if i is None:
             page.mouse.wheel(0, 600)
             page.wait_for_timeout(350)
-            empty_scrolls += 1
-            if empty_scrolls >= 12:           # a full screen of scrolling, no match: bottom
-                break
+            empty += 1
+            continue
+        try:
+            delete_row(page, i)
+            deleted += 1
+            fails = 0
+            empty = 0                         # progress: rescan the current view
+            page.wait_for_timeout(400)
+        except Exception as e:
+            print("  skip (retry next round): %s" % str(e)[:60])
+            fails += 1
+            page.mouse.wheel(0, 700)          # move PAST the stubborn row, never re-hit it
+            page.wait_for_timeout(400)
+            empty += 1
     return deleted
 
 
 def delete_row(page, i):
-    """Delete one row without opening it.
+    """Delete one draft row via its right-click menu, without opening it.
 
-    Three paths were tried against the live mailbox. Clicking the row opens the
-    composer, whose modal backdrop then swallows every later click. The row's
-    hover toolbar offers only "Mark as unread" and "Flag". The right-click menu
-    is the one that deletes a draft without opening it first.
+    The right-click context menu is the only path that deletes a draft without
+    opening the composer (whose modal backdrop then eats every later click). It
+    is genuinely flaky, so:
+
+    - Use Playwright's `.click(button="right")`, which waits for the row to be
+      stable and in view. Raw coordinate clicks on a virtualised list right-click
+      a point that has moved and open no menu - the cause of the repeated
+      "menu did not open" timeouts.
+    - Wait for the menu to actually appear, and retry the right-click once if it
+      does not. If it still will not open, raise so the sweep skips this row and
+      retries it on the next round rather than grinding on it.
     """
+    page.keyboard.press("Escape")          # clear any menu/dialog left open
+    page.wait_for_timeout(400)
     row = draft_rows(page).nth(i)
-    row.scroll_into_view_if_needed()
-    # Let the virtualised list settle before reading geometry: scrolling moves
-    # rows under the cursor, and right-clicking a stale point opens no menu.
-    # Rows at the bottom of the list failed every time until this wait existed.
-    page.wait_for_timeout(1000)
-    box = row.bounding_box()
-    if not box:
-        raise RuntimeError("row has no bounding box, cannot right-click it")
-    page.mouse.click(box["x"] + box["width"] / 2,
-                     box["y"] + box["height"] / 2, button="right")
-    page.wait_for_timeout(1200)
-    # The menu label carries a leading icon glyph, so match on contained text
-    # rather than an exact string.
-    page.locator('[role="menuitem"]').filter(has_text="Delete").first.click(timeout=8000)
-    page.wait_for_timeout(1200)
+
+    for attempt in range(2):
+        try:
+            # Explicit 5s timeout: Playwright's default is 30s, so a row briefly
+            # not actionable (mid re-render) would otherwise hang the whole run.
+            # The click auto-scrolls the row into view; no manual scroll needed.
+            row.click(button="right", timeout=5000)
+            page.wait_for_selector('[role="menuitem"]', timeout=4000)
+            break                          # the menu is open
+        except PWTimeout:
+            if attempt == 1:
+                raise RuntimeError("right-click did not open the menu")
+            page.keyboard.press("Escape")
+            page.wait_for_timeout(500)
+
+    # The menu label carries a leading icon glyph, so match on contained text.
+    page.locator('[role="menuitem"]').filter(has_text="Delete").first.click(timeout=5000)
+    page.wait_for_timeout(800)
 
     # Deleting a DRAFT raises "Are you sure you want to discard this draft?".
     # Nothing is deleted until OK is clicked, and pressing Escape answers Cancel.
-    # This dialog is the whole reason the first three attempts reported success
-    # on some rows and silent failure on others.
     try:
-        page.locator('[role="dialog"] button:has-text("OK")').first.click(timeout=6000)
+        page.locator('[role="dialog"] button:has-text("OK")').first.click(timeout=5000)
     except PWTimeout:
         pass          # a non-draft folder deletes without asking
-    page.wait_for_timeout(1200)
+    page.wait_for_timeout(800)
 
 
 def cmd_delete(args):
@@ -386,6 +398,7 @@ def cmd_delete(args):
         # that missed, instead of one fragile pass keyed on a per-row poll.
         deleted = 0
         for rnd in range(1, 9):
+            open_drafts(page)                 # reload the folder each round: clears a stuck menu/composer
             d = sweep_round(page, targets)
             deleted += d
             print("  round %d: deleted %d" % (rnd, d))
