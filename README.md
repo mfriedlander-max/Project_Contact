@@ -169,34 +169,30 @@ there first, or did refusing create it? Did you still believe it when you sold?
 
 ## Finding email addresses
 
-In order, cheapest and best first:
+`email_resolver.py` runs the whole waterfall for a batch and grades each address. In order,
+cheapest and best first:
 
-1. **Company team page** → `VERIFIED`
-2. **Their own site** → `HIGH`
-3. **Public commit or paper metadata** → `MEDIUM`, often a filtered alias
-4. **`email_prober.py`** → catch-all control, then pattern probing
-5. **Hunter email-finder** → last, and capped
-
-### `email_prober.py`
-
-A pattern guess is worthless because you cannot tell a real mailbox from a domain that accepts
-everything. Control for that and the same guess becomes evidence.
+1. **Published address** found by research (team page → `VERIFIED`, own site → `HIGH`,
+   commit/paper → `MEDIUM`) → verified once. On a catch-all domain it keeps the source grade.
+2. **Email Finder** → kept only when `source_type == "found"`; a `generated` guess is discarded.
+   Strong or already-valid → trusted, weak on a normal domain → verified, catch-all → `HIGH`.
+3. **`email_prober.py`** → catch-all control + pattern probing, the fallback for anyone Finder
+   could not source.
+4. **Nothing** → `GUESSED`, blank cell, LinkedIn is the route.
 
 ```bash
-./.venv/bin/python email_prober.py --domain calendly.com --first Tope --last Awotona
-./.venv/bin/python email_prober.py --domain vercel.com --catchall-only
-./.venv/bin/python email_prober.py --domain uala.com.ar --first X --last Y --known real@uala.com.ar
+# whole batch -> emails.json + hunter-receipt.json
+./.venv/bin/python email_resolver.py --batch daily/YYYY-MM-DD/candidates.json
+# one person, or with a published address to verify first
+./.venv/bin/python email_resolver.py --domain openai.com --first Greg --last Brockman
+./.venv/bin/python email_resolver.py --domain uala.com.ar --first X --last Y --known real@uala.com.ar
+# offline logic check, spends nothing
+./.venv/bin/python email_resolver.py --self-test
 ```
 
-It probes a nonsense mailbox first. If the domain accepts it, the tool **refuses to guess** and
-tells you to grade `GUESSED` with a blank cell. It uses Hunter's verifier at 0.5 credit rather
-than the finder at 1, so it is cheaper as well as better evidence.
-
-### Hunter budget
-
-Free tier is 50 searches and 100 verifications a month. **Capped at 5 searches and 12
-verifications per run**, dropping to no Hunter at all below 10 remaining. One run spent 10 and 20
-before the cap existed, which would have emptied the month in five days.
+The prober still refuses to guess: it probes a nonsense mailbox first, and on a catch-all domain
+grades `GUESSED` with a blank cell rather than inventing an address. Credits are bought in bulk,
+so there is no rationing; the resolver only spends where a call can pay.
 
 **A guessed address is not an address, it is a bounce.** Blank plus a LinkedIn URL is worth more.
 
@@ -292,7 +288,8 @@ BRIEF.md                                  Max edits: who, how many, his facts
 .claude/skills/daily-outreach/SKILL.md    the morning routine
 .claude/skills/update-contacts/SKILL.md   "I sent it" / "we spoke" / pasted notes
 variants/                                 email templates, one per file
-email_prober.py                           address finding without guessing
+email_resolver.py                         the email waterfall: finder + verify + prober
+email_prober.py                           the verifier/prober stage the resolver falls back to
 outlook_drafter.py                        headless drafts, no send path, writes receipts
 verify_batch.py                           automated checks, grades a run without reading it
 apps-script/RowMover.gs                   the sheet's row mover, mirrored from Apps Script

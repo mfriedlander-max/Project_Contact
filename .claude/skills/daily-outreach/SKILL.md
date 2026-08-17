@@ -478,17 +478,34 @@ address is better evidence and costs no quota. In order:
 Tell the research agents this ordering explicitly in their brief. An agent that jumps to Hunter
 first burns quota on someone whose address was on their own homepage.
 
-### Use the prober before spending a Hunter search
+### Resolve the email with email_resolver.py
 
-`email_prober.py` does the catch-all control test and pattern probing in one step, using Hunter's
-**email-verifier at 0.5 credit** rather than the email-finder at 1 credit. It is both cheaper and
-better evidence, so run it first.
+One command runs the whole waterfall and returns a grade per person. Feed it the batch research produced:
 
 ```bash
-./.venv/bin/python email_prober.py --domain calendly.com --first Tope --last Awotona
-./.venv/bin/python email_prober.py --domain vercel.com --catchall-only
-./.venv/bin/python email_prober.py --domain uala.com.ar --first X --last Y --known real@uala.com.ar
+# whole batch -> writes emails.json (drafts-ready) + hunter-receipt.json
+./.venv/bin/python email_resolver.py --batch daily/YYYY-MM-DD/candidates.json
+
+# one person, or with a known published address to verify first
+./.venv/bin/python email_resolver.py --domain mercury.com --first Immad --last Akhund
+./.venv/bin/python email_resolver.py --domain uala.com.ar --first X --last Y --known real@uala.com.ar
+
+# preview the plan, spend nothing
+./.venv/bin/python email_resolver.py --domain X --first F --last L --dry-run
 ```
+
+`candidates.json` is a list of `{name, first, last, domain, known, known_grade}` (`known` = a
+published address research already found, else null; `known_grade` = where it came from —
+`VERIFIED` for a team page, `HIGH` for a personal site, `MEDIUM` for a commit/paper). The order
+it runs, per person:
+
+1. **known/published** -> verify once, grade. Never blanked; it came from a real source.
+2. **Email Finder** -> keep ONLY if `source_type == "found"` with sources. A `generated` result is a
+   blind guess, discarded. A sourced hit with a weak score (< 90) is confirmed with the verifier
+   before it is trusted.
+3. **prober** (`email_prober.py`) -> catch-all control + pattern probes, the fallback for anyone
+   Finder could not source.
+4. **nothing** -> `GUESSED`, blank email, LinkedIn is the route.
 
 It refuses to guess. On an accept_all domain it stops and tells you to grade `GUESSED` and leave
 the cell empty, because on such a domain every candidate verifies whether or not it exists. If you
@@ -502,79 +519,27 @@ Its grades map directly onto the Email Confidence column: `VERIFIED` at score 90
 `vercel.com` as a catch-all and a later probe reported it was not. Trust the control test you ran
 today, and say in the notes which way it came out.
 
-### Hunter's email-finder, when the prober comes up empty
+### The Finder step runs inside email_resolver.py (do not curl it by hand)
 
-**If you cannot find a published address, you MUST run a Hunter search before recording "no
-email". Not optional. Not "if it seems worth it".**
+`email_resolver.py` runs Email Finder automatically as step 2. It keeps a result only when
+`source_type == "found"`, trusts a strong or already-valid hit, verifies a weak one, and discards
+a `generated` guess. Grades are the resolver's, not a hand table: **VERIFIED at score 90+ on a
+normal domain, HIGH on a catch-all domain, MEDIUM/LOW below that, GUESSED when nothing is found.**
 
-This is the single most valuable thing Hunter does, and the first live run got it exactly
-backwards: four of five people had no published address, and it used **zero** searches because
-the guidance here read as "conserve this". Two of those four were then found on the first try,
-both verified valid:
+The rule it enforces: **never record "no email" without the Finder having run.** An unused search
+is worth nothing; a found address is worth the batch. Two founders on the first live run were
+reachable only because Finder ran (`immad@mercury.com`, `patrickdorton@rational360.com`).
 
-```
-Immad Akhund   / mercury.com      -> immad@mercury.com            score 84, valid
-Patrick Dorton / rational360.com  -> patrickdorton@rational360.com score 98, valid
-```
+**Get the domain right first.** The resolver keys off the company domain, so a wrong domain
+returns nothing and wastes the search. Confirm it from the company's own site before running.
 
-Conserving the quota to zero while shipping unreachable contacts is the worst possible outcome.
-An unused search at month end is worth nothing; a found address is worth the entire batch.
+### Hunter budget: spend where a call can pay
 
-**The procedure:**
-
-```bash
-set -a; . ./credentials/.env; set +a
-curl -s "https://api.hunter.io/v2/email-finder?domain=COMPANY.com&first_name=FIRST&last_name=LAST&api_key=$HUNTER_API_KEY"
-```
-
-Then grade by what Hunter returns, not by hope:
-
-| Hunter says | Record |
-|---|---|
-| `verification.status: valid`, score 80+ | `VERIFIED`, use the address |
-| `verification.status: valid`, score 50-79 | `HIGH`, use the address |
-| returns an address, not verified | `MEDIUM`, use it and say it is unverified |
-| returns nothing | genuinely no email. `GUESSED`, leave the cell empty |
-
-**Get the domain right first.** Hunter keys off the company domain, so a wrong domain returns
-nothing and wastes a search. Confirm it from the company's own site before searching.
-
-### Hunter budget: spend it, do not hoard it
-
-Free tier is 50 email-finder searches and 100 verifications a month, resetting monthly. **An
-unused search at month end is worth nothing.** Running the quota down by the 25th on real addresses
-is a good month; ending with 30 unused searches and people you could not reach is a bad one.
-
-There is **no per-run cap.** The earlier version had one, plus a sliding scale that cut to zero
-below 10 remaining, and it produced exactly the wrong behaviour: a run conserving credits while
-shipping people nobody could contact.
-
-What matters is not how many calls, it is **whether each call can pay.**
-
-**Never spend a call where it cannot pay:**
-
-| Situation | Why not |
-|---|---|
-| The address is already published | It is already found. This wasted 5 of 11 calls on 2026-08-15, probing patterns for someone whose address was on her own site |
-| The domain already tested accept_all | Every candidate will verify. One control answers it forever; a second call is pure waste |
-| You are on the fourth candidate for one person | If three ranked patterns failed on a discriminating domain, the format is unusual. Stop and use LinkedIn |
-| Confirming something a primary source already states | The source is better evidence than the probe |
-
-**Spend freely where it can:**
-
-1. **One control probe per new domain.** Always. Without it every other call on that domain is
-   meaningless, and it is the cheapest call you will make. It ended the Globant and Saba questions
-   for one call each.
-2. **A known format**, when one real address at the company is already confirmed. One call, high prior.
-3. **Ranked candidates, three maximum**, on a domain that has passed its control.
-4. **`email-finder`**, for anyone still unreachable. Costs 1 credit against the verifier's 0.5, so it
-   comes last, but use it rather than shipping a person with no route.
-
-**When the quota is genuinely gone:** say so plainly in the report, fall back to published sources
-and LinkedIn, and never stop the batch or fabricate an address. The month resets.
-
-Report actual usage at the end, per domain, with the outcome of each. The 2026-08-15 run did this
-and it is how the wasted five calls were found.
+Credits are bought in bulk, so there is no monthly quota to ration and no per-run cap.
+`email_resolver.py` owns the spend order (published -> finder -> prober) and only makes a call
+that can pay: it never probes a published address, never re-tests a domain already known
+`accept_all`, and stops probing a person once the ranked patterns fail. Read actual usage back
+from `hunter-receipt.json` at the end of the run.
 
 ### Look for a published address first, always
 
@@ -592,17 +557,34 @@ address is better evidence and costs no quota. In order:
 Tell the research agents this ordering explicitly in their brief. An agent that jumps to Hunter
 first burns quota on someone whose address was on their own homepage.
 
-### Use the prober before spending a Hunter search
+### Resolve the email with email_resolver.py
 
-`email_prober.py` does the catch-all control test and pattern probing in one step, using Hunter's
-**email-verifier at 0.5 credit** rather than the email-finder at 1 credit. It is both cheaper and
-better evidence, so run it first.
+One command runs the whole waterfall and returns a grade per person. Feed it the batch research produced:
 
 ```bash
-./.venv/bin/python email_prober.py --domain calendly.com --first Tope --last Awotona
-./.venv/bin/python email_prober.py --domain vercel.com --catchall-only
-./.venv/bin/python email_prober.py --domain uala.com.ar --first X --last Y --known real@uala.com.ar
+# whole batch -> writes emails.json (drafts-ready) + hunter-receipt.json
+./.venv/bin/python email_resolver.py --batch daily/YYYY-MM-DD/candidates.json
+
+# one person, or with a known published address to verify first
+./.venv/bin/python email_resolver.py --domain mercury.com --first Immad --last Akhund
+./.venv/bin/python email_resolver.py --domain uala.com.ar --first X --last Y --known real@uala.com.ar
+
+# preview the plan, spend nothing
+./.venv/bin/python email_resolver.py --domain X --first F --last L --dry-run
 ```
+
+`candidates.json` is a list of `{name, first, last, domain, known, known_grade}` (`known` = a
+published address research already found, else null; `known_grade` = where it came from —
+`VERIFIED` for a team page, `HIGH` for a personal site, `MEDIUM` for a commit/paper). The order
+it runs, per person:
+
+1. **known/published** -> verify once, grade. Never blanked; it came from a real source.
+2. **Email Finder** -> keep ONLY if `source_type == "found"` with sources. A `generated` result is a
+   blind guess, discarded. A sourced hit with a weak score (< 90) is confirmed with the verifier
+   before it is trusted.
+3. **prober** (`email_prober.py`) -> catch-all control + pattern probes, the fallback for anyone
+   Finder could not source.
+4. **nothing** -> `GUESSED`, blank email, LinkedIn is the route.
 
 It refuses to guess. On an accept_all domain it stops and tells you to grade `GUESSED` and leave
 the cell empty, because on such a domain every candidate verifies whether or not it exists. If you
@@ -616,85 +598,27 @@ Its grades map directly onto the Email Confidence column: `VERIFIED` at score 90
 `vercel.com` as a catch-all and a later probe reported it was not. Trust the control test you ran
 today, and say in the notes which way it came out.
 
-### Hunter's email-finder, when the prober comes up empty
+### The Finder step runs inside email_resolver.py (do not curl it by hand)
 
-**If you cannot find a published address, you MUST run a Hunter search before recording "no
-email". Not optional. Not "if it seems worth it".**
+`email_resolver.py` runs Email Finder automatically as step 2. It keeps a result only when
+`source_type == "found"`, trusts a strong or already-valid hit, verifies a weak one, and discards
+a `generated` guess. Grades are the resolver's, not a hand table: **VERIFIED at score 90+ on a
+normal domain, HIGH on a catch-all domain, MEDIUM/LOW below that, GUESSED when nothing is found.**
 
-This is the single most valuable thing Hunter does, and the first live run got it exactly
-backwards: four of five people had no published address, and it used **zero** searches because
-the guidance here read as "conserve this". Two of those four were then found on the first try,
-both verified valid:
+The rule it enforces: **never record "no email" without the Finder having run.** An unused search
+is worth nothing; a found address is worth the batch. Two founders on the first live run were
+reachable only because Finder ran (`immad@mercury.com`, `patrickdorton@rational360.com`).
 
-```
-Immad Akhund   / mercury.com      -> immad@mercury.com            score 84, valid
-Patrick Dorton / rational360.com  -> patrickdorton@rational360.com score 98, valid
-```
+**Get the domain right first.** The resolver keys off the company domain, so a wrong domain
+returns nothing and wastes the search. Confirm it from the company's own site before running.
 
-Conserving the quota to zero while shipping unreachable contacts is the worst possible outcome.
-An unused search at month end is worth nothing; a found address is worth the entire batch.
+### Hunter budget: spend where a call can pay
 
-**The procedure:**
-
-```bash
-set -a; . ./credentials/.env; set +a
-curl -s "https://api.hunter.io/v2/email-finder?domain=COMPANY.com&first_name=FIRST&last_name=LAST&api_key=$HUNTER_API_KEY"
-```
-
-Then grade by what Hunter returns, not by hope:
-
-| Hunter says | Record |
-|---|---|
-| `verification.status: valid`, score 80+ | `VERIFIED`, use the address |
-| `verification.status: valid`, score 50-79 | `HIGH`, use the address |
-| returns an address, not verified | `MEDIUM`, use it and say it is unverified |
-| returns nothing | genuinely no email. `GUESSED`, leave the cell empty |
-
-**Get the domain right first.** Hunter keys off the company domain, so a wrong domain returns
-nothing and wastes a search. Confirm it from the company's own site before searching.
-
-### Hunter budget: a hard cap per run
-
-Free tier is **50 searches and 100 verifications a month**. Run 5 spent **10 searches and 20
-verifications in a single batch**, which is a fifth of the month in one morning and would empty
-the quota in five days.
-
-**Caps, per run, not negotiable:**
-
-| | Cap per run |
-|---|---|
-| `email-finder` searches | **5** |
-| `email-verifier` calls, including the prober's | **12** |
-
-Check the balance before starting and scale down if the month is nearly out:
-
-```bash
-set -a; . ./credentials/.env; set +a
-curl -s "https://api.hunter.io/v2/account?api_key=$HUNTER_API_KEY"
-```
-
-| Searches remaining | Do |
-|---|---|
-| 20 or more | normal caps above |
-| 10 to 19 | 3 searches, 8 verifications. Prefer public sources harder |
-| under 10 | **no Hunter at all.** Public sources and the prober only, and say so in the report |
-
-**Spend the budget in this order:**
-
-1. The catch-all control, one verification per new domain. Never skip it; without it every other
-   call on that domain is wasted.
-2. Probing a *known* format, when one address at the company is already confirmed. One
-   verification, high prior.
-3. Ranked candidate probing, capped at 3 per person.
-4. `email-finder`, last, and only for people still unreachable. It costs 1 credit against the
-   verifier's 0.5.
-
-**Never spend a call on someone whose address is already published.** That is the most common way
-the quota disappears.
-
-If the cap is hit mid-batch, stop and mark the rest `GUESSED` with a blank Email and LinkedIn as
-the route. Report exactly how many calls were used and how many remain. A batch that spends the
-whole month's quota is a failure even if every address is found.
+Credits are bought in bulk, so there is no monthly quota to ration and no per-run cap.
+`email_resolver.py` owns the spend order (published -> finder -> prober) and only makes a call
+that can pay: it never probes a published address, never re-tests a domain already known
+`accept_all`, and stops probing a person once the ranked patterns fail. Read actual usage back
+from `hunter-receipt.json` at the end of the run.
 
 ## Step 4 - Find the angle
 
