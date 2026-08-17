@@ -227,9 +227,11 @@ Two behaviours that are not obvious and cost an hour to find on 2026-08-17:
 - **Deleting a draft raises a confirmation dialog**, "Are you sure you want to discard this draft?",
   and nothing is deleted until OK is clicked. Pressing Escape answers Cancel. The first three
   attempts at this failed silently on exactly that.
-- **The message list is virtualised at about seven rows**, so a single pass only sees what is
-  rendered. **Re-run until it reports `0 of N found`.** A row that fails with a menu timeout
-  usually succeeds on the next pass, which the same habit covers.
+- **The message list is virtualised at about seven rows.** Matching scrolls the folder to find a
+  row, because without it every draft past the first screenful is absent from the DOM and reports
+  as "no match" while sitting right there. Scrolling is driven by wheel events, which go wherever
+  the cursor is, so the mouse is parked over the list first. A row that fails with a menu timeout
+  usually succeeds on a second run.
 
 Delete before recreating, never after. If a replacement reuses a subject, a later delete matches
 both and takes the new one with it.

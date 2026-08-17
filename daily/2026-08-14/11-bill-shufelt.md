@@ -1,21 +1,43 @@
 # Bill Shufelt
 
 - **To:** bill@athleticbrewing.com (VERIFIED, score 100, catch-all control passed)
-- **Subject:** Midd Sophomore Building an AI Teaching Assistant
+- **Subject:** The Bigger Market Was the Harder Sell
 - **Variant:** elite-decision-10min
 - **LinkedIn:** https://www.linkedin.com/in/bill-shufelt-650059138
-- **Body words:** 92 (band 90-95)
+- **Body words:** 72
+- **Revision:** v3, 2026-08-17, rewritten under rules 1-7 in `variants/README.md`
 
 ```
 Hi Bill,
 
-I'm Max, 20, a current Midd kid who made $30k cold calling small businesses to pay for school. Building the biggest non-alcoholic beer brand in America off cold emails to race directors, then aiming it at drinkers rather than people who quit, is a bet that the bigger market is the harder sell.
+I'm Max, 20, a Midd kid hungry to learn about entrepreneurship. I paid for school cold calling small businesses.
 
-I'm building an AI teaching assistant, and would love to know where the category would be if you had aimed it at the people who quit. If you're open to 10 minutes, I promise I'll pay it forward.
+Building the biggest non-alcoholic beer brand in America off cold emails to race directors, then aiming it at drinkers rather than people who quit, is a bet that the bigger market is the harder sell.
+
+Where would the category be if you had aimed it at the people who quit?
 
 Best,
 Max
 ```
+
+## What v3 changed, and what it kept
+
+Kept from v2, because Example 1 in `variants/README.md` was written to install them and they
+survived Max's own edit: **`off cold emails`** as the silent overlap with his cold calling, and a
+final clause he could disagree with. `is a bet that the bigger market is the harder sell` is a claim
+about his strategy, not admiration, so it gives him something to push back on.
+
+Changed under the rules:
+
+- **Rule 3.** Opens with the posture, `hungry to learn about entrepreneurship`, before the credential.
+- **Rule 7.** The AI teaching assistant is gone. It has nothing to do with beer distribution, and
+  the cold-calling fact is the one his own history gives him a reason to care about.
+- **Rule 5.** 92 words to 72. The pay-it-forward closer came out; the counterfactual is the ask.
+- **Rule 6.** The question is unchanged in substance and still names the choice he actually faced
+  rather than describing drift.
+
+Deliberately not included: **`My dad loves your beer`**, which was the best line in Max's own edit.
+It is his to add when he wants it, and per Example 2 it must never be manufactured.
 
 ## Why this decision and not the famous one
 

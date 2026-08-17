@@ -121,8 +121,8 @@ and has no send path anywhere in the file.
 ```
 
 `--delete` is a dry run without `--yes`, matches subject plus address exactly, and only touches
-Drafts. **Delete before recreating, and re-run until it says `0 of N found`**, because the list is
-virtualised and one pass sees only what is rendered. Full notes in `README.md`, "Deleting drafts".
+Drafts. **Delete before recreating, never after**, or a replacement sharing a subject gets taken
+too. Full notes in `README.md`, "Deleting drafts".
 
 Cookies last roughly two to three months. When `--check` fails, `--login` opens a window, Max
 signs in once, and it is headless again. Drafts are also always written to `daily/YYYY-MM-DD/` as

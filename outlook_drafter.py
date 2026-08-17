@@ -199,8 +199,8 @@ def draft_rows(page):
     return page.locator('div[role="option"]')
 
 
-def match_row(page, subject, to=None):
-    """Index of the row carrying this subject, or None.
+def scan_rendered(page, subject, to=None):
+    """Index of a matching row among those currently in the DOM, or None.
 
     Compares whole lines, never substrings, so "Cold Called My Way Through
     College" cannot be matched by a shorter subject that happens to prefix it.
@@ -211,10 +211,50 @@ def match_row(page, subject, to=None):
     """
     rows = draft_rows(page)
     for i in range(rows.count()):
-        text = rows.nth(i).inner_text()
+        try:
+            text = rows.nth(i).inner_text()
+        except Exception:
+            continue                      # row recycled mid-scan
         lines = [ln.strip() for ln in text.split("\n")]
         if subject.strip() in lines and (to is None or to.lower() in text.lower()):
             return i
+    return None
+
+
+def match_row(page, subject, to=None, scroll=True):
+    """Index of the row carrying this subject, scrolling the folder to find it.
+
+    The list is virtualised at roughly seven rows: everything below the fold is
+    simply absent from the DOM. Without scrolling this returned None for any
+    draft past the first screenful, which on a 41-draft folder is most of them.
+
+    scroll=False is for checking that a row just deleted has gone. That row was
+    rendered a moment ago, so a rendered-only scan is the right question and a
+    full re-scroll per poll would be far too slow.
+    """
+    i = scan_rendered(page, subject, to)
+    if i is not None or not scroll:
+        return i
+
+    # A wheel event goes to whatever is under the cursor, which starts at the
+    # window corner, so the mouse has to be parked over the list or nothing
+    # scrolls and every row past the first screenful stays unfindable.
+    rows = draft_rows(page)
+    if not rows.count():
+        return None
+    box = rows.nth(0).bounding_box()
+    if not box:
+        return None
+    page.mouse.move(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
+
+    page.mouse.wheel(0, -40000)           # back to the top before searching
+    page.wait_for_timeout(600)
+    for _ in range(40):
+        i = scan_rendered(page, subject, to)
+        if i is not None:
+            return i
+        page.mouse.wheel(0, 600)
+        page.wait_for_timeout(400)
     return None
 
 
@@ -227,7 +267,7 @@ def gone(page, subject, to, seconds=15):
     three were reported as failures.
     """
     for _ in range(seconds):
-        if match_row(page, subject, to) is None:
+        if match_row(page, subject, to, scroll=False) is None:
             return True
         page.wait_for_timeout(1000)
     return False
