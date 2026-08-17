@@ -128,8 +128,16 @@ Cookies last roughly two to three months. When `--check` fails, `--login` opens 
 signs in once, and it is headless again. Drafts are also always written to `daily/YYYY-MM-DD/` as
 markdown, so a dead session never costs a morning's research.
 
-The old per-campaign branch workflow (`round-1-middlebury-alumni` and friends) is history. New
-work uses `Campaign` = `daily-YYYY-MM` on `main`.
+The old per-campaign branch workflow is retired; everything now lives on `main`, and new work uses
+`Campaign` = `daily-YYYY-MM` there. The old branches were **archived as tags before deletion**, so
+their history is permanently recoverable on GitHub (`git checkout archive/<name>` to inspect one):
+
+- `archive/round-1-middlebury-alumni` - round 1 Middlebury alumni cold campaign
+- `archive/round-2-middlebury-alumni` - round 2 Middlebury alumni (103-contact list, 10 marked SENT)
+- `archive/round-2-tech-entrepreneurs` - round 2 tech-entrepreneur outreach (14 marked SENT)
+
+`round-3-ai-reactivation` and `updates-spring-semester-2026` were fully merged into `main`, so they
+were deleted without a tag - their history already lives in `main`.
 
 ## Layout
 
