@@ -14,10 +14,12 @@ with a visible window and log in.
 
 drafts.json is a list of {"to", "subject", "body"} objects.
 
---delete takes the same file, or a -receipt.json, and matches on subject. It is
-a DRY RUN unless you add --yes: it prints what it matched and stops. Matching is
-whole-line and exact, it only ever looks inside the Drafts folder, and a deleted
-draft goes to Deleted Items where it can be recovered.
+--delete takes the same file, or a -receipt.json, and matches on subject plus
+recipient. It is a DRY RUN unless you add --yes: it reports how many drafts each
+target matches (MATCH x2 when a batch was drafted twice) and stops. With --yes it
+sweeps the folder in rounds, deleting every match - duplicates included - until a
+pass deletes nothing. It only ever looks inside Drafts, and deleted drafts go to
+Deleted Items where they can be recovered.
 
 NEVER sends. There is no send path in this file, on purpose.
 """
@@ -199,78 +201,111 @@ def draft_rows(page):
     return page.locator('div[role="option"]')
 
 
-def scan_rendered(page, subject, to=None):
-    """Index of a matching row among those currently in the DOM, or None.
+def matches_any(text, targets):
+    """True if this Drafts row matches any (subject, recipient) target.
 
-    Compares whole lines, never substrings, so "Cold Called My Way Through
-    College" cannot be matched by a shorter subject that happens to prefix it.
+    Pure function, so it is unit-testable without a browser. The subject must
+    appear as a WHOLE line, so a shorter subject cannot match a longer one it
+    prefixes ("Cold Called My Way Through College"). The recipient email must
+    appear somewhere in the row text.
 
-    A draft row renders as "[Draft] someone@example.com" then the subject, so
-    when an address is supplied it must appear too. Two drafts can share a
-    subject; a subject and a recipient together are what identify one message.
+    Fail-safe by design: OWA renders a recipient that resolves to a contact as a
+    display NAME rather than an email ("Capossela, Alessandra"). Such a row does
+    not match by email and is deliberately left untouched rather than risk
+    deleting the wrong draft. Those surface as "still matching" and are deleted
+    by hand.
     """
+    lines = [ln.strip() for ln in text.split("\n")]
+    low = text.lower()
+    for s, to in targets:
+        if s and s.strip() in lines and (not to or to.lower() in low):
+            return True
+    return False
+
+
+def collect_row_texts(page):
+    """Scroll the whole virtualised Drafts list, return every unique row text.
+
+    The list renders ~7 rows at a time, and a wheel event needs the cursor
+    parked over the list or nothing scrolls. Used for dry-run reporting and the
+    final "did anything survive" check - never to delete by index.
+    """
+    rows = draft_rows(page)
+    if rows.count():
+        box = rows.nth(0).bounding_box()
+        if box:
+            page.mouse.move(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
+    page.mouse.wheel(0, -40000)
+    page.wait_for_timeout(600)
+    seen = []
+    empty = 0
+    for _ in range(120):
+        r = draft_rows(page)
+        before = len(seen)
+        for i in range(r.count()):
+            try:
+                t = r.nth(i).inner_text()
+            except Exception:
+                continue                  # row recycled mid-scan
+            if t not in seen:
+                seen.append(t)
+        empty = 0 if len(seen) > before else empty + 1
+        if empty >= 8:                    # scrolled a while, nothing new: bottom
+            break
+        page.mouse.wheel(0, 600)
+        page.wait_for_timeout(300)
+    return seen
+
+
+def find_match_index(page, targets):
+    """Index of the first currently-rendered row matching any target, or None."""
     rows = draft_rows(page)
     for i in range(rows.count()):
         try:
-            text = rows.nth(i).inner_text()
+            t = rows.nth(i).inner_text()
         except Exception:
-            continue                      # row recycled mid-scan
-        lines = [ln.strip() for ln in text.split("\n")]
-        if subject.strip() in lines and (to is None or to.lower() in text.lower()):
+            continue
+        if matches_any(t, targets):
             return i
     return None
 
 
-def match_row(page, subject, to=None, scroll=True):
-    """Index of the row carrying this subject, scrolling the folder to find it.
+def sweep_round(page, targets):
+    """One top-to-bottom pass, deleting every rendered row that matches a target.
 
-    The list is virtualised at roughly seven rows: everything below the fold is
-    simply absent from the DOM. Without scrolling this returned None for any
-    draft past the first screenful, which on a 41-draft folder is most of them.
-
-    scroll=False is for checking that a row just deleted has gone. That row was
-    rendered a moment ago, so a rendered-only scan is the right question and a
-    full re-scroll per poll would be far too slow.
+    Deletes the first match in view, lets the list settle, re-scans - so
+    duplicates that share a subject AND recipient are all removed (the old code
+    deleted at most one of each), and a click that misses is retried on the next
+    round rather than lost. Returns how many it deleted this pass.
     """
-    i = scan_rendered(page, subject, to)
-    if i is not None or not scroll:
-        return i
-
-    # A wheel event goes to whatever is under the cursor, which starts at the
-    # window corner, so the mouse has to be parked over the list or nothing
-    # scrolls and every row past the first screenful stays unfindable.
     rows = draft_rows(page)
-    if not rows.count():
-        return None
-    box = rows.nth(0).bounding_box()
-    if not box:
-        return None
-    page.mouse.move(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
-
-    page.mouse.wheel(0, -40000)           # back to the top before searching
+    if rows.count():
+        box = rows.nth(0).bounding_box()
+        if box:
+            page.mouse.move(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
+    page.mouse.wheel(0, -40000)
     page.wait_for_timeout(600)
-    for _ in range(40):
-        i = scan_rendered(page, subject, to)
+    deleted = 0
+    empty_scrolls = 0
+    for _ in range(200):
+        i = find_match_index(page, targets)
         if i is not None:
-            return i
-        page.mouse.wheel(0, 600)
-        page.wait_for_timeout(400)
-    return None
-
-
-def gone(page, subject, to, seconds=15):
-    """Poll until the row disappears, up to `seconds`.
-
-    OWA re-renders the list well after the delete returns. A single check a
-    second later reports STILL THERE for deletes that in fact succeeded, which
-    is exactly what happened on 2026-08-17: three drafts were deleted and all
-    three were reported as failures.
-    """
-    for _ in range(seconds):
-        if match_row(page, subject, to, scroll=False) is None:
-            return True
-        page.wait_for_timeout(1000)
-    return False
+            page.keyboard.press("Escape")     # clear any modal left by a prior delete
+            page.wait_for_timeout(300)
+            try:
+                delete_row(page, i)
+                deleted += 1
+            except Exception as e:
+                print("  FAILED a delete: %s" % str(e)[:80])
+            page.wait_for_timeout(500)
+            empty_scrolls = 0
+        else:
+            page.mouse.wheel(0, 600)
+            page.wait_for_timeout(350)
+            empty_scrolls += 1
+            if empty_scrolls >= 12:           # a full screen of scrolling, no match: bottom
+                break
+    return deleted
 
 
 def delete_row(page, i):
@@ -329,42 +364,41 @@ def cmd_delete(args):
             sys.exit("SESSION DEAD - run --login first. Nothing was deleted.")
         open_drafts(page)
 
-        matched = [(s, to) for s, to in targets if match_row(page, s, to) is not None]
+        # Scan the whole folder once and report matches per target. A target can
+        # match MORE than one draft when a batch was drafted twice, so the count
+        # is shown - the old code deleted at most one of each and then reported
+        # the surviving duplicate as a failure.
+        texts = collect_row_texts(page)
+        total = 0
         for s, to in targets:
-            hit = any(s == ms and to == mto for ms, mto in matched)
-            print("  %-9s %-44s %s" % ("MATCH" if hit else "no match", s, to or ""))
-        print("\n%d of %d drafts found in Drafts." % (len(matched), len(targets)))
+            n = sum(1 for t in texts if matches_any(t, [(s, to)]))
+            total += n
+            print("  %-11s %-44s %s" % (("MATCH x%d" % n) if n else "no match", s, to or ""))
+        print("\n%d draft(s) match across %d target(s), in a folder of %d." % (total, len(targets), len(texts)))
 
         if not args.yes:
             print("DRY RUN, nothing deleted. Re-run with --yes to delete the matches above.")
             ctx.close()
             return 0
 
+        # Sweep the folder in rounds until a full pass deletes nothing. This
+        # removes every matching row (duplicates included) and retries any click
+        # that missed, instead of one fragile pass keyed on a per-row poll.
         deleted = 0
-        for s, to in matched:
-            # Escape first: a composer or context menu left open from a previous
-            # iteration puts a modal backdrop over the list that eats every click.
-            page.keyboard.press("Escape")
-            page.wait_for_timeout(400)
-            # Re-match before every delete: the list re-renders after each one,
-            # so an index cached from the first scan would address the wrong row.
-            i = match_row(page, s, to)
-            if i is None:
-                print("  gone before delete: %s" % s)
-                continue
-            try:
-                delete_row(page, i)
-            except Exception as e:
-                print("  FAILED:  %-44s %s" % (s, str(e)[:80]))
-                continue
-            if gone(page, s, to):
-                deleted += 1
-                print("  deleted: %s" % s)
-            else:
-                print("  STILL THERE: %s" % s)
+        for rnd in range(1, 9):
+            d = sweep_round(page, targets)
+            deleted += d
+            print("  round %d: deleted %d" % (rnd, d))
+            if d == 0:
+                break
+
+        remaining = sum(1 for t in collect_row_texts(page) if matches_any(t, targets))
         ctx.close()
-        print("\n%d deleted. They are in Deleted Items and can be recovered there." % deleted)
-        return 0 if deleted == len(matched) else 1
+        print("\n%d deleted. They are in Deleted Items and can be recovered." % deleted)
+        if remaining:
+            print("%d still match - likely recipients OWA shows as a name, not an email. "
+                  "Delete those by hand." % remaining)
+        return 0 if remaining == 0 else 1
 
 
 def main():

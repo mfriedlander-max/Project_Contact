@@ -217,21 +217,25 @@ in once, and it is headless again.
 ### Deleting drafts
 
 For replacing a batch after the copy changed. It takes the same `drafts.json`, or a
-`-receipt.json`, and matches on **subject plus recipient address**, both exact, whole-line. It only
-ever looks inside Drafts, and deleted drafts land in Deleted Items where they can be recovered.
+`-receipt.json`, and matches on **subject plus recipient address**, both exact and whole-line. It
+only ever looks inside Drafts, and deleted drafts land in Deleted Items where they can be recovered.
 
-**It is a dry run without `--yes`.** It prints what it matched and stops.
+**It is a dry run without `--yes`.** It scans the whole folder and prints how many drafts match each
+target - `MATCH x2` when a batch was drafted twice - then stops.
 
-Two behaviours that are not obvious and cost an hour to find on 2026-08-17:
+With `--yes` it **sweeps**: it scrolls the folder deleting every matching row, then repeats until a
+full pass deletes nothing. That is what makes it survive the two things that broke a single pass:
 
-- **Deleting a draft raises a confirmation dialog**, "Are you sure you want to discard this draft?",
-  and nothing is deleted until OK is clicked. Pressing Escape answers Cancel. The first three
-  attempts at this failed silently on exactly that.
-- **The message list is virtualised at about seven rows.** Matching scrolls the folder to find a
-  row, because without it every draft past the first screenful is absent from the DOM and reports
-  as "no match" while sitting right there. Scrolling is driven by wheel events, which go wherever
-  the cursor is, so the mouse is parked over the list first. A row that fails with a menu timeout
-  usually succeeds on a second run.
+- **Duplicates.** A re-drafted batch leaves two drafts sharing a subject *and* recipient. A single
+  pass deleted one and then reported the survivor as a failure; the sweep removes both.
+- **A virtualised list (~7 rows) and flaky right-clicks.** Deleting a draft also raises an "Are you
+  sure you want to discard this draft?" dialog that must be OK'd. A click that misses with a menu
+  timeout is retried on the next round rather than lost. Scrolling is wheel-driven, so the mouse is
+  parked over the list first.
+
+**One thing it will not touch:** a recipient OWA resolved to a contact renders as a *name*, not an
+email, so it cannot be matched by address and is left alone rather than risk deleting the wrong
+draft. Those are reported as "still match" at the end; delete them by hand.
 
 Delete before recreating, never after. If a replacement reuses a subject, a later delete matches
 both and takes the new one with it.
